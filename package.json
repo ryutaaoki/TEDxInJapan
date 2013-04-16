@@ -9,53 +9,224 @@
     "regional",
     "lens"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://example.net/license/MIT"
-    }
-  ],
   "joshfire": {
+    "mustache":true,
     "images": {
       "small":"marketing/image-small.png",
       "big":"marketing/image-big.png"
     },
+    "devices": [
+      {
+        "devices": "desktop",
+        "startfile": "app/index.html",
+        "images": "marketing/image-small.png",
+        "screenshots" : ["marketing/image-small.png"]
+      }
+    ],
     "datasources": {
       "main": {
-        "title": "Main tabs",
-        "description": "Up to 3 tabs.",
-        "multiple": true
+        "title": "Main source",
+        "description": "Content to display"
       }
     },
     "options": {
       "schema": {
-        "abouthtml": {
-          "type": "string"
+        "datafilter": {
+          "type": "string",
+          "title":"Keyword for data filtering",
+          "description": "Only includes content whose title matches the given keyword"
+        },
+        "headerhtml": {
+          "type": "string",
+          "title":"HTML to add before the content"
+        },
+        "footerhtml": {
+          "type": "string",
+          "title":"HTML to add after the content"
+        },
+        "headertype": {
+          "type": "string",
+          "title": "What to use as the main title",
+          "enum": [
+            "Text",
+            "Logo"
+          ]
+        },
+        "headertitle": {
+          "type": "string",
+          "title":"Main title"
+        },
+        "headerlogo": {
+          "type": "object",
+          "title": "Logo image"
+        },
+        "backgroundtype": {
+          "type": "string",
+          "title": "Background type",
+          "enum": [
+            "Color",
+            "Image"
+          ]
+        },
+        "backgroundcolor": {
+          "type": "string",
+          "title": "Background color (hexadecimal)"
+        },
+        "backgroundimage": {
+          "type": "object",
+          "title": "Background image"
+        },
+        "autorefresh": {
+          "type": "integer",
+          "title": "Automatic refresh timeout (in seconds, 0 to disable)",
+          "default": 0
         }
       },
       "form": [
         "datasources.main",
         {
-          "key": "abouthtml",
+          "type": "selectfieldset",
+          "title": "Main title type",
+          "items": [
+            {
+              "key": "headertitle",
+              "legend": "Text"
+            },
+            {
+              "key": "headerlogo",
+              "legend": "Logo",
+              "type": "file-hosted-public"
+            }
+          ]
+        },
+        {
+          "type": "selectfieldset",
+          "title": "Background type",
+          "items": [
+            {
+              "key": "backgroundcolor",
+              "legend": "Text"
+            },
+            {
+              "key": "backgroundimage",
+              "legend": "Image",
+              "type": "file-hosted-public"
+            }
+          ]
+        },
+        "datafilter",
+        "autorefresh",
+        {
+          "key": "headerhtml",
+          "type": "wysihtml5"
+        },
+        {
+          "key": "footerhtml",
           "type": "wysihtml5"
         }
       ]
     },
+
     "libraries": [
       {
-        "name": "Joshfire Framework",
-        "homepage": "http://framework.joshfire.com",
-        "description": "The first open source multi-device development framework. Using only standards like HTML5 and JavaScript, it allows developers and integrators to quickly create native and dedicated web apps for browsers, Node.JS, desktops, smart phones, smartTVs and connected objects.",
+        "name": "jQuery",
+        "homepage": "http://jquery.com/",
+        "description": "jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.",
         "repositories": [
           {
             "type": "git",
-            "url": "https://github.com/joshfire/joshfire-framework.git"
+            "url": "https://github.com/jquery/jquery.git"
           }
         ],
         "licenses": [
           {
             "type": "MIT",
-            "url": "https://raw.github.com/joshfire/joshfire-framework/master/LICENSE"
+            "url": "license-jquery.txt"
+          }
+        ]
+      },
+      {
+        "name": "jQuery Masonry",
+        "homepage": "http://masonry.desandro.com/",
+        "description": "A dynamic layout plugin for jQuery. The flip-side of CSS floats.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/desandro/masonry.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "license-jquery-masonry.txt"
+          }
+        ]
+      },
+      {
+        "name": "jQuery Waypoints",
+        "homepage": "http://imakewebthings.com/jquery-waypoints/",
+        "description": "Waypoints is a small jQuery plugin that makes it easy to execute a function whenever you scroll to an element.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/imakewebthings/jquery-waypoints.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "license-jquery-waypoints.txt"
+          }
+        ]
+      },
+      {
+        "name": "Sizzle",
+        "homepage": "http://sizzlejs.com/",
+        "description": "A pure-JavaScript CSS selector engine designed to be easily dropped in to a host library.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/jquery/sizzle.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "license-sizzle.txt"
+          }
+        ]
+      },
+      {
+        "name": "Spin",
+        "homepage": "http://fgnass.github.com/spin.js/",
+        "description": "An animated CSS3 loading spinner with VML fallback for IE.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/fgnass/spin.js.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "license-spin.txt"
+          }
+        ]
+      },
+      {
+        "name": "Underscore.js",
+        "homepage": "http://documentcloud.github.com/underscore/",
+        "description": "Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects. It's the tie to go along with jQuery's tux, and Backbone.js's suspenders.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/documentcloud/underscore.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "license-underscore.txt"
           }
         ]
       }
