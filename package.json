@@ -18,7 +18,7 @@
     "devices": [
       {
         "devices": "desktop",
-        "startfile": "app/index.html",
+        "startfile": "index.html",
         "images": "marketing/image-small.png",
         "screenshots" : ["marketing/image-small.png"]
       }
