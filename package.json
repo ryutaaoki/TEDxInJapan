@@ -1,0 +1,64 @@
+{
+  "name": "tedxregionallens",
+  "fullName": "TEDx Regional Lens",
+  "version": "0.0.1",
+  "description": "Tedx Regional Lens is a web app displaying all the TEDx conferences in a country.",
+  "keywords": [
+    "tedx",
+    "conferences",
+    "regional",
+    "lens"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://example.net/license/MIT"
+    }
+  ],
+  "joshfire": {
+    "images": {
+      "small":"marketing/image-small.png",
+      "big":"marketing/image-big.png"
+    },
+    "datasources": {
+      "main": {
+        "title": "Main tabs",
+        "description": "Up to 3 tabs.",
+        "multiple": true
+      }
+    },
+    "options": {
+      "schema": {
+        "abouthtml": {
+          "type": "string"
+        }
+      },
+      "form": [
+        "datasources.main",
+        {
+          "key": "abouthtml",
+          "type": "wysihtml5"
+        }
+      ]
+    },
+    "libraries": [
+      {
+        "name": "Joshfire Framework",
+        "homepage": "http://framework.joshfire.com",
+        "description": "The first open source multi-device development framework. Using only standards like HTML5 and JavaScript, it allows developers and integrators to quickly create native and dedicated web apps for browsers, Node.JS, desktops, smart phones, smartTVs and connected objects.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/joshfire/joshfire-framework.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "https://raw.github.com/joshfire/joshfire-framework/master/LICENSE"
+          }
+        ]
+      }
+    ]
+  }
+}
