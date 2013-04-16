@@ -1,5 +1,5 @@
-TEDxEnFrance project
-====================
+TEDx Regional Lens Project
+==========================
 
 Projet destiné à rassembler toute les conférences TEDx.
 
