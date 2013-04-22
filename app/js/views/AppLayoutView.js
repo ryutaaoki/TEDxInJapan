@@ -12,8 +12,7 @@ define([
 
   'views/DisplayerView',
   'views/TalksView',
-  'views/TwitterPostsView',
-  'views/AboutView'
+  'views/TwitterPostsView'
 ], function(
   woodman,
   $,
@@ -26,8 +25,7 @@ define([
 
   DisplayerView,
   TalksView,
-  TwitterPostsView,
-  AboutView
+  TwitterPostsView
 ) {
   var logger = woodman.getLogger('views.AppLayoutView');
   var BaseLayout = Layout.extend(BaseSubView);
@@ -43,7 +41,7 @@ define([
       * In this case, basically the whole interface.
       **/
 
-      //----------
+      //------------------------------------
       /**
       *********************
       * Home page views *
@@ -64,7 +62,7 @@ define([
       });
       this.views.push(twitterPostsView);
 
-      console.info(this.views);
+      // console.info(this.views);
 
       //-----------------------------------
 

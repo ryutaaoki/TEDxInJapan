@@ -56,8 +56,8 @@ define([
       this.$el.find($('img')).first().hide();
 
 
-      var gmap = new GMap();
-      console.log(gmap);
+      // var gmap = new GMap();
+      // console.log(gmap);
       /* render the map GoogleMaps API v3 */
 
     },
