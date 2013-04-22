@@ -123,7 +123,7 @@ nav li a > span {
 }
 
 #displayer img {
-	margin-bottom: -279px;
+	margin-bottom: -275px;
 }
 
 #displayer ul {
@@ -141,13 +141,13 @@ nav li a > span {
 	cursor:pointer;
 }
 
-#displayer ul li a {
+#displayer ul li span {
 	text-decoration: none;
 	color:#888;
 	font-size: 14px;
 }
 
-#displayer ul li:hover, #displayer ul li a:hover {
+#displayer ul li:hover, #displayer ul li span:hover {
 	background-color: #222;
 }
 

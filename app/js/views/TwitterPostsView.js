@@ -23,9 +23,15 @@ define([
 
     initialize: function (options) {
       logger.info('initialize TwitterPostsView');
-      // this.appController = options.appController;
-      // options.template = twitterPostsTemplate;
-      // Item.prototype.initialize.call(this, options);
+      this.template = options.template = twitterPostsTemplate;
+      this.appController = options.appController;
+
+      Layout.prototype.initialize.call(this, options);
+      logger.info('End initialize TwitterPostsView');
+    },
+
+    render: function () {
+      $("[data-joshfire-child=twitterPosts]").html(twitterPostsTemplate);
     },
 
     // render: function(){

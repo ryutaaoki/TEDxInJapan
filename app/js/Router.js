@@ -23,13 +23,43 @@ define([
       * poses no problems could eventually become one.
       **/
       this.route('*path', 'default', this.defaultRoute);
-      // this.route('home', 'home', this.homeRoute);
-      // this.route('page', 'page', this.somePageRoute);
+      this.route('home', 'home', this.homeRoute);
+      this.route('conferences', 'conferences', this.conferencesRoute);
+      this.route('discussions', 'discussions', this.discussionsRoute);
+      this.route('about', 'about', this.aboutRoute);
     },
 
     defaultRoute: function() {
       logger.info('run default route');
       this.navigate('home', {
+        trigger: true
+      });
+    },
+
+    homeRoute: function () {
+      logger.info('run home route');
+      this.navigate('home', {
+        trigger: true
+      });
+    },
+
+    conferencesRoute: function () {
+      logger.info('run conferences route');
+      this.navigate('conferences', {
+        trigger: true
+      });
+    },
+
+    discussionsRoute: function () {
+      logger.info('run discussions route');
+      this.navigate('discussions', {
+        trigger: true
+      });
+    },
+
+    aboutRoute: function () {
+      logger.info('run about route');
+      this.navigate('about', {
         trigger: true
       });
     },

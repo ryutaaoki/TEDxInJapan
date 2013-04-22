@@ -8,9 +8,12 @@ define([
 
   'joshlib!ui/layout',
 
+  'views/BaseContentSubView',
+
   'views/DisplayerView',
   'views/TalksView',
-  'views/TwitterPostsView'
+  'views/TwitterPostsView',
+  'views/AboutView'
 ], function(
   woodman,
   $,
@@ -19,46 +22,80 @@ define([
 
   Layout,
 
+  BaseSubView,
+
   DisplayerView,
   TalksView,
-  TwitterPostsView
+  TwitterPostsView,
+  AboutView
 ) {
   var logger = woodman.getLogger('views.AppLayoutView');
-  var BaseLayout = Layout.extend({
-
-    events: {
-      "click #page-title": "ahah",
-      "click #conferences-page" : "hello"
-    },
-
-    ahah: function () {
-      alert("coucou");
-    },
-
-    hello: function () {
-      console.log("HELLOOOOOOO GUYS !");
-    },
+  var BaseLayout = Layout.extend(BaseSubView);
+  return BaseLayout.extend({
 
     initialize: function(options) {
       logger.info('initialize AppLayoutView');
+      this.views = [];
       options = options || {};
 
       /**
       * Create the children elements.
       * In this case, basically the whole interface.
       **/
+
+      //----------
+      /**
+      *********************
+      * Home page views *
+      *********************
+      */
       var displayerView = new DisplayerView({
         appController: options.appController
       });
+      this.views.push(displayerView);
 
       var talksView = new TalksView({
         appController: options.appController
       });
+      this.views.push(talksView);
 
       var twitterPostsView = new TwitterPostsView({
         appController: options.appController
       });
+      this.views.push(twitterPostsView);
 
+      console.info(this.views);
+
+      //-----------------------------------
+
+      /**
+      *********************
+      * Conferences views *
+      *********************
+      */
+
+      var eventsView = new ListEventsView({
+        appController: options.appController
+      });
+      this.views.push(eventsView);
+
+      //-----------------------------------
+
+      /**
+      *********************
+      * Discussions views *
+      *********************
+      */
+
+      //-----------------------------------
+
+      /**
+      *********************
+      * About views *
+      *********************
+      */
+
+      //-----------------------------------
       options.children = {
         displayer: displayerView,
         talks: talksView,
@@ -66,11 +103,13 @@ define([
       };
 
       Layout.prototype.initialize.call(this, options);
+      logger.info('End initialize AppLayoutView');
     },
 
     enhance: function() {
       Layout.prototype.enhance.call(this);
     }
+
   });
 
   return BaseLayout;

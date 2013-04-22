@@ -23,12 +23,16 @@ define([
 
     initialize: function (options) {
       logger.info('initialize TalksView');
-      // this.appController = options.appController;
+      this.template = options.template = listTalksTemplate;
+      this.appController = options.appController;
 
-      // options.template = listTalksTemplate;
-      // Item.prototype.initialize.call(this, options); //THERE IS A PROBLEME
-      // logger.log("coucou");
-    }
+      Layout.prototype.initialize.call(this, options);
+      logger.info('End initialize TalksView');
+    },
+
+    render: function () {
+      $("[data-joshfire-child=talks]").html(listTalksTemplate);
+    },
 
     // render: function(){
     //   this.$el.append(listTalksTemplate);
