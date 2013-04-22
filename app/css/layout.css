@@ -1,0 +1,182 @@
+/* Ad Stuff */
+#bsap_1266451 {
+	background: white;
+	position: absolute;
+	top: 21px;
+	right: 0;
+
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+#bsap_1266451 div {
+	background: transparent;
+	border: none;
+}
+
+#bsap_1266451 a, #bsap_1266451 span {
+}
+
+/* Layout */
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #EEE;
+}
+
+footer {
+	bottom:0;
+	height:60px;
+	/*border:1px solid black;*/
+	width:100%;
+	background-color: #FFF;
+	font-size: 10px;
+}
+
+footer p {
+	padding:5px;
+	float:left;
+}
+
+footer img {
+	float:right;
+	bottom:0;
+}
+
+header {
+	background-color: #454444;
+	height: 350px;
+}
+
+.layout-header h1 {
+	float: left;
+}
+
+.layout-header, .container {
+	width: 850px;
+	margin: auto;
+	position: relative;
+	clear: both;
+}
+
+header {
+	margin-bottom: -185px;
+}
+
+.layout-header:after, .container:after {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	content: '';
+}
+
+nav {
+	float:left;
+	width: 610px;
+	padding: 5px;
+	margin-left: 5px;
+}
+
+.layout-header h1#page-title {
+	color: white;
+	margin-left: 30px;
+	font-size: 16pt;
+	padding-top: 20px;
+	margin-bottom:0;
+}
+
+nav ul {
+	height: 65px;
+}
+
+nav li {
+	padding: 10px 20px 10px 20px;
+	float:left;
+	cursor:pointer;
+}
+
+nav li:active {
+	background-color:#333;
+}
+
+nav li:hover {
+	background-color: #222;
+}
+
+nav li a, nav li a:active, nav li a:visited {
+	text-decoration: none;
+	color: #FF3500;
+}
+
+nav li a > span {
+	color:white;
+	font-size: 12px;
+}
+
+.body-content {
+}
+
+#displayer {
+	border: 15px solid #222;
+	height: 300px;
+}
+
+#displayer img {
+	margin-bottom: -279px;
+}
+
+#displayer ul {
+	padding-left: 15px;
+	margin-top: 0;
+	position: absolute;
+	top:30px;
+}
+
+#displayer ul li {
+	display:inline;
+	margin-right: 5px;
+	background-color: #444;
+	padding:7px;
+	cursor:pointer;
+}
+
+#displayer ul li a {
+	text-decoration: none;
+	color:#888;
+	font-size: 14px;
+}
+
+#displayer ul li:hover, #displayer ul li a:hover {
+	background-color: #222;
+}
+
+div#main {
+	float:left;
+	width:500px;
+	margin-right: 0;
+	margin-top:10px;
+}
+
+div#twitter-posts {
+	margin-top:20px;
+	margin-bottom: 30px;
+	float:right;
+	width:310px;
+	background-color:white;
+}
+
+div.twitter h4 {
+	margin: 10px;
+}
+
+div.twitter {
+	background-color:white;
+}
+
+div#talks {
+	float: left;
+	padding-left:20px;
+	padding-top: 20px;
+}
+
