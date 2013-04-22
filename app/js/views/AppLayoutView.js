@@ -74,10 +74,10 @@ define([
       *********************
       */
 
-      var eventsView = new ListEventsView({
-        appController: options.appController
-      });
-      this.views.push(eventsView);
+      // var eventsView = new ListEventsView({
+      //   appController: options.appController
+      // });
+      // this.views.push(eventsView);
 
       //-----------------------------------
 

@@ -5,7 +5,7 @@ define([
   woodman,
   Backbone
 ) {
-  var logger = woodman.getLogger('models.twitterPost');
+  var logger = woodman.getLogger('models.tweetModel');
 
   return Backbone.Model.extend({
     initialize: function () {
