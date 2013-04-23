@@ -7,7 +7,7 @@ define([
   'joshlib!ui/layout',
 
   'views/ListDisplayView',
-  'views/DisplayPanelView',
+  'views/DisplayPanel',
 
   'text!templates/DisplayerLayout.html'
 ], function(

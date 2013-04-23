@@ -6,7 +6,7 @@ define([
 
   'joshlib!ui/layout',
   'views/ListMenuView',
-  'views/AppPanelView'
+  'views/AppPanel'
 ], function(
   woodman,
   $,

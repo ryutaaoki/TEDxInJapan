@@ -6,7 +6,7 @@ define([
 
   'joshlib!ui/cardpanel',
 
-  'views/LiveView'
+  'views/HomePagePanel'
 ], function(
   woodman,
   $,
@@ -15,29 +15,31 @@ define([
 
   CardPanel,
 
-  LiveView
+  HomePagePanel
 ) {
   var logger = woodman.getLogger('views.AppPanelView');
-  var DisplayPanel = CardPanel.extend({
+  var AppPanel = CardPanel.extend({
 
     initialize: function(options) {
       logger.info('initialize AppPanelView');
       var options = options || {};
 
       //--------- Different Panel Creation
-      this.live = new LiveView({
-        appController: options.appController,
-        model: new Backbone.Model()
+      this.homepage = new HomePagePanel({
+        appController: options.appController
       });
       //--------- END Different Panel Creation
 
       options.children = {
-        live: this.live
+        homepage: this.homepage
+        // + conferences
+        // + discussions
+        // + aboutTEDxenFrance
       }
       CardPanel.prototype.initialize.call(this,options);
     }
 
   });
 
-  return DisplayPanel;
+  return AppPanel;
 });
