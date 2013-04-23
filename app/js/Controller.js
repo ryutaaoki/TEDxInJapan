@@ -31,31 +31,9 @@ define([
 
     this.layout = new AppLayoutView({
       appController: this,
-      el: '#content'
+      el: '#layout-content'
     });
     logger.info('AppLayoutView created');
-
-    this.router.on('route:home', function(param) {
-      logger.log('home');
-      $("[data-joshfire-child=displayer]").show();
-      $("[data-joshfire-child=talks]").show();
-      $("[data-joshfire-child=twitterPosts]").show();
-    });
-
-    this.router.on('route:about', function(param) {
-      logger.log('about');
-      $("#content").children().hide();
-    });
-
-    this.router.on('route:conferences', function(param) {
-      logger.log('conferences');
-      $("#content").children().hide();
-    });
-
-    this.router.on('route:discussions', function(param) {
-      logger.log('discussions');
-      $("#content").children().hide();
-    });
   };
 
   _.extend(Controller.prototype, Backbone.Events, {
@@ -64,13 +42,16 @@ define([
     **/
     start: function() {
       logger.info('start application render');
-      this.layout.render();
-      // console.log(this.layout.children);
-      this.layout.children.displayer.render();
-      this.layout.children.talks.render();
-      this.layout.children.twitterPosts.render();
-      this.router.setRoutes();
       Backbone.history.start();
+      this.layout.trigger('load');
+    },
+
+    init: function() {
+      var self = this;
+      logger.info('init');
+      this.layout.render();
+      this.router.setRoutes();
+      this.start();
     }
 
   });

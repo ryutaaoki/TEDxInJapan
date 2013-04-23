@@ -1,5 +1,3 @@
-/*global isMobile */
-
 define([
   'joshlib!utils/woodman',
   'joshlib!utils/dollar',
@@ -7,12 +5,8 @@ define([
   'joshlib!vendor/backbone',
 
   'joshlib!ui/layout',
-
-  'views/BaseContentSubView',
-
-  'views/DisplayerView',
-  'views/TalksView',
-  'views/TwitterPostsView'
+  'views/ListMenuView',
+  'views/AppPanelView'
 ], function(
   woodman,
   $,
@@ -20,95 +14,41 @@ define([
   Backbone,
 
   Layout,
+  Menu,
+  AppPanel,
 
-  BaseSubView,
-
-  DisplayerView,
-  TalksView,
-  TwitterPostsView
+  MenuTemplate
 ) {
   var logger = woodman.getLogger('views.AppLayoutView');
-  var BaseLayout = Layout.extend(BaseSubView);
-  return BaseLayout.extend({
+  var AppLayoutView = Layout.extend({
 
     initialize: function(options) {
       logger.info('initialize AppLayoutView');
-      this.views = [];
-      options = options || {};
+      var options = options || {};
 
-      /**
-      * Create the children elements.
-      * In this case, basically the whole interface.
-      **/
-
-      //------------------------------------
-      /**
-      *********************
-      * Home page views *
-      *********************
-      */
-      var displayerView = new DisplayerView({
-        appController: options.appController
+      this.menuList = new Menu({
+        appController: options.appController,
+        el: "#nav"
       });
-      this.views.push(displayerView);
 
-      var talksView = new TalksView({
-        appController: options.appController
+      this.panel = new AppPanel({
+        appController: options.appController,
+        el: "#content"
       });
-      this.views.push(talksView);
 
-      var twitterPostsView = new TwitterPostsView({
-        appController: options.appController
-      });
-      this.views.push(twitterPostsView);
-
-      // console.info(this.views);
-
-      //-----------------------------------
-
-      /**
-      *********************
-      * Conferences views *
-      *********************
-      */
-
-      // var eventsView = new ListEventsView({
-      //   appController: options.appController
-      // });
-      // this.views.push(eventsView);
-
-      //-----------------------------------
-
-      /**
-      *********************
-      * Discussions views *
-      *********************
-      */
-
-      //-----------------------------------
-
-      /**
-      *********************
-      * About views *
-      *********************
-      */
-
-      //-----------------------------------
       options.children = {
-        displayer: displayerView,
-        talks: talksView,
-        twitterPosts: twitterPostsView
-      };
+        menuList: this.menuList,
+        panel: this.panel
+      }
 
-      Layout.prototype.initialize.call(this, options);
-      logger.info('End initialize AppLayoutView');
+      Layout.prototype.initialize.call(this,options);
     },
 
-    enhance: function() {
-      Layout.prototype.enhance.call(this);
+    enhance: function(options) {
+      Layout.prototype.enhance.call(this,options);
     }
 
   });
 
-  return BaseLayout;
+  return AppLayoutView;
 });

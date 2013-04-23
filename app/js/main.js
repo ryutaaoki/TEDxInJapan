@@ -25,7 +25,7 @@ requirejs([
     onReady(function () {
       logger.info('application started');
       window.app = new Controller();
-      window.app.start();
+      window.app.init();
     });
   });
 });
