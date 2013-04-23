@@ -6,7 +6,8 @@ define([
   'joshlib!ui/layout',
 
   'views/DisplayerView',
-  'views/TalksView'
+  'views/TalksView',
+  'views/TweetsView'
 
 ], function(
   woodman,
@@ -16,7 +17,8 @@ define([
   Layout,
 
   DisplayerView,
-  TalksView
+  TalksView,
+  TweetsView
 ) {
   var logger = woodman.getLogger('views.HomePagePanel');
   var HomePagePanel = Layout.extend({
@@ -33,10 +35,14 @@ define([
         appController: options.appController
       });
 
+      this.tweets = new TweetsView({
+        appController: options.appController
+      });
+
       options.children = {
         displayer: this.displayer,
         talks: this.talks,
-        // tweets: this.tweets
+        tweets: this.tweets
       };
 
       Layout.prototype.initialize.call(this,options);
