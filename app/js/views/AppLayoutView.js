@@ -41,6 +41,8 @@ define([
         panel: this.panel
       }
 
+      this.panel.showChild('homepage');
+
       Layout.prototype.initialize.call(this,options);
     },
 
