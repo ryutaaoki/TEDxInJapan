@@ -5,7 +5,8 @@ define([
   'joshlib!vendor/backbone',
   'joshlib!ui/layout',
 
-  'views/DisplayerView'
+  'views/DisplayerView',
+  'views/TalksView'
 
 ], function(
   woodman,
@@ -14,7 +15,8 @@ define([
   Backbone,
   Layout,
 
-  DisplayerView
+  DisplayerView,
+  TalksView
 ) {
   var logger = woodman.getLogger('views.HomePagePanel');
   var HomePagePanel = Layout.extend({
@@ -27,13 +29,13 @@ define([
         appController: options.appController
       });
 
-      // this.talks = new TalksView({
-      //   appController: options.appController
-      // });
+      this.talks = new TalksView({
+        appController: options.appController
+      });
 
       options.children = {
         displayer: this.displayer,
-        // talks: this.talks,
+        talks: this.talks,
         // tweets: this.tweets
       };
 
