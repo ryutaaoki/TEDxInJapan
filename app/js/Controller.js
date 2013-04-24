@@ -34,10 +34,6 @@ define([
       el: '#layout-content'
     });
     logger.info('AppLayoutView created');
-
-    this.router.on('conferences', function() {
-      alert("coucou");
-    });
   };
 
   _.extend(Controller.prototype, Backbone.Events, {
@@ -55,6 +51,31 @@ define([
       logger.info('init');
       this.layout.render();
       this.router.setRoutes();
+      self.layout = this.layout;
+
+      //----- Listen change routes
+
+      /* HomePage */
+      this.router.on('route:home', function (){
+        self.layout.getChild('panel').showChild('homepage');
+      });
+
+      /* Conferences */
+      this.router.on('route:conferences', function (){
+        self.layout.getChild('panel').showChild('conferences');
+      });
+
+      /* Discussions */
+      this.router.on('route:discussions', function (){
+        console.log('Render Discussions Page');
+      });
+
+      /* About TEDx */
+      this.router.on('route:about', function (){
+        console.log('Render About TEDx page');
+      });
+
+      //----- End Listen change routes
       this.start();
     }
 

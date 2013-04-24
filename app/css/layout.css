@@ -117,10 +117,27 @@ nav li a > span {
 .body-content {
 }
 
-#displayer {
-	border: 15px solid #222;
+.displayer {
+	border: 15px solid #2b2b2b;
+	background-color:#2b2b2b;
 	height: 300px;
 }
+
+.displayer h3 {
+	margin:0;
+	color: white;
+	float: left;
+}
+
+.displayer h4, .displayer p {
+	margin: 0;
+	color: white;
+}
+
+.displayer p {
+	margin-top:5px;
+	font-size: 14px;
+}	
 
 #displayer img {
 	margin-bottom: -275px;
@@ -178,5 +195,20 @@ div#talks {
 	float: left;
 	padding-left:20px;
 	padding-top: 20px;
+}
+
+div.next-events ul {
+	margin-top: 50px;
+	margin-left: -30px;
+}
+
+div.next-events li {
+	display:inline;
+}
+
+div.itemEvent {
+	float:left;
+	width: 250px;
+	padding-right: 20px;
 }
 

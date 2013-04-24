@@ -6,7 +6,8 @@ define([
 
   'joshlib!ui/cardpanel',
 
-  'views/homepage/HomePagePanel'
+  'views/homepage/HomePagePanel',
+  'views/conferences/ConferencesPagePanel'
 ], function(
   woodman,
   $,
@@ -15,7 +16,8 @@ define([
 
   CardPanel,
 
-  HomePagePanel
+  HomePagePanel,
+  ConferencesPagePanel
 ) {
   var logger = woodman.getLogger('views.AppPanelView');
   var AppPanel = CardPanel.extend({
@@ -25,13 +27,20 @@ define([
       var options = options || {};
 
       //--------- Different Panel Creation
+
       this.homepage = new HomePagePanel({
         appController: options.appController
       });
+
+      this.conferences = new ConferencesPagePanel({
+        appController: options.appController
+      });
+
       //--------- END Different Panel Creation
 
       options.children = {
-        homepage: this.homepage
+        homepage: this.homepage,
+        conferences: this.conferences
         // + conferences
         // + discussions
         // + aboutTEDxenFrance

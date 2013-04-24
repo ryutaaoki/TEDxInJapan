@@ -44,7 +44,7 @@ define([
         panel: this.panel
       }
 
-      this.panel.showChild('homepage');
+      this.panel.showChild('conferences');
 
       Layout.prototype.initialize.call(this,options);
     },
