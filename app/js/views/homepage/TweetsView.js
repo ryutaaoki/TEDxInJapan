@@ -6,9 +6,9 @@ define([
 
   'joshlib!ui/layout',
 
-  'views/ListTweetsView',
+  'views/homepage/tweets/ListTweetsView',
 
-  'text!templates/TweetsLayout.html'
+  'text!templates/homepage/tweets/TweetsLayout.html'
 ], function(
   woodman,
   $,

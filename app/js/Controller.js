@@ -34,6 +34,10 @@ define([
       el: '#layout-content'
     });
     logger.info('AppLayoutView created');
+
+    this.router.on('conferences', function() {
+      alert("coucou");
+    });
   };
 
   _.extend(Controller.prototype, Backbone.Events, {

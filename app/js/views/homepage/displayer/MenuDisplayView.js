@@ -4,9 +4,10 @@ define([
   'joshlib!vendor/underscore',
   'joshlib!vendor/backbone',
 
+  // 'joshlib!ui/list',
   'joshlib!ui/item',
 
-  'text!templates/DisplayLive.html'
+  'text!templates/homepage/displayer/MenuDisplay.html'
 ], function(
   woodman,
   $,
@@ -15,20 +16,20 @@ define([
 
   Item,
 
-  LiveTemplate
+  MenuDisplayTemplate
 ) {
-  var logger = woodman.getLogger('views.LiveView');
-  var LiveView = Item.extend({
+  var logger = woodman.getLogger('views.MenuDisplayView');
+  var MenuDisplayView = Item.extend({
 
     initialize: function(options) {
-      logger.info('initialize LiveView');
+      logger.info('initialize MenuDisplayView');
       var options = options || {};
 
-      options.template = LiveTemplate;
+      options.template = MenuDisplayTemplate;
 
       Item.prototype.initialize.call(this,options);
     },
   });
 
-  return LiveView;
+  return MenuDisplayView;
 });

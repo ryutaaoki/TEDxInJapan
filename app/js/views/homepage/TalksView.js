@@ -6,9 +6,9 @@ define([
 
   'joshlib!ui/layout',
 
-  'views/ListTalksView',
+  'views/homepage/talks/ListTalksView',
 
-  'text!templates/TalksLayout.html'
+  'text!templates/homepage/talks/TalksLayout.html'
 ], function(
   woodman,
   $,

@@ -6,9 +6,9 @@ define([
 
   'joshlib!ui/cardpanel',
 
-  'views/LiveView',
-  'views/MapsView',
-  'views/RadioView'
+  'views/homepage/displayer/LiveView',
+  'views/homepage/displayer/MapsView',
+  'views/homepage/displayer/RadioView'
 ], function(
   woodman,
   $,

@@ -6,10 +6,10 @@ define([
 
   'joshlib!ui/layout',
 
-  'views/ListDisplayView',
-  'views/DisplayPanel',
+  'views/homepage/displayer/MenuDisplayView',
+  'views/homepage/displayer/DisplayPanel',
 
-  'text!templates/DisplayerLayout.html'
+  'text!templates/homepage/displayer/DisplayerLayout.html'
 ], function(
   woodman,
   $,
@@ -18,7 +18,7 @@ define([
 
   Layout,
 
-  ListDisplay,
+  MenuDisplay,
   DisplayPanel,
 
   DisplayerTemplate
@@ -31,8 +31,9 @@ define([
       var options = options || {};
       options.template = DisplayerTemplate;
 
-      this.listDisplay = new ListDisplay({
-        appController: options.appController
+      this.menuDisplay = new MenuDisplay({
+        appController: options.appController,
+        model: new Backbone.Model()
       });
 
       this.panelDisplay = new DisplayPanel({
@@ -40,7 +41,7 @@ define([
       });
 
       options.children = {
-        listDisplay: this.listDisplay,
+        menuDisplay: this.menuDisplay,
         panelDisplay: this.panelDisplay
       };
 

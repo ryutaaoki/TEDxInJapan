@@ -5,6 +5,7 @@ define([
   'joshlib!vendor/backbone',
 
   'joshlib!ui/layout',
+
   'views/ListMenuView',
   'views/AppPanel'
 ], function(
@@ -14,6 +15,7 @@ define([
   Backbone,
 
   Layout,
+
   Menu,
   AppPanel,
 
@@ -28,6 +30,7 @@ define([
 
       this.menuList = new Menu({
         appController: options.appController,
+        model: new Backbone.Model(),
         el: "#nav"
       });
 

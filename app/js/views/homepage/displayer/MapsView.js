@@ -6,7 +6,7 @@ define([
 
   'joshlib!ui/item',
 
-  'text!templates/RadioLive.html'
+  'text!templates/homepage/displayer/Maps.html'
 ], function(
   woodman,
   $,
@@ -15,20 +15,20 @@ define([
 
   Item,
 
-  RadioTemplate
+  MapsTemplate
 ) {
-  var logger = woodman.getLogger('views.RadioLiveView');
-  var RadioLiveView = Item.extend({
+  var logger = woodman.getLogger('views.MapsView');
+  var MapsView = Item.extend({
 
     initialize: function(options) {
-      logger.info('initialize RadioLiveView');
+      logger.info('initialize MapsView');
       var options = options || {};
 
-      options.template = RadioTemplate;
+      options.template = MapsTemplate;
 
       Item.prototype.initialize.call(this,options);
     },
   });
 
-  return RadioLiveView;
+  return MapsView;
 });

@@ -7,7 +7,7 @@ define([
   'joshlib!ui/list',
   'joshlib!ui/item',
 
-  'text!templates/ItemTalks.html'
+  'text!templates/homepage/tweets/ItemTweets.html'
 ], function(
   woodman,
   $,
@@ -17,19 +17,19 @@ define([
   List,
   Item,
 
-  ItemTalksTemplate
+  ItemTweetsTemplate
 ) {
-  var logger = woodman.getLogger('views.ListTalksView');
-  var ListTalksView = List.extend({
+  var logger = woodman.getLogger('views.ListTweetsView');
+  var ListTweetsView = List.extend({
 
     initialize: function(options) {
-      logger.info('initialize ListTalks');
+      logger.info('initialize ListTweets');
       var options = options || {};
-      options.template = ItemTalksTemplate; // TODO: Change to render every talks
+      options.template = ItemTweetsTemplate;
 
       List.prototype.initialize.call(this,options);
     },
   });
 
-  return ListTalksView;
+  return ListTweetsView;
 });

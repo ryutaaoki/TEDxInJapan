@@ -5,9 +5,9 @@ define([
   'joshlib!vendor/backbone',
   'joshlib!ui/layout',
 
-  'views/DisplayerView',
-  'views/TalksView',
-  'views/TweetsView'
+  'views/homepage/DisplayerView',
+  'views/homepage/TalksView',
+  'views/homepage/TweetsView'
 
 ], function(
   woodman,

@@ -6,7 +6,7 @@ define([
 
   'joshlib!ui/item',
 
-  'text!templates/homepage/ListMenu.html'
+  'text!templates/homepage/displayer/DisplayLive.html'
 ], function(
   woodman,
   $,
@@ -15,19 +15,20 @@ define([
 
   Item,
 
-  MenuTemplate
+  LiveTemplate
 ) {
-  var logger = woodman.getLogger('views.ListMenuView');
-  var MenuView = Item.extend({
+  var logger = woodman.getLogger('views.LiveView');
+  var LiveView = Item.extend({
 
     initialize: function(options) {
-      logger.info('initialize ListMenu');
+      logger.info('initialize LiveView');
       var options = options || {};
-      options.template = MenuTemplate;
+
+      options.template = LiveTemplate;
 
       Item.prototype.initialize.call(this,options);
     },
   });
 
-  return MenuView;
+  return LiveView;
 });

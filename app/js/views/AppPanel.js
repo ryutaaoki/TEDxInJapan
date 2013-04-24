@@ -6,7 +6,7 @@ define([
 
   'joshlib!ui/cardpanel',
 
-  'views/HomePagePanel'
+  'views/homepage/HomePagePanel'
 ], function(
   woodman,
   $,
