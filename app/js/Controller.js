@@ -58,21 +58,28 @@ define([
       /* HomePage */
       this.router.on('route:home', function (){
         self.layout.getChild('panel').showChild('homepage');
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
       /* Conferences */
       this.router.on('route:conferences', function (){
         self.layout.getChild('panel').showChild('conferences');
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #conferences-page').addClass('active');
       });
 
       /* Discussions */
       this.router.on('route:discussions', function (){
-        console.log('Render Discussions Page');
+        console.log('Render Discussions page');
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
       });
 
       /* About TEDx */
       this.router.on('route:about', function (){
         console.log('Render About TEDx page');
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #about-page').addClass('active');
       });
 
       //----- End Listen change routes

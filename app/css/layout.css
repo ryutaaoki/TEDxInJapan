@@ -96,7 +96,7 @@ nav li {
 	cursor:pointer;
 }
 
-nav li:active {
+nav li.active {
 	background-color:#333;
 }
 
@@ -232,4 +232,8 @@ input[type=search] {
 	background: #454444;
 	line-height: 1.5;
 	color: white;
+}
+
+div#past-talks {
+	padding:20px;
 }

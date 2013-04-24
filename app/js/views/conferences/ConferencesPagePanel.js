@@ -6,7 +6,7 @@ define([
   'joshlib!ui/layout',
 
   'views/conferences/NextEventsLayoutView',
-  'views/homepage/TalksView'
+  'views/conferences/PastTalksView'
 ], function(
   woodman,
   $,
@@ -32,14 +32,9 @@ define([
         appController: options.appController
       });
 
-      // this.tweets = new TweetsView({
-      //   appController: options.appController
-      // });
-
       options.children = {
         displayer: this.displayer,
-        talks: this.talks,
-        // tweets: this.tweets
+        talks: this.talks
       };
 
       Layout.prototype.initialize.call(this,options);
