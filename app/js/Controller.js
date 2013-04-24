@@ -70,7 +70,7 @@ define([
 
       /* Discussions */
       this.router.on('route:discussions', function (){
-        console.log('Render Discussions page');
+        self.layout.getChild('panel').showChild('discussions');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
       });
