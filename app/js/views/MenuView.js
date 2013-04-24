@@ -6,7 +6,7 @@ define([
 
   'joshlib!ui/item',
 
-  'text!templates/homepage/ListMenu.html'
+  'text!templates/Menu.html'
 ], function(
   woodman,
   $,
@@ -17,11 +17,11 @@ define([
 
   MenuTemplate
 ) {
-  var logger = woodman.getLogger('views.ListMenuView');
+  var logger = woodman.getLogger('views.MenuView');
   var MenuView = Item.extend({
 
     initialize: function(options) {
-      logger.info('initialize ListMenu');
+      logger.info('initialize Menu');
       var options = options || {};
       options.template = MenuTemplate;
 
