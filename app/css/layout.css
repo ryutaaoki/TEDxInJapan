@@ -104,7 +104,7 @@ nav li:hover {
 	background-color: #222;
 }
 
-nav li a, nav li a:active, nav li a:visited {
+nav li a, nav li a:active, nav li a:visited, nav li a:hover {
 	text-decoration: none;
 	color: #FF3500;
 }
@@ -112,9 +112,6 @@ nav li a, nav li a:active, nav li a:visited {
 nav li a > span {
 	color:white;
 	font-size: 12px;
-}
-
-.body-content {
 }
 
 .displayer {
