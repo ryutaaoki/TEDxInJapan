@@ -123,13 +123,15 @@ nav li a > span {
 	height: 300px;
 }
 
-.displayer h3 {
+.displayer h4 {
 	margin:0;
+	margin-top:7px;
+	margin-left:15px;
 	color: white;
 	float: left;
 }
 
-.displayer h4, .displayer p {
+.displayer p {
 	margin: 0;
 	color: white;
 }
@@ -212,3 +214,22 @@ div.itemEvent {
 	padding-right: 20px;
 }
 
+label[for="search-btn"] {
+	float:right;
+	padding: 1px;
+	line-height: 1.5;
+	border-radius: 0px 5px 5px 0px;
+	background-color: #333;
+}
+
+input[type=search] {
+	float:right;
+	padding: 5px;
+	padding-right:0;
+	border-radius: 5px 0px 0px 5px;
+	font-family: Helvetica;
+	border: 0;
+	background: #454444;
+	line-height: 1.5;
+	color: white;
+}
