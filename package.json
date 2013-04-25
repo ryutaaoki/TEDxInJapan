@@ -1,65 +1,35 @@
 {
-  "name": "event",
-  "version": "1.1.1",
-  "fullName": "Event",
-  "description": "Template designed for events. Use it for conferences, seminars, concerts...\n\nThe template features a unique and slick design and integrates well with your brand logo. Use it to give informations about an event: map, schedule, directory, about page and news. Populate the photo and video gallery with pictures taken live during the event.\n\nThe template expects precise datasource types for each view. Please ensure that the datasource feed you set matches the expected type. Use an ical datasource for the schedule and a Twitter feed for the comments view for instance.",
+  "name": "tedxregionallens",
+  "fullName": "TEDx Regional Lens",
+  "version": "0.0.1",
+  "description": "Tedx Regional Lens is a web app displaying all the TEDx conferences in a country.",
   "keywords": [
-     "event",
-     "conference",
-     "concert",
-     "seminar"
-   ],
+    "tedx",
+    "conferences",
+    "regional",
+    "lens"
+  ],
   "joshfire": {
     "images": {
-      "small":"marketing/image-small.png",
-      "big":"marketing/image-big.png"
+      "small": "marketing/image-small.png",
+      "big": "marketing/image-big.png"
     },
     "devices": [
       {
         "devices": "*",
         "startfile": "app/index.html",
-        "images":"marketing/image-small.png",
-        "screenshots":["marketing/image-small.png"]
+        "images": "marketing/image-small.png",
+        "screenshots": [
+          "marketing/image-small.png"
+        ]
       }
     ],
     "datasources": {
-      "news": {
-        "title": "News",
-        "description": "Latest news concerning the event, e.g. a blog or other RSS content",
-        "inputType": [
-          "Article"
-        ]
-      },
       "tweets": {
         "title": "Comments",
         "description": "Comments on social networks, e.g. tweets from an hashtag",
         "inputType": [
           "Article/Status"
-        ]
-      },
-      "calendar": {
-        "title": "Schedule",
-        "description": "What is happening and when? An ical datasource, e.g. a Google Calendar",
-        "inputType": [
-          "Event"
-        ]
-      },
-      "speakers": {
-        "title": "Speakers",
-        "description": "List of speakers, artists, sponsors or companies you want to feature, typically defined in a spreadsheets (using the standard format)"
-      },
-      "photos": {
-        "title": "Photos",
-        "description": "Live pictures taken during the event",
-        "inputType": [
-          "ImageObject"
-        ]
-      },
-      "videos": {
-        "title": "Videos",
-        "description": "Recording of the event. Suggestion: create an empty playlist filled during/after the event.",
-        "inputType": [
-          "VideoObject"
         ]
       }
     },
@@ -71,54 +41,12 @@
         }
       },
       "form": [
-        "datasources.news",
         "datasources.tweets",
-        "datasources.calendar",
-        "datasources.speakers",
-        "datasources.photos",
-        "datasources.videos",
         {
           "key": "abouthtml",
           "type": "wysihtml5"
         }
       ]
-    },
-
-    "libraries": [
-      {
-        "name": "Joshfire Framework",
-        "homepage": "http://framework.joshfire.com",
-        "description": "The first open source multi-device development framework. Using only standards like HTML5 and JavaScript, it allows developers and integrators to quickly create native and dedicated web apps for browsers, Node.JS, desktops, smart phones, smartTVs and connected objects.",
-        "repositories": [
-          {
-            "type": "git",
-            "url": "https://github.com/joshfire/joshfire-framework.git"
-          }
-        ],
-        "licenses": [
-          {
-            "type": "MIT",
-            "url": "https://raw.github.com/joshfire/joshfire-framework/master/LICENSE"
-          }
-        ]
-      },
-      {
-        "name": "JavaScript Pretty Date",
-        "homepage": "http://ejohn.org/blog/javascript-pretty-date/",
-        "description": "Takes an ISO time and returns a string representing how long ago the date represents.",
-        "repositories": [
-          {
-            "type": "file",
-            "url": "http://ejohn.org/files/pretty.js"
-          }
-        ],
-        "licenses": [
-          {
-            "type": "MIT",
-            "url": "http://ejohn.org/files/pretty.js"
-          }
-        ]
-      }
-    ]
+    }
   }
 }
