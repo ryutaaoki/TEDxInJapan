@@ -103,23 +103,6 @@
         ]
       },
       {
-        "name": "Linkify",
-        "homepage": "http://benalman.com/projects/javascript-linkify/",
-        "description": "Turn text into linkified html.",
-        "repositories": [
-          {
-            "type": "git",
-            "url": "https://github.com/cowboy/javascript-linkify.git"
-          }
-        ],
-        "licenses": [
-          {
-            "type": "MIT",
-            "url": "license-linkify.txt"
-          }
-        ]
-      },
-      {
         "name": "JavaScript Pretty Date",
         "homepage": "http://ejohn.org/blog/javascript-pretty-date/",
         "description": "Takes an ISO time and returns a string representing how long ago the date represents.",
