@@ -11,15 +11,17 @@
   ],
   "joshfire": {
     "images": {
-      "small":"marketing/image-small.png",
-      "big":"marketing/image-big.png"
+      "small": "marketing/image-small.png",
+      "big": "marketing/image-big.png"
     },
     "devices": [
       {
         "devices": "desktop",
         "startfile": "app/index.html",
         "images": "marketing/image-small.png",
-        "screenshots" : ["marketing/image-small.png"]
+        "screenshots": [
+          "marketing/image-small.png"
+        ]
       }
     ],
     "datasources": {
@@ -45,60 +47,6 @@
           "type": "wysihtml5"
         }
       ]
-    },
-
-    "libraries": [
-      {
-        "name": "jQuery",
-        "homepage": "http://jquery.com/",
-        "description": "jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.",
-        "repositories": [
-          {
-            "type": "git",
-            "url": "https://github.com/jquery/jquery.git"
-          }
-        ],
-        "licenses": [
-          {
-            "type": "MIT",
-            "url": "license-jquery.txt"
-          }
-        ]
-      },
-      {
-        "name": "jQuery Masonry",
-        "homepage": "http://masonry.desandro.com/",
-        "description": "A dynamic layout plugin for jQuery. The flip-side of CSS floats.",
-        "repositories": [
-          {
-            "type": "git",
-            "url": "https://github.com/desandro/masonry.git"
-          }
-        ],
-        "licenses": [
-          {
-            "type": "MIT",
-            "url": "license-jquery-masonry.txt"
-          }
-        ]
-      },
-      {
-        "name": "Underscore.js",
-        "homepage": "http://documentcloud.github.com/underscore/",
-        "description": "Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects. It's the tie to go along with jQuery's tux, and Backbone.js's suspenders.",
-        "repositories": [
-          {
-            "type": "git",
-            "url": "https://github.com/documentcloud/underscore.git"
-          }
-        ],
-        "licenses": [
-          {
-            "type": "MIT",
-            "url": "license-underscore.txt"
-          }
-        ]
-      }
-    ]
+    }
   }
 }
