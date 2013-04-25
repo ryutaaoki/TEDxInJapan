@@ -29,7 +29,7 @@ define([
       var tweets = Joshfire.factory.getDataSource('tweets');
 
       tweets.find({
-          limit: 10
+          limit: 5
         },
         function( err , data ) {
           var html = "<ul>";
