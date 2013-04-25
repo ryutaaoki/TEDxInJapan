@@ -4,7 +4,6 @@ define([
   'joshlib!vendor/underscore',
   'joshlib!vendor/backbone',
 
-  // 'joshlib!ui/list',
   'joshlib!ui/item',
 
   'text!templates/homepage/displayer/MenuDisplay.html'
@@ -23,8 +22,7 @@ define([
 
     events: {
       'click #tedx-now'  : 'tedxLive',
-      'click #tedx-map'  : 'tedxMap',
-      'click #tedx-radio': 'tedxRadio'
+      'click #tedx-map'  : 'tedxMap'
     },
 
     initialize: function(options) {
@@ -38,23 +36,10 @@ define([
 
     tedxLive: function () {
       logger.info('Gotcha ! TEDx Live !');
-      // this.$el.find($('img')).first().show();
     },
 
     tedxMap: function () {
       logger.info('Display Google Maps API with TEDx in the country !');
-      // this.$el.find($('img')).first().hide();
-
-
-      // var gmap = new GMap();
-      // console.log(gmap);
-      /* render the map GoogleMaps API v3 */
-
-    },
-
-    tedxRadio: function () {
-      logger.info('Edit view Radio to listen TEDx live radio !');
-      // this.$el.find($('img')).first().show();
     }
   });
 

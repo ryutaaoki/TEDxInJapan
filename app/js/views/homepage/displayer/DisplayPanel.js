@@ -7,8 +7,7 @@ define([
   'joshlib!ui/cardpanel',
 
   'views/homepage/displayer/LiveView',
-  'views/homepage/displayer/MapsView',
-  'views/homepage/displayer/RadioView'
+  'views/homepage/displayer/MapsView'
 ], function(
   woodman,
   $,
@@ -18,8 +17,7 @@ define([
   CardPanel,
 
   LiveView,
-  MapsView,
-  RadioView
+  MapsView
 ) {
   var logger = woodman.getLogger('views.AppPanelView');
   var DisplayPanel = CardPanel.extend({
@@ -38,17 +36,11 @@ define([
         appController: options.appController,
         model: new Backbone.Model()
       });
-
-      this.radio = new RadioView({
-        appController: options.appController,
-        model: new Backbone.Model()
-      });
       //--------- END Different Panel Creation
 
       options.children = {
         live: this.live,
-        maps: this.maps,
-        radio: this.radio
+        maps: this.maps
       }
       CardPanel.prototype.initialize.call(this,options);
     }
