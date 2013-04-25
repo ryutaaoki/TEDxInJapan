@@ -165,6 +165,10 @@ div.twitter h4 {
 	margin: 10px;
 }
 
+div.twitter h4 img {
+	padding-right: 10px;
+}
+
 div.twitter {
 	background-color:white;
 }
@@ -204,4 +208,36 @@ div#grabbing-twitter {
 div#grabbing-twitter h4 {
 	margin-left:20px;
 	color: #444;
+}
+
+#posts ul {
+	padding-left:15px;
+}
+
+#posts ul a {
+	text-decoration: none;
+	color: #444;
+}
+
+#posts ul a:hover {
+	color: #777;
+}
+
+li.tweet {
+	font-size: 10.5px;
+	float:left;
+	display:block;
+	padding-right: 20px;
+	margin-bottom:20px;
+}
+
+#posts li span {
+	float:right;
+	width:220px;
+	padding-left:15px;
+}
+
+#posts li span.name-author {
+	text-align: right;
+	color: #AAA;
 }
