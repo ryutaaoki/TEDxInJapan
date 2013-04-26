@@ -73,7 +73,22 @@ define([
       /* HomePage */
       this.router.on('route:home', function (){
         self.layout.getChild('panel').showChild('homepage');
+        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('maps');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+      });
+
+      this.router.on('route:maps', function() {
+        self.layout.getChild('panel').showChild('homepage');
+        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('maps');
+        // self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#displayer .active').removeClass('active');
+        // self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#displayer li#tedx-map').addClass('active');
+      });
+
+      this.router.on('route:live', function() {
+        self.layout.getChild('panel').showChild('homepage');
+        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('live');
+        // self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#displayer .active').removeClass('active');
+        // self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#displayer ul li#tedx-live').addClass('active');
       });
 
       /* Conferences */

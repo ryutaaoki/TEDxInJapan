@@ -24,6 +24,8 @@ define([
       **/
       this.route('*path', 'default', this.defaultRoute);
       this.route('home', 'home', this.homeRoute);
+      this.route('home/maps', 'maps', this.mapsRoute);
+      this.route('home/live', 'live', this.liveRoute);
       this.route('conferences', 'conferences', this.conferencesRoute);
       this.route('discussions', 'discussions', this.discussionsRoute);
       this.route('about', 'about', this.aboutRoute);
@@ -39,6 +41,20 @@ define([
     homeRoute: function () {
       logger.info('run home route');
       this.navigate('home', {
+        trigger: true
+      });
+    },
+
+    mapsRoute: function () {
+      logger.info('run maps route');
+      this.navigate('#home/maps', {
+        trigger: true
+      });
+    },
+
+    liveRoute: function () {
+      logger.info('run live route');
+      this.navigate('#home/live', {
         trigger: true
       });
     },

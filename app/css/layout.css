@@ -5,6 +5,10 @@ body {
 	background-color: #EEE;
 }
 
+a {
+	text-decoration: none;
+}
+
 footer {
 	bottom:0;
 	height:60px;
@@ -75,7 +79,7 @@ nav li {
 	cursor:pointer;
 }
 
-nav li.active {
+.active {
 	background-color:#333;
 }
 
@@ -83,12 +87,12 @@ nav li:hover {
 	background-color: #222;
 }
 
-nav li a, nav li a:active, nav li a:visited, nav li a:hover {
+nav a, nav a:active, nav a:visited, nav a:hover {
 	text-decoration: none;
 	color: #FF3500;
 }
 
-nav li a > span {
+nav a span {
 	color:white;
 	font-size: 12px;
 }
@@ -244,4 +248,13 @@ li.tweet {
 
 .center-tweets {
 	padding-left:25px;
+}
+
+#maps-canvas {
+	width: 100%;
+	height: 100%;
+}
+
+#displayer li.active {
+	background-color: #222;
 }
