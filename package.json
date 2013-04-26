@@ -35,6 +35,15 @@
     },
     "options": {
       "schema": {
+        "language": {
+          "title": "Language",
+          "type": "select",
+          "enum": [
+            "auto",
+            "fr",
+            "en"
+          ]
+        },
         "abouthtml": {
           "title": "About (HTML)",
           "type": "string"
@@ -45,6 +54,14 @@
         {
           "key": "abouthtml",
           "type": "wysihtml5"
+        },
+        {
+          "key": "language",
+          "titleMap": {
+            "auto": "Automatic",
+            "fr": "French",
+            "en": "English"
+          }
         }
       ]
     }
