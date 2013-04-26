@@ -1,19 +1,25 @@
 define([
   'joshlib!utils/woodman',
+  'joshlib!utils/i18n',
   'joshlib!vendor/underscore',
   'joshlib!vendor/backbone',
 
   'views/AppLayoutView',
 
-  'Router'
+  'Router',
+
+  '../lang/config',
 ], function (
   woodman,
+  i18n,
   _,
   Backbone,
 
   AppLayoutView,
 
-  Router
+  Router,
+
+  LocaleConfig
 ) {
   // Retrieve the module's logger
   var logger = woodman.getLogger('Controller');
@@ -49,7 +55,16 @@ define([
     init: function() {
       var self = this;
       logger.info('init');
-      this.layout.render();
+
+      this.i18n = i18n;
+      this.i18n.setLocale({
+        locale: Joshfire.factory.config.template.options.language || 'en',
+        availableLocales: LocaleConfig.AVAILABLE,
+        defaultLocale: LocaleConfig.DEFAULT
+      }, function() {
+        self.layout.render();
+      });
+
       this.router.setRoutes();
       self.layout = this.layout;
 
