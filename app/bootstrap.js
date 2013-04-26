@@ -7,8 +7,8 @@
     device: {},
     addons: {}
   };
-  Joshfire.factory.config.deploy = {"flags":{"web":true},"type":"gandisimplehosting","id":"51790741bb693502000000b7","env":"live"};
-  Joshfire.factory.config.datasources = {"tweets":{"name":"Twitter","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"Twitter","id":"5179074481bfc2020000002b","db":"twitter","col":"tweets","outputType":"Article/Status","runatclient":false,"runtime":"hosted","apikey":"/e3HiVc6uIbdwZmV4lYeRq+dseHRqbDieEDn9401FLqjR6m8pgSPqHvDhnPNYh/JozJhFM+AKLTYrOXpvpZcTQ=="}},"action":"addtarget"}},"outputType":"Article/Status","runatclient":true,"runtime":"browser"}};
+  Joshfire.factory.config.deploy = {"flags":{"web":true},"type":"gandisimplehosting","id":"51794723d09476020000000e","env":"live"};
+  Joshfire.factory.config.datasources = {"tweets":{"name":"Twitter","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"Twitter","id":"51794726821e6b0200000014","db":"twitter","col":"tweets","outputType":"Article/Status","runatclient":false,"runtime":"hosted","apikey":"/e3HiVc6uIbdwZmV4lYeRq+dseHRqbDieEDn9401FLoW1iXaPTTM4F9TrHcNwuoF5/2d4AZo8LJso6Tp6AGAgw=="}},"action":"addtarget"}},"outputType":"Article/Status","runatclient":true,"runtime":"browser"}};
   Joshfire.factory.config.addons = [{"name":"splashscreen","options":{"web-mode":"factory"},"hooks":["loaded"]}];
   window.Joshfire = Joshfire;
 
