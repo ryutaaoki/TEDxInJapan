@@ -38,7 +38,16 @@
         "abouthtml": {
           "title": "About (HTML)",
           "type": "string"
-        }
+        },
+        "language": {
+          "title": "Language",
+          "type": "select",
+          "enum": [
+            "auto",
+            "fr",
+            "en"
+          ]
+        },
       },
       "form": [
         "datasources.tweets",
