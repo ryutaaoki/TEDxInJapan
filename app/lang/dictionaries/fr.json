@@ -1,6 +1,12 @@
 {
   "terms": {
-    "Le réseau TEDx en France" : "Le réseau TEDx en France",
-    "Conversations TEDx": "Conversations TEDx"
+    "Le réseau TEDx en France"  : "Le réseau TEDx en France",
+    "A propos de TEDx en France": "A propos de TEDx en France",
+    "Conversations TEDx"        : "Conversations TEDx",
+    "Découvrir le programme TEDx": "Découvrir le programme TEDx",
+    "Connecter et collaborer": "Connecter et collaborer",
+    "Discussions": "Discussions",
+    "Les vidéos des interventions": "Les vidéos des interventions",
+    "Conférences": "Conférences"
   }
 }
