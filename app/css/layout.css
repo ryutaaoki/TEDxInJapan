@@ -241,3 +241,7 @@ li.tweet {
 	text-align: right;
 	color: #AAA;
 }
+
+.center-tweets {
+	padding-left:25px;
+}

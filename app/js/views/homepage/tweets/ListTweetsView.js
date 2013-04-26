@@ -26,25 +26,25 @@ define([
       logger.info('initialize ListTweets');
       // options.template = ItemTweetsTemplate;
 
-      var tweets = Joshfire.factory.getDataSource('tweets');
+      // var tweets = Joshfire.factory.getDataSource('tweets');
 
-      tweets.find({
-          limit: 5
-        },
-        function( err , data ) {
-          var html = "<ul>";
-          _.each(data.entries, function(entry) {
-            // console.log(entry);
-            html += '<a href="' + entry.url + '" target="_blank">';
-            html += '<li class="tweet">';
-            html += '<img src="' + entry.author[0].image.contentURL + '" alt="" width="40"/>';
-            html += '<span>' + entry.name + '</span>' + '<br/><span class="name-author">' + entry.author[0].name + '</span>';
-            html += '</li></a>';
-          });
-          html +="</ul>";
-          $("#posts").html(html);
-        }
-      );
+      // tweets.find({
+      //     limit: 5
+      //   },
+      //   function( err , data ) {
+      //     var html = "<ul>";
+      //     _.each(data.entries, function(entry) {
+      //       // console.log(entry);
+      //       html += '<a href="' + entry.url + '" target="_blank">';
+      //       html += '<li class="tweet">';
+      //       html += '<img src="' + entry.author[0].image.contentURL + '" alt="" width="40"/>';
+      //       html += '<span>' + entry.name + '</span>' + '<br/><span class="name-author">' + entry.author[0].name + '</span>';
+      //       html += '</li></a>';
+      //     });
+      //     html +="</ul>";
+      //     // $("#posts").html(html);
+      //   }
+      // );
 
       var options = options || {};
 
