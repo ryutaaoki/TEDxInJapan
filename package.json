@@ -54,6 +54,14 @@
         {
           "key": "abouthtml",
           "type": "wysihtml5"
+        },
+        {
+          "key": "language",
+          "titleMap": {
+            "auto": "Automatic",
+            "fr": "French",
+            "en": "English"
+          }
         }
       ]
     }
