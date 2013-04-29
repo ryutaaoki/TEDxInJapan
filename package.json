@@ -76,11 +76,7 @@
             "en": "English"
           }
         },
-        "datasources.youtube",
-        {
-          "key": "advertisement",
-          "type": "input"
-        }
+        "datasources.youtube"
       ]
     }
   }
