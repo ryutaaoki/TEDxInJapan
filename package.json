@@ -54,10 +54,6 @@
         "abouthtml": {
           "title": "About (HTML)",
           "type": "string"
-        },
-        "pub": {
-          "title": "Adverstisment URL",
-          "type": "string"
         }
       },
       "form": [
@@ -74,8 +70,7 @@
             "en": "English"
           }
         },
-        "datasources.youtube",
-
+        "datasources.youtube"
       ]
     }
   }
