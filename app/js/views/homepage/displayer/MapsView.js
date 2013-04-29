@@ -27,7 +27,8 @@ define([
       options.template = MapsTemplate;
 
       Item.prototype.initialize.call(this,options);
-    },
+    }
+
   });
 
   return MapsView;

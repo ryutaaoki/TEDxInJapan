@@ -58,11 +58,19 @@ define([
 
       this.i18n = i18n;
       this.i18n.setLocale({
-        locale: Joshfire.factory.config.template.options.language || 'en',
+        locale: Joshfire.factory.config.template.options.language || 'fr',
         availableLocales: LocaleConfig.AVAILABLE,
         defaultLocale: LocaleConfig.DEFAULT
       }, function() {
         self.layout.render();
+        var map;
+        var mapOptions = {
+          zoom: 8,
+          center: new google.maps.LatLng(48.719961, 2.60376),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
       });
 
       this.router.setRoutes();
