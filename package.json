@@ -31,6 +31,13 @@
         "inputType": [
           "Article/Status"
         ]
+      },
+      "youtube": {
+        "title": "Playlists youtube",
+        "description": "Playlist of events and talks presented by TEDx",
+        "inputType": [
+          "VideoObject"
+        ]
       }
     },
     "options": {
