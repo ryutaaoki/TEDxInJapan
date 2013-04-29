@@ -91,6 +91,7 @@
         },
         "datasources.youtube",
         {
+          "key": "api_key",
           "type": "authfieldset",
           "items": [
             "api_key"
