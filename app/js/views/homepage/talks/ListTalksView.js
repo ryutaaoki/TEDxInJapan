@@ -25,7 +25,25 @@ define([
     initialize: function(options) {
       logger.info('initialize ListTalks');
       var options = options || {};
-      options.template = ItemTalksTemplate; // TODO: Change to render every talks
+      options.template = ItemTalksTemplate;
+
+      var datasources = Joshfire.factory.getDataSource('youtube');
+
+      datasources.find({
+        limit: 9
+      }, function(error, data) {
+        var html = "<ul>";
+        _.each(data.entries, function(entry) {
+          console.log(entry);
+          html += '<a href="' + entry.url + '" target="_blank">';
+          html += '<li class="talks">';
+          html += '<img src="' + entry.image.contentURL + '" alt=""/>';
+          html += '<br/><span class="name-talk">' + entry.author[0].name + '</span>'/* + '<br/><span class="name-author">' + entry.author[0].name + '</span>'*/;
+          html += '</li></a>';
+        });
+        html +="</ul>";
+        $("#playlist-youtube").html(html);
+      });
 
       List.prototype.initialize.call(this,options);
     },

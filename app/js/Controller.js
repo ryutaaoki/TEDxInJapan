@@ -58,7 +58,7 @@ define([
 
       this.i18n = i18n;
       this.i18n.setLocale({
-        locale: Joshfire.factory.config.template.options.language || 'fr',
+        locale: Joshfire.factory.config.template.options.language || 'auto',
         availableLocales: LocaleConfig.AVAILABLE,
         defaultLocale: LocaleConfig.DEFAULT
       }, function() {

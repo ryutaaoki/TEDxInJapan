@@ -258,3 +258,27 @@ li.tweet {
 #displayer li.active {
 	background-color: #222;
 }
+
+#playlist-youtube {
+	width: 510px;
+}
+
+#playlist-youtube ul {
+	padding:0;
+}
+
+#playlist-youtube ul a {
+	text-decoration: none;
+	color: gray;
+}
+
+.talks {
+	display:inline-block;
+	padding: 10px 20px 10px 0px;
+	width:140px;
+}
+
+.name-talk {
+	font-size:12px;
+	word-wrap: break-word;
+}
