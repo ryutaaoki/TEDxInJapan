@@ -54,21 +54,21 @@ define([
         position: map.getCenter(), //POSITION OF THE MARKER
         map: map,
         title: 'TEDx Event 1',
-        // icon: 'layout-img/red-cross.png'
+        icon: 'layout-img/red-cross.png'
       });
 
       new google.maps.Marker({
         position: new google.maps.LatLng(41.20, -3.08), //POSITION OF THE MARKER
         map: map,
         title: 'TEDx Event 2',
-        // icon: 'layout-img/red-cross.png'
+        icon: 'layout-img/red-cross.png'
       });
 
       new google.maps.Marker({
         position: new google.maps.LatLng(50.05, 9.33), //POSITION OF THE MARKER
         map: map,
         title: 'TEDx Event 3',
-        // icon: 'layout-img/red-cross.png'
+        icon: 'layout-img/red-cross.png'
       });
 
       // ---- END MARKERS CREATION
