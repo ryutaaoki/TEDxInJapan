@@ -69,7 +69,8 @@
             "fr": "French",
             "en": "English"
           }
-        }
+        },
+        "datasources.youtube"
       ]
     }
   }
