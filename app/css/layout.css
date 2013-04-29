@@ -250,9 +250,9 @@ li.tweet {
 	padding-left:25px;
 }
 
-#maps-canvas {
+#map-canvas {
+	height: 300px;
 	width: 100%;
-	height: 100%;
 }
 
 #displayer li.active {
