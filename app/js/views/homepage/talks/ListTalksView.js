@@ -34,7 +34,7 @@ define([
       }, function(error, data) {
         var html = "<ul>";
         _.each(data.entries, function(entry) {
-          console.log(entry);
+          // console.log(entry);
           html += '<a href="' + entry.url + '" target="_blank">';
           html += '<li class="talks">';
           html += '<img src="' + entry.image.contentURL + '" alt=""/>';

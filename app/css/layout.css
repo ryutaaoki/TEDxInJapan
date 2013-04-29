@@ -278,6 +278,10 @@ li.tweet {
 	width:140px;
 }
 
+.talks img {
+	width: 140px;
+}
+
 .name-talk {
 	font-size:12px;
 	word-wrap: break-word;
