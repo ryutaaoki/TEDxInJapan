@@ -54,6 +54,12 @@
         "abouthtml": {
           "title": "About (HTML)",
           "type": "string"
+        },
+        {
+          "advertisement": {
+            "title": "Advertisement URL",
+            "type" : "string"
+          }
         }
       },
       "form": [
@@ -70,7 +76,11 @@
             "en": "English"
           }
         },
-        "datasources.youtube"
+        "datasources.youtube",
+        {
+          "key": "advertisement",
+          "type": "input"
+        }
       ]
     }
   }
