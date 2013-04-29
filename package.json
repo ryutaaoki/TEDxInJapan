@@ -77,7 +77,7 @@
         "datasources.youtube",
         {
           "key": "advertisement",
-          "type": "input"
+          "type": "string"
         }
       ]
     }
