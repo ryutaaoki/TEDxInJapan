@@ -286,3 +286,26 @@ li.tweet {
 	font-size:12px;
 	word-wrap: break-word;
 }
+
+#past-talks ul {
+	padding-left: 0;
+}
+
+#past-talks a{
+	text-decoration: none;
+	color: #333;
+}
+
+.talks.events {
+	display:inline-block;
+	padding: 10px 10px 10px 10px;
+	width:180px;
+}
+
+.talks.events img {
+	width: 180px;
+}
+
+.address-event {
+	font-size: 16px;
+}

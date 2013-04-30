@@ -36,13 +36,8 @@ define([
         model: new Backbone.Model()
       });
 
-      // this.panelDisplay = new DisplayPanel({
-      //   appController: options.appController
-      // });
-
       options.children = {
-        displayEvents: this.displayEvents,
-        // panelDisplay: this.panelDisplay
+        displayEvents: this.displayEvents
       };
 
       Layout.prototype.initialize.call(this,options);
