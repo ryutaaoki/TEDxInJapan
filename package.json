@@ -61,17 +61,6 @@
         "abouthtml": {
           "title": "About (HTML)",
           "type": "string"
-        },
-        "api_key" : {
-          "type": "string",
-          "title": "API key",
-          "description": "Enter your TED API key here. The key is optional to preview your app but required at deployment stage. Follow the instructions on <a href='http://developer.ted.com/' target='_blank'>TED's Web site</a> to obtain an API key.",
-          "joshfire:requiredFor": ["deploy"]
-        },
-        "skipnoimage":{
-          "type": "boolean",
-          "title":"Skip events without image",
-          "default":true
         }
       },
       "form": [
@@ -88,14 +77,7 @@
             "en": "English"
           }
         },
-        "datasources.youtube",
-        "datasources.tedxevents",
-        {
-          "type": "authfieldset",
-          "items": [
-            "api_key"
-          ]
-        }
+        "datasources.youtube"
       ]
     }
   }
