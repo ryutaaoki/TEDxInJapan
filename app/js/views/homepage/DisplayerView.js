@@ -31,9 +31,12 @@ define([
       var options = options || {};
       options.template = DisplayerTemplate;
 
+      var live = this.isThereTedxLive();
+
       this.menuDisplay = new MenuDisplay({
         appController: options.appController,
-        model: new Backbone.Model()
+        model: new Backbone.Model(),
+        live: false
       });
 
       this.panelDisplay = new DisplayPanel({
@@ -47,6 +50,26 @@ define([
 
       Layout.prototype.initialize.call(this,options);
     },
+
+    isThereTedxLive: function(){
+      var datasources = Joshfire.factory.getDataSource('spreadsheetslive');
+
+      datasources.find({
+        limit: 1
+      }, function(error, data) {
+
+        _.each(data.entries, function(entry){
+
+          if(parseInt(entry['gsx:now'])){ // There is TEDx Now
+            return true;
+          }
+          else { // NO TEDx Now
+            return false;
+          }
+        });
+      });
+    }
+
   });
 
   return DisplayerView;

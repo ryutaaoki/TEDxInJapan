@@ -31,9 +31,9 @@ define([
 
     createGoogleMaps: function() {
       var map;
+
       var mapOptions = {
         zoom: 8,
-        center: new google.maps.LatLng(48.52, 2.1959),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -41,14 +41,25 @@ define([
         },
         zoomControl: true,
         zoomControlOptions: {
-          style: google.maps.ZoomControlStyle.LARGE,
+          style: google.maps.ZoomControlStyle.SMALL,
           position: google.maps.ControlPosition.TOP_RIGHT
         }
       };
+
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
 
-      /* Markers Creation ! TRY */
+      /* Markers Creation */
+      this.setMarkers(map);
+
+    },
+
+    enhance: function (){
+      this.createGoogleMaps();
+      Item.prototype.enhance.call(this);
+    },
+
+    setMarkers: function (map) {
       var marker = {
         url: 'layout-img/red-cross.png',
         // This marker is 20 pixels wide by 32 pixels tall.
@@ -58,44 +69,27 @@ define([
         // The anchor for this image is the base of the flagpole at 0,32.
         anchor: new google.maps.Point(16, 16)
       };
-      new google.maps.Marker({
-        position: map.getCenter(), //POSITION OF THE MARKER
-        map: map,
-        title: 'TEDx Event 1',
-        icon: marker
+
+      var datasources = Joshfire.factory.getDataSource('spreadsheetslive');
+
+      datasources.find({
+        limit: 10
+      }, function(error, data) {
+        var allowedBounds = new google.maps.LatLngBounds();
+        _.each(data.entries, function(entry){
+          var bound = new google.maps.LatLng(entry['gsx:lat'], entry['gsx:lng']);
+          new google.maps.Marker({
+            position: bound,
+            map: map,
+            title: entry['gsx:name'],
+            icon: marker
+          });
+          // add new marker to the allowedBounds
+          allowedBounds.extend(bound);
+        });
+        //Fit the map to display all markers at load
+        map.fitBounds(allowedBounds);
       });
-
-      new google.maps.Marker({
-        position: new google.maps.LatLng(41.20, -3.08), //POSITION OF THE MARKER
-        map: map,
-        title: 'TEDx Event 2',
-        icon: marker
-      });
-
-      new google.maps.Marker({
-        position: new google.maps.LatLng(50.05, 9.33), //POSITION OF THE MARKER
-        map: map,
-        title: 'TEDx Event 3',
-        icon: marker
-      });
-
-      // ---- END MARKERS CREATION
-
-      // Bounds for North America
-      var allowedBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(41.20, -3.08),
-        new google.maps.LatLng(50.05, 9.33));
-
-      allowedBounds.extend(new google.maps.LatLng(41.20, -3.08));
-      allowedBounds.extend(new google.maps.LatLng(50.05, 9.33));
-      map.fitBounds(allowedBounds);
-      map.setZoom(3);
-
-    },
-
-    enhance: function (){
-      this.createGoogleMaps();
-      Item.prototype.enhance.call(this);
     }
 
   });

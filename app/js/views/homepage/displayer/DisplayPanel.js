@@ -41,7 +41,8 @@ define([
       options.children = {
         live: this.live,
         maps: this.maps
-      }
+      };
+
       CardPanel.prototype.initialize.call(this,options);
     }
 

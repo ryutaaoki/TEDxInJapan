@@ -17,19 +17,19 @@ define([
   List,
   Item,
 
-  ItemTweetsTemplate
+  ItemEventTemplate
 ) {
-  var logger = woodman.getLogger('views.ListTweetsView');
-  var ListTweetsView = List.extend({
+  var logger = woodman.getLogger('views.ListTalksDisplayerView');
+  var ListEventView = List.extend({
 
     initialize: function(options) {
-      logger.info('initialize ListTweets');
+      logger.info('initialize ListTalksDisplayerView');
       var options = options || {};
-      options.template = ItemTweetsTemplate;
+      options.template = ItemEventTemplate;
 
       List.prototype.initialize.call(this,options);
     },
   });
 
-  return ListTweetsView;
+  return ListEventView;
 });
