@@ -45,14 +45,7 @@
         "inputType": [
           "GeoCoordinates"
         ]
-      }/*,
-      "tedxeventlocations": {
-        "title": "TEDx Events",
-        "description": "Display the recent TEDx in France",
-        "inputType": [
-          "Event"
-        ]
-      }*/
+      }
     },
     "options": {
       "schema": {
@@ -86,7 +79,6 @@
         },
         "datasources.youtube",
         "datasources.spreadsheetslive",
-        // "datasources.tedxeventlocations",
         "url",
         "idwidget"
       ]
