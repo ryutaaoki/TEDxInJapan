@@ -43,7 +43,7 @@
         "title": "Tedx Event Live",
         "description": "Datasource that returns the TEDx event live",
         "inputType": [
-          "Article"
+          "GeoCoordinates"
         ]
       },
       "tedxeventlocations": {

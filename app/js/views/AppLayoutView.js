@@ -7,7 +7,8 @@ define([
   'joshlib!ui/layout',
 
   'views/MenuView',
-  'views/AppPanel'
+  'views/AppPanel',
+  'views/Footer'
 ], function(
   woodman,
   $,
@@ -18,8 +19,7 @@ define([
 
   Menu,
   AppPanel,
-
-  MenuTemplate
+  Footer
 ) {
   var logger = woodman.getLogger('views.AppLayoutView');
   var AppLayoutView = Layout.extend({
@@ -39,9 +39,16 @@ define([
         el: "#content"
       });
 
+      this.footer = new Footer({
+        appController: options.appController,
+        model: new Backbone.Model(),
+        el: 'footer'
+      });
+
       options.children = {
         menuList: this.menuList,
-        panel: this.panel
+        panel: this.panel,
+        footer: this.footer
       }
 
       Layout.prototype.initialize.call(this,options);
