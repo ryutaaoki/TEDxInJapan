@@ -50,7 +50,7 @@
         "title": "TEDx Events",
         "description": "Display the recent TEDx in France",
         "inputType": [
-          "Article"
+          "Event"
         ]
       }
     },
