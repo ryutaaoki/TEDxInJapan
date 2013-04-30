@@ -68,6 +68,10 @@
         "abouthtml": {
           "title": "About (HTML)",
           "type": "string"
+        },
+        "url": {
+          "title": "URL Advertisement",
+          "type": "string"
         }
       },
       "form": [
@@ -86,7 +90,8 @@
         },
         "datasources.youtube",
         "datasources.spreadsheetslive",
-        "datasources.tedxeventlocations"
+        "datasources.tedxeventlocations",
+        "url"
       ]
     }
   }
