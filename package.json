@@ -77,7 +77,8 @@
             "en": "English"
           }
         },
-        "datasources.youtube"
+        "datasources.youtube",
+        "datasources.tedxevents"
       ]
     }
   }
