@@ -45,6 +45,13 @@
         "inputType": [
           "Article"
         ]
+      },
+      "tedxeventlocations": {
+        "title": "TEDx Events",
+        "description": "Display the recent TEDx in France",
+        "inputType": [
+          "Article/status"
+        ]
       }
     },
     "options": {
@@ -78,7 +85,8 @@
           }
         },
         "datasources.youtube",
-        "datasources.spreadsheetslive"
+        "datasources.spreadsheetslive",
+        "datasources.tedxeventlocations"
       ]
     }
   }

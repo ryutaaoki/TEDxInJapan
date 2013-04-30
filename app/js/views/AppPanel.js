@@ -48,7 +48,6 @@ define([
         homepage: this.homepage,
         conferences: this.conferences,
         discussions: this.discussions
-        // + discussions
         // + aboutTEDxenFrance
       }
       CardPanel.prototype.initialize.call(this,options);
