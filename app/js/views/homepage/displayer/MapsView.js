@@ -77,7 +77,7 @@ define([
       }, function(error, data) {
         var allowedBounds = new google.maps.LatLngBounds();
         _.each(data.entries, function(entry){
-          var bound = new google.maps.LatLng(entry['gsx:lat'], entry['gsx:lng']);
+          var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
           new google.maps.Marker({
             position: bound,
             map: map,
