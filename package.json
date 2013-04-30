@@ -65,21 +65,17 @@
             "en"
           ]
         },
-        "abouthtml": {
-          "title": "About (HTML)",
-          "type": "string"
-        },
         "url": {
           "title": "URL Advertisement",
+          "type": "string"
+        },
+        "idwidget": {
+          "title": "ID Twitter widget",
           "type": "string"
         }
       },
       "form": [
         "datasources.tweets",
-        {
-          "key": "abouthtml",
-          "type": "wysihtml5"
-        },
         {
           "key": "language",
           "titleMap": {
@@ -91,7 +87,8 @@
         "datasources.youtube",
         "datasources.spreadsheetslive",
         "datasources.tedxeventlocations",
-        "url"
+        "url",
+        "idwidget"
       ]
     }
   }
