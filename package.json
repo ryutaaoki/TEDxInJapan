@@ -39,9 +39,9 @@
           "VideoObject"
         ]
       },
-      "tedxevents": {
-        "title": "Tedx Events",
-        "description": "Datasource that returns the TEDx events list",
+      "spreadsheetslive": {
+        "title": "Tedx Event Live",
+        "description": "Datasource that returns the TEDx event live",
         "inputType": [
           "Article"
         ]
@@ -78,7 +78,7 @@
           }
         },
         "datasources.youtube",
-        "datasources.tedxevents"
+        "datasources.spreadsheetslive"
       ]
     }
   }
