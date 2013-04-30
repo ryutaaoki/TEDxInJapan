@@ -49,26 +49,34 @@ define([
           mapOptions);
 
       /* Markers Creation ! TRY */
-
+      var marker = {
+        url: 'layout-img/red-cross.png',
+        // This marker is 20 pixels wide by 32 pixels tall.
+        size: new google.maps.Size(32, 32),
+        // The origin for this image is 0,0.
+        origin: new google.maps.Point(0,0),
+        // The anchor for this image is the base of the flagpole at 0,32.
+        anchor: new google.maps.Point(16, 16)
+      };
       new google.maps.Marker({
         position: map.getCenter(), //POSITION OF THE MARKER
         map: map,
         title: 'TEDx Event 1',
-        icon: 'layout-img/red-cross.png'
+        icon: marker
       });
 
       new google.maps.Marker({
         position: new google.maps.LatLng(41.20, -3.08), //POSITION OF THE MARKER
         map: map,
         title: 'TEDx Event 2',
-        icon: 'layout-img/red-cross.png'
+        icon: marker
       });
 
       new google.maps.Marker({
         position: new google.maps.LatLng(50.05, 9.33), //POSITION OF THE MARKER
         map: map,
         title: 'TEDx Event 3',
-        icon: 'layout-img/red-cross.png'
+        icon: marker
       });
 
       // ---- END MARKERS CREATION

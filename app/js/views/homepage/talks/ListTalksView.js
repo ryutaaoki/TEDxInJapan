@@ -38,7 +38,7 @@ define([
           html += '<a href="' + entry.url + '" target="_blank">';
           html += '<li class="talks">';
           html += '<img src="' + entry.image.contentURL + '" alt=""/>';
-          html += '<br/><span class="name-talk">' + entry.author[0].name + '</span>'/* + '<br/><span class="name-author">' + entry.author[0].name + '</span>'*/;
+          html += '<br/><span class="name-talk">' + entry.author[0].name + '</span>';
           html += '</li></a>';
         });
         html +="</ul>";
