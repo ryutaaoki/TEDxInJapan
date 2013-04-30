@@ -81,7 +81,7 @@ define([
           new google.maps.Marker({
             position: bound,
             map: map,
-            title: entry['gsx:name'],
+            title: entry.name,
             icon: marker
           });
           // add new marker to the allowedBounds
