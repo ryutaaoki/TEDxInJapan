@@ -42,6 +42,7 @@
       "spreadsheetslive": {
         "title": "Tedx Event Live",
         "description": "Datasource that returns the TEDx event live",
+        "multiple": true,
         "inputType": [
           "GeoCoordinates"
         ]
