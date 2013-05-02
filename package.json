@@ -39,14 +39,19 @@
           "VideoObject"
         ]
       },
-      "spreadsheets": {
-        "title": "Spreadsheets TEDx",
+      "tedxevents": {
+        "title": "Spreadsheets TEDx Events",
+        "description": "Datasource that returns the TEDx Events",
+        "inputType": [
+          "GeoCoordinates"
+        ]
+      },
+      "blacklist": {
+        "title": "Spreadsheets TEDx blacklisted tweets",
         "description": "Datasource that returns the blacklisted tweets and the TEDx Events",
         "inputType": [
-          "Article",
-          "GeoCoordinates"
-        ],
-        "multiple": true
+          "Article"
+        ]
       }
     },
     "options": {
@@ -80,7 +85,8 @@
           }
         },
         "datasources.youtube",
-        "datasources.spreadsheets",
+        "datasources.tedxevents",
+        "datasources.blacklist",
         "url",
         "idwidget"
       ]
