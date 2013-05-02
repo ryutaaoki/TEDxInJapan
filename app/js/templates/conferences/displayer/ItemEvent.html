@@ -1,5 +1,7 @@
 <!-- <p>[[ List of next events // API TED ]]</p> -->
 <div class="itemEvent">
-  <img src="<%= this.model.attributes.image.contentURL %>" alt="" width="250">
-  <p><%= this.model.attributes.startDate %> - <%= this.model.attributes.address %></p>
+  <a href="<%= this.model.attributes.url %>">
+    <img src="<%= this.model.attributes.image.contentURL %>" alt="" width="250">
+    <p><%= this.model.attributes.startDate %> - <%= this.model.attributes.address %></p>
+  </a>
 </div>

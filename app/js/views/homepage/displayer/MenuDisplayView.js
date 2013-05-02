@@ -20,11 +20,6 @@ define([
   var logger = woodman.getLogger('views.MenuDisplayView');
   var MenuDisplayView = Item.extend({
 
-    events: {
-      'click #tedx-now'  : 'tedxLive',
-      'click #tedx-map'  : 'tedxMap'
-    },
-
     initialize: function(options) {
       logger.info('initialize MenuDisplayView');
       var options = options || {};
@@ -32,14 +27,6 @@ define([
       options.template = MenuDisplayTemplate;
 
       Item.prototype.initialize.call(this,options);
-    },
-
-    tedxLive: function () {
-      logger.info('Gotcha ! TEDx Live !');
-    },
-
-    tedxMap: function () {
-      logger.info('Display Google Maps API with TEDx in the country !');
     }
   });
 

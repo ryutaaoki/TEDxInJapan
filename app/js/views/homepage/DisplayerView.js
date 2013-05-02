@@ -31,7 +31,10 @@ define([
       var options = options || {};
       options.template = DisplayerTemplate;
 
-      var live = this.isThereTedxLive();
+      var live = this.isThereTedxLive(options);
+
+      console.log(live);
+      console.log(options.collection);
 
       this.menuDisplay = new MenuDisplay({
         appController: options.appController,
@@ -49,25 +52,19 @@ define([
       };
 
       Layout.prototype.initialize.call(this,options);
+
+      this.collection.on('reset', function() {
+        var live = this.isThereTedxLive(options);
+
+      });
+
     },
 
-    isThereTedxLive: function(){
-      var datasources = Joshfire.factory.getDataSource('tedxevents');
-
-      datasources.find({
-        limit: 1
-      }, function(error, data) {
-
-        _.each(data.entries, function(entry){
-
-          if(parseInt(entry['gsx:now'])){ // There is TEDx Now
-            return true;
-          }
-          else { // NO TEDx Now
-            return false;
-          }
-        });
-      });
+    isThereTedxLive: function(options){
+      if(options.collection.length > 0)
+        return true;
+      else
+        return false;
     }
 
   });

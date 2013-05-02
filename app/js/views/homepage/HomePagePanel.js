@@ -28,7 +28,8 @@ define([
       var options = options || {};
 
       this.displayer = new DisplayerView({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.appController.data.liveevent
       });
 
       this.talks = new TalksView({

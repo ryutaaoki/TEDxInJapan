@@ -59,8 +59,11 @@ define([
       var self = this;
       logger.info('init');
 
-      this.getPastEvents();
-      this.getPostEvents();
+      var currentDate = this.getCurrentDate();
+
+      this.getPastEvents(currentDate);
+      this.getPostEvents(currentDate);
+      this.getLiveTEDx();
 
       this.i18n = i18n;
       this.i18n.setLocale({
@@ -126,9 +129,10 @@ define([
       this.data.pastevents = new Backbone.Collection();
       this.data.postevents = new Backbone.Collection();
       this.data.blacklist = new Backbone.Collection();
+      this.data.liveevent = new Backbone.Collection();
     },
 
-    getPastEvents: function() {
+    getPastEvents: function(currentDate) {
 
       var self = this;
 
@@ -136,12 +140,14 @@ define([
       datasource.find({
         limit: 8
       }, function (err, data) {
-        self.data.pastevents.add(data.entries);
-        self.data.pastevents.trigger('loaded', self.data.pastevents);
+        _.each(data.entries, function (entry) {
+          if(entry.startDate < currentDate)
+            self.data.pastevents.add(entry);
+        });
       });
     },
 
-    getPostEvents: function() {
+    getPostEvents: function(currentDate) {
 
       var self = this;
 
@@ -149,9 +155,42 @@ define([
       datasource.find({
         limit: 3,
       }, function (err, data) {
-        self.data.postevents.add(data.entries);
-        self.data.postevents.trigger('loaded', self.data.events);
+        _.each(data.entries, function (entry) {
+          if(entry.startDate > currentDate)
+            self.data.postevents.add(entry);
+        });
       });
+    },
+
+    getCurrentDate: function() {
+      var today = new Date();
+
+      var year = today.getFullYear();
+      var month = today.getMonth();
+      var day = today.getDay();
+
+      if(month < 10)
+        month = "0"+month;
+
+      if(day < 10)
+        day = "0"+day;
+
+      var currentDate = day + "/" + month + "/" + year;
+
+      return currentDate;
+    },
+
+    getLiveTEDx: function() {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('tedxevents');
+      datasource.find({}, function (err, data) {
+        _.each(data.entries, function (entry) {
+          if(entry.availability == "TRUE")
+            self.data.liveevent.add(entry);
+        });
+      });
+      console.log(self.data.liveevent);
     }
 
   });
