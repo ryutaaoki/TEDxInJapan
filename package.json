@@ -45,6 +45,13 @@
         "inputType": [
           "GeoCoordinates"
         ]
+      },
+      "blacklist": {
+        "title": "Spreadsheets TEDx blacklisted tweets",
+        "description": "Datasource that returns the blacklisted tweets and the TEDx Events",
+        "inputType": [
+          "Article"
+        ]
       }
     },
     "options": {
@@ -79,6 +86,7 @@
         },
         "datasources.youtube",
         "datasources.tedxevents",
+        "datasources.blacklist",
         "url",
         "idwidget"
       ]
