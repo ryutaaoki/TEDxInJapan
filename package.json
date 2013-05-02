@@ -42,9 +42,15 @@
       "spreadsheetslive": {
         "title": "Tedx Event Live",
         "description": "Datasource that returns the TEDx event live",
-        "multiple": true,
         "inputType": [
           "GeoCoordinates"
+        ]
+      },
+      "blacklist": {
+        "title": "Tweets blacklisted",
+        "description": "Datasource that returns the blacklisted tweets",
+        "inputType": [
+          "Article"
         ]
       }
     },
@@ -80,6 +86,7 @@
         },
         "datasources.youtube",
         "datasources.spreadsheetslive",
+        "datasources.blacklist",
         "url",
         "idwidget"
       ]
