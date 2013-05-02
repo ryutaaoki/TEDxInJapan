@@ -29,13 +29,13 @@ define([
             options.template = ItemTalksTemplate; // TODO: Change to render every past talks
 
 
-      var datasources = Joshfire.factory.getDataSource('spreadsheetslive');
+      var datasources = Joshfire.factory.getDataSource('tedxevents');
       datasources.find({
         limit: 8
       }, function (err, data){
         var html = "<ul>";
         _.each(data.entries, function (entry) {
-          console.log(entry);
+          // console.log(entry);
           html += '<a href="' + entry.url + '" target="_blank">';
           html += '<li class="talks events">';
           html += '<img src="' + entry.image.contentURL + '" alt=""/>';

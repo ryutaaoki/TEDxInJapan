@@ -70,7 +70,7 @@ define([
         anchor: new google.maps.Point(16, 16)
       };
 
-      var datasources = Joshfire.factory.getDataSource('spreadsheetslive');
+      var datasources = Joshfire.factory.getDataSource('tedxevents');
 
       datasources.find({
         limit: 10

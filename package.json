@@ -39,11 +39,18 @@
           "VideoObject"
         ]
       },
-      "spreadsheetslive": {
+      "tedxevents": {
         "title": "Tedx Event Live",
         "description": "Datasource that returns the TEDx event live",
         "inputType": [
           "GeoCoordinates"
+        ]
+      },
+      "blacklist": {
+        "title": "Tweets blacklisted",
+        "description": "Datasource that returns the tweets who are blacklisted",
+        "inputType": [
+          "Article/Status"
         ]
       }
     },
@@ -78,7 +85,8 @@
           }
         },
         "datasources.youtube",
-        "datasources.spreadsheetslive",
+        "datasources.tedxevents",
+        "datasources.blacklist",
         "url",
         "idwidget"
       ]
