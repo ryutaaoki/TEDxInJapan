@@ -52,7 +52,7 @@ define([
     },
 
     isThereTedxLive: function(){
-      var datasources = Joshfire.factory.getDataSource('spreadsheetslive');
+      var datasources = Joshfire.factory.getDataSource('tedxevents');
 
       datasources.find({
         limit: 1

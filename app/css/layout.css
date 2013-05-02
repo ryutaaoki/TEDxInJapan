@@ -291,21 +291,34 @@ li.tweet {
 	padding-left: 0;
 }
 
-#past-talks a{
-	text-decoration: none;
-	color: #333;
-}
-
-.talks.events {
+#past-talks ul li {
 	display:inline-block;
 	padding: 10px 10px 10px 10px;
 	width:180px;
 }
 
-.talks.events img {
+#past-talks ul li img {
 	width: 180px;
+}
+
+#past-talks a{
+	text-decoration: none;
+	color: #333;
 }
 
 .address-event {
 	font-size: 16px;
+}
+
+.displayer.conferences ul {
+	margin-top: 60px;
+	padding-left:10px;
+}
+
+.displayer.conferences li {
+	display: inline-block;
+}
+
+.displayer.conferences li img {
+
 }

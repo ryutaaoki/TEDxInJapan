@@ -24,10 +24,16 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ListTalksDisplayerView');
-      var options = options || {};
-      options.template = ItemEventTemplate;
+      var options = options || {},
+          self = this;
+
+      options.itemTemplate = ItemEventTemplate;
 
       List.prototype.initialize.call(this,options);
+
+      this.collection.on('reset', function() {
+        self.render();
+      });
     },
   });
 

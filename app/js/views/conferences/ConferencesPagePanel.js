@@ -6,7 +6,9 @@ define([
   'joshlib!ui/layout',
 
   'views/conferences/NextEventsLayoutView',
-  'views/conferences/PastTalksView'
+  'views/conferences/PastTalksView',
+
+  'models/talk'
 ], function(
   woodman,
   $,
@@ -15,7 +17,9 @@ define([
   Layout,
 
   NextEventsView,
-  TalksView
+  TalksView,
+
+  Talk
 ) {
   var logger = woodman.getLogger('views.ConferencesPagePanel');
   var ConferencesPagePanel = Layout.extend({
@@ -25,11 +29,13 @@ define([
       var options = options || {};
 
       this.displayer = new NextEventsView({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.appController.data.postevents
       });
 
       this.talks = new TalksView({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.appController.data.pastevents
       });
 
       options.children = {

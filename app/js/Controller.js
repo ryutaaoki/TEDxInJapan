@@ -35,6 +35,8 @@ define([
     });
     logger.info("router created");
 
+    this.createCollections();
+
     this.layout = new AppLayoutView({
       appController: this,
       el: '#layout-content'
@@ -43,6 +45,7 @@ define([
   };
 
   _.extend(Controller.prototype, Backbone.Events, {
+    data: {},
     /**
     * Safe main
     **/
@@ -56,6 +59,9 @@ define([
       var self = this;
       logger.info('init');
 
+      this.getPastEvents();
+      this.getPostEvents();
+
       this.i18n = i18n;
       this.i18n.setLocale({
         locale: Joshfire.factory.config.template.options.language || 'auto',
@@ -64,7 +70,6 @@ define([
       }, function() {
         self.layout.render();
       });
-
       this.router.setRoutes();
       self.layout = this.layout;
 
@@ -115,6 +120,38 @@ define([
 
       //----- End Listen change routes
       this.start();
+    },
+
+    createCollections: function() {
+      this.data.pastevents = new Backbone.Collection();
+      this.data.postevents = new Backbone.Collection();
+      this.data.blacklist = new Backbone.Collection();
+    },
+
+    getPastEvents: function() {
+
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('tedxevents');
+      datasource.find({
+        limit: 8
+      }, function (err, data) {
+        self.data.pastevents.add(data.entries);
+        self.data.pastevents.trigger('loaded', self.data.pastevents);
+      });
+    },
+
+    getPostEvents: function() {
+
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('tedxevents');
+      datasource.find({
+        limit: 3,
+      }, function (err, data) {
+        self.data.postevents.add(data.entries);
+        self.data.postevents.trigger('loaded', self.data.events);
+      });
     }
 
   });

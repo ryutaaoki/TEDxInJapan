@@ -24,29 +24,16 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ListPastTalks');
-      var options = options || {};
+      var options = options || {},
+          self = this;
 
-            options.template = ItemTalksTemplate; // TODO: Change to render every past talks
-
-
-      var datasources = Joshfire.factory.getDataSource('tedxevents');
-      datasources.find({
-        limit: 8
-      }, function (err, data){
-        var html = "<ul>";
-        _.each(data.entries, function (entry) {
-          // console.log(entry);
-          html += '<a href="' + entry.url + '" target="_blank">';
-          html += '<li class="talks events">';
-          html += '<img src="' + entry.image.contentURL + '" alt=""/>';
-          html += '<br/><span class="address-event">' + entry.address + '</span>';
-          html += '</li></a>';
-        });
-        html +="</ul>";
-        $("#list-past-talks").html(html);
-      });
+      options.itemTemplate = ItemTalksTemplate;
 
       List.prototype.initialize.call(this,options);
+
+      this.collection.on('reset', function() {
+        self.render();
+      });
     },
   });
 

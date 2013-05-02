@@ -7,7 +7,6 @@ define([
   'joshlib!ui/layout',
 
   'views/conferences/displayer/DisplayEventsLayout',
-  // 'views/homepage/displayer/DisplayPanel',
 
   'text!templates/conferences/displayer/DisplayEventsLayout.html'
 ], function(
@@ -19,7 +18,6 @@ define([
   Layout,
 
   DisplayEventsLayout,
-  // DisplayPanel,
 
   DisplayEventsTemplate
 ) {
@@ -33,7 +31,7 @@ define([
 
       this.displayEvents = new DisplayEventsLayout({
         appController: options.appController,
-        model: new Backbone.Model()
+        collection: options.collection
       });
 
       options.children = {
