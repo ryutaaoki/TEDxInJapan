@@ -51,7 +51,8 @@
         "description": "Datasource that returns the blacklisted tweets",
         "inputType": [
           "Article"
-        ]
+        ],
+        "multiple": true
       }
     },
     "options": {
