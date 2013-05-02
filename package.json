@@ -45,13 +45,6 @@
         "inputType": [
           "GeoCoordinates"
         ]
-      },
-      "blacklist": {
-        "title": "Tweets blacklisted",
-        "description": "Datasource that returns the tweets who are blacklisted",
-        "inputType": [
-          "Article/Status"
-        ]
       }
     },
     "options": {
@@ -86,7 +79,6 @@
         },
         "datasources.youtube",
         "datasources.tedxevents",
-        "datasources.blacklist",
         "url",
         "idwidget"
       ]
