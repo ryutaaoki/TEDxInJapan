@@ -43,7 +43,7 @@
         "title": "Spreadsheets TEDx Events",
         "description": "Datasource that returns the TEDx Events",
         "inputType": [
-          "GeoCoordinates"
+          "Article"
         ]
       },
       "blacklist": {
