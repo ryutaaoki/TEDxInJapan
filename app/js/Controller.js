@@ -144,6 +144,7 @@ define([
           if(entry.startDate < currentDate)
             self.data.pastevents.add(entry);
         });
+        self.data.pastevents.trigger('loaded', self.data.pastevents);
       });
     },
 
@@ -159,6 +160,7 @@ define([
           if(entry.startDate > currentDate)
             self.data.postevents.add(entry);
         });
+        self.data.postevents.trigger('loaded', self.data.postevents);
       });
     },
 

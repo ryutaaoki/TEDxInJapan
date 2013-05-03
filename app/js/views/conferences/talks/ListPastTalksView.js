@@ -31,8 +31,9 @@ define([
 
       List.prototype.initialize.call(this,options);
 
-      this.collection.on('reset', function() {
-        self.render();
+      this.collection.off();
+      this.collection.on('loaded', function() {
+        self.update(true);
       });
     },
   });
