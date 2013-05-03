@@ -49,7 +49,7 @@ define([
         menuList: this.menuList,
         panel: this.panel,
         footer: this.footer
-      }
+      };
 
       Layout.prototype.initialize.call(this,options);
     },

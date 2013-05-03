@@ -7,10 +7,9 @@
     </h4>
   </div>
   <div id="posts">
-    <!-- <%= children.listTweets %> -->
     <div class="center-tweets">
-      <a class="twitter-timeline" href="https://twitter.com/search?q=%23TEDx" data-widget-id="<%= Joshfire.factory.config.template.options.idwidget %>" data-chrome="noheader nofooter noborders transparent" width="260" height="400"></a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <a class="twitter-timeline" href="https://twitter.com/search?q=%23TEDx" data-widget-id="<%= Joshfire.factory.config.template.options.idwidget %>" data-chrome="noheader nofooter noborders transparent" dtn="true" width="260" height="400"></a>
+      <script type="text/javascript" src="js/lib/twitter/widget.js"></script>
     </div>
   </div>
 </div>
