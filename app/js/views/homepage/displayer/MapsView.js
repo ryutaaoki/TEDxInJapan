@@ -89,6 +89,11 @@ define([
         });
         //Fit the map to display all markers at load
         map.fitBounds(allowedBounds);
+        var listener = google.maps.event.addListener(map, "idle", function() {
+          if (map.getZoom() < 5) map.setZoom(5);
+          // uncomment to remove event if needed
+          // google.maps.event.removeListener(listener);
+        });
       });
     }
 
