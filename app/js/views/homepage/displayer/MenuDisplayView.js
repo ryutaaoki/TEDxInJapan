@@ -4,7 +4,7 @@ define([
   'joshlib!vendor/underscore',
   'joshlib!vendor/backbone',
 
-  'joshlib!ui/item',
+  'joshlib!ui/list',
 
   'text!templates/homepage/displayer/MenuDisplay.html'
 ], function(
@@ -13,20 +13,26 @@ define([
   _,
   Backbone,
 
-  Item,
+  List,
 
   MenuDisplayTemplate
 ) {
   var logger = woodman.getLogger('views.MenuDisplayView');
-  var MenuDisplayView = Item.extend({
+  var MenuDisplayView = List.extend({
 
     initialize: function(options) {
       logger.info('initialize MenuDisplayView');
-      var options = options || {};
+      var options = options || {},
+          self = this;
 
-      options.template = MenuDisplayTemplate;
+      options.itemTemplate = MenuDisplayTemplate;
 
-      Item.prototype.initialize.call(this,options);
+      List.prototype.initialize.call(this,options);
+
+      this.collection.off();
+      this.collection.on('loaded', function(){
+        self.update(true);
+      });
     }
   });
 

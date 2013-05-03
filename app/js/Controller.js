@@ -191,6 +191,7 @@ define([
           if(entry.availability == "TRUE")
             self.data.liveevent.add(entry);
         });
+        self.data.liveevent.trigger('loaded', self.data.liveevent);
       });
       console.log(self.data.liveevent);
     }

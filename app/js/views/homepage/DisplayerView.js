@@ -28,18 +28,13 @@ define([
 
     initialize: function(options) {
       logger.info('initialize DisplayerView');
-      var options = options || {};
+      var options = options || {},
+          self = this;
       options.template = DisplayerTemplate;
-
-      var live = this.isThereTedxLive(options);
-
-      console.log(live);
-      console.log(options.collection);
 
       this.menuDisplay = new MenuDisplay({
         appController: options.appController,
-        model: new Backbone.Model(),
-        live: false
+        collection: options.appController.data.liveevent
       });
 
       this.panelDisplay = new DisplayPanel({
@@ -52,19 +47,6 @@ define([
       };
 
       Layout.prototype.initialize.call(this,options);
-
-      this.collection.on('reset', function() {
-        var live = this.isThereTedxLive(options);
-
-      });
-
-    },
-
-    isThereTedxLive: function(options){
-      if(options.collection.length > 0)
-        return true;
-      else
-        return false;
     }
 
   });

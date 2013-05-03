@@ -132,7 +132,12 @@ nav a span {
 	top:30px;
 }
 
-#displayer ul li {
+#displayer li {
+	text-decoration: none;
+	display: inline-block;
+}
+
+#displayer ul a {
 	display:inline;
 	margin-right: 5px;
 	background-color: #444;
@@ -140,13 +145,13 @@ nav a span {
 	cursor:pointer;
 }
 
-#displayer ul li span {
+#displayer ul a span {
 	text-decoration: none;
 	color:#888;
 	font-size: 14px;
 }
 
-#displayer ul li:hover, #displayer ul li span:hover {
+#displayer ul a:hover, #displayer ul a span:hover {
 	background-color: #222;
 }
 
