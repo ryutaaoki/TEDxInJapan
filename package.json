@@ -1,7 +1,7 @@
 {
   "name": "tedxregionallens",
   "fullName": "TEDx Regional Lens",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Tedx Regional Lens is a web app displaying all the TEDx conferences in a country.",
   "keywords": [
     "tedx",
