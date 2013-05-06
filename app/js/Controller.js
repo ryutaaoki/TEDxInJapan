@@ -81,23 +81,25 @@ define([
       /* HomePage */
       this.router.on('route:home', function (){
         self.layout.getChild('panel').showChild('homepage');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('maps');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
+
+        var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
+
+        if(panelDisplay.getChild('live').collection.length) {
+          panelDisplay.showChild('live');
+        }
+        else panelDisplay.showChild('maps');
+
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
       this.router.on('route:maps', function() {
         self.layout.getChild('panel').showChild('homepage');
         self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('maps');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
       });
 
       this.router.on('route:live', function() {
         self.layout.getChild('panel').showChild('homepage');
         self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('live');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
       });
 
       /* Conferences */
@@ -138,10 +140,10 @@ define([
 
       var datasource = Joshfire.factory.getDataSource('tedxevents');
       datasource.find({
-        limit: 8
+
       }, function (err, data) {
         _.each(data.entries, function (entry) {
-          if(entry.startDate < currentDate)
+          if(new Date(entry.startDate) < new Date(currentDate))
             self.data.pastevents.add(entry);
         });
         self.data.pastevents.trigger('loaded', self.data.pastevents);
@@ -189,11 +191,10 @@ define([
       datasource.find({}, function (err, data) {
         _.each(data.entries, function (entry) {
           if(entry.availability == "TRUE")
-            self.data.liveevent.add(entry);
+            self.data.liveevent.reset(entry);
         });
         self.data.liveevent.trigger('loaded', self.data.liveevent);
       });
-      console.log(self.data.liveevent);
     }
 
   });

@@ -38,7 +38,8 @@ define([
       });
 
       this.panelDisplay = new DisplayPanel({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.appController.data.liveevent
       });
 
       options.children = {

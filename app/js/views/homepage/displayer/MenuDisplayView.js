@@ -20,6 +20,8 @@ define([
   var logger = woodman.getLogger('views.MenuDisplayView');
   var MenuDisplayView = List.extend({
 
+    className: 'MenuDisplay',
+
     initialize: function(options) {
       logger.info('initialize MenuDisplayView');
       var options = options || {},

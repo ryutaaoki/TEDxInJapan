@@ -79,8 +79,8 @@ nav li {
 	cursor:pointer;
 }
 
-.active {
-	background-color:#333;
+.active, #displayer div.MenuDisplay ul a#tedx-now.active, #displayer div.MenuDisplay ul a#tedx-map.active {
+	background-color:#222;
 }
 
 nav li:hover {
@@ -137,7 +137,7 @@ nav a span {
 	display: inline-block;
 }
 
-#displayer ul a {
+#displayer div.MenuDisplay ul a {
 	display:inline;
 	margin-right: 5px;
 	background-color: #444;
@@ -151,8 +151,18 @@ nav a span {
 	font-size: 14px;
 }
 
-#displayer ul a:hover, #displayer ul a span:hover {
+#displayer div.MenuDisplay ul a:hover, #displayer div.MenuDisplay ul a span:hover {
 	background-color: #222;
+}
+
+#displayer div.tedxLive ul {
+  width: 820px;
+  margin-top: -15px;
+  padding: 0;
+}
+
+#displayer div.tedxLive ul img {
+	width: 450px;
 }
 
 div#main {
@@ -325,5 +335,15 @@ li.tweet {
 }
 
 .displayer.conferences li img {
+	width: 265px;
+}
 
+#displayer .tedxLive ul {
+	height: 300px;
+	width: 850px;
+}
+
+#displayer .tedxLive ul li {
+	width: 100%;
+	height: 100%;
 }

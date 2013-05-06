@@ -29,7 +29,7 @@ define([
       //--------- Different Panel Creation
       this.live = new LiveView({
         appController: options.appController,
-        model: new Backbone.Model()
+        collection: options.collection
       });
 
       this.maps = new MapsView({

@@ -4,7 +4,7 @@ define([
   'joshlib!vendor/underscore',
   'joshlib!vendor/backbone',
 
-  'joshlib!ui/item',
+  'joshlib!ui/list',
 
   'text!templates/homepage/displayer/DisplayLive.html'
 ], function(
@@ -13,20 +13,28 @@ define([
   _,
   Backbone,
 
-  Item,
+  List,
 
   LiveTemplate
 ) {
   var logger = woodman.getLogger('views.LiveView');
-  var LiveView = Item.extend({
+  var LiveView = List.extend({
+
+    className: 'tedxLive',
 
     initialize: function(options) {
       logger.info('initialize LiveView');
-      var options = options || {};
+      var options = options || {},
+          self = this;
 
-      options.template = LiveTemplate;
+      options.itemTemplate = LiveTemplate;
 
-      Item.prototype.initialize.call(this,options);
+      List.prototype.initialize.call(this,options);
+      this.collection.on('loaded', function(){
+        self.update(true);
+        if(Backbone.history.fragment === "home" && self.collection.length > 0)
+          app.router.navigate('home/live', {trigger:true});
+      });
     },
   });
 

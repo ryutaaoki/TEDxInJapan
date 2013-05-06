@@ -1,2 +1,3 @@
-<!-- <img src="layout-img/no-image.png" alt="" height="300" width="820"> -->
-<div id="live-tedx">Live TEDx</div>
+<a href="<%= this.model.attributes.url %>" target="_blank">
+  <div id="tedx-live-image" style="background: url('<%= this.model.attributes.image.contentURL %>') no-repeat; height:100%; -webkit-background-size: cover;"></div>
+</a>
