@@ -20,6 +20,10 @@ define([
   var logger = woodman.getLogger('views.FooterView');
   var FooterView = Item.extend({
 
+    events: {
+      "click #ads-gdf": "trackGA"
+    },
+
     initialize: function(options) {
       logger.info('initialize Footer');
       var options = options || {};
@@ -27,6 +31,10 @@ define([
 
       Item.prototype.initialize.call(this,options);
     },
+
+    trackGA: function() {
+      ga('send', 'event', 'TEDxEnFrance - GDFSuez Ads', 'click', 'advertisement-button');
+    }
   });
 
   return FooterView;

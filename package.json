@@ -1,7 +1,7 @@
 {
   "name": "tedxregionallens",
   "fullName": "TEDx Regional Lens",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Tedx Regional Lens is a web app displaying all the TEDx conferences in a country.",
   "keywords": [
     "tedx",
@@ -79,6 +79,10 @@
         "idwidget": {
           "title": "ID Twitter widget",
           "type": "string"
+        },
+        "ganalytics": {
+          "title": "Google Analytics ID",
+          "type": "string"
         }
       },
       "form": [
@@ -96,7 +100,8 @@
         "datasources.blacklist",
         "datasources.about",
         "url",
-        "idwidget"
+        "idwidget",
+        "ganalytics"
       ]
     }
   }
