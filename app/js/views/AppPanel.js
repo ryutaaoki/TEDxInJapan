@@ -8,7 +8,8 @@ define([
 
   'views/homepage/HomePagePanel',
   'views/conferences/ConferencesPagePanel',
-  'views/discussions/DiscussionsPagePanel'
+  'views/discussions/DiscussionsPagePanel',
+  'views/about/AboutPagePanel'
 ], function(
   woodman,
   $,
@@ -19,7 +20,8 @@ define([
 
   HomePagePanel,
   ConferencesPagePanel,
-  DiscussionsPagePanel
+  DiscussionsPagePanel,
+  AboutPagePanel
 ) {
   var logger = woodman.getLogger('views.AppPanelView');
   var AppPanel = CardPanel.extend({
@@ -42,13 +44,17 @@ define([
         appController: options.appController
       });
 
+      this.about = new AboutPagePanel({
+        appController: options.appController
+      });
+
       //--------- END Different Panel Creation
 
       options.children = {
         homepage: this.homepage,
         conferences: this.conferences,
-        discussions: this.discussions
-        // + aboutTEDxenFrance
+        discussions: this.discussions,
+        about: this.about
       }
       CardPanel.prototype.initialize.call(this,options);
     }

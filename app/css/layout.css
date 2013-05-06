@@ -9,6 +9,10 @@ a {
 	text-decoration: none;
 }
 
+li {
+	display:block;
+}
+
 footer {
 	bottom:0;
 	height:60px;
@@ -214,7 +218,7 @@ div#past-talks {
 	padding:20px;
 }
 
-div#grabbing-twitter {
+div#grabbing-twitter, div#about-page {
 	padding:20px;
 	padding-top: 5px;
 	background-color: white;
@@ -367,4 +371,18 @@ li.tweet {
 #displayer div.tedxLive .clickandplay img {
 	width:40px;
 	margin-bottom: 0;
+}
+
+#about-page ul {
+	padding-right:40px;
+}
+
+p.articleBody {
+	text-align:justify;
+	text-justify:inter-word;
+}
+
+p.articleBody img {
+	float:left;
+	padding: 0 20px 20px 0;
 }

@@ -119,7 +119,7 @@ define([
 
       /* About TEDx */
       this.router.on('route:about', function (){
-        console.log('Render About TEDx page');
+        self.layout.getChild('panel').showChild('about');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #about-page').addClass('active');
       });
