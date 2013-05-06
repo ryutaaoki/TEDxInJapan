@@ -64,6 +64,7 @@ define([
       this.getPastEvents(currentDate);
       this.getPostEvents(currentDate);
       this.getLiveTEDx();
+      this.getAboutPageContent();
 
       this.i18n = i18n;
       this.i18n.setLocale({
@@ -132,6 +133,7 @@ define([
       this.data.postevents = new Backbone.Collection();
       this.data.blacklist = new Backbone.Collection();
       this.data.liveevent = new Backbone.Collection();
+      this.data.aboutContent = new Backbone.Collection();
     },
 
     getPastEvents: function(currentDate) {
@@ -194,6 +196,18 @@ define([
             self.data.liveevent.reset(entry);
         });
         self.data.liveevent.trigger('loaded', self.data.liveevent);
+      });
+    },
+
+    getAboutPageContent: function() {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('about');
+      datasource.find({}, function (err, data) {
+        _.each(data.entries, function (entry) {
+          self.data.aboutContent.add(entry);
+        });
+        self.data.aboutContent.trigger('loaded', self.data.aboutContent);
       });
     }
 
