@@ -1,3 +1,12 @@
-<a href="<%= this.model.attributes.url %>" target="_blank">
-  <div id="tedx-live-image" style="background: url('<%= this.model.attributes.image.contentURL %>') no-repeat; height:100%; -webkit-background-size: cover;"></div>
-</a>
+
+<div id="tedx-live-image" style="background: url('<%= this.model.attributes.image.contentURL %>') no-repeat; height:100%; -webkit-background-size: cover;">
+  <a href="<%= this.model.attributes.url %>" target="_blank">
+    <div class="border">
+      <div class="clickandplay">
+        <img src="layout-img/play.png" alt="Play" width="20">
+        <p>Vidéo Live</p>
+        <p><%= this.model.attributes.name %></p>
+      </div>
+    </div>
+  </a>
+</div>
