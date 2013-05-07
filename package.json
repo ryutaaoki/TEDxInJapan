@@ -1,7 +1,7 @@
 {
   "name": "tedxregionallens",
   "fullName": "TEDx Regional Lens",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Tedx Regional Lens is a web app displaying all the TEDx conferences in a country.",
   "keywords": [
     "tedx",
@@ -59,6 +59,13 @@
         "inputType": [
           "Article"
         ]
+      },
+      "rssyoutube": {
+        "title": "Grabbing",
+        "description": "Test RSS and Youtube for grabbing",
+        "intputType": [
+          "CreativeWork"
+        ]
       }
     },
     "options": {
@@ -101,7 +108,8 @@
         "datasources.about",
         "url",
         "idwidget",
-        "ganalytics"
+        "ganalytics",
+        "datasources.rssyoutube"
       ]
     }
   }
