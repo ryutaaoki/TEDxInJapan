@@ -98,10 +98,10 @@ define([
         self.layout.getChild('panel').showChild('homepage');
 
         var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
+        displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
 
         displayer.getChild('panelDisplay').showChild('maps');
         displayer.getChild('panelDisplay').getChild('maps').createGoogleMaps();
-        displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
         displayer.getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
       });
 
@@ -110,9 +110,9 @@ define([
         self.layout.getChild('panel').showChild('homepage');
 
         var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
+        displayer.getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
 
         displayer.getChild('panelDisplay').showChild('live');
-        displayer.getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
         displayer.getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
       });
 
