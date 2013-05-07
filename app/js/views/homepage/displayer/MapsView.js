@@ -20,6 +20,8 @@ define([
   var logger = woodman.getLogger('views.MapsView');
   var MapsView = Item.extend({
 
+    className: 'tedxMap',
+
     initialize: function(options) {
       logger.info('initialize MapsView');
       var options = options || {};

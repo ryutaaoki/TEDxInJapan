@@ -30,10 +30,12 @@ define([
       options.itemTemplate = LiveTemplate;
 
       List.prototype.initialize.call(this,options);
+
       this.collection.on('loaded', function(){
         self.update(true);
-        if(Backbone.history.fragment === "home" && self.collection.length > 0)
-          app.router.navigate('home/live', {trigger:true});
+        /* At first load on homepage */
+        if(Backbone.history.fragment == "home" && self.collection.length > 0)
+          app.router.navigate('#home/live', {trigger:true});
       });
     },
   });

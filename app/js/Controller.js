@@ -82,27 +82,23 @@ define([
 
       /* HomePage */
       this.router.on('route:home', function (){
+
+        //We show the child panel "homepage"
         self.layout.getChild('panel').showChild('homepage');
 
+        // declare variables
         var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
-        var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
-        if(panelDisplay.getChild('live').collection.length) {
-          panelDisplay.showChild('live');
-          displayer.getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
-          displayer.getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
-        }
-        else {
-          panelDisplay.showChild('maps');
-          displayer.getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
-          displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
-        }
 
+        panelDisplay.getChild('maps').createGoogleMaps();
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
       this.router.on('route:maps', function() {
+
         self.layout.getChild('panel').showChild('homepage');
+
         var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
+
         displayer.getChild('panelDisplay').showChild('maps');
         displayer.getChild('panelDisplay').getChild('maps').createGoogleMaps();
         displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
@@ -110,8 +106,11 @@ define([
       });
 
       this.router.on('route:live', function() {
+
         self.layout.getChild('panel').showChild('homepage');
+
         var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
+
         displayer.getChild('panelDisplay').showChild('live');
         displayer.getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
         displayer.getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
@@ -126,6 +125,7 @@ define([
 
       /* Discussions */
       this.router.on('route:discussions', function (){
+
         self.layout.getChild('panel').showChild('discussions');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
@@ -133,6 +133,7 @@ define([
 
       /* About TEDx */
       this.router.on('route:about', function (){
+
         self.layout.getChild('panel').showChild('about');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #about-page').addClass('active');

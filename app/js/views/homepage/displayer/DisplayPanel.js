@@ -39,8 +39,8 @@ define([
       //--------- END Different Panel Creation
 
       options.children = {
-        live: this.live,
-        maps: this.maps
+        maps: this.maps,
+        live: this.live
       };
 
       CardPanel.prototype.initialize.call(this,options);
