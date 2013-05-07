@@ -286,6 +286,10 @@ div#grabbing-twitter, div#about-page {
 	min-height: 500px;
 }
 
+div#grabbing-twitter {
+	height: 900px;
+}
+
 div#grabbing-twitter h4 {
 	margin-left:20px;
 	color: #444;
@@ -450,6 +454,9 @@ p.articleBody img {
 }
 
 /**** Item Grabbing *****/
+#grabbing li {
+	display:inline;
+}
 .item {
   width: 320px;
   padding: 10px;
