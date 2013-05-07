@@ -22,30 +22,21 @@ define([
   var logger = woodman.getLogger('views.ListTalksView');
   var ListTalksView = List.extend({
 
+    className: "talks",
+
     initialize: function(options) {
       logger.info('initialize ListTalks');
-      var options = options || {};
-      options.template = ItemTalksTemplate;
+      var options = options || {},
+          self = this;
 
-      var datasources = Joshfire.factory.getDataSource('youtube');
-
-      datasources.find({
-        limit: 9
-      }, function(error, data) {
-        var html = "<ul>";
-        _.each(data.entries, function(entry) {
-          // console.log(entry);
-          html += '<a href="' + entry.url + '" target="_blank">';
-          html += '<li class="talks">';
-          html += '<img src="' + entry.image.contentURL + '" alt=""/>';
-          html += '<br/><span class="name-talk">' + entry.author[0].name + '</span>';
-          html += '</li></a>';
-        });
-        html +="</ul>";
-        $("#playlist-youtube").html(html);
-      });
+      options.itemTemplate = ItemTalksTemplate;
 
       List.prototype.initialize.call(this,options);
+
+      this.collection.off();
+      this.collection.on('loaded', function() {
+        self.update(true);
+      });
     },
   });
 

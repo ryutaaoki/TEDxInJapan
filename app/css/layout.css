@@ -195,8 +195,35 @@ div.twitter {
 
 div#talks {
 	float: left;
-	padding-left:20px;
+	padding-left: 20px;
 	padding-top: 20px;
+}
+
+div#talks h4 {
+	margin-bottom: 0;
+}
+
+div#talks h4, div#twitter-posts h4, div#past-talks h4 {
+	font-weight: bolder;
+}
+
+div#talks div.talks {
+	width: 500px;
+}
+
+div#talks div.talks ul {
+	padding-left:0;
+	margin-top:0;
+}
+
+div#talks div.talks a {
+	text-decoration: none;
+	color: #444;
+}
+
+div#talks div.talks li {
+	display: inline-block;
+	padding: 10px;
 }
 
 div.next-events ul {

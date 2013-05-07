@@ -33,7 +33,8 @@ define([
       });
 
       this.talks = new TalksView({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.appController.data.youtube
       });
 
       this.tweets = new TweetsView({

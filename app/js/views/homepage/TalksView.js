@@ -30,7 +30,8 @@ define([
       options.template = TalksTemplate;
 
       this.listTalks = new ListTalks({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.collection
       });
 
       options.children = {

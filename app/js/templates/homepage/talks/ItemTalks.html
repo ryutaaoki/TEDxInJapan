@@ -1,1 +1,4 @@
-<div id="playlist-youtube"></div>
+<a href="<%= this.model.attributes.url %>" target="_blank">
+  <img src="<%= this.model.attributes.image.contentURL %>" alt=""/>
+  <br/><span class="name-talk"><%= this.model.attributes.author[0].name %></span>
+</a>
