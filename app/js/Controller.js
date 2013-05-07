@@ -104,6 +104,7 @@ define([
         self.layout.getChild('panel').showChild('homepage');
         var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
         displayer.getChild('panelDisplay').showChild('maps');
+        displayer.getChild('panelDisplay').getChild('maps').createGoogleMaps();
         displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
         displayer.getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
       });
