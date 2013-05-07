@@ -66,6 +66,7 @@ define([
       this.getLiveTEDx();
       this.getAboutPageContent();
       this.getPlaylistYoutube();
+      this.getFeedGrabbing();
 
       this.i18n = i18n;
       this.i18n.setLocale({
@@ -150,6 +151,7 @@ define([
       this.data.liveevent    = new Backbone.Collection();
       this.data.youtube      = new Backbone.Collection();
       this.data.aboutContent = new Backbone.Collection();
+      this.data.rssyoutube   = new Backbone.Collection();
     },
 
     getPastEvents: function(currentDate) {
@@ -239,6 +241,20 @@ define([
         });
         self.data.youtube.trigger('loaded', self.data.youtube);
       });
+    },
+
+    getFeedGrabbing: function () {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('rssyoutube');
+      datasource.find({}, function (error, data) {
+        _.each(data.entries, function (entry) {
+          console.log(entry);
+          self.data.rssyoutube.add(entry);
+        });
+        self.data.rssyoutube.trigger('loaded', self.data.youtube);
+      });
+
     }
 
   });

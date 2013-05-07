@@ -23,7 +23,8 @@ define([
       var options = options || {};
 
       this.grabbing = new GrabbingView({
-        appController: options.appController
+        appController: options.appController,
+        collection: options.appController.data.rssyoutube
       });
 
       options.children = {

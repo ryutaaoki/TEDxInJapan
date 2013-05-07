@@ -31,7 +31,7 @@ define([
 
       this.listTweetsGrabbing = new ListTweetsGrabbing({
         appController: options.appController,
-        model: new Backbone.Model()
+        collection: options.collection
       });
 
       options.children = {

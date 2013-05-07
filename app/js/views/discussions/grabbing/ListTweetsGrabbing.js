@@ -22,10 +22,14 @@ define([
   var logger = woodman.getLogger('views.ListTweetsGrabbingView');
   var ListTweetsGrabbing = List.extend({
 
+    tagName: "div",
+
+    id: "grabbing",
+
     initialize: function(options) {
       logger.info('initialize ListTweetsGrabbing');
       var options = options || {};
-      options.template = ItemTweetsGrabbingTemplate;
+      options.itemTemplate = ItemTweetsGrabbingTemplate;
 
       List.prototype.initialize.call(this,options);
     },
