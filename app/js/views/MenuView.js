@@ -20,6 +20,10 @@ define([
   var logger = woodman.getLogger('views.MenuView');
   var MenuView = Item.extend({
 
+    events: {
+      "click #adgdf": "trackGA"
+    },
+
     initialize: function(options) {
       logger.info('initialize Menu');
       var options = options || {};
@@ -27,6 +31,10 @@ define([
 
       Item.prototype.initialize.call(this,options);
     },
+
+    trackGA: function() {
+      ga('send', 'event', 'TEDxEnFrance - GDFSuez Ads', 'click', 'advertisement-button');
+    }
   });
 
   return MenuView;
