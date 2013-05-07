@@ -5,6 +5,11 @@ body {
 	background-color: #EEE;
 }
 
+p, h1, h2, h3, h4, h5 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: lighter;
+}
+
 a {
 	text-decoration: none;
 }
@@ -15,7 +20,6 @@ li {
 
 footer {
 	bottom:0;
-	height:60px;
 	width:100%;
 	background-color: #FFF;
 	font-size: 10px;
@@ -24,6 +28,10 @@ footer {
 footer p {
 	padding:5px;
 	float:left;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: lighter;
+	font-size: 10pt;
+	color: #2b2b2b;
 }
 
 footer img {
@@ -32,12 +40,14 @@ footer img {
 }
 
 header {
-	background-color: #454444;
-	height: 350px;
+	background-color: #000;
+	height: 250px;
 }
 
-.layout-header h1 {
+.layout-header h1, .layout-header p {
 	float: left;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: lighter;
 }
 
 .layout-header, .container {
@@ -48,7 +58,23 @@ header {
 }
 
 header {
-	margin-bottom: -185px;
+	margin-bottom: -85px;
+}
+
+header #sharp {
+		background: url(../../layout-img/sharp.png) repeat-x bottom;
+		height:255px;
+}
+
+header img#adgdf {
+	float:right;
+}
+
+header a#ads-gdf p {
+	margin-left:230px;
+	margin-bottom: 0;
+	color:#fff;
+	font-size: 9pt;
 }
 
 .layout-header:after, .container:after {
@@ -60,16 +86,17 @@ header {
 
 nav {
 	float:left;
-	width: 610px;
-	padding: 5px;
-	margin-left: 5px;
 }
 
-.layout-header h1#page-title {
+nav img {
+	padding:5px;
+}
+
+.layout-header p#page-title {
 	color: white;
 	margin-left: 30px;
 	font-size: 16pt;
-	padding-top: 20px;
+	padding-top: 10px;
 	margin-bottom:0;
 }
 
@@ -81,14 +108,20 @@ nav li {
 	padding: 10px 20px 10px 20px;
 	float:left;
 	cursor:pointer;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: lighter;
 }
 
-.active, #displayer div.MenuDisplay ul a#tedx-now.active, #displayer div.MenuDisplay ul a#tedx-map.active {
-	background-color:#222;
+.active{
+	background-color:#2b2b2b;
+}
+
+#displayer div.MenuDisplay ul a#tedx-now.active, #displayer div.MenuDisplay ul a#tedx-map.active {
+	background-color: #454444;
 }
 
 nav li:hover {
-	background-color: #222;
+	background-color: #2b2b2b;
 }
 
 nav a, nav a:active, nav a:visited, nav a:hover {
@@ -102,8 +135,8 @@ nav a span {
 }
 
 .displayer {
-	border: 15px solid #2b2b2b;
-	background-color:#2b2b2b;
+	border: 15px solid #3d3b3b;
+	background-color:#3d3b3b;
 	height: 300px;
 }
 
@@ -144,19 +177,20 @@ nav a span {
 #displayer div.MenuDisplay ul a {
 	display:inline;
 	margin-right: 5px;
-	background-color: #2b2b2b;
+	background-color: #736e6e;
 	padding:7px;
 	cursor:pointer;
 }
 
 #displayer ul a span {
 	text-decoration: none;
-	color:#888;
+	color:#FFF;
 	font-size: 14px;
+	font-weight: lighter;
 }
 
 #displayer div.MenuDisplay ul a:hover, #displayer div.MenuDisplay ul a span:hover {
-	background-color: #222;
+	background-color: #454444;
 }
 
 #displayer div.tedxLive ul {
@@ -389,6 +423,7 @@ li.tweet {
 	text-align: center;
 	padding: 5px 15px 5px 15px;
 	background-color: #2b2b2b;
+	font-size: 10pt;
 }
 
 .clickandplay:hover {

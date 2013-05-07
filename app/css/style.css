@@ -33,9 +33,9 @@ audio:not([controls]) { display: none; }
 
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
-body { margin: 0; font-size: 1em; line-height: 1.4; }
+body { margin: 0; line-height: 1.4; }
 
-body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+body, button, input, select, textarea { font-family: "Helvetica Neue"; color: #222; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i

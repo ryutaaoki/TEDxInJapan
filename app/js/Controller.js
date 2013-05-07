@@ -85,23 +85,35 @@ define([
         self.layout.getChild('panel').showChild('homepage');
 
         var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
-
+        var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
         if(panelDisplay.getChild('live').collection.length) {
           panelDisplay.showChild('live');
+          displayer.getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
+          displayer.getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
         }
-        else panelDisplay.showChild('maps');
+        else {
+          panelDisplay.showChild('maps');
+          displayer.getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
+          displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
+        }
 
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
       this.router.on('route:maps', function() {
         self.layout.getChild('panel').showChild('homepage');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('maps');
+        var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
+        displayer.getChild('panelDisplay').showChild('maps');
+        displayer.getChild('menuDisplay').$el.find('#tedx-map').addClass('active');
+        displayer.getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
       });
 
       this.router.on('route:live', function() {
         self.layout.getChild('panel').showChild('homepage');
-        self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay').showChild('live');
+        var displayer = self.layout.getChild('panel').getChild('homepage').getChild('displayer');
+        displayer.getChild('panelDisplay').showChild('live');
+        displayer.getChild('menuDisplay').$el.find('#tedx-now').addClass('active');
+        displayer.getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
       });
 
       /* Conferences */
