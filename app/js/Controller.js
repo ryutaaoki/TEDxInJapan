@@ -176,10 +176,14 @@ define([
 
       var datasource = Joshfire.factory.getDataSource('tedxevents');
       datasource.find({
+
       }, function (err, data) {
+        var count = 0;
         _.each(data.entries, function (entry) {
-          if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)))
+          if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)) && count < 3){
             self.data.postevents.add(entry);
+            count++;
+          }
         });
         self.data.postevents.trigger('loaded', self.data.postevents);
       });

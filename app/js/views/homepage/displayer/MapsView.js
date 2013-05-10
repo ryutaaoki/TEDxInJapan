@@ -74,9 +74,7 @@ define([
 
       var datasources = Joshfire.factory.getDataSource('tedxevents');
 
-      datasources.find({
-        limit: 10
-      }, function(error, data) {
+      datasources.find({}, function(error, data) {
         var allowedBounds = new google.maps.LatLngBounds();
         _.each(data.entries, function(entry){
           var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
