@@ -163,7 +163,7 @@ define([
 
       }, function (err, data) {
         _.each(data.entries, function (entry) {
-          if(new Date(entry.startDate) < new Date(currentDate))
+          if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate)))
             self.data.pastevents.add(entry);
         });
         self.data.pastevents.trigger('loaded', self.data.pastevents);
@@ -178,19 +178,26 @@ define([
       datasource.find({
       }, function (err, data) {
         _.each(data.entries, function (entry) {
-          if(new Date(entry.startDate) > new Date(currentDate))
+          if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)))
             self.data.postevents.add(entry);
         });
         self.data.postevents.trigger('loaded', self.data.postevents);
       });
     },
 
+    convertDate: function(date) {
+      var newDate = date.split('/');
+      newDate = newDate[1] + '/' + newDate[0] + '/' + newDate[2];
+
+      return newDate;
+    },
+
     getCurrentDate: function() {
       var today = new Date();
 
       var year = today.getFullYear();
-      var month = today.getMonth();
-      var day = today.getDay();
+      var month = today.getMonth() + 1;
+      var day = today.getDate();
 
       if(month < 10)
         month = "0"+month;
