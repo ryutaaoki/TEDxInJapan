@@ -176,10 +176,9 @@ define([
 
       var datasource = Joshfire.factory.getDataSource('tedxevents');
       datasource.find({
-        limit: 3,
       }, function (err, data) {
         _.each(data.entries, function (entry) {
-          if(entry.startDate > currentDate)
+          if(new Date(entry.startDate) > new Date(currentDate))
             self.data.postevents.add(entry);
         });
         self.data.postevents.trigger('loaded', self.data.postevents);

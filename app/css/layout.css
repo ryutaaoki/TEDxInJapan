@@ -62,7 +62,6 @@ header {
 }
 
 header #sharp {
-		background: url(../../layout-img/sharp.png) repeat-x bottom;
 		height:255px;
 }
 
@@ -146,6 +145,11 @@ nav a span {
 	margin-left:15px;
 	color: white;
 	float: left;
+}
+
+.displayer .event h4 {
+	margin:0;
+	float:none;
 }
 
 .displayer p {
@@ -272,7 +276,7 @@ div.next-events li {
 div.itemEvent {
 	float:left;
 	width: 250px;
-	padding-right: 20px;
+	margin-right: 20px;
 }
 
 div#past-talks {
@@ -376,6 +380,7 @@ li.tweet {
 	display:inline-block;
 	padding: 10px 10px 10px 10px;
 	width:180px;
+	height: 160px;
 }
 
 #past-talks ul li img {
