@@ -248,7 +248,6 @@ define([
       var datasource = Joshfire.factory.getDataSource('rssyoutube');
       datasource.find({}, function (error, data) {
         _.each(data.entries, function (entry) {
-          console.log(entry);
           self.data.rssyoutube.add(entry);
         });
         self.data.rssyoutube.trigger('loaded', self.data.youtube);
