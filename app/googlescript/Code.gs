@@ -59,6 +59,7 @@ function run() {
         range.setValue(objects[i][columnNames[j]]);
     }
   }
+  sheet.setFrozenRows(1);
   sheet.sort(STARTDATE_COLUMN_NB);
 }
 
