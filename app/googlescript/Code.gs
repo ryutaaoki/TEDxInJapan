@@ -54,6 +54,7 @@ function run() {
   for(var j = 0 ; j < columnNames.length ; j++) {
     for(var i = 0 ; i < data.tedx_event_locations.length ; i++){
       var range = sheet.getRange(i+2,j+1);
+      //uncomment if need to not write on 'url' column
       //if(columnNames[j] != "url")
         range.setValue(objects[i][columnNames[j]]);
     }
