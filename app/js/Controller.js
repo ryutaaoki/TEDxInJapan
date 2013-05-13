@@ -90,6 +90,9 @@ define([
         // declare variables
         var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
 
+        if(!panelDisplay.getChild('live').collection.length)
+          panelDisplay.showChild('maps');
+
         panelDisplay.getChild('maps').createGoogleMaps();
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
