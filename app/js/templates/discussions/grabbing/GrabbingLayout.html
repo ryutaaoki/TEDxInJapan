@@ -1,7 +1,13 @@
 <div id="grabbing-twitter">
   <h4>Les discussions autour de TEDx en France</h4>
-  <div id="posts">
-    <!-- twitter discussions -->
     <%= children.listTweetsGrabbing %>
-  </div>
+  <div style="clear: both;"></div>
 </div>
+<script type="text/javascript" src="js/lib/jquery.masonry.min.js"></script>
+<script>$(function(){
+  $('#container').masonry({
+    itemSelector : '.item',
+    columnWidth : 30,
+    isAnimated : true
+  });
+});</script>

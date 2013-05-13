@@ -51,7 +51,7 @@ header {
 }
 
 .layout-header, .container {
-	width: 850px;
+	width: 900px;
 	margin: auto;
 	position: relative;
 	clear: both;
@@ -96,7 +96,7 @@ nav img {
 	margin-left: 30px;
 	font-size: 16pt;
 	padding-top: 10px;
-	margin-bottom:0;
+	margin-bottom:31px;
 }
 
 nav ul {
@@ -291,7 +291,7 @@ div#grabbing-twitter, div#about-page {
 }
 
 div#grabbing-twitter {
-	height: 900px;
+	/*height: 900px;*/
 }
 
 div#grabbing-twitter h4 {
@@ -463,9 +463,41 @@ p.articleBody img {
 	display:inline;
 }
 .item {
-  width: 320px;
+/*  min-width: 100px;
+  max-width: 300px;*/
   padding: 10px;
   margin:5px;
   float: left;
-  background-color:#ccc;
+  background-color:#e9e7e7;
+  font-size:9pt;
+  word-wrap: break-word;
 }
+
+.profile-pix-miny {
+	float:right;
+	width: 40px;
+	height: 40px;
+	border:1px solid #999;
+	-webkit-border-radius: 5px 5px;
+	-moz-border-radius: 5px 5px;
+	border-radius: 5px 5px;
+	background: url('../layout-img/default_profile.png') no-repeat;
+	background-size: cover;
+}
+
+.footer-grab {
+	float:left;
+	margin-top:0;
+}
+
+.col1 { width: 80px; }
+.col2 { width: 235px; }
+.col3 { width: 280px; }
+.col4 { width: 380px; }
+.col5 { width: 480px; }
+
+.col1 img { max-width: 80px; }
+.col2 img { max-width: 180px; }
+.col3 img { max-width: 280px; }
+.col4 img { max-width: 380px; }
+.col5 img { max-width: 480px; }

@@ -7,7 +7,8 @@ define([
   'joshlib!ui/list',
   'joshlib!ui/item',
 
-  'text!templates/discussions/grabbing/ItemTweetsGrabbing.html'
+  'text!templates/discussions/grabbing/ItemTweetsGrabbing.html',
+  'text!templates/discussions/grabbing/GrabbingLayout.html'
 ], function(
   woodman,
   $,
@@ -17,22 +18,26 @@ define([
   List,
   Item,
 
-  ItemTweetsGrabbingTemplate
+  ItemTweetsGrabbingTemplate,
+  ListTemplate
 ) {
   var logger = woodman.getLogger('views.ListTweetsGrabbingView');
   var ListTweetsGrabbing = List.extend({
 
-    tagName: "div",
-
-    id: "grabbing",
+    // tagName: 'div',
+    item_class: 'item',
 
     initialize: function(options) {
       logger.info('initialize ListTweetsGrabbing');
       var options = options || {};
+
       options.itemTemplate = ItemTweetsGrabbingTemplate;
 
       List.prototype.initialize.call(this,options);
-    },
+      this.collection.on('loaded', function(){
+        $('#container').masonry('reload');
+      });
+    }
   });
 
   return ListTweetsGrabbing;

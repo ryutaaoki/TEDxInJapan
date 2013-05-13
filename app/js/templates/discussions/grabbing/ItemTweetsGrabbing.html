@@ -1,3 +1,30 @@
-<div class="item">
-  <img src="<%= this.model.attributes.thumbnail[1].url %>" alt="">
+<% 
+  var widthCol;
+  var type;
+  if (item.itemType === "VideoObject"){
+    widthCol = "col2";
+    type = "video";
+  } else if (item.itemType === "ImageObject") {
+    widthCol = "col3";
+    type = "image";
+  } else {
+    widthCol = "col1";
+    type = "text";
+  }
+
+  var date = item.datePublished.split('.')[0].split('T');
+  var datePartOne = date[0];
+  var datePartTwo = date[1];
+%>
+
+<div class="item <%= widthCol %>">
+  <% if(type == "video") { %>
+    <embed src="<%= item.embedURL %>" type="video/webm" width="235"/>
+  <% } else if (type == "image") { %>
+    <img src="<%= item.thumbnail[1].url %>" alt="">
+  <% } %>
+  <p><%= item.description %></p>
+  <hr>
+  <p class="footer-grab"><%= item.author[0].name %><br/><%= datePartOne %> <%= datePartTwo %></p>
+  <div class="profile-pix-miny"></div>
 </div>
