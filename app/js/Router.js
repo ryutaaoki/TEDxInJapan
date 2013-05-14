@@ -33,6 +33,7 @@ define([
 
     defaultRoute: function() {
       logger.info('run default route');
+      ga('send','pageview','#home');
       this.navigate('home', {
         trigger: true
       });
@@ -40,6 +41,7 @@ define([
 
     homeRoute: function () {
       logger.info('run home route');
+      ga('send','pageview','#home');
       this.navigate('home', {
         trigger: true
       });
@@ -47,6 +49,7 @@ define([
 
     mapsRoute: function () {
       logger.info('run maps route');
+      ga('send','pageview','#home/maps');
       this.navigate('#home/maps', {
         trigger: true
       });
@@ -54,6 +57,7 @@ define([
 
     liveRoute: function () {
       logger.info('run live route');
+      ga('send','pageview','#home/live');
       this.navigate('#home/live', {
         trigger: true
       });
@@ -61,6 +65,7 @@ define([
 
     conferencesRoute: function () {
       logger.info('run conferences route');
+      ga('send','pageview','#conferences');
       this.navigate('conferences', {
         trigger: true
       });
@@ -68,6 +73,7 @@ define([
 
     discussionsRoute: function () {
       logger.info('run discussions route');
+      ga('send','pageview','#discussions');
       this.navigate('discussions', {
         trigger: true
       });
@@ -75,6 +81,7 @@ define([
 
     aboutRoute: function () {
       logger.info('run about route');
+      ga('send','pageview','#about');
       this.navigate('about', {
         trigger: true
       });
