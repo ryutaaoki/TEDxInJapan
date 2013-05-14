@@ -109,6 +109,7 @@ nav li {
 	cursor:pointer;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: lighter;
+	height: 50px;
 }
 
 .active{
