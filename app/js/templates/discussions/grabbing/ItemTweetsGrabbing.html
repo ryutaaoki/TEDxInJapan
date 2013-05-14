@@ -1,14 +1,14 @@
 <% 
   var widthCol;
   var type;
+  var num = Math.floor((Math.random()*4)+2);
+  widthCol = "col" + parseInt(num);
+
   if (item.itemType === "VideoObject"){
-    widthCol = "col2";
     type = "video";
-  } else if (item.itemType === "ImageObject") {
-    widthCol = "col3";
+  } else if (item.itemType === "BlogPosting") {
     type = "image";
   } else {
-    widthCol = "col1";
     type = "text";
   }
 
@@ -19,12 +19,18 @@
 
 <div class="item <%= widthCol %>">
   <% if(type == "video") { %>
-    <embed src="<%= item.embedURL %>" type="video/webm" width="235"/>
+    <embed class="pull-left" src="<%= item.embedURL %>" type="video/webm" width="235"/>
+    <p class="pull-right"><%= item.description %></p>
+    <div style="clear: both;"></div>
+    <hr>
+    <p class="footer-grab"><%= item.author[0].name %><br/><%= datePartOne %> <%= datePartTwo %></p>
   <% } else if (type == "image") { %>
-    <img src="<%= item.thumbnail[1].url %>" alt="">
+    <img class="pull-left" src="<%= item.image.contentURL %>" alt="">
+    <p class="pull-right"><%= item.description %></p>
+    <div style="clear: both;"></div>
+    <hr>
+    <p class="footer-grab"><%= item.author.name %><br/><%= datePartOne %> <%= datePartTwo.split('Z')[0] %></p>
   <% } %>
-  <p><%= item.description %></p>
-  <hr>
-  <p class="footer-grab"><%= item.author[0].name %><br/><%= datePartOne %> <%= datePartTwo %></p>
+  
   <div class="profile-pix-miny"></div>
 </div>

@@ -292,7 +292,8 @@ div#grabbing-twitter, div#about-page {
 }
 
 div#grabbing-twitter {
-	/*height: 900px;*/
+	width: 1000px;
+	margin-left:-50px;
 }
 
 div#grabbing-twitter h4 {
