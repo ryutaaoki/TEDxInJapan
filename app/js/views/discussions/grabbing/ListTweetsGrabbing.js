@@ -24,7 +24,6 @@ define([
   var logger = woodman.getLogger('views.ListTweetsGrabbingView');
   var ListTweetsGrabbing = List.extend({
 
-    // tagName: 'div',
     item_class: 'item',
 
     initialize: function(options) {
@@ -34,9 +33,9 @@ define([
       options.itemTemplate = ItemTweetsGrabbingTemplate;
 
       List.prototype.initialize.call(this,options);
-      this.collection.on('loaded', function(){
-        $('#container').masonry('reload');
-      });
+      // this.collection.on('loaded', function(){
+      //   $('#container').masonry('reload');
+      // });
     }
   });
 

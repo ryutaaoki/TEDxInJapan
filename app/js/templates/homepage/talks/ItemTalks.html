@@ -1,4 +1,5 @@
-<a href="<%= this.model.attributes.url %>" target="_blank">
-  <img src="<%= this.model.attributes.image.contentURL %>" alt=""/>
-  <br/><span class="name-talk"><%= this.model.attributes.author[0].name %></span>
-</a>
+<!-- <%= this.model.attributes.url %> -->
+<span id="<%= this.model.cid %>" class="talkModal" href="" target="_blank">
+  <img src="<%= item.image.contentURL %>" alt=""/>
+  <br/><span class="name-talk"><%= item.author[0].name %></span>
+</span>
