@@ -157,12 +157,10 @@ nav a span {
 .displayer p {
 	margin: 0;
 	color: white;
-}
-
-.displayer p {
-	margin-top:5px;
+	margin-top: 5px;
 	font-size: 14px;
-}	
+	word-wrap: break-word;
+}
 
 #displayer img {
 	margin-bottom: -275px;
@@ -398,6 +396,7 @@ li.tweet {
 
 .address-event {
 	font-size: 16px;
+	margin-left:10px;
 }
 
 .displayer.conferences ul {
