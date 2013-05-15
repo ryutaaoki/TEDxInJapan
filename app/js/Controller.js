@@ -3,6 +3,7 @@ define([
   'joshlib!utils/i18n',
   'joshlib!vendor/underscore',
   'joshlib!vendor/backbone',
+  'joshlib!collection',
 
   'views/AppLayoutView',
 
@@ -14,6 +15,7 @@ define([
   i18n,
   _,
   Backbone,
+  Collection,
 
   AppLayoutView,
 
@@ -182,13 +184,13 @@ define([
     },
 
     createCollections: function() {
-      this.data.pastevents   = new Backbone.Collection();
-      this.data.postevents   = new Backbone.Collection();
-      this.data.blacklist    = new Backbone.Collection();
-      this.data.liveevent    = new Backbone.Collection();
-      this.data.youtube      = new Backbone.Collection();
-      this.data.aboutContent = new Backbone.Collection();
-      this.data.rssyoutube   = new Backbone.Collection();
+      this.data.pastevents   = new Collection();
+      this.data.postevents   = new Collection();
+      this.data.blacklist    = new Collection();
+      this.data.liveevent    = new Collection();
+      this.data.youtube      = new Collection();
+      this.data.aboutContent = new Collection();
+      this.data.rssyoutube   = new Collection();
     },
 
     getPastEvents: function(currentDate) {
@@ -294,11 +296,13 @@ define([
       var self = this;
 
       var datasource = Joshfire.factory.getDataSource('rssyoutube');
-      datasource.find({}, function (error, data) {
+      datasource.find({
+        // skip: 0,
+        // limit: 10
+      }, function (error, data) {
         _.each(data.entries, function (entry) {
           self.data.rssyoutube.add(entry);
         });
-        self.data.rssyoutube.trigger('loaded', self.data.youtube);
       });
 
     }

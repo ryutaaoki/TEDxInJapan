@@ -34,7 +34,8 @@ define([
 
       this.listTweetsGrabbing = new ListTweetsGrabbing({
         appController: options.appController,
-        collection: options.collection
+        collection: options.collection,
+        autoLoadMore: true
       });
 
       options.children = {

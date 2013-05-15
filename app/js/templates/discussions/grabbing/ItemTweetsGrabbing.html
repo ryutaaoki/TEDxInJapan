@@ -15,6 +15,7 @@
   var date = item.datePublished.split('.')[0].split('T');
   var datePartOne = date[0];
   var datePartTwo = date[1];
+  var date = new Date(date[0] + ' ' + date[1]);
 %>
 
 <div class="item <%= widthCol %>">
@@ -29,7 +30,7 @@
       <p><%= item.description %></p>
       <div style="clear: both;"></div>
       <hr>
-      <p class="footer-grab"><%= item.author.name %><br/><%= datePartOne %> <%= datePartTwo.split('Z')[0] %></p>
+      <p class="footer-grab"><%= item.author.name %><br/><%= date.toLocaleString() %></p>
     </a>
   <% } %>
   
