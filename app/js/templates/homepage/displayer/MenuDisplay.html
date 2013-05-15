@@ -1,8 +1,8 @@
 <% if (this.model.collection.length > 0) { %>
   <a href="#home/live" id="tedx-now" class="active">
-    <span>En ce moment <%= this.model.attributes.name %></span>
+    <span><%= T("En ce moment") %> <%= this.model.attributes.name %></span>
   </a>
   <a href="#home/maps" id="tedx-map">
-    <span>Carte des TEDx en France</span>
+    <span><%= T("Carte des TEDx en France") %></span>
   </a>
 <% } %>

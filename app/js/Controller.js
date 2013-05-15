@@ -97,6 +97,7 @@ define([
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
+      /* Homepage Maps */
       this.router.on('route:maps', function() {
 
         self.layout.getChild('panel').showChild('homepage');
@@ -109,6 +110,7 @@ define([
         displayer.getChild('menuDisplay').$el.find('#tedx-now').removeClass('active');
       });
 
+      /* Homepage Live */
       this.router.on('route:live', function() {
 
         self.layout.getChild('panel').showChild('homepage');
@@ -163,6 +165,9 @@ define([
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
       });
+
+
+
 
       /* About TEDx */
       this.router.on('route:about', function (){

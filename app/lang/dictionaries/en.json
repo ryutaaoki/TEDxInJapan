@@ -1,13 +1,19 @@
 {
   "terms": {
-    "Le réseau TEDx en France": "TEDx network in France",
-    "A propos de TEDx en France": "About TEDx in France",
-    "Conversations TEDx": "TEDx Discussions",
-    "Découvrir le programme TEDx": "Discover TEDx program",
-    "Connecter et collaborer": "Connect and collaborate",
-    "Discussions": "Discussions",
-    "Les vidéos des interventions": "The videos of interventions",
-    "Conférences": "Talks",
-    "Intervention remarquable en accès libre": "Famous interventions in free access"
+    "Le réseau TEDx en France"                : "TEDx network in France",
+    "A propos de TEDx en France"              : "About TEDx in France",
+    "Conversations TEDx"                      : "TEDx Discussions",
+    "Découvrir le programme TEDx"             : "Discover TEDx program",
+    "Connecter et collaborer"                 : "Connect and collaborate",
+    "Discussions"                             : "Discussions",
+    "Les vidéos des interventions"            : "The videos of interventions",
+    "Conférences"                             : "Talks",
+    "Intervention remarquable en accès libre" : "Famous interventions in free access",
+    "Les prochains TEDx en France"            : "Next TEDx in France",
+    "Les TEDx Passés"                         : "The old TEDx",
+    "Les discussions autour de TEDx en France": "Discussions about TEDx in France",
+    "En ce moment"                            : "Now",
+    "Carte des TEDx en France"                : "TEDx in France Map",
+    "Fermer"                                  : "Close"
   }
 }
