@@ -34,7 +34,7 @@ function run() {
   var data = JSON.parse(json);
   
   // This is the data we want to display
-  var columnNames = ["name", "image", "url", "latitude", "longitude", "address", "startDate"];
+  var columnNames = ["name", "image", "url", "latitude", "longitude", "address", "startDate", "availability"];
   var headersRange = sheet.getRange(1, 1, 1, columnNames.length);
   headersRange.setValues([columnNames]);
   
@@ -51,10 +51,9 @@ function run() {
     objects[i][columnNames[6]] = entry.starts_at ? entry.starts_at.split(" ")[0] : entry.updated_at.split(" ")[0];
   }
   
-  for(var j = 0 ; j < columnNames.length ; j++) {
+  for(var j = 0 ; j < columnNames.length -1 ; j++) {
     for(var i = 0 ; i < data.tedx_event_locations.length ; i++){
       var range = sheet.getRange(i+2,j+1);
-      //uncomment if need to not write on 'url' column
       //if(columnNames[j] != "url")
         range.setValue(objects[i][columnNames[j]]);
     }
