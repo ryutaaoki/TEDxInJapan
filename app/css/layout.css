@@ -10,8 +10,9 @@ p, h1, h2, h3, h4, h5 {
   font-weight: lighter;
 }
 
-a {
+a, a:hover, a:visited, a:focus {
 	text-decoration: none;
+	color: #2b2b2b;
 }
 
 li {
@@ -149,7 +150,7 @@ nav a span {
 }
 
 .displayer .event h4 {
-	margin:0;
+	margin:10px 0 0 10px;
 	float:none;
 }
 
@@ -276,8 +277,9 @@ div.next-events li {
 
 div.itemEvent {
 	float:left;
-	width: 250px;
-	margin-right: 20px;
+	width: 265px;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 
 div#past-talks {
@@ -417,7 +419,7 @@ li.tweet {
 }
 
 #displayer .tedxLive ul li {
-	width: 100%;
+	width: 870px;
 	height: 100%;
 }
 
@@ -498,8 +500,8 @@ p.articleBody img {
 .col4 { width: 380px; }
 .col5 { width: 480px; }
 
-.col1 img { max-width: 80px; }
-.col2 img { max-width: 180px; }
+.col1 img { max-width: 150px; }
+.col2 img { max-width: 235px; }
 .col3 img { max-width: 280px; }
 .col4 img { max-width: 380px; }
 .col5 img { max-width: 480px; }
