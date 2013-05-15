@@ -35,6 +35,13 @@ footer p {
 	color: #2b2b2b;
 }
 
+footer p#sponsor {
+	float:right;
+	margin:0;
+	margin-right:45px;
+	margin-bottom:-6px;
+}
+
 footer img {
 	float:right;
 	bottom:0;
