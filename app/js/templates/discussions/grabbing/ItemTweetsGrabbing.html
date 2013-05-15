@@ -24,7 +24,7 @@
     <hr>
     <p class="footer-grab"><%= item.author[0].name %><br/><%= datePartOne %> <%= datePartTwo %></p>
   <% } else if (type == "image") { %>
-    <a href="<%= item.url %>">
+    <a href="<%= item.url %>" target="_blank">
       <img class="pull-left" src="<%= item.image.contentURL %>" alt="">
       <p><%= item.description %></p>
       <div style="clear: both;"></div>
