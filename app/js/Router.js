@@ -26,6 +26,7 @@ define([
       this.route('home', 'home', this.homeRoute);
       this.route('home/maps', 'maps', this.mapsRoute);
       this.route('home/live', 'live', this.liveRoute);
+      this.route('home/talks/:id', 'talks', this.talksModalRoute);
       this.route('conferences', 'conferences', this.conferencesRoute);
       this.route('discussions', 'discussions', this.discussionsRoute);
       this.route('about', 'about', this.aboutRoute);
@@ -60,6 +61,22 @@ define([
       ga('send','pageview','#home/live');
       this.navigate('#home/live', {
         trigger: true
+      });
+    },
+
+    talksModalRoute: function (id) {
+      var self = this;
+      logger.info('run talks route of id ' + id);
+      this.navigate('#home/talks/' + id, {
+        trigger: true
+      });
+      this.appController.data.youtube.on('loaded', function() {
+        var result = self.appController.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
+        _.map( result, function( model ){
+          self.appController.layout.panel.homepage.talks.modalTalk.setModel(model);
+          self.appController.layout.panel.homepage.talks.modalTalk.render();
+          self.appController.layout.panel.homepage.talks.modalTalk.showModal();
+        });
       });
     },
 

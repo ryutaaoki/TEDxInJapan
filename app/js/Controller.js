@@ -120,12 +120,41 @@ define([
         displayer.getChild('menuDisplay').$el.find('#tedx-map').removeClass('active');
       });
 
+
+
+
+      /* Homepage talks */
+      this.router.on('route:talks', function (id) {
+
+        self.layout.getChild('panel').showChild('homepage');
+        var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
+
+        var result = self.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
+        _.map( result, function( model ){
+          var modal = self.layout.getChild('panel').getChild('homepage').getChild('talks').getChild('modalTalk');
+          modal.setModel(model);
+          modal.render();
+          modal.showModal();
+        });
+
+        if(!panelDisplay.getChild('live').collection.length)
+          panelDisplay.showChild('maps');
+
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+      });
+
+
+
+
       /* Conferences */
       this.router.on('route:conferences', function (){
         self.layout.getChild('panel').showChild('conferences');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #conferences-page').addClass('active');
       });
+
+
+
 
       /* Discussions */
       this.router.on('route:discussions', function (){

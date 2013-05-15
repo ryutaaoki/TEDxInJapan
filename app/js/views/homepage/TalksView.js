@@ -7,6 +7,7 @@ define([
   'joshlib!ui/layout',
 
   'views/homepage/talks/ListTalksView',
+  'views/homepage/talks/ModalTalkView',
 
   'text!templates/homepage/talks/TalksLayout.html'
 ], function(
@@ -18,6 +19,7 @@ define([
   Layout,
 
   ListTalks,
+  ModalTalk,
 
   TalksTemplate
 ) {
@@ -34,8 +36,14 @@ define([
         collection: options.collection
       });
 
+      this.modalTalk = new ModalTalk({
+        appController: options.appController,
+        model: new Backbone.Model()
+      });
+
       options.children = {
-        listTalks: this.listTalks
+        listTalks: this.listTalks,
+        modalTalk: this.modalTalk
       };
 
       Layout.prototype.initialize.call(this,options);

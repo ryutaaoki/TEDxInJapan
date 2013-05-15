@@ -24,10 +24,6 @@ define([
 
     className: "talks",
 
-    events: {
-      "click span.talkModal" : "showModal"
-    },
-
     initialize: function(options) {
       logger.info('initialize ListTalks');
       var options = options || {},
@@ -42,19 +38,6 @@ define([
         self.update(true);
       });
     },
-
-    showModal: function(e) {
-      var itemId = $(e.currentTarget).attr("id");
-      this.updateContentModal(this.collection.get(itemId));
-      $('div.talkModal').modal({keyboard:false,backdrop:'static'});
-    },
-
-    updateContentModal: function(item) {
-      var modal = $('div.talkModal');
-      modal.find('#label-modal').html(item.attributes.name);
-      modal.find('.modal-body embed').attr('src', item.attributes.embedURL+"&enablejsapi=1");
-      modal.find('.modal-body p#description-modal').html(item.attributes.description);
-    }
   });
 
   return ListTalksView;
