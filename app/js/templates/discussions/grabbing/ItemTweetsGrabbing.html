@@ -1,4 +1,4 @@
-<% 
+<%
   var widthCol;
   var type;
   var num = Math.floor((Math.random()*4)+2);
@@ -20,14 +20,13 @@
 <div class="item <%= widthCol %>">
   <% if(type == "video") { %>
     <embed class="pull-left <%= widthCol %>" src="<%= item.embedURL %>" type="video/webm"/>
-    <p class="pull-right"><%= item.description %></p>
-    <div style="clear: both;"></div>
+    <p><%= item.description %></p>
     <hr>
     <p class="footer-grab"><%= item.author[0].name %><br/><%= datePartOne %> <%= datePartTwo %></p>
   <% } else if (type == "image") { %>
     <a href="<%= item.url %>">
       <img class="pull-left" src="<%= item.image.contentURL %>" alt="">
-      <p class="pull-right"><%= item.description %></p>
+      <p><%= item.description %></p>
       <div style="clear: both;"></div>
       <hr>
       <p class="footer-grab"><%= item.author.name %><br/><%= datePartOne %> <%= datePartTwo.split('Z')[0] %></p>
