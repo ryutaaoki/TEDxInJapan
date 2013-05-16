@@ -1,10 +1,19 @@
-Google Script Spreadsheet
-=========================
+Google Script Spreadsheet v0.2
+==============================
 
-v0.1
-----
+How to use TEDxEnFrance spreadsheet :
+---------------------------------------------------
+- Create a new Spreadsheet
+- Go to "Tools > Script Editor"
 
-In Google spreadsheet:
+And this moment, a small window appears, just close it.
+
+- Copy past the Google script present on the "Code.gs" file.
+- Save it.
+
+The google script is now linked to your new spreadsheet.
+Now, come back to your empty spreadhseet.
+
 - Go to "Tools > Script Manager"
 - Click on "createMenu" function
 - Click on "Run" button
@@ -12,8 +21,9 @@ In Google spreadsheet:
 
 A new menu is now available on the toolbar of your spreadsheet.
 
-- Click on "Update Data" new menu of the spreadsheet toolbar
+- Click on this new menu called "Update Data"
 - Click on "Update TEDx Data"
-- Now you just have to wait !
+- Just wait, and see the TEDx events appears.
 
-Data is automaticaly write on each cell of the good column.
+Manage the spreadsheet :
+-------------------------------
