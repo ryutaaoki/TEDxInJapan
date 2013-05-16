@@ -2,7 +2,7 @@ Google Script Spreadsheet v0.2
 ==============================
 
 How to use TEDxEnFrance spreadsheet :
----------------------------------------------------
+-------------------------------------
 - Create a new Spreadsheet
 - Go to **Tools > Script Editor**
 
@@ -26,4 +26,4 @@ A new menu is now available on the toolbar of your spreadsheet.
 - Just wait, and see the TEDx events appears.
 
 Manage the spreadsheet :
--------------------------------
+------------------------
