@@ -1,10 +1,10 @@
 <h2><%= this.model.attributes.name %></h2>
-<% if(this.model.attributes.image.contentURL == "") { %>
-<p class="articleBody"><%= this.model.attributes.articleBody %></p>
+<% if(item.image.contentURL == "") { %>
+<p class="articleBody"><%= item.articleBody %></p>
 <% } else { %>
 <p class="articleBody">
-  <img src="<%= this.model.attributes.image.contentURL %>" alt="">
-  <%= this.model.attributes.articleBody %>
+  <img class="pull-<%= item.location %>" src="<%= item.image.contentURL %>" alt="">
+  <%= item.articleBody %>
 </p>
 <% } %>
 
