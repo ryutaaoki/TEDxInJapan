@@ -20,6 +20,10 @@ define([
   var logger = woodman.getLogger('views.ModalTalkView');
   var ModalTalkView = Item.extend({
 
+    events: {
+      "click .closeModal" : "stopModal"
+    },
+
     initialize: function(options) {
       logger.info('initialize ModalTalkView');
       var options = options || {};
@@ -35,6 +39,15 @@ define([
 
     setModel: function (modelTalk) {
       this.model = modelTalk;
+    },
+
+    stopModal: function(){
+      var embed = this.$el.find('#videoEmbed');
+      this.$el.find('#videoEmbed').remove();
+      this.$el.find('.modal-body').prepend(embed);
+      app.router.navigate('home', {
+        trigger: true
+      });
     }
   });
 
