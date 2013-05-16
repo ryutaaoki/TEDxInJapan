@@ -28,7 +28,10 @@ A new menu is now available on the toolbar of your spreadsheet.
 Manage the spreadsheet :
 ------------------------
 
-If you take a look at the bottom of the spreadsheet, the script that you have run, has created two more sheets in your spreadsheet.
+If you take a look at the bottom of the spreadsheet, the script that you have run, has created three sheets in your spreadsheet:
+  + TEDx Events
+  + Blacklist Twitter
+  + About Page Content
 
 #### TEDx Events :
 Represent the sheet with all datas about TEDx Events.
