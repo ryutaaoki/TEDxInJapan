@@ -27,3 +27,17 @@ A new menu is now available on the toolbar of your spreadsheet.
 
 Manage the spreadsheet :
 ------------------------
+
+If you take a look at the bottom of the spreadsheet, the script that you have run, has created two more sheets in your spreadsheet.
+
+#### TEDx Events :
+Represent the sheet with all datas about TEDx Events.
+
+#### Blacklist Twitter :
+Represent the list of tweets that you want to blacklist from your web app TEDxEnFrance.
+
+#### About Page Content :
+Represent the content of the "About TEDxEnFrance" page in the web app.
+
+###### Take care of the little notes in each headers of the different sheets, that show you some information about what is the required data format asked.
+
