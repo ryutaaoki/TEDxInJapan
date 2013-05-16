@@ -22,18 +22,18 @@ function dataTedx() {
 function createSheets() {
   var sheets = SpreadsheetApp.getActiveSpreadsheet();
   sheets.renameActiveSheet("TEDx Events");
-
+ 
   sheets.insertSheet('Blacklist Twitter',1);
   var sheet = sheets.getSheets()[1];
   setHeaders(sheet,["url"]);
   setNotesBlacklistTwitter(sheet);
 
-
+ 
   sheets.insertSheet('About page Content',2);
   var sheet = sheets.getSheets()[2];
   setHeaders(sheet,["name","articleBody","image","location"]);
   setNotesAboutPageContent(sheet);
-
+ 
 }
 
 function setHeaders(sheet,columnNames) {
