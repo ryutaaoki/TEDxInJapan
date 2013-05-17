@@ -6,9 +6,7 @@ define([
   'joshlib!ui/layout',
 
   'views/conferences/NextEventsLayoutView',
-  'views/conferences/PastTalksView',
-
-  'models/talk'
+  'views/conferences/PastTalksView'
 ], function(
   woodman,
   $,
@@ -17,9 +15,7 @@ define([
   Layout,
 
   NextEventsView,
-  TalksView,
-
-  Talk
+  TalksView
 ) {
   var logger = woodman.getLogger('views.ConferencesPagePanel');
   var ConferencesPagePanel = Layout.extend({
