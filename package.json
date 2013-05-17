@@ -29,7 +29,7 @@
         "title": "Comments",
         "description": "Comments on social networks, e.g. tweets from an hashtag",
         "inputType": [
-          "Article/Status"
+          "Thing"
         ]
       },
       "youtube": {
