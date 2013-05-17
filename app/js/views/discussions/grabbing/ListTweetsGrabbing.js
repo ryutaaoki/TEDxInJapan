@@ -26,8 +26,6 @@ define([
 
     item_class: 'item',
 
-    autoLoadMore: true,
-
     initialize: function(options) {
       logger.info('initialize ListTweetsGrabbing');
       var options = options || {};
