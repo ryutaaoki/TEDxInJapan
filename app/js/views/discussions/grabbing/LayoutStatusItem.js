@@ -5,8 +5,8 @@ define([
   'joshlib!vendor/backbone',
 
   'joshlib!ui/layout',
+  'joshlib!view',
 
-  'joshlib!ui/dynamiccontainer',
   'views/discussions/grabbing/ItemStatusView',
   'views/discussions/grabbing/viewsObject/ImageObject',
   'views/discussions/grabbing/viewsObject/VideoObject',
@@ -20,8 +20,8 @@ define([
   Backbone,
 
   Layout,
+  View,
 
-  DynamicContainer,
   ItemStatusView,
   ImageObject,
   VideoObject,
@@ -34,15 +34,11 @@ define([
 
     initialize: function(options) {
       logger.info('initialize LayoutStatusItem');
-      var options = options || {};
+      options = options || {};
 
       options.template = LayoutStatusTemplate;
 
-      this.dynamicContent = new DynamicContainer({
-        appController: options.appController,
-        model: this.extractMentions(options.model),
-        itemFactory: _.bind(this.factory, this)
-      });
+      this.dynamicContent = this.factory(this.extractMentions(options.model));
 
       this.itemStatus = new ItemStatusView({
         appController: options.appController,
@@ -58,29 +54,38 @@ define([
     },
 
     extractMentions: function (model) {
-      model.set('mentions', new Backbone.Model({
-        // type: '@ImageObject',
-        // contentURL: 'http://images.ted.com/images/ted/c0e23623747d380131042a19161ef41aaff9ade1_425x259.jpg'
-        type: '@VideoObject',
-        embedUrl: 'http://www.youtube.com/embed/xmoIDKqfY44'
-      }));
-      if(model.get('mentions').entries)
-        return model.get('mentions').get('entries')[0];
-      else
-        return model.get('mentions');
+      var mentions = model.get('mentions');
+      if (!mentions || (mentions.length === 0)) return null;
+
+      var mention = mentions[0];
+      if(mention.entries) {
+        return new Backbone.Model(mention.entries[0]);
+      }
+      else {
+        return new Backbone.Model(mention);
+      }
     },
 
-    factory: function(params) {
+    factory: function(model) {
 
-      switch(params.model.get('type')){
-        case "@ImageObject":
-          return new ImageObject(params.model);
+      switch(model.get('@type')){
+      case "ImageObject":
+        return new ImageObject({
+          model: model
+        });
 
-        case "@VideoObject":
-          return new VideoObject(params.model);
+      case "VideoObject":
+        return new VideoObject({
+          model: model
+        });
 
-        case "@BlogPosting":
-          return new BlogPosting(params.model);
+      case "BlogPosting":
+        return new BlogPosting({
+          model: model
+        });
+
+      default:
+        return new View();
       }
     },
 

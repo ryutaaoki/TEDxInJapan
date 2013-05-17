@@ -22,12 +22,12 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ImageObjectView');
-      var options = options || {};
+      options = options || {};
 
       options.template = ImageTemplate;
 
       Item.prototype.initialize.call(this,options);
-    },
+    }
 
   });
 

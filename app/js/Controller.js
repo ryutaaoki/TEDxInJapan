@@ -9,7 +9,7 @@ define([
 
   'Router',
 
-  '../lang/config',
+  '../lang/config'
 ], function (
   woodman,
   i18n,
@@ -295,7 +295,7 @@ define([
     getFeedGrabbing: function () {
       var self = this;
 
-      var datasource = Joshfire.factory.getDataSource('tweets');
+      var datasource = Joshfire.factory.getDataSource('rssyoutube');
       datasource.find({
         // skip: 0,
         // limit: 10
