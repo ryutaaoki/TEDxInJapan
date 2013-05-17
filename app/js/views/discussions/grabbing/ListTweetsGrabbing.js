@@ -5,10 +5,13 @@ define([
   'joshlib!vendor/backbone',
 
   'joshlib!ui/list',
+  'joshlib!ui/listitem',
   'joshlib!ui/item',
 
   'text!templates/discussions/grabbing/ItemTweetsGrabbing.html',
-  'text!templates/discussions/grabbing/GrabbingLayout.html'
+  'text!templates/discussions/grabbing/GrabbingLayout.html',
+
+  'views/discussions/grabbing/LayoutStatusItem'
 ], function(
   woodman,
   $,
@@ -16,10 +19,13 @@ define([
   Backbone,
 
   List,
+  ListItem,
   Item,
 
   ItemTweetsGrabbingTemplate,
-  ListTemplate
+  ListTemplate,
+
+  LayoutStatusItem
 ) {
   var logger = woodman.getLogger('views.ListTweetsGrabbingView');
   var ListTweetsGrabbing = List.extend({
@@ -30,12 +36,29 @@ define([
       logger.info('initialize ListTweetsGrabbing');
       var options = options || {};
 
-      options.itemTemplate = ItemTweetsGrabbingTemplate;
+      // options.itemTemplate = ItemTweetsGrabbingTemplate;
+
+      options.itemFactory = function (model, offset) {
+        var params = {
+          model: model,
+          offset: offset
+        };
+        _.extend(params, this.itemOptions);
+        return new LayoutStatusItem(params);
+      };
+
+      options.listItemFactory = function (model, offset) {
+        var params = {
+          model: model,
+          offset: offset,
+          view: this.itemFactory(model, offset)
+        };
+        _.extend(params, this.listItemOptions);
+
+        return new ListItem(params);
+      };
 
       List.prototype.initialize.call(this,options);
-      // this.collection.on('loaded', function(){
-      //   $('#container').masonry('reload');
-      // });
     }
   });
 

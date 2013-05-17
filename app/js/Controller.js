@@ -295,7 +295,7 @@ define([
     getFeedGrabbing: function () {
       var self = this;
 
-      var datasource = Joshfire.factory.getDataSource('rssyoutube');
+      var datasource = Joshfire.factory.getDataSource('tweets');
       datasource.find({
         // skip: 0,
         // limit: 10
