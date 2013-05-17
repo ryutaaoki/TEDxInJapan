@@ -6,7 +6,6 @@ function createMenu(){
     { name : "Update TEDx Data", functionName : "dataTedx" }
    ];
    SpreadsheetApp.getActiveSpreadsheet().addMenu( "Update Data", menuEntries );
-   SpreadsheetApp.getActiveSpreadsheet().removeMenu( "Script Center Menu" );
 }
 
 /**
@@ -22,18 +21,17 @@ function dataTedx() {
 function createSheets() {
   var sheets = SpreadsheetApp.getActiveSpreadsheet();
   sheets.renameActiveSheet("TEDx Events");
- 
+
   sheets.insertSheet('Blacklist Twitter',1);
   var sheet = sheets.getSheets()[1];
   setHeaders(sheet,["url"]);
   setNotesBlacklistTwitter(sheet);
 
- 
   sheets.insertSheet('About page Content',2);
   var sheet = sheets.getSheets()[2];
   setHeaders(sheet,["name","articleBody","image","location"]);
   setNotesAboutPageContent(sheet);
- 
+
 }
 
 function setHeaders(sheet,columnNames) {
@@ -176,10 +174,5 @@ function readRows() {
  * https://developers.google.com/apps-script/service_spreadsheet
  */
 function onOpen() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet();
-  var entries = [{
-    name : "Read Data",
-    functionName : "readRows"
-  }];
-  sheet.addMenu("Script Center Menu", entries);
+  createMenu();
 };
