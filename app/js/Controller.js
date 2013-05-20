@@ -9,7 +9,7 @@ define([
 
   'Router',
 
-  '../lang/config',
+  '../lang/config'
 ], function (
   woodman,
   i18n,
