@@ -34,7 +34,8 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ListTweetsGrabbing');
-      var options = options || {};
+      var options = options || {},
+          self = this;
 
       // options.itemTemplate = ItemTweetsGrabbingTemplate;
 
@@ -59,6 +60,10 @@ define([
       };
 
       List.prototype.initialize.call(this,options);
+
+      this.collection.on('loaded', function(){
+        self.update(true);
+      });
     }
   });
 

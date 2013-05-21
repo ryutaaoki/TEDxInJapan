@@ -25,7 +25,6 @@ define([
   var DisplayerView = Layout.extend({
 
     tagName: 'div',
-    id: 'container',
 
     initialize: function(options) {
       logger.info('initialize DisplayerView');

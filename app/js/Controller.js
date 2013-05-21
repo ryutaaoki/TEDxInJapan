@@ -198,14 +198,17 @@ define([
       var self = this;
 
       var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({
-
-      }, function (err, data) {
-        _.each(data.entries, function (entry) {
-          if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate)))
-            self.data.pastevents.add(entry);
-        });
-        self.data.pastevents.trigger('loaded', self.data.pastevents);
+      datasource.find({}, function (error, data) {
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          _.each(data.entries, function (entry) {
+            if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate)))
+              self.data.pastevents.add(entry);
+          });
+          self.data.pastevents.trigger('loaded', self.data.pastevents);
+        }
       });
     },
 
@@ -216,15 +219,20 @@ define([
       var datasource = Joshfire.factory.getDataSource('tedxevents');
       datasource.find({
 
-      }, function (err, data) {
-        var count = 0;
-        _.each(data.entries, function (entry) {
-          if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)) && count < 3){
-            self.data.postevents.add(entry);
-            count++;
-          }
-        });
-        self.data.postevents.trigger('loaded', self.data.postevents);
+      }, function (error, data) {
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          var count = 0;
+          _.each(data.entries, function (entry) {
+            if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)) && count < 3){
+              self.data.postevents.add(entry);
+              count++;
+            }
+          });
+          self.data.postevents.trigger('loaded', self.data.postevents);
+        }
       });
     },
 
@@ -257,12 +265,17 @@ define([
       var self = this;
 
       var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({}, function (err, data) {
-        _.each(data.entries, function (entry) {
-          if(entry.availability == "TRUE")
-            self.data.liveevent.reset(entry);
-        });
-        self.data.liveevent.trigger('loaded', self.data.liveevent);
+      datasource.find({}, function (error, data) {
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          _.each(data.entries, function (entry) {
+            if(entry.availability == "TRUE")
+              self.data.liveevent.reset(entry);
+          });
+          self.data.liveevent.trigger('loaded', self.data.liveevent);
+        }
       });
     },
 
@@ -270,11 +283,16 @@ define([
       var self = this;
 
       var datasource = Joshfire.factory.getDataSource('about');
-      datasource.find({}, function (err, data) {
-        _.each(data.entries, function (entry) {
-          self.data.aboutContent.add(entry);
-        });
-        self.data.aboutContent.trigger('loaded', self.data.aboutContent);
+      datasource.find({}, function (error, data) {
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          _.each(data.entries, function (entry) {
+            self.data.aboutContent.add(entry);
+          });
+          self.data.aboutContent.trigger('loaded', self.data.aboutContent);
+        }
       });
     },
 
@@ -284,11 +302,16 @@ define([
       var datasource = Joshfire.factory.getDataSource('youtube');
       datasource.find({
         limit: 9
-      }, function (err, data) {
-        _.each(data.entries, function (entry) {
-          self.data.youtube.add(entry);
-        });
-        self.data.youtube.trigger('loaded', self.data.youtube);
+      }, function (error, data) {
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          _.each(data.entries, function (entry) {
+            self.data.youtube.add(entry);
+          });
+          self.data.youtube.trigger('loaded', self.data.youtube);
+        }
       });
     },
 
@@ -297,12 +320,18 @@ define([
 
       var datasource = Joshfire.factory.getDataSource('rssyoutube');
       datasource.find({
-        // skip: 0,
-        // limit: 10
+        skip: 0,
+        limit: 10
       }, function (error, data) {
-        _.each(data.entries, function (entry) {
-          self.data.rssyoutube.add(entry);
-        });
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          _.each(data.entries, function (entry) {
+            self.data.rssyoutube.add(entry);
+          });
+          self.data.rssyoutube.trigger('loaded', self.data.rssyoutube);
+        }
       });
 
     }

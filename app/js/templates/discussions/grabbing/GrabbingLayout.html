@@ -1,13 +1,23 @@
-<div id="grabbing-twitter">
+<div id="panel-grabbing">
   <h4><%= T("Les discussions autour de TEDx en France") %></h4>
-    <%= children.listTweetsGrabbing %>
-  <div style="clear: both;"></div>
+  <div id="container" class="js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 5, "rowHeight": 20 }'>
+    <div id="grabbing-twitter">
+        <%= children.listTweetsGrabbing %>
+      <div style="clear: both;"></div>
+    </div>
+    <script type="text/javascript" src="js/lib/packery.min.js"></script>
+    <script>
+    $(function(){
+
+      var container = document.querySelector('#container');
+      var pckry = new Packery( container, {
+        // options
+        itemSelector: '.item',
+        gutter: 10,
+        rowHeight: 20
+      });
+    })
+    </script>
+  </div>
 </div>
-<script type="text/javascript" src="js/lib/jquery.masonry.min.js"></script>
-<script>$(function(){
-  $('#container').masonry({
-    itemSelector : '.item',
-    columnWidth : 230,
-    isAnimated : true
-  });
-});</script>
+<div style="clear: both;"></div>

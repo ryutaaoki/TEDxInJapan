@@ -11,6 +11,7 @@ define([
   'views/discussions/grabbing/viewsObject/ImageObject',
   'views/discussions/grabbing/viewsObject/VideoObject',
   'views/discussions/grabbing/viewsObject/BlogPosting',
+  'views/discussions/grabbing/viewsObject/CreativeWork',
 
   'text!templates/discussions/grabbing/LayoutStatus.html'
 ], function(
@@ -26,6 +27,7 @@ define([
   ImageObject,
   VideoObject,
   BlogPosting,
+  CreativeWork,
 
   LayoutStatusTemplate
 ) {
@@ -68,23 +70,32 @@ define([
 
     factory: function(model) {
 
-      switch(model.get('@type')){
-      case "ImageObject":
-        return new ImageObject({
-          model: model
-        });
+      if(model) {
+        switch(model.get('@type')){
+        case "ImageObject":
+          return new ImageObject({
+            model: model
+          });
 
-      case "VideoObject":
-        return new VideoObject({
-          model: model
-        });
+        case "CreativeWork":
+          return new CreativeWork({
+            model: model
+          });
 
-      case "BlogPosting":
-        return new BlogPosting({
-          model: model
-        });
+        case "VideoObject":
+          return new VideoObject({
+            model: model
+          });
 
-      default:
+        case "BlogPosting":
+          return new BlogPosting({
+            model: model
+          });
+
+        default:
+          return new View();
+        }
+      } else {
         return new View();
       }
     },

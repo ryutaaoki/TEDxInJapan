@@ -44,7 +44,7 @@ body, button, input, select, textarea { font-family: "Helvetica Neue"; color: #2
  */
 
 ::-moz-selection { background: grey; color: #fff; text-shadow: none; }
-::selection { background: grey; color: #fff; text-shadow: none; }
+::selection { color: #fff; text-shadow: none; }
 
 
 /* =============================================================================

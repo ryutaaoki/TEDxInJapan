@@ -319,8 +319,11 @@ div#past-talks {
 div#grabbing-twitter, div#about-page {
 	padding:20px;
 	padding-top: 5px;
-	background-color: white;
 	min-height: 500px;
+}
+
+div#about-page {
+	background-color: white;
 }
 
 div#grabbing-twitter {
@@ -500,9 +503,7 @@ p.articleBody img {
 #grabbing li {
 	display:inline;
 }
-.item {
-/*  min-width: 100px;
-  max-width: 300px;*/
+/*.item {
   padding: 10px;
   margin:5px;
   float: left;
@@ -512,7 +513,7 @@ p.articleBody img {
   text-align:justify;
 	text-justify:inter-word;
 }
-
+*/
 .profile-pix-miny {
 	float:right;
 	width: 40px;
@@ -530,18 +531,44 @@ p.articleBody img {
 	margin-top:0;
 }
 
+/* Masonry */
 .col1 { width: 80px; }
-.col2 { width: 235px; }
+.col2 { width: 255px; }
 .col3 { width: 460px; }
 .col4 { width: 380px; }
 .col5 { width: 470px; }
 .col6 { width: 530px; }
 
 .col1 img { max-width: 150px; margin-bottom: 10px;}
-.col2 img { max-width: 235px; margin-bottom: 10px;}
+.col2 img { max-width: 255px; margin-bottom: 10px;}
 .col3 img { max-width: 260px; margin-right: 20px; margin-bottom: 10px; }
 .col4 img { max-width: 380px; margin-bottom: 10px;}
 .col5 img { max-width: 470px; margin-bottom: 10px;}
 .col6 img { width: 235px; margin-bottom: 10px;}
 
 .col3 embed, .col5 embed { height: 160px; width: 260px; margin-bottom: 10px; margin-right: 15px; }
+
+/* Packery */
+
+.item {
+	width: 29%;
+	background-color:#e9e7e7;
+	font-size:9pt;
+  word-wrap: break-word;
+  text-align:justify;
+	text-justify:inter-word;
+	padding: 10px;
+  margin:5px;
+}
+
+.item img, .item embed {
+	width:100%;
+}
+
+.item.w2 { width: 50%; }
+
+#panel-grabbing {
+	background-color: #FFF;
+	padding:20px;
+	padding-top:10px;
+}
