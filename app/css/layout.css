@@ -24,6 +24,7 @@ footer {
 	width:100%;
 	background-color: #FFF;
 	font-size: 10px;
+	border-top: 2px solid #e4e4e4;
 }
 
 footer p {
@@ -39,7 +40,6 @@ footer p#sponsor {
 	float:right;
 	margin:0;
 	margin-right:45px;
-	margin-bottom:-6px;
 }
 
 footer img {
@@ -48,8 +48,12 @@ footer img {
 }
 
 header {
-	background-color: #000;
+	background-color: #565656;
 	height: 250px;
+}
+
+.layout-header h1 {
+	margin-left:15px;
 }
 
 .layout-header h1, .layout-header p {
@@ -70,7 +74,7 @@ header {
 }
 
 header #sharp {
-		height:255px;
+		height:256px;
 }
 
 header img#adgdf {
@@ -84,6 +88,12 @@ header a#ads-gdf p {
 	font-size: 9pt;
 }
 
+header div#country {
+	background: url('../layout-img/country.png') no-repeat right;
+	float:right;
+	margin-right:15px;
+}
+
 .layout-header:after, .container:after {
 	clear: both;
 	display: block;
@@ -93,6 +103,8 @@ header a#ads-gdf p {
 
 nav {
 	float:left;
+	width: 100%;
+	background-color: #fafafa;
 }
 
 nav img {
@@ -102,13 +114,13 @@ nav img {
 .layout-header p#page-title {
 	color: white;
 	margin-left: 30px;
-	font-size: 16pt;
-	padding-top: 10px;
-	margin-bottom:31px;
+	font-size: 12pt;
+	padding-top: 30px;
+	margin-bottom: 25px;
 }
 
 nav ul {
-	height: 65px;
+	height: 71px;
 }
 
 nav li {
@@ -117,7 +129,7 @@ nav li {
 	cursor:pointer;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: lighter;
-	height: 50px;
+	height: 51px;
 }
 
 .active{
@@ -128,8 +140,12 @@ nav li {
 	background-color: #454444;
 }
 
-nav li:hover {
-	background-color: #2b2b2b;
+nav li:hover, nav li.active {
+	background-color: #565656;
+}
+
+nav li:hover span, nav li.active span {
+	color: white;
 }
 
 nav a, nav a:active, nav a:visited, nav a:hover {
@@ -138,13 +154,13 @@ nav a, nav a:active, nav a:visited, nav a:hover {
 }
 
 nav a span {
-	color:white;
+	color:#666;
 	font-size: 12px;
 }
 
 .displayer {
-	border: 15px solid #3d3b3b;
-	background-color:#3d3b3b;
+	border: 15px solid #2b2b2b;
+	background-color:#2b2b2b;
 	height: 300px;
 }
 
@@ -253,7 +269,7 @@ div#talks h4, div#twitter-posts h4, div#past-talks h4 {
 }
 
 div#talks div.talks {
-	width: 500px;
+	width: 530px;
 }
 
 div#talks div.talks ul {
@@ -268,10 +284,11 @@ div#talks div.talks a {
 
 div#talks div.talks li {
 	display: inline-block;
-	padding: 10px;
+	padding: 10px 20px 10px 10px;
 	width: 145px;
 	height: 165px;
 	overflow: hidden;
+	float: left;
 }
 
 div#talks div.talks span {
@@ -307,8 +324,8 @@ div#grabbing-twitter, div#about-page {
 }
 
 div#grabbing-twitter {
-	width: 1000px;
-	margin-left:-50px;
+	/*width: 1000px;
+	margin-left:-50px;*/
 }
 
 div#grabbing-twitter ul {
