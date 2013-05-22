@@ -1,1 +1,3 @@
-<img src="<%= item.url %>" alt=""/>
+<% if(item.image) { %>
+<img src="<%= item.image ? item.image.contentURL : item.url %>" alt=""/>
+<% } %>

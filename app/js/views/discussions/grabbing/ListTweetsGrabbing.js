@@ -61,6 +61,7 @@ define([
 
       List.prototype.initialize.call(this,options);
 
+      this.collection.off();
       this.collection.on('loaded', function(){
         self.update(true);
       });

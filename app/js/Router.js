@@ -94,6 +94,15 @@ define([
       this.navigate('discussions', {
         trigger: true
       });
+      this.appController.data.rssyoutube.on('loaded', function(){
+        var container = document.querySelector('#container');
+        var pckry = new Packery( container, {
+          // options
+          itemSelector: '.item',
+          gutter: 5,
+          rowHeight: 20
+        });
+      });
     },
 
     aboutRoute: function () {
