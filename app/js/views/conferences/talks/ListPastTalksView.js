@@ -36,6 +36,11 @@ define([
         self.update(true);
       });
     },
+
+    createChildrenViews: function(){
+      List.prototype.createChildrenViews.apply(this,arguments);
+      this.items.reverse();
+    }
   });
 
   return ListPastTalksView;
