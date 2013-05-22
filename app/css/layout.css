@@ -19,7 +19,7 @@ li {
 	display:block;
 }
 
-footer {
+footer[data-joshfire-child="footer"] {
 	bottom:0;
 	width:100%;
 	background-color: #FFF;
