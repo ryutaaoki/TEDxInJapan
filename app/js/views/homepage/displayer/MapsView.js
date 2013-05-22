@@ -62,6 +62,7 @@ define([
     },
 
     setMarkers: function (map) {
+      var self = this;
       var marker = {
         url: 'layout-img/red-cross.png',
         // This marker is 20 pixels wide by 32 pixels tall.
@@ -72,20 +73,40 @@ define([
         anchor: new google.maps.Point(16, 16)
       };
 
+      var currentDate = this.getCurrentDate();
+
       var datasources = Joshfire.factory.getDataSource('tedxevents');
 
       datasources.find({}, function(error, data) {
         var allowedBounds = new google.maps.LatLngBounds();
         _.each(data.entries, function(entry){
-          var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
-          new google.maps.Marker({
-            position: bound,
-            map: map,
-            title: entry.name,
-            icon: marker
-          });
-          // add new marker to the allowedBounds
-          allowedBounds.extend(bound);
+          if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate))) {
+            var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
+            var crossMarker = new google.maps.Marker({
+              position: bound,
+              map: map,
+              title: entry.name,
+              icon: marker
+            });
+            // add new marker to the allowedBounds
+            allowedBounds.extend(bound);
+
+            //create an infoWindow for each marker
+            // var contentString = entry.name;
+            // var infowindow = new google.maps.InfoWindow({
+            //   content: contentString
+            // });
+
+            //add event "click" on the marker
+            google.maps.event.addListener(crossMarker, 'click', function() {
+              window.open(entry.url,'_blank');
+            });
+
+            //ad event "mouseover" on the marker
+            // google.maps.event.addListener(crossMarker, 'mouseover', function() {
+            //   infowindow.open(map,crossMarker);
+            // });
+          }
         });
         //Fit the map to display all markers at load
         map.fitBounds(allowedBounds);
@@ -95,6 +116,31 @@ define([
           // google.maps.event.removeListener(listener);
         });
       });
+    },
+
+    convertDate: function(date) {
+      var newDate = date.split('/');
+      newDate = newDate[1] + '/' + newDate[0] + '/' + newDate[2];
+
+      return newDate;
+    },
+
+    getCurrentDate: function() {
+      var today = new Date();
+
+      var year = today.getFullYear();
+      var month = today.getMonth() + 1;
+      var day = today.getDate();
+
+      if(month < 10)
+        month = "0"+month;
+
+      if(day < 10)
+        day = "0"+day;
+
+      var currentDate = day + "/" + month + "/" + year;
+
+      return currentDate;
     }
 
   });
