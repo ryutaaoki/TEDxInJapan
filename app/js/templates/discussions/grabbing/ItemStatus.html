@@ -5,13 +5,11 @@
   var date = new Date(date[0] + ' ' + date[1]);
 %>
 <a href="<%= item.url %>" target="_blank">
-  <p><%= item.description ? item.description : item.name %></p>
-  <div style="clear: both;"></div>
-  <hr>
-  <p class="footer-grab">
-    <%= item.author.name ? item.author.name : item.author[0].name %><br/>
-    <%= date.toLocaleString() %>
-  </p>
-  <div class="profile-pix-miny" <% if(item.author[0]) { %>style="background: url(<%= item.author[0].image.contentURL %>) no-repeat; background-size:cover;" <% } %>></div>
+  <div class="header-item-grab">
+    <b><%= item.author.name ? item.author.name : item.author[0].name %></b>
+    <div class="profile-pix-miny" <% if(item.author[0]) { %>style="background: url(<%= item.author[0].image.contentURL %>) no-repeat; background-size:cover;" <% } %>></div>
+    <p><%= item.description ? item.description : item.name %></p>
+    <span class="pull-right"><%= date.toLocaleString() %></span>
+    <div style="clear:both"></div>
+  </div>
 </a>
-<div style="clear:both"></div>

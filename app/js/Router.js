@@ -99,8 +99,8 @@ define([
         var pckry = new Packery( container, {
           // options
           itemSelector: '.item',
-          gutter: 5,
-          rowHeight: 20
+          gutter: ".gutter-sizer",
+          rowHeight: 0
         });
       });
     },

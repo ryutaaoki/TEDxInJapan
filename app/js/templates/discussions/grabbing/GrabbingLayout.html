@@ -1,6 +1,6 @@
 <div id="panel-grabbing">
   <h4><%= T("Les discussions autour de TEDx en France") %></h4>
-  <div id="container" class="js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 5, "rowHeight": 20 }'>
+  <div id="container">
     <div id="grabbing-twitter">
         <%= children.listTweetsGrabbing %>
       <div style="clear: both;"></div>
@@ -13,8 +13,8 @@
       var pckry = new Packery( container, {
         // options
         itemSelector: '.item',
-        gutter: 10,
-        rowHeight: 20
+        gutter: ".gutter-sizer",
+        rowHeight: 0
       });
     })
     </script>

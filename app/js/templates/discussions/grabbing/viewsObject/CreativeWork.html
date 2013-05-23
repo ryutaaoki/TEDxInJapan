@@ -1,3 +1,12 @@
-<% if(item.image) { %>
-<img src="<%= item.image ? item.image.contentURL : item.url %>" alt=""/>
+<hr>
+<% if(item.url) { %>
+<a href="<%= item.url %>" target="_blank">
+<% } if(item.name) { %>
+  <h4><%= item.name %></h4>
+<% } if(item.image) { %>
+  <img src="<%= item.image.contentURL %>" alt=""/>
+<% } if(item.description) { %>
+  <p><%= item.description %></p>
+<% } if (item.url) { %>
+</a>
 <% } %>

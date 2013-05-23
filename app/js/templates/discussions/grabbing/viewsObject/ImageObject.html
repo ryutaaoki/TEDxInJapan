@@ -1,1 +1,9 @@
+<hr>
+<% if(item.name || item.image.name) { %>
+<h4><%= item.name %></h4>
+<% } %>
 <img src="<%= item.contentURL || item.image.contentURL %>" alt=""/>
+<% if(item.description) { %>
+<p><%= item.description %></p>
+<% } %>
+<div style="clear:both"></div>
