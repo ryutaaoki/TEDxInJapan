@@ -64,6 +64,11 @@ define([
       this.collection.off();
       this.collection.on('loaded', function(){
         self.update(true);
+        $('#container').packery({
+          itemSelector: '.item',
+          gutter: ".gutter-sizer",
+          rowHeight: 0
+        });
       });
     }
   });

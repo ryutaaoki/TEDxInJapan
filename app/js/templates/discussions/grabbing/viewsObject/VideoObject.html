@@ -1,1 +1,12 @@
-<embed class="pull-left" src="<%= item.embedURL %>" type="video/webm"/>
+<hr>
+<% if(item.url) { %>
+<a href="<%= item.url %>" target="_blank">
+<% } if(item.name) { %>
+  <h4><%= item.name %></h4>
+<% } if (item.embedURL) { %>
+  <embed class="pull-left" src="<%= item.embedURL %>" type="video/webm"/>
+<% } if(item.description) { %>
+  <p><%= item.description %></p>
+<% } if(item.url) { %>
+</a>
+<% } %>
