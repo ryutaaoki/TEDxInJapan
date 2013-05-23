@@ -235,6 +235,7 @@ define([
           var count = 0;
           _.each(data.entries, function (entry) {
             if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)) && count < 3){
+              entry.startDate = self.getDateName(entry.startDate);
               self.data.postevents.add(entry);
               count++;
             }
@@ -242,6 +243,46 @@ define([
           self.data.postevents.trigger('loaded', self.data.postevents);
         }
       });
+    },
+
+    getDateName: function(entryDate){
+      Date.prototype.getMonthName = function(lang) {
+        switch(lang){
+          case 'fr':
+            var m = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre'];
+            break;
+          default:
+          case 'en':
+            var m = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            break;
+        }
+        return m[this.getMonth()];
+      }
+
+      Date.prototype.getDayName = function() {
+        switch(lang){
+          case 'fr':
+            var d = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+            break;
+          default:
+          case 'en':
+            var d = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            break;
+        }
+        return d[this.getDay()];
+      }
+
+      var date = new Date(this.convertDate(entryDate));
+      var lang = Joshfire.factory.config.template.options.language;
+      switch(lang){
+        default:
+        case 'en':
+          date = date.getDayName(lang) + ' ' + date.getMonthName(lang) + ' ' + date.getDate() + ',' + date.getFullYear();
+          return date;
+        case 'fr':
+          date = date.getDayName(lang) + ' ' + date.getDate() + ' ' + date.getMonthName(lang) + ' ' + date.getFullYear();
+          return date;
+      }
     },
 
     convertDate: function(date) {
@@ -329,7 +370,7 @@ define([
       var datasource = Joshfire.factory.getDataSource('rssyoutube');
       datasource.find({
         skip: 0,
-        limit: 10
+        limit: 20
       }, function (error, data) {
         if(error) {
           logger.error(error);
