@@ -80,7 +80,7 @@ define([
       datasources.find({}, function(error, data) {
         var allowedBounds = new google.maps.LatLngBounds();
         _.each(data.entries, function(entry){
-          if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate))) {
+          // if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate))) {
             var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
             var crossMarker = new google.maps.Marker({
               position: bound,
@@ -106,7 +106,7 @@ define([
             // google.maps.event.addListener(crossMarker, 'mouseover', function() {
             //   infowindow.open(map,crossMarker);
             // });
-          }
+          // }
         });
         //Fit the map to display all markers at load
         map.fitBounds(allowedBounds);
