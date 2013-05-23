@@ -1,11 +1,11 @@
 
-<div id="tedx-live-image" style="background: url('<%= this.model.attributes.image.contentURL %>') no-repeat; height:100%; -webkit-background-size: cover; background-size:cover;">
+<div id="tedx-live-image" style="background: url('<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>') no-repeat; height:100%; -webkit-background-size: cover; background-size:cover;">
   <a href="<%= this.model.attributes.url %>" target="_blank">
     <div class="border">
       <div class="clickandplay">
         <img src="layout-img/play.png" alt="Play" width="20">
         <p><%= T("Vidéo Live") %></p>
-        <p><%= this.model.attributes.name %></p>
+        <p><%= item.name %></p>
       </div>
     </div>
   </a>

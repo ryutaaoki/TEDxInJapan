@@ -1,5 +1,5 @@
 <a href="<%= this.model.attributes.url %>" target="_blank">
-  <div class="itemEvent" style="height: 130px; width:180px; background: url(<%= this.model.attributes.image.contentURL %>) no-repeat;  -webkit-background-size: cover; background-size: cover;"></div>
+  <div class="itemEvent" style="height: 130px; width:180px; background: url(<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>) no-repeat 50%;  -webkit-background-size: cover; background-size: cover;"></div>
   <br/>
   <span class="address-event"><%= this.model.attributes.address %></span>
 </a>
