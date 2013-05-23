@@ -212,8 +212,10 @@ define([
           return;
         } else {
           _.each(data.entries, function (entry) {
-            if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate)))
+            if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate))){
+              entry.startDate = self.getDateName(entry.startDate);
               self.data.pastevents.add(entry);
+            }
           });
           self.data.pastevents.trigger('loaded', self.data.pastevents);
         }

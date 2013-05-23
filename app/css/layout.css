@@ -314,7 +314,7 @@ div.itemEvent {
 }
 
 div#past-talks {
-	padding:20px;
+	padding:10px;
 }
 
 div#grabbing-twitter, div#about-page {
@@ -426,12 +426,12 @@ li.tweet {
 #past-talks ul li {
 	display:inline-block;
 	padding: 10px 10px 10px 10px;
-	width:180px;
+	width:200px;
 	height: 160px;
 }
 
 #past-talks ul li img {
-	width: 180px;
+	width: 100%;
 }
 
 #past-talks a{
@@ -440,7 +440,7 @@ li.tweet {
 }
 
 .address-event {
-	font-size: 16px;
+	font-size: 14px;
 	margin-left:10px;
 }
 
