@@ -97,7 +97,7 @@ define([
           });
 
         default:
-          console.log(model);
+          // console.log(model);
           return new View();
         }
       } else {
