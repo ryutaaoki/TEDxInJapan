@@ -1,4 +1,6 @@
 <a class="event" href="<%= this.model.attributes.url %>" target="_blank">
   <div class="itemEvent" style="height: 210px; background: url(<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>) no-repeat 50%;  -webkit-background-size: cover; background-size: cover;"></div>
-  <h4><%= item.startDate %> <%= T('à') %> <%= item.address %></h4>
+  <div style="clear:both"></div>
+  <h4 class="nameEvent"><%= item.name %></h4>
+  <h4 class="dateEvent"><%= item.startDate %> <%= T('à') %> <%= item.address %></h4>
 </a>

@@ -161,7 +161,6 @@ nav a span {
 .displayer {
 	border: 15px solid #2b2b2b;
 	background-color:#2b2b2b;
-	height: 300px;
 }
 
 .displayer h4 {
@@ -184,6 +183,14 @@ nav a span {
 	margin-top: 5px;
 	font-size: 14px;
 	word-wrap: break-word;
+}
+
+.displayer.conferences ul {
+	margin-bottom: 0;
+}
+
+.displayer.conferences ul h4.dateEvent {
+	margin-top:0;
 }
 
 #displayer img {
@@ -427,7 +434,6 @@ li.tweet {
 	display:inline-block;
 	padding: 10px 10px 10px 10px;
 	width:200px;
-	height: 160px;
 }
 
 #past-talks ul li img {
@@ -442,6 +448,11 @@ li.tweet {
 .address-event {
 	font-size: 14px;
 	margin-left:10px;
+}
+
+h6.address-event {
+	margin: 0;
+	margin-left: 10px;
 }
 
 .displayer.conferences ul {
