@@ -372,7 +372,7 @@ define([
       var datasource = Joshfire.factory.getDataSource('rssyoutube');
       datasource.find({
         skip: 0,
-        limit: 20
+        limit: 10
       }, function (error, data) {
         if(error) {
           logger.error(error);
