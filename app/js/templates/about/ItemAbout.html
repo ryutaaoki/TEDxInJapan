@@ -1,5 +1,6 @@
-<h2><%= this.model.attributes.name %></h2>
-<% if(item.image.contentURL == "") { %>
+<% if(item.name) { %>
+<h2><%= item.name %></h2>
+<% } if(item.image.contentURL == "") { %>
 <p class="articleBody"><%= item.articleBody %></p>
 <% } else { %>
 <p class="articleBody">
