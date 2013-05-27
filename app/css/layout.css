@@ -163,6 +163,10 @@ nav a span {
 	background-color:#2b2b2b;
 }
 
+#displayer.displayer {
+	height: 300px;
+}
+
 .displayer h4 {
 	margin:0;
 	margin-top:7px;
