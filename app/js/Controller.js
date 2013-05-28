@@ -198,7 +198,7 @@ define([
       this.data.liveevent    = new Collection();
       this.data.youtube      = new Collection();
       this.data.aboutContent = new Collection();
-      this.data.rssyoutube   = new Collection();
+      this.data.grabbing     = new Collection();
     },
 
     getPastEvents: function(currentDate) {
@@ -285,9 +285,9 @@ define([
     getFeedGrabbing: function () {
       var self = this;
 
-      var datasource = Joshfire.factory.getDataSource('rssyoutube');
-      self.data.rssyoutube.setDataSource(datasource);
-      self.data.rssyoutube.fetch();
+      var datasource = Joshfire.factory.getDataSource('grabbing');
+      self.data.grabbing.setDataSource(datasource);
+      self.data.grabbing.fetch();
     },
 
     getDateName: function(entryDate){

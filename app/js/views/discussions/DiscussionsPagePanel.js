@@ -24,7 +24,7 @@ define([
 
       this.grabbing = new GrabbingView({
         appController: options.appController,
-        collection: options.appController.data.rssyoutube
+        collection: options.appController.data.grabbing
       });
 
       options.children = {
