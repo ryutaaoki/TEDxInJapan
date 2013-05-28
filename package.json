@@ -1,7 +1,7 @@
 {
   "name": "tedxregionallens",
   "fullName": "TEDx Regional Lens",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Tedx Regional Lens is a web app displaying all the TEDx conferences in a country.",
   "keywords": [
     "tedx",
@@ -60,7 +60,7 @@
           "Article"
         ]
       },
-      "rssyoutube": {
+      "grabbing": {
         "title": "Grabbing",
         "description": "Test RSS and Youtube for grabbing",
         "intputType": [
@@ -85,6 +85,7 @@
         },
         "idwidget": {
           "title": "ID Twitter widget",
+          "description": "Create a Twitter timeline widget from the twitter developer portal, then get its ID from its URL and copy it here",
           "type": "string"
         },
         "ganalytics": {
@@ -109,7 +110,7 @@
         "url",
         "idwidget",
         "ganalytics",
-        "datasources.rssyoutube"
+        "datasources.grabbing"
       ]
     }
   }
