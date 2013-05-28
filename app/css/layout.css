@@ -40,11 +40,13 @@ footer p#sponsor {
 	float:right;
 	margin:0;
 	margin-right:45px;
+	margin-bottom:-5px;
 }
 
 footer img {
 	float:right;
 	bottom:0;
+	margin-top:-50px;
 }
 
 header {
