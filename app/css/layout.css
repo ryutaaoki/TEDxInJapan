@@ -356,7 +356,9 @@ div#grabbing-twitter h4 {
 
 div#grabbing-twitter .item h4 {
 	margin-left:0;
+	margin-top:5px;
 	font-weight: bolder;
+	font-size: 14px;
 }
 
 #posts ul {
