@@ -603,3 +603,7 @@ p.articleBody img {
 	padding:20px;
 	padding-top:10px;
 }
+
+.header-item-grab p {
+	text-align: initial;
+}
