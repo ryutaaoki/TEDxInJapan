@@ -94,6 +94,7 @@ header div#country {
 	background: url('../layout-img/country.png') no-repeat right;
 	float:right;
 	margin-right:15px;
+	background-size: 80px 80px;
 }
 
 .layout-header:after, .container:after {
