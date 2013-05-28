@@ -94,7 +94,7 @@ define([
       this.navigate('discussions', {
         trigger: true
       });
-      this.appController.data.rssyoutube.on('loaded', function(){
+      this.appController.data.grabbing.on('loaded', function(){
         var container = document.querySelector('#container');
         var pckry = new Packery( container, {
           // options
