@@ -247,6 +247,49 @@ define([
       });
     },
 
+        getLiveTEDx: function() {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('tedxevents');
+      datasource.find({}, function (error, data) {
+        if(error) {
+          logger.error(error);
+          return;
+        } else {
+          _.each(data.entries, function (entry) {
+            if(entry.availability == "TRUE")
+              self.data.liveevent.reset(entry);
+          });
+          self.data.liveevent.trigger('loaded', self.data.liveevent);
+        }
+      });
+    },
+
+    getAboutPageContent: function() {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('about');
+      self.data.aboutContent.setDataSource(datasource);
+      self.data.aboutContent.fetch();
+    },
+
+    getPlaylistYoutube: function () {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('youtube');
+      self.data.youtube.setDataSourceQuery({limit:9});
+      self.data.youtube.setDataSource(datasource);
+      self.data.youtube.fetch();
+    },
+
+    getFeedGrabbing: function () {
+      var self = this;
+
+      var datasource = Joshfire.factory.getDataSource('rssyoutube');
+      self.data.rssyoutube.setDataSource(datasource);
+      self.data.rssyoutube.fetch();
+    },
+
     getDateName: function(entryDate){
       Date.prototype.getMonthName = function(lang) {
         switch(lang){
@@ -310,81 +353,6 @@ define([
       var currentDate = day + "/" + month + "/" + year;
 
       return currentDate;
-    },
-
-    getLiveTEDx: function() {
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({}, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            if(entry.availability == "TRUE")
-              self.data.liveevent.reset(entry);
-          });
-          self.data.liveevent.trigger('loaded', self.data.liveevent);
-        }
-      });
-    },
-
-    getAboutPageContent: function() {
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('about');
-      datasource.find({}, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            self.data.aboutContent.add(entry);
-          });
-          self.data.aboutContent.trigger('loaded', self.data.aboutContent);
-        }
-      });
-    },
-
-    getPlaylistYoutube: function () {
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('youtube');
-      datasource.find({
-        limit: 9
-      }, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            self.data.youtube.add(entry);
-          });
-          self.data.youtube.trigger('loaded', self.data.youtube);
-        }
-      });
-    },
-
-    getFeedGrabbing: function () {
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('rssyoutube');
-      datasource.find({
-        skip: 0,
-        limit: 10
-      }, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            self.data.rssyoutube.add(entry);
-          });
-          self.data.rssyoutube.trigger('loaded', self.data.rssyoutube);
-        }
-      });
-
     }
 
   });

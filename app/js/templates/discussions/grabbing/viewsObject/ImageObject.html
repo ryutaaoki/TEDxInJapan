@@ -1,9 +1,13 @@
 <hr>
-<% if(item.name || item.image.name) { %>
+<% if(item.url) { %>
+<a href="<%= item.url %>" target="_blank">
+<% } if(item.name) { %>
 <h4><%= item.name %></h4>
-<% } %>
+<% } if(item.contentURL || item.image.contentURL) { %>
 <img src="<%= item.contentURL || item.image.contentURL %>" alt=""/>
-<% if(item.description) { %>
+<% } if(item.description) { %>
 <p><%= item.description %></p>
+<% } if (item.url) { %>
+</a>
 <% } %>
 <div style="clear:both"></div>

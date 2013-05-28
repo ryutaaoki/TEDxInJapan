@@ -30,7 +30,7 @@ define([
       List.prototype.initialize.call(this,options);
 
       this.collection.off();
-      this.collection.on('loaded', function() {
+      this.collection.on('load', function() {
         self.update(true);
       });
     },

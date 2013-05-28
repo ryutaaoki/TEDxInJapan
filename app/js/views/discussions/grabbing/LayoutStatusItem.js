@@ -12,6 +12,8 @@ define([
   'views/discussions/grabbing/viewsObject/VideoObject',
   'views/discussions/grabbing/viewsObject/BlogPosting',
   'views/discussions/grabbing/viewsObject/CreativeWork',
+  'views/discussions/grabbing/viewsObject/WebPage',
+  'views/discussions/grabbing/viewsObject/Article',
 
   'text!templates/discussions/grabbing/LayoutStatus.html'
 ], function(
@@ -28,6 +30,8 @@ define([
   VideoObject,
   BlogPosting,
   CreativeWork,
+  WebPage,
+  Article,
 
   LayoutStatusTemplate
 ) {
@@ -93,6 +97,18 @@ define([
         case "BlogPosting":
           // console.log(model);
           return new BlogPosting({
+            model: model
+          });
+
+        case "WebPage":
+          // console.log(model);
+          return new WebPage({
+            model: model
+          });
+
+        case "Article":
+          // console.log(model);
+          return new Article({
             model: model
           });
 
