@@ -184,6 +184,10 @@ nav a span {
 	font-size: 14px;
 }
 
+.displayer .event h4.dateEvent {
+	font-size:13px;
+}
+
 .displayer p {
 	margin: 0;
 	color: white;
@@ -455,7 +459,7 @@ li.tweet {
 }
 
 .address-event {
-	font-size: 14px;
+	font-size: 13px;
 	margin-left:10px;
 }
 
