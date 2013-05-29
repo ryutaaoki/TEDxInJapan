@@ -77,47 +77,39 @@ define([
       if(model) {
         switch(model.get('@type')){
         case "ImageObject":
-          // console.log(model);
           return new ImageObject({
             model: model
           });
 
         case "CreativeWork":
-          // console.log(model);
           return new CreativeWork({
             model: model
           });
 
         case "VideoObject":
-          // console.log(model);
           return new VideoObject({
             model: model
           });
 
         case "BlogPosting":
-          // console.log(model);
           return new BlogPosting({
             model: model
           });
 
         case "WebPage":
-          // console.log(model);
           return new WebPage({
             model: model
           });
 
         case "Article":
-          // console.log(model);
           return new Article({
             model: model
           });
 
         default:
-          // console.log(model);
           return new View();
         }
       } else {
-        // console.log(model);
         return new View();
       }
     },
