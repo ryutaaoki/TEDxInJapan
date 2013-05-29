@@ -593,6 +593,10 @@ p.articleBody img {
 	width:100%;
 }
 
+.item embed {
+	margin-bottom:10px;
+}
+
 .item.w2 { width: 50%; }
 
 .gutter-sizer {
