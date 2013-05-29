@@ -1,11 +1,14 @@
 <% if(item.url) { %>
 <a href="<%= item.url %>" target="_blank">
 <% } if(item.name) { %>
-<h4><%= item.name %></h4>
+  <h4><%= item.name %></h4>
 <% } if(item.contentURL || item.image.contentURL) { %>
-<img src="<%= item.contentURL || item.image.contentURL %>" alt=""/>
+  <img src="<%= item.contentURL || item.image.contentURL %>" alt=""/>
 <% } if(item.description) { %>
-<p><%= item.description %></p>
+  <div style="clear:both"></div>
+  <div class="item-description">
+    <p><%= item.description %></p>
+  </div>
 <% } if (item.url) { %>
 </a>
 <% } %>

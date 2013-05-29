@@ -68,6 +68,13 @@ define([
         var pckry;
         // initialize Packery after all images have loaded
         imagesLoaded( container, function() {
+          var p=$('div.item-description p');
+          var divh=$('div.item-description').height();
+          while ($(p).outerHeight()>divh) {
+              $(p).text(function (index, text) {
+                  return text.replace(/\W*\s(\S)*$/, '...');
+              });
+          }
           pckry = new Packery( container, {
             // options
             itemSelector: '.item',
