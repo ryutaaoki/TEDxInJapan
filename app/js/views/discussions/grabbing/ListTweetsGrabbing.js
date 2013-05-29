@@ -65,11 +65,15 @@ define([
       this.collection.on('load', function(){
         self.update(true);
         var container = document.querySelector('#container');
-        var pckry = new Packery( container, {
-          // options
-          itemSelector: '.item',
-          gutter: ".gutter-sizer",
-          rowHeight: 0
+        var pckry;
+        // initialize Packery after all images have loaded
+        imagesLoaded( container, function() {
+          pckry = new Packery( container, {
+            // options
+            itemSelector: '.item',
+            gutter: ".gutter-sizer",
+            rowHeight: 0
+          });
         });
       });
     }

@@ -247,7 +247,7 @@ define([
       });
     },
 
-        getLiveTEDx: function() {
+    getLiveTEDx: function() {
       var self = this;
 
       var datasource = Joshfire.factory.getDataSource('tedxevents');
@@ -287,6 +287,7 @@ define([
 
       var datasource = Joshfire.factory.getDataSource('grabbing');
       self.data.grabbing.setDataSource(datasource);
+      self.data.grabbing.setDataSourceQuery({limit:40});
       self.data.grabbing.fetch();
     },
 
