@@ -52,6 +52,7 @@ footer img {
 header {
 	background-color: #565656;
 	height: 250px;
+	width:100%;
 }
 
 .layout-header h1 {
@@ -95,6 +96,7 @@ header div#country {
 	float:right;
 	margin-right:15px;
 	background-size: 80px 80px;
+	width: 215px;
 }
 
 .layout-header:after, .container:after {
@@ -116,10 +118,10 @@ nav img {
 
 .layout-header p#page-title {
 	color: white;
-	margin-left: 30px;
 	font-size: 12pt;
 	padding-top: 30px;
 	margin-bottom: 25px;
+	width:100%;
 }
 
 nav ul {
