@@ -166,6 +166,18 @@ define([
         self.layout.getChild('panel').showChild('discussions');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
+
+        var container = document.querySelector('#container');
+        var pckry;
+        // initialize Packery after all images have loaded
+        imagesLoaded( container, function() {
+          pckry = new Packery( container, {
+            // options
+            itemSelector: '.item',
+            gutter: ".gutter-sizer",
+            rowHeight: 0
+          });
+        });
       });
 
 
