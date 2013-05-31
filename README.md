@@ -7,24 +7,40 @@ How to install ?
 ----------------
 
 ####Fork this repository
+{Soon...}
 
 ####Simply Hosting
+{Soon...}
 
 
 How to configure ?
 ------------------
 
 ###Datasources
+--------------
 
-####Google Spreadsheets
-######TEDx Events
-######TEDx Blacklist Twitter
-######TEDx About
+#### 1. Google Spreadsheets
 
-####Twitter Feed
+- TEDx Events
 
-####Youtube Playlist
+  {Soon...}
 
-####Blacklist
+- TEDx Blacklist Twitter
 
-####Grabbing
+  {Soon...}
+
+- TEDx About
+
+  {Soon...}
+
+#### 2. Twitter Feed
+  {Soon...}
+
+#### 3. Youtube Playlist
+  {Soon...}
+
+#### 4. Blacklist
+  {Soon...}
+
+#### 5. Grabbing
+{Soon...}
