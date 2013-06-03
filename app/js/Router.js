@@ -70,7 +70,7 @@ define([
       this.navigate('#home/talks/' + id, {
         trigger: true
       });
-      this.appController.data.youtube.on('loaded', function() {
+      this.appController.data.youtube.on('load', function() {
         var result = self.appController.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
         _.map( result, function( model ){
           self.appController.layout.panel.homepage.talks.modalTalk.setModel(model);

@@ -358,7 +358,7 @@ define('text!templates/conferences/displayer/ItemEvent.html',[],function () { re
 
 define('text!templates/conferences/displayer/DisplayEventsLayout.html',[],function () { return '<div class="displayer conferences">\n  <h4><%= T("Les prochains TEDx en France") %></h4>\n  <%= children.displayEvents %>\n  <div style="clear:both"></div>\n</div>';});
 
-define('text!templates/conferences/talks/ItemTalks.html',[],function () { return '<a href="<%= this.model.attributes.url %>" target="_blank">\n  <div class="itemEvent" style="height: 130px; width:200px; background: url(<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>) no-repeat 50%;  -webkit-background-size: cover; background-size: cover;"></div>\n  <div style="clear:both"></div>\n  <h6 class="address-event"><%= item.name %> :</h6>\n  <span class="address-event"><%= item.startDate %></span><br/><span class="address-event"><%= T(\'à\') %> <%= item.address %></span>\n</a>\n';});
+define('text!templates/conferences/talks/ItemTalks.html',[],function () { return '<a href="<%= this.model.attributes.url %>" target="_blank">\n  <div class="itemEvent" style="height: 130px; width:200px; background: url(<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>) no-repeat 50%;  -webkit-background-size: cover; background-size: cover;"></div>\n  <div style="clear:both"></div>\n  <h6 class="address-event"><%= item.name %></h6>\n  <span class="address-event"><%= item.startDate %></span><br/><span class="address-event"><%= T(\'à\') %> <%= item.address %></span>\n</a>\n';});
 
 define('text!templates/conferences/talks/TalksLayout.html',[],function () { return '<div id="past-talks">\n  <h4><%= T("Les TEDx Passés") %></h4>\n  <%= children.listTalks %>\n</div>\n';});
 
@@ -380,7 +380,7 @@ define('text!templates/discussions/grabbing/viewsObject/Article.html',[],functio
 
 define('text!templates/discussions/grabbing/LayoutStatus.html',[],function () { return '<div style="clear:both"></div>\n<div class="gutter-sizer"></div>\n<div class="item">\n  <%= children.dynamic %>\n  <%= children.item %>\n  <div style="clear:both"></div>\n</div>\n<div style="clear:both"></div>';});
 
-define('text!templates/discussions/grabbing/GrabbingLayout.html',[],function () { return '<div id="panel-grabbing">\n  <h4><%= T("Les nouvelles autour de TEDx France partagées par la communauté") %></h4>\n  <div id="container">\n    <div id="grabbing-twitter">\n        <%= children.listTweetsGrabbing %>\n      <div style="clear: both;"></div>\n    </div>\n    <script type="text/javascript" src="js/lib/packery.min.js"></script>\n    <script>\n    $(function(){\n\n      var container = document.querySelector(\'#container\');\n      var pckry = new Packery( container, {\n        // options\n        itemSelector: \'.item\',\n        gutter: ".gutter-sizer",\n        rowHeight: 0\n      });\n    })\n    </script>\n  </div>\n</div>\n<div style="clear: both;"></div>';});
+define('text!templates/discussions/grabbing/GrabbingLayout.html',[],function () { return '<div id="panel-grabbing">\n  <h4><%= T("Les nouvelles autour de TEDx en France partagées par la communauté") %></h4>\n  <div id="container">\n    <div id="grabbing-twitter">\n        <%= children.listTweetsGrabbing %>\n      <div style="clear: both;"></div>\n    </div>\n    <script type="text/javascript" src="js/lib/packery.min.js"></script>\n    <script>\n    $(function(){\n\n      var container = document.querySelector(\'#container\');\n      var pckry = new Packery( container, {\n        // options\n        itemSelector: \'.item\',\n        gutter: ".gutter-sizer",\n        rowHeight: 0\n      });\n    })\n    </script>\n  </div>\n</div>\n<div style="clear: both;"></div>';});
 
 define('text!templates/about/ItemAbout.html',[],function () { return '<% if(item.name) { %>\n<h2><%= item.name %></h2>\n<% } if(item.image.contentURL == "") { %>\n<p class="articleBody"><%= item.articleBody %></p>\n<% } else { %>\n<p class="articleBody">\n  <img class="pull-<%= item.location %>" src="<%= item.image.contentURL %>" alt="">\n  <%= item.articleBody %>\n</p>\n<% } %>\n\n';});
 
@@ -12942,7 +12942,7 @@ define('Router',[
       this.navigate('#home/talks/' + id, {
         trigger: true
       });
-      this.appController.data.youtube.on('loaded', function() {
+      this.appController.data.youtube.on('load', function() {
         var result = self.appController.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
         _.map( result, function( model ){
           self.appController.layout.panel.homepage.talks.modalTalk.setModel(model);
@@ -15358,7 +15358,7 @@ define('views/discussions/grabbing/LayoutStatusItem',[
     },
 
     factory: function(model) {
-      console.log(model);
+
       if(model) {
         switch(model.get('@type')){
         case "ImageObject":
