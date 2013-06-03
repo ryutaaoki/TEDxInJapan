@@ -334,7 +334,7 @@ define('text',['module'], function (module) {
 
     return text;
 });
-define('text!templates/Menu.html',[],function () { return '<div id="sharp" style="background: url(layout-img/sharp.png) repeat-x bottom;">\n  <div class="container">\n    <div class="layout-header">\n      <h1><a href="#home"><img src="layout-img/TEDxlogo.png" alt="TEDxfrance" /></a></h1>\n      <div id="country">\n        <p id="page-title"><%= T(\'Le réseau TEDx en France\') %></p>\n      </div>\n\n      <nav>\n        <ul>\n          <a href="#conferences">\n            <li id="conferences-page">\n              <img src="layout-img/users.png" alt=""/><%= T("Conférences") %><br/>\n              <span><%= T("Les événements") %></span>\n            </li>\n          </a>\n          <a href="#discussions">\n            <li id="discussions-page">\n            <img src="layout-img/bubble.png" alt=""/><%= T("Nouvelles") %><br/>\n              <span><%= T("Partager et découvrir") %></span>\n            </li>\n          </a>\n          <a href="#about">\n            <li id="about-page">\n            <img src="layout-img/coeur.png" alt=""/><%= T("A propos de TEDx France") %><br/>\n              <span><%= T("Qui sommes nous ?") %></span>\n            </li>\n          </a>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>';});
+define('text!templates/Menu.html',[],function () { return '<div id="sharp" style="background: url(layout-img/sharp.png) repeat-x bottom;">\n  <div class="container">\n    <div class="layout-header">\n      <h1><a href="#home"><img src="layout-img/TEDxlogo.png" alt="TEDxfrance" /></a></h1>\n      <div id="country">\n        <p id="page-title"><%= T(\'Le réseau TEDx en France\') %></p>\n      </div>\n\n      <nav>\n        <ul>\n          <a href="#home">\n            <li id="home-page">\n              <img src="layout-img/home.png" alt=""/><%= T("Accueil") %><br/>\n              <span><%= T("TEDx France") %></span>\n            </li>\n          </a>\n          <a href="#conferences">\n            <li id="conferences-page">\n              <img src="layout-img/users.png" alt=""/><%= T("Conférences") %><br/>\n              <span><%= T("Les événements") %></span>\n            </li>\n          </a>\n          <a href="#discussions">\n            <li id="discussions-page">\n              <img src="layout-img/bubble.png" alt=""/><%= T("Nouvelles") %><br/>\n              <span><%= T("Partager et découvrir") %></span>\n            </li>\n          </a>\n          <a href="#about">\n            <li id="about-page">\n              <img src="layout-img/coeur.png" alt=""/><%= T("A propos de TEDx France") %><br/>\n              <span><%= T("Qui sommes nous ?") %></span>\n            </li>\n          </a>\n          <a href="#contact">\n            <li id="contact-page">\n              <img src="layout-img/contact.png" alt=""/><%= T("Contact") %><br/>\n              <span><%= T("Contactez-nous") %></span>\n            </li>\n          </a>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>';});
 
 define('text!templates/homepage/displayer/MenuDisplay.html',[],function () { return '<% if (this.model.collection.length > 0) { %>\n  <a href="#home/live" id="tedx-now" class="active">\n    <span><%= T("En ce moment") %> <%= this.model.attributes.name %></span>\n  </a>\n  <a href="#home/maps" id="tedx-map">\n    <span><%= T("Carte des TEDx en France") %></span>\n  </a>\n<% } %>\n';});
 
@@ -385,6 +385,10 @@ define('text!templates/discussions/grabbing/GrabbingLayout.html',[],function () 
 define('text!templates/about/ItemAbout.html',[],function () { return '<% if(item.name) { %>\n<h2><%= item.name %></h2>\n<% } if(item.image.contentURL == "") { %>\n<p class="articleBody"><%= item.articleBody %></p>\n<% } else { %>\n<p class="articleBody">\n  <img class="pull-<%= item.location %>" src="<%= item.image.contentURL %>" alt="">\n  <%= item.articleBody %>\n</p>\n<% } %>\n\n';});
 
 define('text!templates/about/AboutLayout.html',[],function () { return '<div id="about-page">\n<!--   <h2><%= T(\'A propos de TEDx En France\') %></h2>-->\n  <%= children.about %>\n</div>';});
+
+define('text!templates/contact/Contact.html',[],function () { return '<iframe src="https://docs.google.com/forms/d/1rOfY3X4UGzfo7u0gB8bm7G9iG_WBPQBJHRP25Z-CHzM/viewform?embedded=true" width="860" height="510" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>';});
+
+define('text!templates/contact/ContactLayout.html',[],function () { return '<div id="contact-page">\n  <%= children.contact %>\n</div>';});
 
 define('text!templates/Footer.html',[],function () { return '<div class="container">\n  <p>\n    This independent TEDx portal is operated under license from TED<br/>\n    Ce portail est sponsorisé par GDF Suez.\n  </p>\n  <div class="sponsorizedby">\n    <a id="adgdf" href="<%= Joshfire.factory.config.template.options.url %>" target="_blank">\n      <p id="sponsor"><%= T("sponsorisé par") %></p>\n      <div style="clear:both"></div>\n      <img src="layout-img/gdf-suez.jpg" alt="" width="180">\n    </a>\n  </div>\n</div>';});
 
@@ -12902,6 +12906,7 @@ define('Router',[
       this.route('conferences', 'conferences', this.conferencesRoute);
       this.route('discussions', 'discussions', this.discussionsRoute);
       this.route('about', 'about', this.aboutRoute);
+      this.route('contact', 'contact', this.contactRoute);
     },
 
     defaultRoute: function() {
@@ -12989,62 +12994,18 @@ define('Router',[
       });
     },
 
-    /**
-    * Routes define state objects which are then pushed
-    * into the state stack.
-    * params : URL parameters
-    * viewOptions: object that's passed as param when
-    * target view will be created or recovered
-    **/
-    // homeRoute: function() {
-    //   logger.info('run home route');
-    //   var stateObj = {
-    //     params: {
-    //       page: 'home'
-    //     },
-    //     viewOptions: {
-    //       type: 'home',
-    //       collection: new Backbone.Collection([
-    //         new Backbone.Model({
-    //           name: 'Home item !'
-    //         })
-    //       ]),
-    //       itemTemplate: '<li><%=item.name%></li>'
-    //     },
-    //     depth: 0,
-    //     title: 'Home Page !'
-    //   };
-
-    //   this.appController.setPageState(stateObj);
-    // },
-
-    // somePageRoute: function() {
-    //   logger.info('run page route');
-    //   var stateObj = {
-    //     params: {
-    //       page: 'page'
-    //     },
-    //     viewOptions: {
-    //       type: 'someotherpage',
-    //       collection: new Backbone.Collection([
-    //         new Backbone.Model({
-    //           name: 'Some Page item !'
-    //         })
-    //       ]),
-    //       itemTemplate: '<li><%=item.name%></li>'
-    //     },
-    //     depth: 1,
-    //     title: 'Some Other Page !'
-    //   };
-
-    //   this.appController.setPageState(stateObj);
-    // }
-
-    
+    contactRoute: function () {
+      
+      ga('send','pageview','#contact');
+      this.navigate('contact', {
+        trigger: true
+      });
+    }
   });
 
   return Router;
 });
+
 /**
  * @fileoverview Base class for Joshfire schema.io datasource collections.
  *
@@ -15408,6 +15369,83 @@ define('views/discussions/grabbing/LayoutStatusItem',[
   return LayoutStatusItem;
 });
 
+define('views/contact/ContactView',[
+  'require',
+  'joshlib!utils/dollar',
+  'joshlib!vendor/underscore',
+  'joshlib!vendor/backbone',
+  'joshlib!ui/item',
+
+  'text!templates/contact/Contact.html'
+], function(
+  woodman,
+  $,
+  _,
+  Backbone,
+  Item,
+
+  ContactTemplate
+) {
+  
+  var ContactView = Item.extend({
+
+    initialize: function(options) {
+      
+      var options = options || {};
+
+      options.template = ContactTemplate;
+
+      Item.prototype.initialize.call(this,options);
+    },
+  });
+
+  return ContactView;
+});
+define('views/contact/ContactPagePanel',[
+  'require',
+  'joshlib!utils/dollar',
+  'joshlib!vendor/underscore',
+  'joshlib!vendor/backbone',
+  'joshlib!ui/layout',
+
+  'views/contact/ContactView',
+
+  'text!templates/contact/ContactLayout.html'
+], function(
+  woodman,
+  $,
+  _,
+  Backbone,
+  Layout,
+
+  ContactView,
+
+  ContactLayout
+) {
+  
+  var ContactPagePanel = Layout.extend({
+
+    initialize: function(options) {
+      
+      var options = options || {};
+
+      options.template = ContactLayout;
+
+      this.contact = new ContactView({
+        appController: options.appController,
+        model: new Backbone.Model()
+      });
+
+      options.children = {
+        contact: this.contact
+      };
+
+      Layout.prototype.initialize.call(this,options);
+    },
+  });
+
+  return ContactPagePanel;
+});
 define('views/Footer',[
   'require',
   'joshlib!utils/dollar',
@@ -17296,7 +17334,8 @@ define('views/AppPanel',[
   'views/homepage/HomePagePanel',
   'views/conferences/ConferencesPagePanel',
   'views/discussions/DiscussionsPagePanel',
-  'views/about/AboutPagePanel'
+  'views/about/AboutPagePanel',
+  'views/contact/ContactPagePanel'
 ], function(
   woodman,
   $,
@@ -17308,7 +17347,8 @@ define('views/AppPanel',[
   HomePagePanel,
   ConferencesPagePanel,
   DiscussionsPagePanel,
-  AboutPagePanel
+  AboutPagePanel,
+  ContactPagePanel
 ) {
   
   var AppPanel = CardPanel.extend({
@@ -17335,13 +17375,17 @@ define('views/AppPanel',[
         appController: options.appController
       });
 
+      this.contact = new ContactPagePanel({
+        appController: options.appController
+      });
       //--------- END Different Panel Creation
 
       options.children = {
         homepage: this.homepage,
         conferences: this.conferences,
         discussions: this.discussions,
-        about: this.about
+        about: this.about,
+        contact: this.contact
       }
       CardPanel.prototype.initialize.call(this,options);
     }
@@ -17506,6 +17550,9 @@ define('Controller',[
         //We show the child panel "homepage"
         self.layout.getChild('panel').showChild('homepage');
 
+        // Remove the active class of the active menu
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+
         // declare variables
         var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
 
@@ -17513,7 +17560,7 @@ define('Controller',[
           panelDisplay.showChild('maps');
 
         panelDisplay.getChild('maps').createGoogleMaps();
-        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #home-page').addClass('active');
       });
 
       /* Homepage Maps */
@@ -17606,6 +17653,19 @@ define('Controller',[
         self.layout.getChild('panel').showChild('about');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #about-page').addClass('active');
+      });
+
+
+      /* Contact */
+      this.router.on('route:contact', function (){
+
+        //We show the child panel "homepage"
+        self.layout.getChild('panel').showChild('contact');
+
+        // Remove the active class of the active menu
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+
+        self.layout.getChild('menuList').$el.find('nav #contact-page').addClass('active');
       });
 
       //----- End Listen change routes
@@ -17708,7 +17768,7 @@ define('Controller',[
 
       var datasource = Joshfire.factory.getDataSource('grabbing');
       self.data.grabbing.setDataSource(datasource);
-      self.data.grabbing.setDataSourceQuery({limit:40});
+      self.data.grabbing.setDataSourceQuery({limit:20});
       self.data.grabbing.fetch();
     },
 

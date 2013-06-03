@@ -9,7 +9,8 @@ define([
   'views/homepage/HomePagePanel',
   'views/conferences/ConferencesPagePanel',
   'views/discussions/DiscussionsPagePanel',
-  'views/about/AboutPagePanel'
+  'views/about/AboutPagePanel',
+  'views/contact/ContactPagePanel'
 ], function(
   woodman,
   $,
@@ -21,7 +22,8 @@ define([
   HomePagePanel,
   ConferencesPagePanel,
   DiscussionsPagePanel,
-  AboutPagePanel
+  AboutPagePanel,
+  ContactPagePanel
 ) {
   var logger = woodman.getLogger('views.AppPanelView');
   var AppPanel = CardPanel.extend({
@@ -48,13 +50,17 @@ define([
         appController: options.appController
       });
 
+      this.contact = new ContactPagePanel({
+        appController: options.appController
+      });
       //--------- END Different Panel Creation
 
       options.children = {
         homepage: this.homepage,
         conferences: this.conferences,
         discussions: this.discussions,
-        about: this.about
+        about: this.about,
+        contact: this.contact
       }
       CardPanel.prototype.initialize.call(this,options);
     }

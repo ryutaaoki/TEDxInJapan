@@ -30,6 +30,7 @@ define([
       this.route('conferences', 'conferences', this.conferencesRoute);
       this.route('discussions', 'discussions', this.discussionsRoute);
       this.route('about', 'about', this.aboutRoute);
+      this.route('contact', 'contact', this.contactRoute);
     },
 
     defaultRoute: function() {
@@ -117,58 +118,13 @@ define([
       });
     },
 
-    /**
-    * Routes define state objects which are then pushed
-    * into the state stack.
-    * params : URL parameters
-    * viewOptions: object that's passed as param when
-    * target view will be created or recovered
-    **/
-    // homeRoute: function() {
-    //   logger.info('run home route');
-    //   var stateObj = {
-    //     params: {
-    //       page: 'home'
-    //     },
-    //     viewOptions: {
-    //       type: 'home',
-    //       collection: new Backbone.Collection([
-    //         new Backbone.Model({
-    //           name: 'Home item !'
-    //         })
-    //       ]),
-    //       itemTemplate: '<li><%=item.name%></li>'
-    //     },
-    //     depth: 0,
-    //     title: 'Home Page !'
-    //   };
-
-    //   this.appController.setPageState(stateObj);
-    // },
-
-    // somePageRoute: function() {
-    //   logger.info('run page route');
-    //   var stateObj = {
-    //     params: {
-    //       page: 'page'
-    //     },
-    //     viewOptions: {
-    //       type: 'someotherpage',
-    //       collection: new Backbone.Collection([
-    //         new Backbone.Model({
-    //           name: 'Some Page item !'
-    //         })
-    //       ]),
-    //       itemTemplate: '<li><%=item.name%></li>'
-    //     },
-    //     depth: 1,
-    //     title: 'Some Other Page !'
-    //   };
-
-    //   this.appController.setPageState(stateObj);
-    // }
-
-    
+    contactRoute: function () {
+      logger.info('run contact route');
+      ga('send','pageview','#contact');
+      this.navigate('contact', {
+        trigger: true
+      });
+    }
   });
 
   return Router;

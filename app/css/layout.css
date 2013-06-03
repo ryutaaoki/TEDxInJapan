@@ -337,13 +337,13 @@ div#past-talks {
 	padding:10px;
 }
 
-div#grabbing-twitter, div#about-page {
+div#grabbing-twitter, div#about-page, div#contact-page {
 	padding:20px;
 	padding-top: 5px;
 	min-height: 500px;
 }
 
-div#about-page {
+div#about-page, div#contact-page {
 	background-color: white;
 }
 

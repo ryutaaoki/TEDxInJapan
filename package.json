@@ -74,7 +74,6 @@
           "title": "Language",
           "type": "select",
           "enum": [
-            "auto",
             "fr",
             "en"
           ]
@@ -91,6 +90,11 @@
         "ganalytics": {
           "title": "Google Analytics ID",
           "type": "string"
+        },
+        "contactform": {
+          "title": "URL Google Form for contact page",
+          "description": "Create your own contact form and put the form url in this input",
+          "type": "string"
         }
       },
       "form": [
@@ -98,7 +102,6 @@
         {
           "key": "language",
           "titleMap": {
-            "auto": "Automatic",
             "fr": "French",
             "en": "English"
           }
@@ -110,6 +113,7 @@
         "url",
         "idwidget",
         "ganalytics",
+        "contactform",
         "datasources.grabbing"
       ]
     }
