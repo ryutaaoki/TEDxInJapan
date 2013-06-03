@@ -114,6 +114,7 @@ nav {
 
 nav img {
 	padding:5px;
+	margin-top: -3px;
 }
 
 .layout-header p#page-title {
@@ -129,12 +130,21 @@ nav ul {
 }
 
 nav li {
-	padding: 10px 20px 10px 20px;
+	padding: 18px 30px 10px 20px;
 	float:left;
 	cursor:pointer;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: lighter;
 	height: 51px;
+	line-height: 8px;
+}
+
+nav a[href="#conferences"] li span {
+	padding-left: 25px;
+}
+
+nav a[href="#contact"] li {
+	padding: 18px 34px 10px 33px;
 }
 
 .active{
@@ -161,6 +171,7 @@ nav a, nav a:active, nav a:visited, nav a:hover {
 nav a span {
 	color:#666;
 	font-size: 12px;
+	padding-left:22px;
 }
 
 .displayer {

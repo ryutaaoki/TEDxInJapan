@@ -307,7 +307,7 @@ define([
 
       var datasource = Joshfire.factory.getDataSource('grabbing');
       self.data.grabbing.setDataSource(datasource);
-      self.data.grabbing.setDataSourceQuery({limit:40});
+      self.data.grabbing.setDataSourceQuery({limit:60});
       self.data.grabbing.fetch();
     },
 
