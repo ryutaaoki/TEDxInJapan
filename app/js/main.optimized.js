@@ -386,7 +386,7 @@ define('text!templates/about/ItemAbout.html',[],function () { return '<% if(item
 
 define('text!templates/about/AboutLayout.html',[],function () { return '<div id="about-page">\n<!--   <h2><%= T(\'A propos de TEDx En France\') %></h2>-->\n  <%= children.about %>\n</div>';});
 
-define('text!templates/contact/Contact.html',[],function () { return '<iframe src="https://docs.google.com/forms/d/1rOfY3X4UGzfo7u0gB8bm7G9iG_WBPQBJHRP25Z-CHzM/viewform?embedded=true" width="860" height="510" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>';});
+define('text!templates/contact/Contact.html',[],function () { return '<iframe src="<%= Joshfire.factory.config.template.options.contactform + \'?embedded=true\' %>" width="860" height="510" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>';});
 
 define('text!templates/contact/ContactLayout.html',[],function () { return '<div id="contact-page">\n  <%= children.contact %>\n</div>';});
 
@@ -17768,7 +17768,7 @@ define('Controller',[
 
       var datasource = Joshfire.factory.getDataSource('grabbing');
       self.data.grabbing.setDataSource(datasource);
-      self.data.grabbing.setDataSourceQuery({limit:20});
+      self.data.grabbing.setDataSourceQuery({limit:60});
       self.data.grabbing.fetch();
     },
 
