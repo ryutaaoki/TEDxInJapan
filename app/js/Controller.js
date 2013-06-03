@@ -89,6 +89,9 @@ define([
         //We show the child panel "homepage"
         self.layout.getChild('panel').showChild('homepage');
 
+        // Remove the active class of the active menu
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+
         // declare variables
         var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
 
@@ -96,7 +99,7 @@ define([
           panelDisplay.showChild('maps');
 
         panelDisplay.getChild('maps').createGoogleMaps();
-        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #home-page').addClass('active');
       });
 
       /* Homepage Maps */
@@ -189,6 +192,19 @@ define([
         self.layout.getChild('panel').showChild('about');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
         self.layout.getChild('menuList').$el.find('nav #about-page').addClass('active');
+      });
+
+
+      /* Contact */
+      this.router.on('route:contact', function (){
+
+        //We show the child panel "homepage"
+        self.layout.getChild('panel').showChild('contact');
+
+        // Remove the active class of the active menu
+        self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+
+        self.layout.getChild('menuList').$el.find('nav #contact-page').addClass('active');
       });
 
       //----- End Listen change routes
