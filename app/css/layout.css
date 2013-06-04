@@ -73,7 +73,7 @@ header {
 }
 
 header {
-	margin-bottom: -85px;
+	margin-bottom: -87px;
 }
 
 header #sharp {
@@ -109,7 +109,6 @@ header div#country {
 nav {
 	float:left;
 	width: 100%;
-	background-color: #fafafa;
 }
 
 nav img {
@@ -125,28 +124,42 @@ nav img {
 	width:100%;
 }
 
-nav ul {
-	height: 71px;
-}
-
-nav li {
-	padding: 18px 30px 10px 20px;
-	float:left;
-	cursor:pointer;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight: lighter;
-	height: 51px;
-	line-height: 8px;
+nav a[href="#conferences"] li {
+	padding-top:19px;
+	padding-bottom:1px;
 }
 
 nav a[href="#conferences"] li span {
 	padding-left: 25px;
 }
 
-nav a[href="#contact"] li {
-	padding: 18px 34px 10px 33px;
+nav ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+    display: table;
+    width: 100%;
 }
 
+nav a {
+		background-color: #fafafa;
+    z-index:10;
+    display: table-cell;
+    padding:0;
+    margin:0;
+}
+
+nav li {
+		background-color: #fafafa;
+    text-decoration: none;
+    padding: 20px 20px 0 20px;
+    display: block;
+  	cursor:pointer;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: lighter;
+		height: 55px;
+		line-height: 8px;
+}
 .active{
 	background-color:#2b2b2b;
 }
@@ -321,6 +334,8 @@ div#talks div.talks li {
 	height: 165px;
 	overflow: hidden;
 	float: left;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: lighter;
 }
 
 div#talks div.talks span {
@@ -346,6 +361,11 @@ div.itemEvent {
 
 div#past-talks {
 	padding:10px;
+}
+
+div#past-talks li {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: lighter;
 }
 
 div#grabbing-twitter, div#about-page, div#contact-page {

@@ -3,7 +3,7 @@
   var Joshfire = window.Joshfire || {};
   Joshfire.factory = {
     globalConfig: {"DATAVERSION":"1","IMGPROXYURL":"http://imgschemaio-staging.herokuapp.com/proxy","HOSTPORT":"192.168.2.161:50021","DATAHOSTPORT":"192.168.2.161:50020","STATSHOSTPORT":"192.168.2.161:50023"},
-    config: {"app":{"id":"519a12f412dd2809dc000002","icon":null,"logo":null,"name":"grab","version":"1.0"},"template":{"name":"tedxregionallens","version":"0.1.0","options":{"idwidget":"339330374016565248","language":"fr","ganalytics":"UA-40903246-1","url":"http://www.gdfsuez.fr/"},"hooks":[]}},
+    config: {"app":{"id":"519a12f412dd2809dc000002","icon":null,"logo":null,"name":"grab","version":"1.0"},"template":{"name":"tedxregionallens","version":"0.1.0","options":{"idwidget":"339330374016565248","language":"fr","ganalytics":"UA-40903246-1","url":"http://www.gdfsuez.fr/","contactform":"https://docs.google.com/forms/d/1rOfY3X4UGzfo7u0gB8bm7G9iG_WBPQBJHRP25Z-CHzM/viewform"},"hooks":[]}},
     device: {},
     addons: {}
   };
