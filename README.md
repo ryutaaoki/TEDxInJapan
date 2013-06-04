@@ -45,30 +45,265 @@ First of all, we will create the required content to make the web application ru
       }
     ```
 * Save the code and close it.
-* Refresh the google spreadsheet you have created.
+* **_Refresh_** or **_close and re-open_** the google spreadsheet you have created.
 * You are now able to see a new menu on the topbar menu, called **Update Data**.
 * Click on **Update Data > Update TEDx Data**.
-* 
-- TEDx Events
+* Wait and see ! All the required sheets have been created and all the datas about TEDx events are fill.
 
-  {Soon...}
+- TEDx Events
+  
+  This sheet represent all the datas about TEDx events present on the "Home" page and "Conferences" page.
+  Different columns are displayed with in each header a little note helping you if you want to modify contents.
 
 - TEDx Blacklist Twitter
 
-  {Soon...}
+  It represent the tweets that you want to blacklist/not display on your web application.
+  Simply put the URL of the tweet inside the cell and "VOILA!", we make the job automatically.
 
 - TEDx About
+  
+  It represent the content displayed in the "About TEDx" page. Each line of the spreadsheet represent a paragraph.
+  Make your own custom "About" page adding images and their position (left or right).
 
-  {Soon...}
+- Google Spreadsheet URL
+  
+  After all this steps, your spreadsheet is ready to run with your web application but we miss only one data: the url of the spreadsheet.
+  - Go to **File > Publish to the web...**
+  - Copy the link of the published spreadsheet somewhere. We will use it below.
+
+
+-------------
+
+This was for the google spreadsheet, now come back to your bootstrap file (in ```app/bootstrap.js```).
+In this file, you will put your custom wishes, like the link of the playlist you want to display on the web app or the different options for your website like the language, the ID of your embedded timeline twitter, the google contact form url and even the link of your advertisement displayed in the footer of each page.
 
 #### 2. Twitter Feed
   {Soon...}
 
 #### 3. Youtube Playlist
-  {Soon...}
+  - Check in the **Joshfire.factory.config.datasources** variable. (It's in a JSON format)
+  - Find this:
+    ```javascript
 
-#### 4. Blacklist
-  {Soon...}
+      "youtube": {
+        "name":"Playlist Youtube",
+        "db":"operator",
+        "col":"updatelinks",
+        "query": {
+          "filter": {
+            "datasources": {
+              "main": {
+                "name":"Playlist Youtube",
+                "db":"youtube",
+                "col":"videos",
+                "query": {
+                  "filter": {
+                    "playlist":"http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"
+                  },
+                  "options": {}
+                },
+                "runatclient":true,
+                "missingKeys":[],
+                "outputType":"VideoObject",
+                "runtime":"browser"
+              }
+            },
+            "action":"addtarget"
+          }
+        },
+        "outputType":"VideoObject",
+        "runatclient":true,
+        "runtime":"browser"
+      },
+      ...
+    ```
+  As you can see, the line 
+  ```javascript
+  
+    ...
+    "playlist":"http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"
+    ...
+  ```
+  represent the link of your youtube playlist that you want to display on your web application. $
+  - Edit it and the changes will be effective immediatly.
 
-#### 5. Grabbing
-{Soon...}
+#### 4. TEDx spreadhseets
+  Take the google spreadsheet URL that you have copied before, we will use it now.
+  - In the bootstrap file find these lines:
+    - For the page About:
+    ```javascript
+
+      ...
+      "about":{
+        "name":"TEDx About",
+        "db":"operator",
+        "col":"updatelinks",
+        "query":{
+          "filter":{
+            "datasources":{
+              "main":{
+                "name":"TEDx About",
+                "db":"google",
+                "col":"spreadsheets",
+                "query":{
+                  "filter":{
+                    "docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                    "sheetid":3,
+                    "usestdmapping":true
+                  },
+                  "options":{
+    
+                  }
+                },
+                "runatclient":true,
+                "missingKeys":[
+    
+                ],
+                "outputType":"Article",
+                "runtime":"browser"
+              }
+            },
+            "action":"addtarget"
+          }
+        },
+        "outputType":"Article",
+        "runatclient":true,
+        "runtime":"browser"
+      },
+      ...
+      ```
+      
+    - For the Blacklisted tweets:
+      ```javascript
+      
+      ...
+      "blacklist":{
+        "name":"TEDx Blacklist",
+        "db":"operator",
+        "col":"updatelinks",
+        "query":{
+          "filter":{
+            "datasources":{
+              "main":{
+                "name":"TEDx Blacklist",
+                "db":"google",
+                "col":"spreadsheets",
+                "query":{
+                  "filter":{
+                    "docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                    "sheetid":2,
+                    "usestdmapping":true
+                  },
+                  "options":{
+    
+                  }
+                },
+                "runatclient":true,
+                "missingKeys":[
+    
+                ],
+                "outputType":"Article",
+                "runtime":"browser"
+              }
+            },
+            "action":"addtarget"
+          }
+        },
+        "outputType":"Article",
+        "runatclient":true,
+        "runtime":"browser"
+      },
+      ...
+      ```
+    - For TEDx Events:
+      ```javascript
+      
+      ...
+      "tedxevents":{
+        "name":"TEDx Events",
+        "db":"operator",
+        "col":"updatelinks",
+        "query":{
+          "filter":{
+            "datasources":{
+              "main":{
+                "name":"TEDx Events",
+                "db":"google",
+                "col":"spreadsheets",
+                "query":{
+                  "filter":{
+                    "docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                    "sheetid":1,
+                    "usestdmapping":true
+                  },
+                  "options":{
+    
+                  }
+                },
+                "runatclient":true,
+                "missingKeys":[
+    
+                ],
+                "outputType":"Article",
+                "runtime":"browser"
+              }
+            },
+            "action":"addtarget"
+          }
+        },
+        "outputType":"Article",
+        "runatclient":true,
+        "runtime":"browser"
+      }
+      ...
+      ```
+    - _In each section_ of code, there is a "docid" parameter. **Edit it** with you own google spreadsheet url.
+    
+----
+
+#### 5. Options
+  
+  You can also play with some different options for your web application:
+  - Find this line in the beginning of your bootstrap file:
+    ```javascript
+
+      ...
+      config:{
+        "app":{
+          "id":"5179009abb693502000000a6",
+          "icon":null,
+          "logo":null,
+          "name":"tedxenfrance",
+          "version":"1.0"
+        },
+        "template":{
+          "name":"tedxregionallens",
+          "version":"0.1.2",
+          "options":{
+            "language":"fr",
+            "url":"http://www.gdfsuez.com/",
+            "idwidget":"341548380079656960",
+            "ganalytics":"UA-40903246-1",
+            "contactform":"https://docs.google.com/forms/d/1rOfY3X4UGzfo7u0gB8bm7G9iG_WBPQBJHRP25Z-CHzM/viewform"
+          },
+          "hooks":[
+      
+          ]
+        }
+      }
+      ...
+      ```
+      
+    As you can see, there is an "options" section in this code. You can modify:
+    - the "language": following the current syntax
+    - the "url": representing the url of the advertisement in the footer of each page
+    - the "idwidget": representing the twitter widget created on [Twitter](https://twitter.com/settings/widgets)
+    - the "ganalytics": representing the USER ID of your google analytics account
+    - the "contactform": represention the URL of the google form created for the contacts
+    
+    You can now play with your own web application based on TEDx events.
+    
+----
+----
+
+{ License ... }
