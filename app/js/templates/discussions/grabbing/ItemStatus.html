@@ -1,8 +1,8 @@
 <%
-  var date = item.datePublished.split('.')[0].split('T');
-  var datePartOne = date[0];
-  var datePartTwo = date[1];
-  var date = new Date(date[0] + ' ' + date[1]);
+  var date = item.datePublished.split('.')[0].split('Z')[0].split('T');
+  var datePartOne = new String(date[0]).replace(/-/g,'/');
+  var datePartTwo = new String(date[1]);
+  var date = new Date(datePartOne + ' ' + datePartTwo);
 %>
 <a href="<%= item.url %>" target="_blank">
   <div class="header-item-grab">
