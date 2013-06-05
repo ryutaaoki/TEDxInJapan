@@ -98,7 +98,7 @@ In this file, you will put your custom wishes, like the link of the playlist you
                 "col":"videos",
                 "query": {
                   "filter": {
-                    "playlist":"http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"
+                    "playlist":"http://www.youtube.com/playlist?list=XXXXXXXXXXXXXXXXXXXXXXXXX"
                   },
                   "options": {}
                 },
@@ -121,7 +121,7 @@ In this file, you will put your custom wishes, like the link of the playlist you
   ```javascript
   
     ...
-    "playlist":"http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"
+    "playlist":"http://www.youtube.com/playlist?list=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     ...
   ```
   represent the link of your youtube playlist that you want to display on your web application. $
@@ -147,7 +147,7 @@ In this file, you will put your custom wishes, like the link of the playlist you
                 "col":"spreadsheets",
                 "query":{
                   "filter":{
-                    "docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                    "docid":"https://docs.google.com/spreadsheet/pub?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                     "sheetid":3,
                     "usestdmapping":true
                   },
@@ -190,7 +190,7 @@ In this file, you will put your custom wishes, like the link of the playlist you
                 "col":"spreadsheets",
                 "query":{
                   "filter":{
-                    "docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                    "docid":"https://docs.google.com/spreadsheet/pub?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                     "sheetid":2,
                     "usestdmapping":true
                   },
@@ -232,7 +232,7 @@ In this file, you will put your custom wishes, like the link of the playlist you
                 "col":"spreadsheets",
                 "query":{
                   "filter":{
-                    "docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                    "docid":"https://docs.google.com/spreadsheet/pub?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                     "sheetid":1,
                     "usestdmapping":true
                   },
@@ -281,10 +281,10 @@ In this file, you will put your custom wishes, like the link of the playlist you
           "version":"0.1.2",
           "options":{
             "language":"fr",
-            "url":"http://www.gdfsuez.com/",
-            "idwidget":"341548380079656960",
-            "ganalytics":"UA-40903246-1",
-            "contactform":"https://docs.google.com/forms/d/1rOfY3X4UGzfo7u0gB8bm7G9iG_WBPQBJHRP25Z-CHzM/viewform"
+            "url":"http://www.youradvertisement.com/",
+            "idwidget":"XXXXXXXXXXXXXXX",
+            "ganalytics":"UA-XXXXXXXX-X",
+            "contactform":"https://docs.google.com/forms/d/XXXXXXXXXXXXXXXXXXXXXXXXXXXX/viewform"
           },
           "hooks":[
       
@@ -302,6 +302,9 @@ In this file, you will put your custom wishes, like the link of the playlist you
     - the "contactform": represention the URL of the google form created for the contacts
     
     You can now play with your own web application based on TEDx events.
+    
+----
+#### 6. Google "Contact" form
     
 ----
 ----
