@@ -35,7 +35,8 @@ define([
       var map;
 
       var mapOptions = {
-        zoom: 8,
+        center: new google.maps.LatLng(47.2088589,2.3470599),
+        zoom: 5,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -78,7 +79,6 @@ define([
       var datasources = Joshfire.factory.getDataSource('tedxevents');
 
       datasources.find({}, function(error, data) {
-        var allowedBounds = new google.maps.LatLngBounds();
         _.each(data.entries, function(entry){
           // if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate))) {
             var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
@@ -88,32 +88,11 @@ define([
               title: entry.name,
               icon: marker
             });
-            // add new marker to the allowedBounds
-            allowedBounds.extend(bound);
-
-            //create an infoWindow for each marker
-            // var contentString = entry.name;
-            // var infowindow = new google.maps.InfoWindow({
-            //   content: contentString
-            // });
 
             //add event "click" on the marker
             google.maps.event.addListener(crossMarker, 'click', function() {
               window.open(entry.url,'_blank');
             });
-
-            //ad event "mouseover" on the marker
-            // google.maps.event.addListener(crossMarker, 'mouseover', function() {
-            //   infowindow.open(map,crossMarker);
-            // });
-          // }
-        });
-        //Fit the map to display all markers at load
-        map.fitBounds(allowedBounds);
-        var listener = google.maps.event.addListener(map, "idle", function() {
-          if (map.getZoom() < 5) map.setZoom(5);
-          // uncomment to remove event if needed
-          // google.maps.event.removeListener(listener);
         });
       });
     },
