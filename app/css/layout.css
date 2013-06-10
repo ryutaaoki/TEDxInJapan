@@ -55,6 +55,14 @@ header {
 	width:100%;
 }
 
+.black {
+	color:black;
+}
+
+.grey {
+	color:grey;
+}
+
 .layout-header h1 {
 	margin-left:15px;
 }
@@ -368,14 +376,56 @@ div#past-talks li {
   font-weight: lighter;
 }
 
-div#grabbing-twitter, div#about-page, div#contact-page {
+div#grabbing-twitter, div#about-page, div#contact-page, div#ads-page {
 	padding:20px;
 	padding-top: 5px;
 	min-height: 500px;
 }
 
-div#about-page, div#contact-page {
+div#about-page, div#contact-page, div#ads-page {
 	background-color: white;
+}
+
+div#ads-page {
+	padding:70px;
+	padding-top:15px;
+	text-align:justify;
+}
+
+#ads-logo-info {
+	padding-top:30px;
+}
+
+div#ads-page div.ads-info-list h3 {
+	font-weight: bolder;
+	margin-bottom: 0;
+}
+
+.list-info-ads {
+	float:left;
+}
+
+.list-info-ads.services-energie {
+	height:370px;
+}
+
+.list-info-ads.services-env {
+	margin-top: -70px;
+}
+
+.list-info-ads.chiffre-group ul {
+	float:left;
+}
+
+div#ads-page div.ads-info-list ul {
+	margin-top:0;
+	margin-right: 15px;
+}
+
+div#ads-page div.ads-info-list ul li {
+	display:list-item;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: lighter;
 }
 
 div#grabbing-twitter {

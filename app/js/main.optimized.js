@@ -390,7 +390,11 @@ define('text!templates/contact/Contact.html',[],function () { return '<iframe sr
 
 define('text!templates/contact/ContactLayout.html',[],function () { return '<div id="contact-page">\n  <%= children.contact %>\n</div>';});
 
-define('text!templates/Footer.html',[],function () { return '<div class="container">\n  <p>\n    This independent TEDx portal is operated under license from TED<br/>\n    Ce portail est sponsorisé par GDF Suez.\n  </p>\n  <div class="sponsorizedby">\n    <a id="adgdf" href="<%= Joshfire.factory.config.template.options.url %>" target="_blank">\n      <p id="sponsor"><%= T("sponsorisé par") %></p>\n      <div style="clear:both"></div>\n      <img src="layout-img/gdf-suez.jpg" alt="" width="180">\n    </a>\n  </div>\n</div>';});
+define('text!templates/ads/Ads.html',[],function () { return '<div id="ads-logo-info">\n  <center>\n    <img src="layout-img/gdf-suez.jpg" alt="" width="180">\n    <h3>GDF Suez, partenaire officiel du portail TEDx France</h3>\n  </center>\n</div>\n<div class="ads-info">\n  <p>GDF SUEZ inscrit la croissance responsable au cœur de ses métiers (électricité, gaz naturel, services) pour relever les grands enjeux énergétiques et environnementaux : répondre aux besoins en énergie, assurer la sécurité d’approvisionnement, lutter contre les changements climatiques et optimiser l’utilisation des ressources.</p>\n  <p>Le Groupe propose des solutions performantes et innovantes aux particuliers, aux villes et aux entreprises en s’appuyant sur un portefeuille d’approvisionnement gazier diversifié, un parc de production électrique flexible et peu émetteur de CO<SUB>2</SUB> et une expertise unique dans quatre secteurs clés : le gaz naturel liquéfié, les services à l’efficacité énergétique, la production indépendante d’électricité et les services à l’environnement.</p>\n  <p>GDF SUEZ compte 219 300 collaborateurs dans le monde pour un chiffre d’affaires en 2012 de 97 milliards d’euros. Coté à Paris, Bruxelles et Luxembourg, le Groupe est représenté dans les principaux indices internationaux : CAC 40, BEL 20, DJ Euro Stoxx 50, Euronext 100, FTSE Eurotop 100, MSCI Europe, ASPI Eurozone, Vigeo World 120, Vigeo Europe 120 et Vigeo France 20.</p>\n\n  <div class="ads-info-list">\n    <div class="list-info-ads chiffre-group">\n      <h3 class="black">Chiffres Groupe</h3>\n      <ul>\n        <li>\n          <b>219 300</b> collaborateurs dans le monde<br>\n            - dont 61 300 dans l’électricité et le gaz,<br>\n            - 78 400 dans les services à l’énergie,<br>\n            - et 79 600 dans les services à<br>\n              l\'environnement\n        </li>\n        <li><b>97 milliards</b> d’euros<br>de chiffre d’affaires en 2012.</li>\n      </ul>\n\n      <ul>\n        <li>Une présence dans près de <b>70</b> pays</li>\n        <li><b>7-8 milliards</b> d’euros d’investissements<br>par an sur la période 2013-2015.</li>\n        <li><b>11 milliards</b> d’euros d’optimisation d’actifs<br>en 2013-2014.</li>\n        <li><b>1 100</b> chercheurs et experts<br>dans <b>9</b> centres de R&D.</li>\n      </ul>\n    </div>\n\n    <div style="clear:both"></div>\n    \n    <div class="list-info-ads">\n      <h3 class="grey">Électricité</h3>\n      <ul class="grey">\n        <li>\n          <b>1<sup>er</sup></b> producteur<br>indépendant dans le<br>monde.\n        </li>\n        <li>1<sup>er</sup></b> producteur mondial<br/> d’électricité non nucléaire.</li>\n        <li>1<sup>er</sup></b> producteur<br/> indépendant dans les pays<br>du Golfe Persique, au Brésil<br>et en Thaïlande.</li>\n        <li><b>116</b> GW de capacités de<br>production électrique<br>installées.</li>\n        <li><b>10</b> GW de capacités en<br/>construction.</li>\n        <li><b>50%</b> d’augmentation des<br/>Gaz naturel<br/>capacités en énergie<br/>renouvelable entre 2009 et<br/>2015.</li>\n      </ul>\n    </div>\n    \n    <div class="list-info-ads">\n      <h3 class="grey">Gaz naturel</h3>\n      <ul class="grey">\n        <li>Un portefeuille<br/>d’approvisionnement<br/>de <b>1 208</b> TWh.</li>\n        <li><b>2<sup>e</sup></b> acheteur en Europe.</li>\n        <li><b>1<sup>ers</sup></b> réseaux de transport<br/>et de distribution en<br/>Europe.</li>\n        <li><b>1<sup>er</sup></b> vendeur de capacités<br/>de stockage en Europe.</li>\n        <li><b>344</b> licences d’exploration<br/>et/ou de production dans<br/>16 pays.</li>\n        <li><b>836</b> Mbep de réserves<br/>prouvées et probables.</li>\n      </ul>\n    </div>\n    \n\n\n\n\n    <div class="list-info-ads services-energie">\n      <h3 class="grey">Services à l\'énergie</h3>\n      <ul class="grey">\n        <li><b>1<sup>er</sup></b> fournisseur de services<br/>d’efficacité énergétique et<br/>environnementale dans le<br/>monde.</li>\n        <li><b>1 300</b> implantations en<br/>Europe.</li>\n        <li><b>180</b> réseaux urbains de<br/>chaleur et de froid gérés<br/>dans le monde.</li>\n        <li><b>48</b> partenariats public-<br/>privé à travers l’Europe.</li>\n      </ul>\n    </div>\n    \n    <div class="list-info-ads">\n      <h3 class="grey">GNL</h3>\n      <ul class="grey">\n        <li><b>1<sup>er</sup></b> importateur en Europe.</li>\n        <li><b>3<sup>e</sup></b> importateur dans le<br/>monde.</li>\n        <li><b>2<sup>e</sup></b> opérateur de terminaux<br/>méthaniers en Europe.</li>\n        <li>Une flotte de <b>17</b><br/>méthaniers dont deux<br/>navires regazéifieurs.</li>\n      </ul>\n    </div>\n\n    <div class="list-info-ads services-env">\n      <h3 class="grey">Services à l\'environnement</h3>\n      <ul class="grey">\n        <li><b>2<sup>e</sup></b> fournisseur de services<br/>à l’environnement dans le<br/>monde.</li>\n        <li><b>97 millions</b> d\'habitants<br/>alimentés en eau potable.</li>\n        <li><b>57 millions</b> de<br/>particuliers desservis en<br/>propreté.</li>\n        <li><b>66 millions</b> de<br/>particuliers desservis en<br/>assainissement.</li>\n      </ul>\n    </div>\n\n    <div style="clear:both"></div>\n  </div>\n</div>';});
+
+define('text!templates/ads/AdsLayout.html',[],function () { return '<div id="ads-page">\n  <%= children.ads %>\n</div>';});
+
+define('text!templates/Footer.html',[],function () { return '<div class="container">\n  <p>\n    This independent TEDx portal is operated under license from TED<br/>\n    Ce portail est sponsorisé par <a href="#ads">GDF Suez</a>.\n  </p>\n  <div class="sponsorizedby">\n    <a id="adgdf" href="<%= Joshfire.factory.config.template.options.url %>" target="_blank">\n      <p id="sponsor"><%= T("sponsorisé par") %></p>\n      <div style="clear:both"></div>\n      <img src="layout-img/gdf-suez.jpg" alt="" width="180">\n    </a>\n  </div>\n</div>';});
 
 define('../lang/config',[],
 function() {
@@ -12907,6 +12911,7 @@ define('Router',[
       this.route('discussions', 'discussions', this.discussionsRoute);
       this.route('about', 'about', this.aboutRoute);
       this.route('contact', 'contact', this.contactRoute);
+      this.route('ads', 'ads', this.adsRoute);
     },
 
     defaultRoute: function() {
@@ -12998,6 +13003,14 @@ define('Router',[
       
       ga('send','pageview','#contact');
       this.navigate('contact', {
+        trigger: true
+      });
+    },
+
+    adsRoute: function () {
+      
+      ga('send', 'pageview', '#ads');
+      this.navigate('ads', {
         trigger: true
       });
     }
@@ -15425,6 +15438,83 @@ define('views/contact/ContactPagePanel',[
 
   return ContactPagePanel;
 });
+define('views/ads/AdsView',[
+  'require',
+  'joshlib!utils/dollar',
+  'joshlib!vendor/underscore',
+  'joshlib!vendor/backbone',
+  'joshlib!ui/item',
+
+  'text!templates/ads/Ads.html'
+], function(
+  woodman,
+  $,
+  _,
+  Backbone,
+  Item,
+
+  AdsTemplate
+) {
+  
+  var AdsView = Item.extend({
+
+    initialize: function(options) {
+      
+      var options = options || {};
+
+      options.template = AdsTemplate;
+
+      Item.prototype.initialize.call(this,options);
+    }
+  });
+
+  return AdsView;
+});
+define('views/ads/AdsPagePanel',[
+  'require',
+  'joshlib!utils/dollar',
+  'joshlib!vendor/underscore',
+  'joshlib!vendor/backbone',
+  'joshlib!ui/layout',
+
+  'views/ads/AdsView',
+
+  'text!templates/ads/AdsLayout.html'
+], function(
+  woodman,
+  $,
+  _,
+  Backbone,
+  Layout,
+
+  AdsView,
+
+  AdsLayout
+) {
+  
+  var AdsPagePanel = Layout.extend({
+
+    initialize: function(options) {
+      
+      var options = options || {};
+
+      options.template = AdsLayout;
+
+      this.ads = new AdsView({
+        appController: options.appController,
+        model: new Backbone.Model()
+      });
+
+      options.children = {
+        ads: this.ads
+      };
+
+      Layout.prototype.initialize.call(this,options);
+    }
+  });
+
+  return AdsPagePanel;
+});
 define('views/Footer',[
   'require',
   'joshlib!utils/dollar',
@@ -17314,7 +17404,8 @@ define('views/AppPanel',[
   'views/conferences/ConferencesPagePanel',
   'views/discussions/DiscussionsPagePanel',
   'views/about/AboutPagePanel',
-  'views/contact/ContactPagePanel'
+  'views/contact/ContactPagePanel',
+  'views/ads/AdsPagePanel'
 ], function(
   woodman,
   $,
@@ -17327,7 +17418,8 @@ define('views/AppPanel',[
   ConferencesPagePanel,
   DiscussionsPagePanel,
   AboutPagePanel,
-  ContactPagePanel
+  ContactPagePanel,
+  AdsPagePanel
 ) {
   
   var AppPanel = CardPanel.extend({
@@ -17357,6 +17449,10 @@ define('views/AppPanel',[
       this.contact = new ContactPagePanel({
         appController: options.appController
       });
+
+      this.ads = new AdsPagePanel({
+        appController: options.appController
+      });
       //--------- END Different Panel Creation
 
       options.children = {
@@ -17364,7 +17460,8 @@ define('views/AppPanel',[
         conferences: this.conferences,
         discussions: this.discussions,
         about: this.about,
-        contact: this.contact
+        contact: this.contact,
+        ads: this.ads
       }
       CardPanel.prototype.initialize.call(this,options);
     }
@@ -17645,6 +17742,12 @@ define('Controller',[
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
 
         self.layout.getChild('menuList').$el.find('nav #contact-page').addClass('active');
+      });
+
+      /* Ads */
+      this.router.on('route:ads', function (){
+        //We show the child panel "ads"
+        self.layout.getChild('panel').showChild('ads');
       });
 
       //----- End Listen change routes

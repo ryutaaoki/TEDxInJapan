@@ -31,6 +31,7 @@ define([
       this.route('discussions', 'discussions', this.discussionsRoute);
       this.route('about', 'about', this.aboutRoute);
       this.route('contact', 'contact', this.contactRoute);
+      this.route('ads', 'ads', this.adsRoute);
     },
 
     defaultRoute: function() {
@@ -122,6 +123,14 @@ define([
       logger.info('run contact route');
       ga('send','pageview','#contact');
       this.navigate('contact', {
+        trigger: true
+      });
+    },
+
+    adsRoute: function () {
+      logger.info('run ads route');
+      ga('send', 'pageview', '#ads');
+      this.navigate('ads', {
         trigger: true
       });
     }

@@ -207,6 +207,12 @@ define([
         self.layout.getChild('menuList').$el.find('nav #contact-page').addClass('active');
       });
 
+      /* Ads */
+      this.router.on('route:ads', function (){
+        //We show the child panel "ads"
+        self.layout.getChild('panel').showChild('ads');
+      });
+
       //----- End Listen change routes
       this.start();
     },
