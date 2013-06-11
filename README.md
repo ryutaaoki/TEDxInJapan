@@ -77,7 +77,7 @@ First of all, we will create the required content to make the web application ru
 This was for the google spreadsheet, now come back to your bootstrap file (in ```app/bootstrap.js```).
 In this file, you will put your custom wishes, like the link of the playlist you want to display on the web app or the different options for your website like the language, the ID of your embedded timeline twitter, the google contact form url and even the link of your advertisement displayed in the footer of each page.
 
-#### 2. Twitter Feed
+#### 2. Twitter Feed for Grabbing
   {Soon...}
 
 #### 3. Youtube Playlist
@@ -295,18 +295,102 @@ In this file, you will put your custom wishes, like the link of the playlist you
       ```
       
     As you can see, there is an "options" section in this code. You can modify:
-    - the "language": following the current syntax
-    - the "url": representing the url of the advertisement in the footer of each page
-    - the "idwidget": representing the twitter widget created on [Twitter](https://twitter.com/settings/widgets)
-    - the "ganalytics": representing the USER ID of your google analytics account
-    - the "contactform": represention the URL of the google form created for the contacts
+    - the **"language":** following the current syntax
+    - the **"url"**: representing the url of the advertisement in the footer of each page
+    - the **"idwidget"**: representing the twitter widget created on [Twitter](https://twitter.com/settings/widgets)
+    - the **"ganalytics"**: representing the USER ID of your google analytics account
+    - the **"contactform"**: represention the URL of the google form created for the contacts (See [section 6](https://github.com/joshfire/tedxenfrance#6-google-contact-form))
     
-    You can now play with your own web application based on TEDx events.
+    You can now play with your own web application based on TEDx events, but wait ! There is still one thing to do.
+    You have to add a "contact-us" form to your web application.
     
 ----
 #### 6. Google "Contact" form
     
-----
+  To insert a contact form in your web app, you just have to:
+  - Create a Google Form on your [Google Drive](https://drive.google.com/)
+    - Give a name to your form 
+      (we propose to give the following title: "Contact-us" because it will be displayed on your "contact" page)
+  - **First question**:
+    - Question title: "Give your email address"
+    - Question type: "Text"
+    - Check the little box saying "Required question"
+    - Click on "Done" and click on "Add item"
+  - **Second question**:
+    - Question title: "Subject"
+    - Question type: "Text"
+    - Check the little box saying "Required question"
+    - Click on "Done" and click on "Add item"
+  - **Thrid question**:
+    - Question title: "Your message"
+    - Question type: "Paragraph text"
+    - Check the little box saying "Required question"
+    - Click on "Done"
+  - Change the confirmation message below if you want. 
+  
+  Your form is now complete, but not ready.
+  
+  By clicking on the **"Send Form"** button, a link is generated to share the form with all users.
+  **Copy it** and keep it in a corner, we will need it after.
+  
+  Since we have the google form, we have to configure WHERE we will receive the messages sent by the users.
+  For this, in your google form toolbar, click on **"Responses > Choose response destination"**.
+  - Check **"New spreadsheet"** and edit the name of the spreadsheet.
+  - Click on **"Done"**
+  You can see in the toolbar of the google form a button named _"View responses"_.
+  - Click on **"View responses"**
+  You are now redirect to the new spreadsheet created to receive all the messages that users will send to you.
+  
+  The next step is to receive an email with the messages sent through the google form by the users.
+  
+  - Go to **"Tools > Script editor"**
+  - Create a script for **"Blank project"**
+  - Now, **copy** the code present in ```googlescript/Contact.gs```
+  - **Replace all the code** in the google script created.
+  
+  You have now a google script like this:
+    ```javascript
+      
+      function formulaireContactEmail(e) {
+        try {
+          var recipient = "your@address.email";
+          var timestamp = e.values[0];
+          var email = e.values[1];
+          var objet = e.values[2];
+          var message = e.values[3]
+          var body = ' <'+email+'> vous a envoyé le message : '+message;
+          var bodyHTML1 = '<p>Le '+timestamp+', <a href="mailto:'+email+'">'+email+'</a> vous a envoyé : </p>';
+          var bodyHTML2 = '<blockquote>'+message+'</blockquote>';
+          var advancedArgs = {htmlBody:bodyHTML1+bodyHTML2 , replyTo:email};
+          MailApp.sendEmail(recipient, objet, body, advancedArgs);
+        } catch(e){
+          MailApp.sendEmail(recipient, "Error - Formulaire de contact", e.message);
+        }
+      }
+    ```
+  Just replace the "your@address.email" by your own destination address email.
+  It is not finished yet, don't close your google script page !
+####And now, the final step !
+  
+  The final step consist on create a Trigger to send an email each time that there is a new response sent by an user.
+
+  - In your google script toolbar, go to **"Ressources > Current project's trigger..."**
+  - Click on **"No triggers set up. Click here to add one now."**
+  After that, you will be able to see a table with two columns and buttons
+  - On the first column named "Run", choose the function "formulaireContactEmail"
+  - On the second column named "Events":
+    - First button: "From spreadsheet"
+    - Second button: "On form submit"
+  **Make sure to follow these instructions.**
+  - Save
+  A window appears asking for authorization by the owner of the form. The window must be with green borders. If not, be sure you have fill correctly the previous steps concerning the google form and spreadsheet.
+  - Click on "Authorize"
+  - Save again
+
+  You google form is now ready to be used.
+  
+  Just retrieve the link of the form that you copy/paste in a corner later, and replace it in the "options" section of the bootstrap code describe previously in [section 5](https://github.com/joshfire/tedxenfrance#5-options)
+
 ----
 
 { License ... }
