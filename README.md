@@ -11,8 +11,6 @@ Refer to [Fork a repo](https://help.github.com/articles/fork-a-repo) on [Github 
 You have now a version of this repository on **your own computer**.
 
 #### 2. Deploy
-- Github Pages:
-  { Coming soon... }
 
 - Simply Hosting
   * Open your favorite software for simple hosting
@@ -78,7 +76,7 @@ This was for the google spreadsheet, now come back to your bootstrap file (in ``
 In this file, you will put your custom wishes, like the link of the playlist you want to display on the web app or the different options for your website like the language, the ID of your embedded timeline twitter, the google contact form url and even the link of your advertisement displayed in the footer of each page.
 
 #### 2. Twitter Feed for Grabbing
-  {Soon...}
+  { Coming soon ... }
 
 #### 3. Youtube Playlist
   - Check in the **Joshfire.factory.config.datasources** variable. (It's in a JSON format)
