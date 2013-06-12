@@ -1,4 +1,9 @@
 /* Layout */
+@font-face {
+  font-family: HelveticaNeue-Light;
+  src: url(HelveticaNeue-Light.ttf);
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -6,13 +11,17 @@ body {
 }
 
 p, h1, h2, h3, h4, h5 {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: HelveticaNeue-Light;
   font-weight: lighter;
 }
 
 a, a:hover, a:visited, a:focus {
 	text-decoration: none;
 	color: #2b2b2b;
+}
+
+a.ads {
+	text-decoration: underline;
 }
 
 li {
@@ -30,8 +39,8 @@ footer[data-joshfire-child="footer"] {
 footer p {
 	padding:5px;
 	float:left;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: lighter;
+	/*font-family: HelveticaNeue-Light;*/
+  /*font-weight: lighter;*/
 	font-size: 10pt;
 	color: #2b2b2b;
 }
@@ -69,8 +78,8 @@ header {
 
 .layout-header h1, .layout-header p {
 	float: left;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: lighter;
+	/*font-family: HelveticaNeue-Light;*/
+  /*font-weight: lighter;*/
 }
 
 .layout-header, .container {
@@ -157,14 +166,18 @@ nav a {
     margin:0;
 }
 
+nav a:hover {
+	background-color: #565656;
+}
+
 nav li {
 		background-color: #fafafa;
     text-decoration: none;
     padding: 20px 20px 0 20px;
     display: block;
   	cursor:pointer;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-		font-weight: lighter;
+		font-family: HelveticaNeue-Light;
+		/*font-weight: lighter;*/
 		height: 55px;
 		line-height: 8px;
 }
@@ -220,6 +233,7 @@ nav a span {
 
 .displayer .event h4.dateEvent {
 	font-size:13px;
+	font-weight: normal;
 }
 
 .displayer p {
@@ -266,7 +280,7 @@ nav a span {
 	text-decoration: none;
 	color:#FFF;
 	font-size: 14px;
-	font-weight: lighter;
+	/*font-weight: lighter;*/
 }
 
 #displayer div.MenuDisplay ul a:hover, #displayer div.MenuDisplay ul a span:hover {
@@ -319,6 +333,7 @@ div#talks h4 {
 
 div#talks h4, div#twitter-posts h4, div#past-talks h4 {
 	font-weight: bolder;
+	font-family: "Helvetica Neue";
 }
 
 div#talks div.talks {
@@ -342,8 +357,8 @@ div#talks div.talks li {
 	height: 165px;
 	overflow: hidden;
 	float: left;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: lighter;
+	/*font-family: HelveticaNeue-Light;*/
+  /*font-weight: lighter;*/
 }
 
 div#talks div.talks span {
@@ -372,8 +387,8 @@ div#past-talks {
 }
 
 div#past-talks li {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: lighter;
+	/*font-family: HelveticaNeue-Light;*/
+  /*font-weight: lighter;*/
 }
 
 div#grabbing-twitter, div#about-page, div#contact-page, div#ads-page {
@@ -399,18 +414,22 @@ div#ads-page {
 div#ads-page div.ads-info-list h3 {
 	font-weight: bolder;
 	margin-bottom: 0;
+	font-family: "Helvetica Neue";
 }
 
 .list-info-ads {
 	float:left;
+	height:480px;
+	width:245px;
 }
 
-.list-info-ads.services-energie {
-	height:370px;
+.list-info-ads.chiffre-group {
+	height:215px;
+	width:690px;
 }
 
-.list-info-ads.services-env {
-	margin-top: -70px;
+.list-info-ads#services-env, .list-info-ads#gnl {
+	height:305px;
 }
 
 .list-info-ads.chiffre-group ul {
@@ -424,8 +443,12 @@ div#ads-page div.ads-info-list ul {
 
 div#ads-page div.ads-info-list ul li {
 	display:list-item;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight: lighter;
+	font-family: HelveticaNeue-Light;
+	/*font-weight: lighter;*/
+}
+
+div#ads-page div.ads-info-list ul li b {
+	font-family: "Helvetica Neue";
 }
 
 div#grabbing-twitter {
@@ -447,6 +470,7 @@ div#grabbing-twitter .item h4 {
 	margin-top:5px;
 	font-weight: bolder;
 	font-size: 14px;
+	font-family: "Helvetica Neue";
 }
 
 #posts ul {
@@ -601,6 +625,10 @@ h6.address-event {
 
 #about-page ul {
 	padding-right:40px;
+}
+
+.item h4, div.item-description p {
+	text-align: initial;
 }
 
 p.articleBody {

@@ -99,6 +99,7 @@ define([
           panelDisplay.showChild('maps');
 
         panelDisplay.getChild('maps').createGoogleMaps();
+        self.layout.getChild('menuList').$el.find('nav #home-nav').addClass('active');
         self.layout.getChild('menuList').$el.find('nav #home-page').addClass('active');
       });
 
@@ -157,6 +158,7 @@ define([
       this.router.on('route:conferences', function (){
         self.layout.getChild('panel').showChild('conferences');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #conferences-nav').addClass('active');
         self.layout.getChild('menuList').$el.find('nav #conferences-page').addClass('active');
       });
 
@@ -168,6 +170,7 @@ define([
 
         self.layout.getChild('panel').showChild('discussions');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #discussions-nav').addClass('active');
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
 
         var container = document.querySelector('#container');
@@ -191,6 +194,7 @@ define([
 
         self.layout.getChild('panel').showChild('about');
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
+        self.layout.getChild('menuList').$el.find('nav #about-nav').addClass('active');
         self.layout.getChild('menuList').$el.find('nav #about-page').addClass('active');
       });
 
@@ -204,6 +208,7 @@ define([
         // Remove the active class of the active menu
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
 
+        self.layout.getChild('menuList').$el.find('nav #contact-nav').addClass('active');
         self.layout.getChild('menuList').$el.find('nav #contact-page').addClass('active');
       });
 
