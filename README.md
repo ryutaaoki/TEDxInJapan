@@ -73,12 +73,9 @@ First of all, we will create the required content to make the web application ru
 -------------
 
 This was for the google spreadsheet, now come back to your bootstrap file (in ```app/bootstrap.js```).
-In this file, you will put your custom wishes, like the link of the playlist you want to display on the web app or the different options for your website like the language, the ID of your embedded timeline twitter, the google contact form url and even the link of your advertisement displayed in the footer of each page.
-
-#### 2. Twitter Feed for Grabbing
-  { Coming soon ... }
-
-#### 3. Youtube Playlist
+In this file, you will put your custom wishes, like the link of the playlist you want to display on the web app or the different options for your website like the language, the ID of your embedded timeline twitter, the google contact form url and even the link of your advertisement displayed in the footer of each page.  
+  
+#### 2. Youtube Playlist
   - Check in the **Joshfire.factory.config.datasources** variable. (It's in a JSON format)
   - Find this:
     ```javascript
@@ -98,21 +95,8 @@ In this file, you will put your custom wishes, like the link of the playlist you
                   "filter": {
                     "playlist":"http://www.youtube.com/playlist?list=XXXXXXXXXXXXXXXXXXXXXXXXX"
                   },
-                  "options": {}
-                },
-                "runatclient":true,
-                "missingKeys":[],
-                "outputType":"VideoObject",
-                "runtime":"browser"
-              }
-            },
-            "action":"addtarget"
-          }
+            ...
         },
-        "outputType":"VideoObject",
-        "runatclient":true,
-        "runtime":"browser"
-      },
       ...
     ```
   As you can see, the line 
@@ -125,9 +109,9 @@ In this file, you will put your custom wishes, like the link of the playlist you
   represent the link of your youtube playlist that you want to display on your web application. $
   - Edit it and the changes will be effective immediatly.
 
-#### 4. TEDx spreadhseets
+#### 3. TEDx spreadhseets
   Take the google spreadsheet URL that you have copied before, we will use it now.
-  - In the bootstrap file find these lines:
+  - In the bootstrap file find these lines (near the beginning of the file):
     - For the page About:
     ```javascript
 
@@ -149,25 +133,8 @@ In this file, you will put your custom wishes, like the link of the playlist you
                     "sheetid":3,
                     "usestdmapping":true
                   },
-                  "options":{
-    
-                  }
-                },
-                "runatclient":true,
-                "missingKeys":[
-    
-                ],
-                "outputType":"Article",
-                "runtime":"browser"
-              }
-            },
-            "action":"addtarget"
-          }
+            ...
         },
-        "outputType":"Article",
-        "runatclient":true,
-        "runtime":"browser"
-      },
       ...
       ```
       
@@ -192,25 +159,8 @@ In this file, you will put your custom wishes, like the link of the playlist you
                     "sheetid":2,
                     "usestdmapping":true
                   },
-                  "options":{
-    
-                  }
-                },
-                "runatclient":true,
-                "missingKeys":[
-    
-                ],
-                "outputType":"Article",
-                "runtime":"browser"
-              }
-            },
-            "action":"addtarget"
-          }
+            ...
         },
-        "outputType":"Article",
-        "runatclient":true,
-        "runtime":"browser"
-      },
       ...
       ```
     - For TEDx Events:
@@ -234,29 +184,170 @@ In this file, you will put your custom wishes, like the link of the playlist you
                     "sheetid":1,
                     "usestdmapping":true
                   },
-                  "options":{
-    
-                  }
-                },
-                "runatclient":true,
-                "missingKeys":[
-    
-                ],
-                "outputType":"Article",
-                "runtime":"browser"
-              }
-            },
-            "action":"addtarget"
-          }
+            ...
         },
-        "outputType":"Article",
-        "runatclient":true,
-        "runtime":"browser"
-      }
       ...
       ```
     - _In each section_ of code, there is a "docid" parameter. **Edit it** with you own google spreadsheet url.
     
+#### 4. Twitter Feed for Grabbing
+
+  Check in the ```app/script/``` directory, you will be able to see few files:
+  - paramsdatasource.json
+  - createdatasource.sh (For Unix users)
+  - createdatasource.sh (For Windows users)
+
+#####What we want to do is to create a specific datasource to fill the page containing the twitter flow to grab !
+To do so, **you must edit** the ```paramsdatasource.json``` file before running the ```createdatasource``` script in your shell.
+the ```paramsdatasource.json``` file looks like this (without comments between /* */):
+  ```javascript
+  
+  {
+    "appid": "TEDxFrance",
+    "db": "graph",
+    "col": "grabbing",
+    "filter": {
+      "filterItems": true, /* avoid tweets without content to grab */
+      "duplicateItems": true /* avoid duplicate tweets referring to the same content */
+    },
+    "datasources": {
+      "main": {
+        "db": "operator",
+        "col": "updatelinks",
+        "filter": {
+          "action": "addtarget"
+        },
+        "datasources": {
+          "main": {
+            "db": "graph",
+            "col": "blacklist",
+            "filter": {
+  
+            },
+            "datasources": {
+              "source": {
+                "db": "operator",
+                "col": "updatelinks",
+                "filter": {
+                  "action": "addtarget"
+                },
+                "datasources": {
+                  "main": {
+                    "db": "twitter",
+                    "col": "tweets",
+                    "filter": {
+                      "favorites": false,
+                      "oauth_token_secret": "XXXXXXXXXXXXXXXXXXXXXXXXX", /* the following oauth entries are to fill with your access tokens */
+                      "oauth_token": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                      "oauth_consumer_secret": "XXXXXXXXXXXXXXXXXXXXXXXXX",
+                      "oauth_consumer_key": "XXXXXXXXXXXXXXXXXXXXXXXXX",
+                      "excludereplies": true, /* replies excluded */
+                      "excluderetweets": true, /* retweets excluded */
+                      "language": "fr", /* your language filter */
+                      "search": "#yourhastag_to_search OR #this_hashtag_to_search AND #cats"
+                    }
+                  }
+                }
+              },
+              "blacklist": {
+                "db": "operator",
+                "col": "updatelinks",
+                "filter": {
+                  "action": "addtarget"
+                },
+                "datasources": {
+                  "main": {
+                    "db": "google",
+                    "col": "spreadsheets",
+                    "filter": {
+                      "usestdmapping": true,
+                      "sheetid": 2,
+                      "docid": "https://docs.google.com/spreadsheet/pub?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  ```
+You need a to log in your twitter developper account and take your access token in your created application ([here](https://dev.twitter.com/))
+
+You have now some little things to edit:
+  - Twitter feed
+    - Fill the "XXX.." by your own access tokens from twitter
+    - Edit the other options as you want (excludereplies: true/false | excluderetweets: true/false | language: "fr"/"en"/etc. )
+    - The search option is the main option. It represent the hashtag (e.g. #cats) you want to search on tweeter
+  - Blacklist (do not forget)
+    - Fill the **docid** with the same URL as you did in [section 3 - For the Blacklisted tweets](https://github.com/joshfire/tedxenfrance#3-tedx-spreadhseets)
+  - Other options
+    At the beginning of the file, you can see two filters:
+    ```javascript
+
+    ...
+    "filter": {
+      "filterItems": true,
+      "duplicateItems": true
+    },
+    ...
+    ```
+    - filterItems = reject tweets without content to grab
+    - duplicateItems = reject tweets referring to the same content already on the feed
+    
+Now that you have edit the ```paramsdatasource.json``` go to your shell (if you are a Unix user). 
+Go to the scripts folder (Unix + Windows users).
+##### For Unix users
+  ```shell
+  
+    ./createdatasource.sh
+  
+  ```
+##### For Windows users */
+  Double-click on ```createdatasource.bat```
+  
+If you did all it well, the script returns you an id !
+  - Copy this id
+  - Go to the ```bootstrap.js``` file
+  - Find this code near the beginning of the file like in [section 3](https://github.com/joshfire/tedxenfrance#3-tedx-spreadhseets):
+    ```javascript
+
+      ...
+      "grabbing":{
+        "name":"Grabbing",
+        "db":"operator",
+        "col":"updatelinks",
+        "query":{
+          "filter":{
+            "datasources":{
+              "main":{
+                "name":"Grabbing",
+                "id":"XXXXXXXXXXXXXXXXXXXXXXX",
+                "db":"graph",
+                "col":"grabbing",
+                "outputType":"Thing",
+                "runatclient":false,
+                "runtime":"hosted",
+                "apikey":"C95fzOziRDbvgTyDy+h4pTMraRVKtBM3JZb7wltM1T0MZOjAR+BptSxlcLCfASgp3BrJX+j+e7zHur5kudnC4w=="
+                }
+              },
+              "action":"addtarget"
+            }
+          },
+          "outputType":"Thing",
+          "runatclient":true,
+          "runtime":"browser"
+        }
+        ...
+      ```
+  - Replace the "XXX..." by the id returned by the script before.
+  - Save the file.
+
+The Twitter Feed for Grabbing is done !
+
 ----
 
 #### 5. Options
@@ -390,5 +481,3 @@ In this file, you will put your custom wishes, like the link of the playlist you
   Just retrieve the link of the form that you copy/paste in a corner later, and replace it in the "options" section of the bootstrap code describe previously in [section 5](https://github.com/joshfire/tedxenfrance#5-options)
 
 ----
-
-{ License ... }
