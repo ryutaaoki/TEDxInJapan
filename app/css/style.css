@@ -43,8 +43,8 @@ body, button, input, select, textarea { font-family: "Helvetica Neue"; color: #2
  * Also: hot pink! (or customize the background color to match your design)
  */
 
-::-moz-selection { background: grey; color: #fff; text-shadow: none; }
-::selection { color: #fff; text-shadow: none; }
+::-moz-selection { background: initial; color: initial; text-shadow: none; }
+::selection { background: initial; color: initial; text-shadow: none; }
 
 
 /* =============================================================================

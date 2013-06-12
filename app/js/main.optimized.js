@@ -394,7 +394,7 @@ define('text!templates/ads/Ads.html',[],function () { return '<div id="ads-logo-
 
 define('text!templates/ads/AdsLayout.html',[],function () { return '<div id="ads-page">\n  <%= children.ads %>\n</div>';});
 
-define('text!templates/Footer.html',[],function () { return '<div class="container">\n  <p>\n    This independent TEDx portal is operated under license from TED<br/>\n    Ce portail est sponsorisé par <a href="#ads">GDF Suez</a>.\n  </p>\n  <div class="sponsorizedby">\n    <a id="adgdf" href="<%= Joshfire.factory.config.template.options.url %>" target="_blank">\n      <p id="sponsor"><%= T("sponsorisé par") %></p>\n      <div style="clear:both"></div>\n      <img src="layout-img/gdf-suez.jpg" alt="" width="180">\n    </a>\n  </div>\n</div>';});
+define('text!templates/Footer.html',[],function () { return '<div class="container">\n  <p>\n    This independent TEDx portal is operated under license from TED<br/>\n    Ce portail est sponsorisé par <a href="#ads">GDF Suez</a>.\n    Développé par <a href="http://www.joshfire.com" target="_blank">JOSHFIRE</a>.\n  </p>\n  <div class="sponsorizedby">\n    <a id="adgdf" href="<%= Joshfire.factory.config.template.options.url %>" target="_blank">\n      <p id="sponsor"><%= T("sponsorisé par") %></p>\n      <div style="clear:both"></div>\n      <img src="layout-img/gdf-suez.jpg" alt="" width="180">\n    </a>\n  </div>\n</div>';});
 
 define('../lang/config',[],
 function() {
@@ -17748,6 +17748,7 @@ define('Controller',[
       this.router.on('route:ads', function (){
         //We show the child panel "ads"
         self.layout.getChild('panel').showChild('ads');
+        window.scrollTo(0, 0);
       });
 
       //----- End Listen change routes

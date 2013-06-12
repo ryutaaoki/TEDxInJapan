@@ -1,0 +1,71 @@
+{
+  "appid": "TEDxFrance",
+  "db": "graph",
+  "col": "grabbing",
+  "filter": {
+    "filterItems": true,
+    "duplicateItems": true
+  },
+  "datasources": {
+    "main": {
+      "db": "operator",
+      "col": "updatelinks",
+      "filter": {
+        "action": "addtarget"
+      },
+      "datasources": {
+        "main": {
+          "db": "graph",
+          "col": "blacklist",
+          "filter": {
+
+          },
+          "datasources": {
+            "source": {
+              "db": "operator",
+              "col": "updatelinks",
+              "filter": {
+                "action": "addtarget"
+              },
+              "datasources": {
+                "main": {
+                  "db": "twitter",
+                  "col": "tweets",
+                  "filter": {
+                    "favorites": false,
+                    "oauth_token_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "oauth_token": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "oauth_consumer_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "oauth_consumer_key": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "excludereplies": true,
+                    "excluderetweets": true,
+                    "language": "fr",
+                    "search": "#yourhastag_to_search OR #this_hashtag_to_search AND #cats"
+                  }
+                }
+              }
+            },
+            "blacklist": {
+              "db": "operator",
+              "col": "updatelinks",
+              "filter": {
+                "action": "addtarget"
+              },
+              "datasources": {
+                "main": {
+                  "db": "google",
+                  "col": "spreadsheets",
+                  "filter": {
+                    "usestdmapping": true,
+                    "sheetid": 2,
+                    "docid": "https://docs.google.com/spreadsheet/pub?key=XXXXXXXXXXXXXXXXXXXXXXXXXX"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

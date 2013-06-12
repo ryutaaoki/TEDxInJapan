@@ -211,6 +211,7 @@ define([
       this.router.on('route:ads', function (){
         //We show the child panel "ads"
         self.layout.getChild('panel').showChild('ads');
+        window.scrollTo(0, 0);
       });
 
       //----- End Listen change routes
