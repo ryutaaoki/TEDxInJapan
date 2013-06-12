@@ -275,7 +275,7 @@ the ```paramsdatasource.json``` file looks like this (without comments between /
   }
   
   ```
-You need a to log in your twitter developper account and take your access token in your created application ([here](https://dev.twitter.com/))
+You need to log in your twitter developper account and take your access token in your created application ([here](https://dev.twitter.com/))
 
 You have now some little things to edit:
   - Twitter feed
