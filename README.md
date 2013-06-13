@@ -1,21 +1,41 @@
 TEDx Regional Lens Project
 ==========================
 
-Projet destiné à rassembler toute les conférences TEDx.
+#####Project regrouping all the TEDx conferences of a country. 
+This is a simple web application using Google services (Youtube, Google Analytics, Google Spreadsheets and Google Form) and Twitter. 
+Those services allow you to moderate all the content of the web application:
+  - **Home page**:
+    - Youtube playlist
+    - Realtime embedded Timeline twitter
+    - Google Maps locations
+    - TEDx Event "Now"
+  - **Conferences page**:
+    - Next TEDx Events
+    - Past TEDx Events
+  - **News page**:
+    - Twitter flow moderation
+    - Blacklist tweets
+  - **About TEDx page**:
+    - Text moderation
+    - Add images and edit their position
+  - **Contact page**:
+    - Send emails
 
 How to install ?
 ----------------
 
-#### 1. Fork this repository
-Refer to [Fork a repo](https://help.github.com/articles/fork-a-repo) on [Github Help section](https://help.github.com/)
-You have now a version of this repository on **your own computer**.
+#### 1. Download the project
+Download the archive .zip of this project [here](https://github.com/joshfire/tedxenfrance/archive/master.zip)
+You have now a version of the project on **your own computer**.
 
 #### 2. Deploy
 
-- Simply Hosting
-  * Open your favorite software for simple hosting
+You just have to put all the files in ```app/``` in your FTP server.
+
+- How ?
+  * Open your favorite software for simple hosting (to connect to your FTP)
   * Log in your domain name where you want to deploy this web application
-  * Put the all the files present in the ```app/``` folder in your ```www/``` or ```htdocs/``` directory.
+  * Put all the files present in the ```app/``` folder in your ```www/``` or ```htdocs/``` directory.
 
 How to configure ?
 ------------------
@@ -23,60 +43,18 @@ How to configure ?
 ###Datasources
 --------------
 
-The essential of the configuration will be made in one only file : ```app/bootstrap.js```
+The essential of the configuration will be made in one only file : [```app/bootstrap.js```](https://raw.github.com/joshfire/tedxenfrance/master/app/bootstrap.js)
 It contains all the necessary code to make calls to the different APIs used in the web application.
 
 First of all, we will create the required content to make the web application run well.
 
-#### 1. Google Spreadsheets
+#### 1. Youtube Playlist
 
-* Go to [Google Drive](https://drive.google.com/) and create a simple and clean google spreadsheet.
-* Go in the googlescript directory of your clone repo and copy the content of the file named ```Code.gs```.
-* In your google spreadsheet, go to **Tools > Script editor...** in the topbar menu.
-* Create a spreadsheet script and replace all the code by the copied code before.
-  * To edit the specific country in what you want the TEDx events, just change the code of the country by yours.
-    ```javascript
-
-      function run() {
-        var COUNTRY_ID = 162; //FRANCE = 162
-        ...  
-      }
-    ```
-* Save the code and close it.
-* **_Refresh_** or **_close and re-open_** the google spreadsheet you have created.
-* You are now able to see a new menu on the topbar menu, called **Update Data**.
-* Click on **Update Data > Update TEDx Data**.
-* Wait and see ! All the required sheets have been created and all the datas about TEDx events are fill.
-
-- TEDx Events
-  
-  This sheet represent all the datas about TEDx events present on the "Home" page and "Conferences" page.
-  Different columns are displayed with in each header a little note helping you if you want to modify contents.
-
-- TEDx Blacklist Twitter
-
-  It represent the tweets that you want to blacklist/not display on your web application.
-  Simply put the URL of the tweet inside the cell and "VOILA!", we make the job automatically.
-
-- TEDx About
-  
-  It represent the content displayed in the "About TEDx" page. Each line of the spreadsheet represent a paragraph.
-  Make your own custom "About" page adding images and their position (left or right).
-
-- Google Spreadsheet URL
-  
-  After all this steps, your spreadsheet is ready to run with your web application but we miss only one data: the url of the spreadsheet.
-  - Go to **File > Publish to the web...**
-  - Copy the link of the published spreadsheet somewhere. We will use it below.
-
-
--------------
-
-This was for the google spreadsheet, now come back to your bootstrap file (in ```app/bootstrap.js```).
+Go to [Youtube](http://www.youtube.com/) and create a playlist with the TEDx Talks chosen by your own.
+After that, open the [```app/bootstrap.js```](https://raw.github.com/joshfire/tedxenfrance/master/app/bootstrap.js) file. 
 In this file, you will put your custom wishes, like the link of the playlist you want to display on the web app or the different options for your website like the language, the ID of your embedded timeline twitter, the google contact form url and even the link of your advertisement displayed in the footer of each page.  
-  
-#### 2. Youtube Playlist
-  - Check in the **Joshfire.factory.config.datasources** variable. (It's in a JSON format)
+
+  - Check in the **Joshfire.factory.config.datasources** variable in [```app/bootstrap.js```](https://raw.github.com/joshfire/tedxenfrance/master/app/bootstrap.js) file. (It's in a JSON format)
   - Find this:
     ```javascript
 
@@ -106,11 +84,66 @@ In this file, you will put your custom wishes, like the link of the playlist you
     "playlist":"http://www.youtube.com/playlist?list=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     ...
   ```
-  represent the link of your youtube playlist that you want to display on your web application. $
+  represent the link of your youtube playlist that you want to display on your web application.
   - Edit it and the changes will be effective immediatly.
 
-#### 3. TEDx spreadhseets
-  Take the google spreadsheet URL that you have copied before, we will use it now.
+-------------
+
+Now we will create the main source of data for the web application.
+**Follow the steps carefully.**
+  
+#### 2. Google Spreadsheets
+
+* Go to [Google Drive](https://drive.google.com/) and create a simple and clean google spreadsheet.
+* Go in [```googlescript/Code.gs```](https://raw.github.com/joshfire/tedxenfrance/master/googlescript/Code.gs).
+* In your google spreadsheet, go to **Tools > Script editor...** in the topbar menu.
+* Create a spreadsheet script and replace all the code by the copied code before.
+  * To edit the specific country in what you want the TEDx events, just change the code of the country by yours.
+    (A list of the countries ID are available in [```googlescript/id_countries.txt```](https://raw.github.com/joshfire/tedxenfrance/master/googlescript/id_countries.txt))
+    ```javascript
+
+      function run() {
+        var COUNTRY_ID = 162; //FRANCE = 162
+        ...  
+      }
+    ```
+  * **[Required]** Edit the apikey to get data from TED API in the following line.
+    (if you don't have an apikey, [contact TED](http://developer.ted.com/contact_us) to have one.)
+    ```javascript
+
+      ...
+      var response = UrlFetchApp.fetch("https://api.ted.com/v1/tedx_event_locations.json?api-key=XXXXXXXXXXXXXXXXXXXXXXX&country_id="+COUNTRY_ID+"&order=starts_at:desc&limit=110");
+      ...
+    ```
+* Save the code and close it.
+* **_Refresh_** or **_close and re-open_** the google spreadsheet you have created.
+* You are now able to see a new menu on the topbar menu, called **Update Data**.
+* Click on **Update Data > Update TEDx Data**.
+* Wait and see ! All the required sheets have been created and all the datas about TEDx events are fill.
+
+- TEDx Events
+  
+  This sheet represent all the datas about TEDx events present on the "Home" page and "Conferences" page.
+  Different columns are displayed with in each header a little note helping you if you want to modify contents.
+
+- TEDx Blacklist Twitter
+
+  It represent the tweets that you want to blacklist/not display on your web application.
+  Simply put the URL of the tweet inside the cell and "VOILA!", we make the job automatically.
+
+- TEDx About
+  
+  It represent the content displayed in the "About TEDx" page. Each line of the spreadsheet represent a paragraph.
+  Make your own custom "About" page adding images and their position (left or right).
+
+- Google Spreadsheet URL
+  
+  After all this steps, your spreadsheet is ready to run with your web application but we miss only one data: the url of the spreadsheet.
+  - Go to **File > Publish to the web...**
+  - Copy the link of the published spreadsheet.
+
+#### 3. Add Spreadsheets to configuration
+  Take the google spreadsheet URL that you have copied before.
   - In the bootstrap file find these lines (near the beginning of the file):
     - For the page About:
     ```javascript
@@ -192,14 +225,14 @@ In this file, you will put your custom wishes, like the link of the playlist you
     
 #### 4. Twitter Feed for Grabbing
 
-  Check in the ```app/script/``` directory, you will be able to see few files:
+  Check in the ```scripts/``` directory, you will be able to see few files:
   - paramsdatasource.json
   - createdatasource.sh (For Unix users)
   - createdatasource.sh (For Windows users)
 
-#####What we want to do is to create a specific datasource to fill the page containing the twitter flow to grab !
-To do so, **you must edit** the ```paramsdatasource.json``` file before running the ```createdatasource``` script in your shell.
-the ```paramsdatasource.json``` file looks like this (without comments between /* */):
+##### What we want to do is to create a specific datasource to fill the page containing the twitter flow to grab !
+To do so, **you must edit** the [```paramsdatasource.json```](https://raw.github.com/joshfire/tedxenfrance/master/scripts/paramsdatasource.json) file before running the ```createdatasource``` script in your shell.
+the [```paramsdatasource.json```](https://raw.github.com/joshfire/tedxenfrance/master/scripts/paramsdatasource.json) file looks like this (without comments between /* */):
   ```javascript
   
   {
@@ -283,7 +316,7 @@ You have now some little things to edit:
     - Edit the other options as you want (excludereplies: true/false | excluderetweets: true/false | language: "fr"/"en"/etc. )
     - The search option is the main option. It represent the hashtag (e.g. #cats) you want to search on tweeter
   - Blacklist (do not forget)
-    - Fill the **docid** with the same URL as you did in [section 3 - For the Blacklisted tweets](https://github.com/joshfire/tedxenfrance#3-tedx-spreadhseets)
+    - Fill the **docid** with the same URL as you did in [section 3 - For the Blacklisted tweets](https://github.com/joshfire/tedxenfrance#3-add-spreadsheets-to-configuration)
   - Other options
     At the beginning of the file, you can see two filters:
     ```javascript
@@ -311,7 +344,7 @@ Go to the scripts folder (Unix + Windows users).
   
 If you did all it well, the script returns you an id !
   - Copy this id
-  - Go to the ```bootstrap.js``` file
+  - Go to the [```app/bootstrap.js```](https://raw.github.com/joshfire/tedxenfrance/master/app/bootstrap.js) file
   - Find this code near the beginning of the file like in [section 3](https://github.com/joshfire/tedxenfrance#3-tedx-spreadhseets):
     ```javascript
 
@@ -434,7 +467,7 @@ The Twitter Feed for Grabbing is done !
   
   - Go to **"Tools > Script editor"**
   - Create a script for **"Blank project"**
-  - Now, **copy** the code present in ```googlescript/Contact.gs```
+  - Now, **copy** the code present in [```googlescript/Contact.gs```](https://raw.github.com/joshfire/tedxenfrance/master/googlescript/Contact.gs)
   - **Replace all the code** in the google script created.
   
   You have now a google script like this:
