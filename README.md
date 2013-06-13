@@ -275,7 +275,7 @@ the ```paramsdatasource.json``` file looks like this (without comments between /
   }
   
   ```
-You need a to log in your twitter developper account and take your access token in your created application ([here](https://dev.twitter.com/))
+You need to log in your twitter developper account and take your access token in your created application ([here](https://dev.twitter.com/))
 
 You have now some little things to edit:
   - Twitter feed
@@ -306,7 +306,7 @@ Go to the scripts folder (Unix + Windows users).
     ./createdatasource.sh
   
   ```
-##### For Windows users */
+##### For Windows users
   Double-click on ```createdatasource.bat```
   
 If you did all it well, the script returns you an id !
@@ -331,7 +331,7 @@ If you did all it well, the script returns you an id !
                 "outputType":"Thing",
                 "runatclient":false,
                 "runtime":"hosted",
-                "apikey":"C95fzOziRDbvgTyDy+h4pTMraRVKtBM3JZb7wltM1T0MZOjAR+BptSxlcLCfASgp3BrJX+j+e7zHur5kudnC4w=="
+                "apikey":"F1DdeVWE5p%2B8AQylYgsMlRBiKThtX6E1zr6lEDx6i53zIKqnniwjZyeekAck5/Xw"
                 }
               },
               "action":"addtarget"
