@@ -25,7 +25,7 @@ How to install ?
 ----------------
 
 #### 1. Download the project
-Download the archive .zip of this project [here](https://github.com/joshfire/tedxenfrance/archive/master.zip)
+Download the archive .zip of this project [here](https://github.com/joshfire/tedxenfrance/archive/master.zip).
 You have now a version of the project on **your own computer**.
 
 #### 2. Deploy
