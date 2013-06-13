@@ -228,7 +228,6 @@ Now we will create the main source of data for the web application.
   Check in the ```scripts/``` directory, you will be able to see few files:
   - paramsdatasource.json
   - createdatasource.sh (For Unix users)
-  - createdatasource.sh (For Windows users)
 
 ##### What we want to do is to create a specific datasource to fill the page containing the twitter flow to grab !
 To do so, **you must edit** the [```paramsdatasource.json```](https://raw.github.com/joshfire/tedxenfrance/master/scripts/paramsdatasource.json) file before running the ```createdatasource``` script in your shell.
@@ -331,17 +330,14 @@ You have now some little things to edit:
     - filterItems = reject tweets without content to grab
     - duplicateItems = reject tweets referring to the same content already on the feed
     
-Now that you have edit the ```paramsdatasource.json``` go to your shell (if you are a Unix user). 
-Go to the scripts folder (Unix + Windows users).
+Now that you have edit the [```paramsdatasource.json```](https://raw.github.com/joshfire/tedxenfrance/master/scripts/paramsdatasource.json) go to your shell. 
+Go to the scripts folder.
 ##### For Unix users
   ```shell
   
     ./createdatasource.sh
   
   ```
-##### For Windows users
-  Double-click on ```createdatasource.bat```
-  
 If you did all it well, the script returns you an id !
   - Copy this id
   - Go to the [```app/bootstrap.js```](https://raw.github.com/joshfire/tedxenfrance/master/app/bootstrap.js) file
