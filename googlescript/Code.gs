@@ -88,7 +88,7 @@ function run() {
   var sheets = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = sheets.getSheets()[0];
 
-  var response = UrlFetchApp.fetch("https://api.ted.com/v1/tedx_event_locations.json?api-key=pq5jhs5p89ngfccnnter9ach&country_id="+COUNTRY_ID+"&order=starts_at:desc&limit=30");
+  var response = UrlFetchApp.fetch("https://api.ted.com/v1/tedx_event_locations.json?api-key=XXXXXXXXXXXXXXXXXXXX&country_id="+COUNTRY_ID+"&order=starts_at:desc&limit=110");
   var json = response.getContentText();
   var data = JSON.parse(json);
 
