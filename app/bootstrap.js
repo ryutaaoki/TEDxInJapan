@@ -13292,7 +13292,7 @@ define('databases/google/spreadsheets',[
          * (we leave the deprecated query option getColumnInfos for retro-compatibility)
          * (now the context option is automatically added depending on packagejson option)
          */
-        if (query.context ||Â query.getColumnInfos) {
+        if (query.context || query.getColumnInfos) {
           url = "https://spreadsheets.google.com/feeds/cells" +
             "/" + docid +
             "/" + filter.sheetid +
@@ -13330,7 +13330,7 @@ define('databases/google/spreadsheets',[
       var usestdmapping = filter ? filter.usestdmapping : false;
 
       if (!data || !data.feed || !data.feed.entry ||
-          (query.getColumnInfos && (!data.coldata ||Â !data.coldata.feed || !data.coldata.feed.entry) ) ) {
+          (query.getColumnInfos && (!data.coldata || !data.coldata.feed || !data.coldata.feed.entry) ) ) {
         return callback(null, {"entries": entries, "columnsNames" : columnsNames, "@context" : context});
       }
 
@@ -13415,7 +13415,7 @@ define('databases/google/spreadsheets',[
       /* extend context information with column titles if necessary
        * (for an explanation of these two different options, see before)
        */
-      if(query.context ||Â query.getColumnInfos){
+      if(query.context || query.getColumnInfos){
         // extract gsx names
         var gsxKeys = _.filter(_.keys(entries[0]), function(colKey){ 
           return colKey.substr(0,4) == "gsx:"; });
