@@ -2,7 +2,7 @@
 <a href="<%= item.url %>" target="_blank">
 <% } if(item.name) { %>
   <h4><%= item.name %></h4>
-<% } if(item.contentURL || item.image.contentURL) { %>
+<% } if(item.contentURL || (item.image && item.image.contentURL)) { %>
   <img src="<%= item.contentURL || item.image.contentURL %>" alt=""/>
 <% } if(item.description) { %>
   <div style="clear:both"></div>
