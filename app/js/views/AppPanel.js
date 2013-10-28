@@ -32,7 +32,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize AppPanelView');
-      var options = options || {};
+      options = options || {};
 
       //--------- Different Panel Creation
 
@@ -68,7 +68,7 @@ define([
         about: this.about,
         contact: this.contact,
         ads: this.ads
-      }
+      };
       CardPanel.prototype.initialize.call(this,options);
     }
 

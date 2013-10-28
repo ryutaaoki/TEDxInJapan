@@ -22,7 +22,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ConferencesPagePanel');
-      var options = options || {};
+      options = options || {};
 
       this.displayer = new NextEventsView({
         appController: options.appController,
@@ -40,7 +40,7 @@ define([
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ConferencesPagePanel;

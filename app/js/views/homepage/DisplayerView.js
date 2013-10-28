@@ -28,8 +28,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize DisplayerView');
-      var options = options || {},
-          self = this;
+      options = options || {};
       options.template = DisplayerTemplate;
 
       this.menuDisplay = new MenuDisplay({

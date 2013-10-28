@@ -17,6 +17,9 @@
     "Fermer"                                   : "Fermer",
     "Vidéo Live"                               : "Vidéo Live",
     "sponsorisé par"                           : "sponsorisé par",
-    "à"                                        : "à"
+    "à"                                        : "à",
+
+    "Erreur de chargement": "Une erreur réseau est survenue lors du chargement des données. Merci de réessayer ultérieurement. Contactez-nous si le problème persiste.",
+    "Erreur de chargement des vidéos": "Une erreur réseau est survenue lors du chargement des vidéos. Merci de réessayer ultérieurement. Contactez-nous si le problème persiste."
   }
 }

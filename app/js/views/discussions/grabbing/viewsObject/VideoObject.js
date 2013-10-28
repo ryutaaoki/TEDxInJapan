@@ -22,13 +22,10 @@ define([
 
     initialize: function(options) {
       logger.info('initialize VideoObjectView');
-      var options = options || {};
-
+      options = options || {};
       options.template = VideoTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
-
+    }
   });
 
   return VideoObjectView;

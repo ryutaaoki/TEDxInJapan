@@ -12042,6 +12042,13 @@ define('runtime-browser/http',[
           statusCode)
       );
     }
+    else if (body === 'timeout') {
+      return callback(
+        new ProxyError('Server timed out',
+          'timeout',
+          statusCode)
+      );
+    }
 
     // Return the HTTP response
     return callback(null, body, statusCode);
@@ -12079,6 +12086,7 @@ define('runtime-browser/http',[
       };
 
       // Run the request
+      params.timeout = params.timeout || 10000;
       return $.ajax(params);
     }
   };

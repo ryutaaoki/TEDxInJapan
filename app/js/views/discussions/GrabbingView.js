@@ -7,8 +7,9 @@ define([
   'joshlib!ui/layout',
 
   'views/discussions/grabbing/ListTweetsGrabbing',
+  'views/ErrorView',
 
-  'text!templates/discussions/grabbing/GrabbingLayout.html'
+  'text!templates/discussions/grabbing/GrabbingLayout.html',
 ], function(
   woodman,
   $,
@@ -18,6 +19,7 @@ define([
   Layout,
 
   ListTweetsGrabbing,
+  ErrorView,
 
   DisplayerTemplate
 ) {
@@ -28,7 +30,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize DisplayerView');
-      var options = options || {};
+      options = options || {};
       options.template = DisplayerTemplate;
 
       this.listTweetsGrabbing = new ListTweetsGrabbing({
@@ -37,12 +39,17 @@ define([
         autoLoadMore: true
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        listTweetsGrabbing: this.listTweetsGrabbing
+        listTweetsGrabbing: this.listTweetsGrabbing,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return DisplayerView;

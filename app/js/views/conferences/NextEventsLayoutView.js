@@ -7,6 +7,7 @@ define([
   'joshlib!ui/layout',
 
   'views/conferences/displayer/DisplayEventsLayout',
+  'views/ErrorView',
 
   'text!templates/conferences/displayer/DisplayEventsLayout.html'
 ], function(
@@ -18,6 +19,7 @@ define([
   Layout,
 
   DisplayEventsLayout,
+  ErrorView,
 
   DisplayEventsTemplate
 ) {
@@ -26,7 +28,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize DisplayerView');
-      var options = options || {};
+      options = options || {};
       options.template = DisplayEventsTemplate;
 
       this.displayEvents = new DisplayEventsLayout({
@@ -34,12 +36,17 @@ define([
         collection: options.collection
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        displayEvents: this.displayEvents
+        displayEvents: this.displayEvents,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return DisplayerView;

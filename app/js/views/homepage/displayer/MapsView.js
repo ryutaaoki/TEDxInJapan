@@ -1,3 +1,4 @@
+/*global define, google*/
 define([
   'joshlib!utils/woodman',
   'joshlib!utils/dollar',
@@ -24,9 +25,9 @@ define([
 
     initialize: function(options) {
       logger.info('initialize MapsView');
-      var options = options || {};
-
+      options = options || {};
       options.template = MapsTemplate;
+      this.appController = options.appController;
 
       Item.prototype.initialize.call(this,options);
     },
@@ -63,7 +64,6 @@ define([
     },
 
     setMarkers: function (map) {
-      var self = this;
       var marker = {
         url: 'layout-img/red-cross.png',
         // This marker is 20 pixels wide by 32 pixels tall.
@@ -73,55 +73,43 @@ define([
         // The anchor for this image is the base of the flagpole at 0,32.
         anchor: new google.maps.Point(16, 16)
       };
+      var self = this;
 
-      var currentDate = this.getCurrentDate();
+      if (!this.appController ||
+          !this.appController.data ||
+          !this.appController.data.events) {
+        logger.warn('No events datasource');
+        return;
+      }
 
-      var datasources = Joshfire.factory.getDataSource('tedxevents');
+      var collection = self.appController.data.events;
+      var bindPoints = function () {
+        collection.each(function (model) {
+          var bound = new google.maps.LatLng(
+            model.get('latitude'),
+            model.get('longitude')
+          );
+          var crossMarker = new google.maps.Marker({
+            position: bound,
+            map: map,
+            title: model.get('name'),
+            icon: marker
+          });
 
-      datasources.find({}, function(error, data) {
-        _.each(data.entries, function(entry){
-          // if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate))) {
-            var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
-            var crossMarker = new google.maps.Marker({
-              position: bound,
-              map: map,
-              title: entry.name,
-              icon: marker
-            });
-
-            //add event "click" on the marker
-            google.maps.event.addListener(crossMarker, 'click', function() {
-              window.open(entry.url,'_blank');
-            });
+          //add event "click" on the marker
+          google.maps.event.addListener(crossMarker, 'click', function() {
+            window.open(model.get('url'), '_blank');
+          });
         });
-      });
-    },
+      };
 
-    convertDate: function(date) {
-      var newDate = date.split('/');
-      newDate = newDate[1] + '/' + newDate[0] + '/' + newDate[2];
-
-      return newDate;
-    },
-
-    getCurrentDate: function() {
-      var today = new Date();
-
-      var year = today.getFullYear();
-      var month = today.getMonth() + 1;
-      var day = today.getDate();
-
-      if(month < 10)
-        month = "0"+month;
-
-      if(day < 10)
-        day = "0"+day;
-
-      var currentDate = day + "/" + month + "/" + year;
-
-      return currentDate;
+      if (collection.length > 0) {
+        bindPoints();
+      }
+      else {
+        this.listenTo(collection, 'load', bindPoints);
+      }
     }
-
   });
 
   return MapsView;

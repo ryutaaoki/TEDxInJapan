@@ -24,20 +24,21 @@ define([
 
     initialize: function(options) {
       logger.info('initialize LiveView');
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = LiveTemplate;
+      var self = this;
 
       List.prototype.initialize.call(this,options);
 
       this.collection.on('loaded', function(){
         self.update(true);
         /* At first load on homepage */
-        if(Backbone.history.fragment == "home" && self.collection.length > 0)
-          app.router.navigate('#home/live', {trigger:true});
+        if ((Backbone.history.fragment === 'home') &&
+            (self.collection.length > 0)) {
+          window.app.router.navigate('#home/live', { trigger:true });
+        }
       });
-    },
+    }
   });
 
   return LiveView;

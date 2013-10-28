@@ -28,7 +28,7 @@ var woodmanConfig = {
       name: 'console',
       layout: {
         type: 'pattern',
-        pattern: '%-5.5p [%c] %m%n'
+        pattern: '%-5.5p %d{ISO8601} [%c] %m%n'
       }
     }
   ],

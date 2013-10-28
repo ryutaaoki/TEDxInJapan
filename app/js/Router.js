@@ -1,3 +1,4 @@
+/*global define, ga*/
 define([
   'joshlib!utils/woodman',
   'joshlib!vendor/backbone'
@@ -36,103 +37,61 @@ define([
 
     defaultRoute: function() {
       logger.info('run default route');
-      ga('send','pageview','#home');
-      this.navigate('home', {
-        trigger: true
-      });
+      this.navigate('home', { trigger: true });
+      ga('send', 'pageview', '#home');
     },
 
     homeRoute: function () {
       logger.info('run home route');
-      ga('send','pageview','#home');
-      this.navigate('home', {
-        trigger: true
-      });
+      this.navigate('home', { trigger: true });
+      ga('send', 'pageview', '#home');
     },
 
     mapsRoute: function () {
       logger.info('run maps route');
-      ga('send','pageview','#home/maps');
-      this.navigate('#home/maps', {
-        trigger: true
-      });
+      this.navigate('#home/maps', { trigger: true });
+      ga('send', 'pageview', '#home/maps');
     },
 
     liveRoute: function () {
       logger.info('run live route');
-      ga('send','pageview','#home/live');
-      this.navigate('#home/live', {
-        trigger: true
-      });
+      this.navigate('#home/live', { trigger: true });
+      ga('send', 'pageview', '#home/live');
     },
 
     talksModalRoute: function (id) {
-      var self = this;
       logger.info('run talks route of id ' + id);
-      this.navigate('#home/talks/' + id, {
-        trigger: true
-      });
-      this.appController.data.youtube.on('load', function() {
-        var result = self.appController.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
-        _.map( result, function( model ){
-          self.appController.layout.panel.homepage.talks.modalTalk.setModel(model);
-          self.appController.layout.panel.homepage.talks.modalTalk.render();
-          self.appController.layout.panel.homepage.talks.modalTalk.showModal();
-        });
-      });
+      this.navigate('#home/talks/' + id, { trigger: true });
     },
 
     conferencesRoute: function () {
       logger.info('run conferences route');
-      ga('send','pageview','#conferences');
-      this.navigate('conferences', {
-        trigger: true
-      });
+      this.navigate('conferences', { trigger: true });
+      ga('send', 'pageview', '#conferences');
     },
 
     discussionsRoute: function () {
       logger.info('run discussions route');
-      ga('send','pageview','#discussions');
-      this.navigate('discussions', {
-        trigger: true
-      });
-      this.appController.data.grabbing.on('load', function(){
-        var container = document.querySelector('#container');
-        var pckry;
-        // initialize Packery after all images have loaded
-        imagesLoaded( container, function() {
-          pckry = new Packery( container, {
-            // options
-            itemSelector: '.item',
-            gutter: ".gutter-sizer",
-            rowHeight: 0
-          });
-        });
-      });
+      this.navigate('discussions', { trigger: true });
+      ga('send', 'pageview', '#discussions');
     },
 
     aboutRoute: function () {
       logger.info('run about route');
-      ga('send','pageview','#about');
-      this.navigate('about', {
-        trigger: true
-      });
+      this.navigate('about', { trigger: true });
+      ga('send', 'pageview', '#about');
     },
 
     contactRoute: function () {
       logger.info('run contact route');
-      ga('send','pageview','#contact');
-      this.navigate('contact', {
-        trigger: true
-      });
+      this.navigate('contact', { trigger: true });
+      ga('send', 'pageview', '#contact');
     },
 
     adsRoute: function () {
       logger.info('run ads route');
+      this.navigate('ads', { trigger: true });
       ga('send', 'pageview', '#ads');
-      this.navigate('ads', {
-        trigger: true
-      });
     }
   });
 

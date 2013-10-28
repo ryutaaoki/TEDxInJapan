@@ -20,7 +20,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize HomePagePanel');
-      var options = options || {};
+      options = options || {};
 
       this.grabbing = new GrabbingView({
         appController: options.appController,
@@ -32,7 +32,7 @@ define([
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return HomePagePanel;

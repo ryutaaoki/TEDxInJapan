@@ -6,6 +6,7 @@ define([
   'joshlib!ui/layout',
 
   'views/about/AboutView',
+  'views/ErrorView',
 
   'text!templates/about/AboutLayout.html'
 ], function(
@@ -16,6 +17,7 @@ define([
   Layout,
 
   AboutView,
+  ErrorView,
 
   AboutLayout
 ) {
@@ -24,8 +26,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize AboutPagePanel');
-      var options = options || {};
-
+      options = options || {};
       options.template = AboutLayout;
 
       this.about = new AboutView({
@@ -33,12 +34,17 @@ define([
         collection: options.appController.data.aboutContent
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        about: this.about
+        about: this.about,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return AboutPagePanel;

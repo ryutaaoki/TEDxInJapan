@@ -7,6 +7,7 @@ define([
   'joshlib!ui/layout',
 
   'views/conferences/talks/ListPastTalksView',
+  'views/ErrorView',
 
   'text!templates/conferences/talks/TalksLayout.html'
 ], function(
@@ -18,6 +19,7 @@ define([
   Layout,
 
   ListTalks,
+  ErrorView,
 
   TalksTemplate
 ) {
@@ -26,7 +28,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize TalksView');
-      var options = options || {};
+      options = options || {};
       options.template = TalksTemplate;
 
       this.listTalks = new ListTalks({
@@ -34,12 +36,17 @@ define([
         collection: options.collection
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        listTalks: this.listTalks
+        listTalks: this.listTalks,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return TalksView;
