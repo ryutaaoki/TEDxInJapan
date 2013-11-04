@@ -24,8 +24,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ContactPagePanel');
-      var options = options || {};
-
+      options = options || {};
       options.template = ContactLayout;
 
       this.contact = new ContactView({
@@ -38,7 +37,7 @@ define([
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ContactPagePanel;

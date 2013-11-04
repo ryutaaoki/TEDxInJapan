@@ -1,3 +1,5 @@
+/*global define, Joshfire, imagesLoaded, Packery*/
+
 define([
   'joshlib!utils/woodman',
   'joshlib!utils/i18n',
@@ -35,7 +37,7 @@ define([
     this.router = new Router({
       appController: this
     });
-    logger.info("router created");
+    logger.info('router created');
 
     this.createCollections();
 
@@ -63,9 +65,7 @@ define([
 
       var currentDate = this.getCurrentDate();
 
-      this.getPastEvents(currentDate);
-      this.getPostEvents(currentDate);
-      this.getLiveTEDx();
+      this.getEvents(currentDate);
       this.getAboutPageContent();
       this.getPlaylistYoutube();
       this.getFeedGrabbing();
@@ -133,21 +133,48 @@ define([
 
       /* Homepage talks */
       this.router.on('route:talks', function (id) {
-
         self.layout.getChild('panel').showChild('homepage');
-        var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
+        if (self.data.youtube.length > 0) {
+          var result = self.data.youtube.where({
+            url: 'http://www.youtube.com/watch?v=' + id
+          });
+          _.each( result, function( model ){
+            var modal = self.layout
+              .getChild('panel')
+              .getChild('homepage')
+              .getChild('talks')
+              .getChild('modalTalk');
+            modal.setModel(model);
+            modal.render();
+            modal.showModal();
+          });
+        }
+        else {
+          self.listenTo(self.data.youtube, 'load', function () {
+            var result = self.data.youtube.where({
+              url: 'http://www.youtube.com/watch?v=' + id
+            });
+            _.each(result, function (model) {
+              var modal = self.layout
+                .getChild('panel')
+                .getChild('homepage')
+                .getChild('talks')
+                .getChild('modalTalk');
+              modal.setModel(model);
+              modal.render();
+              modal.showModal();
+            });
+          });
+        }
 
-        var result = self.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
-        _.map( result, function( model ){
-          var modal = self.layout.getChild('panel').getChild('homepage').getChild('talks').getChild('modalTalk');
-          modal.setModel(model);
-          modal.render();
-          modal.showModal();
-        });
-
-        if(!panelDisplay.getChild('live').collection.length)
+        var panelDisplay = self.layout
+          .getChild('panel')
+          .getChild('homepage')
+          .getChild('displayer')
+          .getChild('panelDisplay');
+        if (!panelDisplay.getChild('live').collection.length) {
           panelDisplay.showChild('maps');
-
+        }
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
@@ -174,13 +201,13 @@ define([
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
 
         var container = document.querySelector('#container');
-        var pckry;
+        var pckry = null;
         // initialize Packery after all images have loaded
         imagesLoaded( container, function() {
           pckry = new Packery( container, {
             // options
             itemSelector: '.item',
-            gutter: ".gutter-sizer",
+            gutter: '.gutter-sizer',
             rowHeight: 0
           });
         });
@@ -224,82 +251,115 @@ define([
     },
 
     createCollections: function() {
+      var self = this;
+
+      this.data.events       = new Collection();
       this.data.pastevents   = new Collection();
       this.data.postevents   = new Collection();
-      this.data.blacklist    = new Collection();
       this.data.liveevent    = new Collection();
       this.data.youtube      = new Collection();
       this.data.aboutContent = new Collection();
       this.data.grabbing     = new Collection();
-    },
 
-    getPastEvents: function(currentDate) {
+      this.listenTo(this.data.events, 'load:error', function () {
+        var talks = self.layout
+          .getChild('panel')
+          .getChild('conferences')
+          .getChild('displayer');
+        var errorView = talks.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
 
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({}, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate))){
-              entry.startDate = self.getDateName(entry.startDate);
-              self.data.pastevents.add(entry);
-            }
-          });
-          self.data.pastevents.trigger('loaded', self.data.pastevents);
-        }
+        talks = self.layout
+          .getChild('panel')
+          .getChild('conferences')
+          .getChild('talks');
+        errorView = talks.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
+        talks.getChild('listTalks').hide();
+      });
+      this.listenTo(this.data.youtube, 'load:error', function () {
+        var talks = self.layout
+          .getChild('panel')
+          .getChild('homepage')
+          .getChild('talks');
+        var errorView = talks.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement des vidéos'
+        }));
+        errorView.render();
+        errorView.show();
+        talks.getChild('listTalks').hide();
+        talks.getChild('modalTalk').hide();
+      });
+      this.listenTo(this.data.aboutContent, 'load:error', function () {
+        var about = self.layout
+          .getChild('panel')
+          .getChild('about');
+        var errorView = about.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
+        about.getChild('about').hide();
+      });
+      this.listenTo(this.data.grabbing, 'load:error', function () {
+        var discussions = self.layout
+          .getChild('panel')
+          .getChild('discussions')
+          .getChild('grabbing');
+        var errorView = discussions.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
+        discussions.getChild('listTweetsGrabbing').hide();
       });
     },
 
-    getPostEvents: function(currentDate) {
-
+    getEvents: function (currentDate) {
       var self = this;
-
+      var convDate = new Date(this.convertDate(currentDate));
       var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({
-
-      }, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          var count = 0;
-          _.each(data.entries, function (entry) {
-            if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)) && count < 3){
-              entry.startDate = self.getDateName(entry.startDate);
-              self.data.postevents.add(entry);
-              count++;
-            }
-          });
-          self.data.postevents.trigger('loaded', self.data.postevents);
-        }
-      });
-    },
-
-    getLiveTEDx: function() {
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({}, function (error, data) {
-        if(error) {
-          logger.error(error);
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            if(entry.availability == "TRUE")
-              self.data.liveevent.reset(entry);
-          });
-          self.data.liveevent.trigger('loaded', self.data.liveevent);
-        }
+      self.data.events.setDataSource(datasource);
+      self.data.events.fetch();
+      self.listenTo(self.data.events, 'load', function () {
+        var count = 0;
+        self.data.events.each(function (model) {
+          if (new Date(self.convertDate(model.get('startDate'))) < convDate) {
+            self.data.pastevents.add(model);
+          }
+          else if (count < 3) {
+            self.data.postevents.add(model);
+            count++;
+          }
+          model.set('startDate', self.getDateName(model.get('startDate')));
+          if (model.get('availability') === 'TRUE') {
+            self.data.liveevent.reset(model);
+          }
+        });
+        self.data.pastevents.trigger('load', self.data.pastevents);
+        self.data.postevents.trigger('load', self.data.postevents);
+        self.data.liveevent.trigger('load', self.data.liveevent);
       });
     },
 
     getAboutPageContent: function() {
       var self = this;
-
       var datasource = Joshfire.factory.getDataSource('about');
       self.data.aboutContent.setDataSource(datasource);
       self.data.aboutContent.fetch();
@@ -323,43 +383,65 @@ define([
       self.data.grabbing.fetch();
     },
 
-    getDateName: function(entryDate){
-      Date.prototype.getMonthName = function(lang) {
-        switch(lang){
-          case 'fr':
-            var m = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre'];
-            break;
-          default:
-          case 'en':
-            var m = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            break;
+    getDateName: function (entryDate) {
+      Date.prototype.getMonthName = function (lang) {
+        var m = [];
+        switch (lang) {
+        case 'fr':
+          m = [
+            'Janvier', 'Fevrier', 'Mars', 'Avril',
+            'Mai', 'Juin', 'Juillet', 'Aout',
+            'Septembre', 'Octobre', 'Novembre', 'Décembre'
+          ];
+          break;
+        default:
+        case 'en':
+          m = [
+            'January', 'February', 'March', 'April',
+            'May', 'June', 'July', 'August',
+            'September', 'October', 'November', 'December'
+          ];
+          break;
         }
         return m[this.getMonth()];
-      }
+      };
 
       Date.prototype.getDayName = function() {
-        switch(lang){
-          case 'fr':
-            var d = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-            break;
-          default:
-          case 'en':
-            var d = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            break;
+        var d = [];
+        switch (lang) {
+        case 'fr':
+          d = [
+            'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
+            'Jeudi', 'Vendredi', 'Samedi'
+          ];
+          break;
+        default:
+        case 'en':
+          d = [
+            'Sunday', 'Monday', 'Tuesday',  'Wednesday',
+            'Thursday','Friday','Saturday'
+          ];
+          break;
         }
         return d[this.getDay()];
-      }
+      };
 
       var date = new Date(this.convertDate(entryDate));
       var lang = Joshfire.factory.config.template.options.language;
-      switch(lang){
-        default:
-        case 'en':
-          date = date.getDayName(lang) + ' ' + date.getMonthName(lang) + ' ' + date.getDate() + ',' + date.getFullYear();
-          return date;
-        case 'fr':
-          date = date.getDayName(lang) + ' ' + date.getDate() + ' ' + date.getMonthName(lang) + ' ' + date.getFullYear();
-          return date;
+      switch (lang) {
+      default:
+      case 'en':
+        date = date.getDayName(lang) +
+          ' ' + date.getMonthName(lang) +
+          ' ' + date.getDate() +
+          ',' + date.getFullYear();
+        return date;
+      case 'fr':
+        date = date.getDayName(lang) +
+          ' ' + date.getDate() +
+          ' ' + date.getMonthName(lang) +
+          ' ' + date.getFullYear();
+        return date;
       }
     },
 
@@ -378,12 +460,12 @@ define([
       var day = today.getDate();
 
       if(month < 10)
-        month = "0"+month;
+        month = '0' + month;
 
       if(day < 10)
-        day = "0"+day;
+        day = '0' + day;
 
-      var currentDate = day + "/" + month + "/" + year;
+      var currentDate = day + '/' + month + '/' + year;
 
       return currentDate;
     }

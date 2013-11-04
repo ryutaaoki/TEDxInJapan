@@ -20,12 +20,10 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ContactView');
-      var options = options || {};
-
+      options = options || {};
       options.template = ContactTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ContactView;

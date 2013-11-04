@@ -20,8 +20,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize AdsView');
-      var options = options || {};
-
+      options = options || {};
       options.template = AdsTemplate;
 
       Item.prototype.initialize.call(this,options);

@@ -26,7 +26,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize TweetsView');
-      var options = options || {};
+      options = options || {};
       options.template = TweetsTemplate;
 
       this.listTweets = new ListTweets({
@@ -38,7 +38,7 @@ define([
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return TweetsView;

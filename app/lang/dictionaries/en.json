@@ -17,6 +17,9 @@
     "Fermer"                                   : "Close",
     "Vidéo Live"                               : "Live Video",
     "sponsorisé par"                           : "sponsored by",
-    "à"                                        : "in"
+    "à"                                        : "in",
+
+    "Erreur de chargement": "A network error occurred. Please try again in a few minutes. Get in touch if this message does not disappear.",
+    "Erreur de chargement des vidéos": "A network error occurred. Please try again in a few minutes. Get in touch if this message does not disappear."
   }
 }

@@ -1,3 +1,9 @@
+/**
+ * @fileOverview Main entry point for the application
+ *
+ * Note RequireJS must be available.
+ */
+/*global requirejs, woodmanConfig*/
 requirejs.config({
   paths: {
     'text': 'lib/text'

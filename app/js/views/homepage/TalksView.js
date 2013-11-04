@@ -1,3 +1,4 @@
+/*global define*/
 define([
   'joshlib!utils/woodman',
   'joshlib!utils/dollar',
@@ -8,6 +9,7 @@ define([
 
   'views/homepage/talks/ListTalksView',
   'views/homepage/talks/ModalTalkView',
+  'views/ErrorView',
 
   'text!templates/homepage/talks/TalksLayout.html'
 ], function(
@@ -20,6 +22,7 @@ define([
 
   ListTalks,
   ModalTalk,
+  ErrorView,
 
   TalksTemplate
 ) {
@@ -28,7 +31,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize TalksView');
-      var options = options || {};
+      options = options || {};
       options.template = TalksTemplate;
 
       this.listTalks = new ListTalks({
@@ -41,13 +44,18 @@ define([
         model: new Backbone.Model()
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
         listTalks: this.listTalks,
-        modalTalk: this.modalTalk
+        modalTalk: this.modalTalk,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return TalksView;

@@ -21,20 +21,21 @@ define([
   var ModalTalkView = Item.extend({
 
     events: {
-      "click .closeModal" : "stopModal"
+      'click .closeModal': 'stopModal'
     },
 
     initialize: function(options) {
       logger.info('initialize ModalTalkView');
-      var options = options || {};
-
+      options = options || {};
       options.template = ModalTemplate;
-
-      Item.prototype.initialize.call(this,options);
+      Item.prototype.initialize.call(this, options);
     },
 
     showModal: function(itemId) {
-      $('div.talkModal').modal({keyboard:false,backdrop:'static'});
+      $('div.talkModal').modal({
+        keyboard: false,
+        backdrop: 'static'
+      });
     },
 
     setModel: function (modelTalk) {
@@ -45,7 +46,7 @@ define([
       var embed = this.$el.find('#videoEmbed');
       this.$el.find('#videoEmbed').remove();
       this.$el.find('.modal-body').prepend(embed);
-      app.router.navigate('home', {
+      window.app.router.navigate('home', {
         trigger: true
       });
     }

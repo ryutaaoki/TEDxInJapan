@@ -24,12 +24,9 @@ define([
 
     initialize: function(options) {
       logger.info('initialize MenuDisplayView');
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = MenuDisplayTemplate;
-
-      List.prototype.initialize.call(this,options);
+      List.prototype.initialize.call(this, options);
     }
   });
 

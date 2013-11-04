@@ -26,17 +26,17 @@ define([
 
     initialize: function(options) {
       logger.info('initialize AppLayoutView');
-      var options = options || {};
+      options = options || {};
 
       this.menuList = new Menu({
         appController: options.appController,
         model: new Backbone.Model(),
-        el: "#nav"
+        el: '#nav'
       });
 
       this.panel = new AppPanel({
         appController: options.appController,
-        el: "#content"
+        el: '#content'
       });
 
       this.footer = new Footer({

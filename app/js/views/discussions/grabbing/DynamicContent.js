@@ -18,8 +18,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize DynamicContentView');
-      var options = options || {};
-
+      options = options || {};
       DynamicContainer.prototype.initialize.call(this,options);
     }
   });

@@ -24,8 +24,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize AdsPagePanel');
-      var options = options || {};
-
+      options = options || {};
       options.template = AdsLayout;
 
       this.ads = new AdsView({

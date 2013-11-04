@@ -24,7 +24,7 @@ define([
 
     initialize: function(options) {
       logger.info('initialize AppPanelView');
-      var options = options || {};
+      options = options || {};
 
       //--------- Different Panel Creation
       this.live = new LiveView({

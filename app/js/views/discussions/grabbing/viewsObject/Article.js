@@ -22,13 +22,10 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ArticleView');
-      var options = options || {};
-
+      options = options || {};
       options.template = ArticleTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
-
+    }
   });
 
   return ArticleView;

@@ -23,10 +23,8 @@ define([
 
     initialize: function(options) {
       logger.info('initialize ItemStatusView');
-      var options = options || {};
-
+      options = options || {};
       options.template = ItemStatusTemplate;
-
       Item.prototype.initialize.call(this,options);
     }
 

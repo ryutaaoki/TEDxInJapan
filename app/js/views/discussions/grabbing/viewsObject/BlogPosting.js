@@ -22,13 +22,10 @@ define([
 
     initialize: function(options) {
       logger.info('initialize BlogPostingView');
-      var options = options || {};
-
+      options = options || {};
       options.template = BlogPostingTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
-
+    }
   });
 
   return BlogPostingView;

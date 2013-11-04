@@ -348,7 +348,9 @@ define('text!templates/homepage/talks/ItemTalks.html',[],function () { return '<
 
 define('text!templates/homepage/talks/Modal.html',[],function () { return '<script type="text/javascript" src="js/lib/bootstrap-modal.js"></script>\n<div class="talkModal modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\n  <div class="modal-header">\n    <button type="button" class="close closeModal" data-dismiss="modal" aria-hidden="true">×</button>\n    <h3 id="label-modal"><%= item.name %></h3>\n  </div>\n  <div class="modal-body">\n    <embed id="videoEmbed" allowscriptaccess="always" src="<%= item.embedURL %>"></embed>\n    <p id="description-modal"><%= item.description %></p>\n  </div>\n  <div class="modal-footer">\n    <button id="closeModal" class="btn closeModal" data-dismiss="modal" aria-hidden="true"><%= T("Fermer") %></button>\n  </div>\n</div>';});
 
-define('text!templates/homepage/talks/TalksLayout.html',[],function () { return '\n<div role="talks" id="talks">\n  <!-- Content Videos -->\n  <h4><%= T("Interventions remarquables en accès libre") %></h4>\n  <%= children.listTalks %>\n  <%= children.modalTalk %>\n</div>';});
+define('text!templates/Error.html',[],function () { return '<div class="error">\n  <% if (model.get(\'description\')) { %><p><%= T(model.get(\'description\')) %></p><% } %>\n</div>';});
+
+define('text!templates/homepage/talks/TalksLayout.html',[],function () { return '\n<div role="talks" id="talks">\n  <!-- Content Videos -->\n  <h4><%= T("Interventions remarquables en accès libre") %></h4>\n  <%= children.listTalks %>\n  <%= children.modalTalk %>\n  <%= children.errorView %>\n</div>';});
 
 define('text!templates/homepage/tweets/ItemTweets.html',[],function () { return '<p>[[ Item Tweets from Factory ]]</p>';});
 
@@ -356,11 +358,11 @@ define('text!templates/homepage/tweets/TweetsLayout.html',[],function () { retur
 
 define('text!templates/conferences/displayer/ItemEvent.html',[],function () { return '<a class="event" href="<%= this.model.attributes.url %>" target="_blank">\n  <div class="itemEvent" style="height: 210px; background: url(<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>) no-repeat 50%;  -webkit-background-size: cover; background-size: cover;"></div>\n  <div style="clear:both"></div>\n  <h4 class="nameEvent"><%= item.name %></h4>\n  <h4 class="dateEvent"><%= item.startDate %> <%= T(\'à\') %> <%= item.address %></h4>\n</a>';});
 
-define('text!templates/conferences/displayer/DisplayEventsLayout.html',[],function () { return '<div class="displayer conferences">\n  <h4><%= T("Les prochains TEDx en France") %></h4>\n  <%= children.displayEvents %>\n  <div style="clear:both"></div>\n</div>';});
+define('text!templates/conferences/displayer/DisplayEventsLayout.html',[],function () { return '<div class="displayer conferences">\n  <h4><%= T("Les prochains TEDx en France") %></h4>\n  <%= children.displayEvents %>\n  <%= children.errorView %>\n  <div style="clear:both"></div>\n</div>';});
 
 define('text!templates/conferences/talks/ItemTalks.html',[],function () { return '<a href="<%= this.model.attributes.url %>" target="_blank">\n  <div class="itemEvent" style="height: 130px; width:200px; background: url(<%= item.image.contentURL ? item.image.contentURL : "layout-img/tedxfrance-placeholder.png" %>) no-repeat 50%;  -webkit-background-size: cover; background-size: cover;"></div>\n  <div style="clear:both"></div>\n  <h6 class="address-event"><%= item.name %></h6>\n  <span class="address-event"><%= item.startDate %></span><br/><span class="address-event"><%= T(\'à\') %> <%= item.address %></span>\n</a>\n';});
 
-define('text!templates/conferences/talks/TalksLayout.html',[],function () { return '<div id="past-talks">\n  <h4><%= T("Les TEDx Passés") %></h4>\n  <%= children.listTalks %>\n</div>\n';});
+define('text!templates/conferences/talks/TalksLayout.html',[],function () { return '<div id="past-talks">\n  <h4><%= T("Les TEDx Passés") %></h4>\n  <%= children.listTalks %>\n  <%= children.errorView %>\n</div>\n';});
 
 define('text!templates/discussions/grabbing/ItemTweetsGrabbing.html',[],function () { return '<%\n  var widthCol;\n  var type;\n  var num = Math.floor((Math.random()*4)+2);\n  widthCol = "col" + parseInt(num);\n\n  if (item.itemType === "VideoObject"){\n    type = "video";\n  } else if (item.itemType === "BlogPosting") {\n    type = "image";\n  } else {\n    type = "text";\n  }\n\n  var date = item.datePublished.split(\'.\')[0].split(\'T\');\n  var datePartOne = date[0];\n  var datePartTwo = date[1];\n  var date = new Date(date[0] + \' \' + date[1]);\n%>\n\n<div class="item <%= widthCol %>">\n  <% if(type == "video") { %>\n    <embed class="pull-left <%= widthCol %>" src="<%= item.embedURL %>" type="video/webm"/>\n    <p><%= item.description %></p>\n    <hr>\n    <p class="footer-grab"><%= item.author[0].name %><br/><%= datePartOne %> <%= datePartTwo %></p>\n  <% } else if (type == "image") { %>\n    <a href="<%= item.url %>" target="_blank">\n      <img class="pull-left" src="<%= item.image.contentURL %>" alt="">\n      <p><%= item.description %></p>\n      <div style="clear: both;"></div>\n      <hr>\n      <p class="footer-grab"><%= item.author.name %><br/><%= date.toLocaleString() %></p>\n    </a>\n  <% } %>\n  \n  <div class="profile-pix-miny"></div>\n</div>\n';});
 
@@ -380,11 +382,11 @@ define('text!templates/discussions/grabbing/viewsObject/Article.html',[],functio
 
 define('text!templates/discussions/grabbing/LayoutStatus.html',[],function () { return '<div style="clear:both"></div>\n<div class="gutter-sizer"></div>\n<div class="item">\n  <%= children.dynamic %>\n  <%= children.item %>\n  <div style="clear:both"></div>\n</div>\n<div style="clear:both"></div>';});
 
-define('text!templates/discussions/grabbing/GrabbingLayout.html',[],function () { return '<div id="panel-grabbing">\n  <h4><%= T("Les nouvelles autour de TEDx en France partagées par la communauté") %></h4>\n  <div id="container">\n    <div id="grabbing-twitter">\n        <%= children.listTweetsGrabbing %>\n      <div style="clear: both;"></div>\n    </div>\n    <script type="text/javascript" src="js/lib/packery.min.js"></script>\n    <script>\n    $(function(){\n\n      var container = document.querySelector(\'#container\');\n      var pckry = new Packery( container, {\n        // options\n        itemSelector: \'.item\',\n        gutter: ".gutter-sizer",\n        rowHeight: 0\n      });\n    })\n    </script>\n  </div>\n</div>\n<div style="clear: both;"></div>';});
+define('text!templates/discussions/grabbing/GrabbingLayout.html',[],function () { return '<div id="panel-grabbing">\n  <h4><%= T("Les nouvelles autour de TEDx en France partagées par la communauté") %></h4>\n  <div id="container">\n    <%= children.errorView %>\n    <div id="grabbing-twitter">\n        <%= children.listTweetsGrabbing %>\n      <div style="clear: both;"></div>\n    </div>\n    <script type="text/javascript" src="js/lib/packery.min.js"></script>\n    <script>\n    $(function(){\n\n      var container = document.querySelector(\'#container\');\n      var pckry = new Packery( container, {\n        // options\n        itemSelector: \'.item\',\n        gutter: ".gutter-sizer",\n        rowHeight: 0\n      });\n    })\n    </script>\n  </div>\n</div>\n<div style="clear: both;"></div>';});
 
 define('text!templates/about/ItemAbout.html',[],function () { return '<% if(item.name) { %>\n<h2><%= item.name %></h2>\n<% } if(item.image.contentURL == "") { %>\n<p class="articleBody"><%= item.articleBody %></p>\n<% } else { %>\n<p class="articleBody">\n  <img class="pull-<%= item.location %>" src="<%= item.image.contentURL %>" alt="">\n  <%= item.articleBody %>\n</p>\n<% } %>\n\n';});
 
-define('text!templates/about/AboutLayout.html',[],function () { return '<div id="about-page">\n<!--   <h2><%= T(\'A propos de TEDx En France\') %></h2>-->\n  <%= children.about %>\n</div>';});
+define('text!templates/about/AboutLayout.html',[],function () { return '<div id="about-page">\n<!--   <h2><%= T(\'A propos de TEDx En France\') %></h2>-->\n  <%= children.about %>\n  <%= children.errorView %>\n</div>';});
 
 define('text!templates/contact/Contact.html',[],function () { return '<iframe src="<%= Joshfire.factory.config.template.options.contactform + \'?embedded=true\' %>" width="860" height="550" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>';});
 
@@ -12878,6 +12880,7 @@ define('joshfire-framework/vendor/backbone',[
   // Return global Backbone object
   return this.Backbone;
 });
+/*global define, ga*/
 define('Router',[
   'require',
   'joshlib!vendor/backbone'
@@ -12916,103 +12919,61 @@ define('Router',[
 
     defaultRoute: function() {
       
-      ga('send','pageview','#home');
-      this.navigate('home', {
-        trigger: true
-      });
+      this.navigate('home', { trigger: true });
+      ga('send', 'pageview', '#home');
     },
 
     homeRoute: function () {
       
-      ga('send','pageview','#home');
-      this.navigate('home', {
-        trigger: true
-      });
+      this.navigate('home', { trigger: true });
+      ga('send', 'pageview', '#home');
     },
 
     mapsRoute: function () {
       
-      ga('send','pageview','#home/maps');
-      this.navigate('#home/maps', {
-        trigger: true
-      });
+      this.navigate('#home/maps', { trigger: true });
+      ga('send', 'pageview', '#home/maps');
     },
 
     liveRoute: function () {
       
-      ga('send','pageview','#home/live');
-      this.navigate('#home/live', {
-        trigger: true
-      });
+      this.navigate('#home/live', { trigger: true });
+      ga('send', 'pageview', '#home/live');
     },
 
     talksModalRoute: function (id) {
-      var self = this;
       
-      this.navigate('#home/talks/' + id, {
-        trigger: true
-      });
-      this.appController.data.youtube.on('load', function() {
-        var result = self.appController.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
-        _.map( result, function( model ){
-          self.appController.layout.panel.homepage.talks.modalTalk.setModel(model);
-          self.appController.layout.panel.homepage.talks.modalTalk.render();
-          self.appController.layout.panel.homepage.talks.modalTalk.showModal();
-        });
-      });
+      this.navigate('#home/talks/' + id, { trigger: true });
     },
 
     conferencesRoute: function () {
       
-      ga('send','pageview','#conferences');
-      this.navigate('conferences', {
-        trigger: true
-      });
+      this.navigate('conferences', { trigger: true });
+      ga('send', 'pageview', '#conferences');
     },
 
     discussionsRoute: function () {
       
-      ga('send','pageview','#discussions');
-      this.navigate('discussions', {
-        trigger: true
-      });
-      this.appController.data.grabbing.on('load', function(){
-        var container = document.querySelector('#container');
-        var pckry;
-        // initialize Packery after all images have loaded
-        imagesLoaded( container, function() {
-          pckry = new Packery( container, {
-            // options
-            itemSelector: '.item',
-            gutter: ".gutter-sizer",
-            rowHeight: 0
-          });
-        });
-      });
+      this.navigate('discussions', { trigger: true });
+      ga('send', 'pageview', '#discussions');
     },
 
     aboutRoute: function () {
       
-      ga('send','pageview','#about');
-      this.navigate('about', {
-        trigger: true
-      });
+      this.navigate('about', { trigger: true });
+      ga('send', 'pageview', '#about');
     },
 
     contactRoute: function () {
       
-      ga('send','pageview','#contact');
-      this.navigate('contact', {
-        trigger: true
-      });
+      this.navigate('contact', { trigger: true });
+      ga('send', 'pageview', '#contact');
     },
 
     adsRoute: function () {
       
+      this.navigate('ads', { trigger: true });
       ga('send', 'pageview', '#ads');
-      this.navigate('ads', {
-        trigger: true
-      });
     }
   });
 
@@ -14792,15 +14753,15 @@ define('views/MenuView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = MenuTemplate;
-
       Item.prototype.initialize.call(this,options);
     }
   });
 
   return MenuView;
 });
+/*global define, google*/
 define('views/homepage/displayer/MapsView',[
   'require',
   'joshlib!utils/dollar',
@@ -14827,9 +14788,9 @@ define('views/homepage/displayer/MapsView',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = MapsTemplate;
+      this.appController = options.appController;
 
       Item.prototype.initialize.call(this,options);
     },
@@ -14866,7 +14827,6 @@ define('views/homepage/displayer/MapsView',[
     },
 
     setMarkers: function (map) {
-      var self = this;
       var marker = {
         url: 'layout-img/red-cross.png',
         // This marker is 20 pixels wide by 32 pixels tall.
@@ -14876,55 +14836,43 @@ define('views/homepage/displayer/MapsView',[
         // The anchor for this image is the base of the flagpole at 0,32.
         anchor: new google.maps.Point(16, 16)
       };
+      var self = this;
 
-      var currentDate = this.getCurrentDate();
+      if (!this.appController ||
+          !this.appController.data ||
+          !this.appController.data.events) {
+        
+        return;
+      }
 
-      var datasources = Joshfire.factory.getDataSource('tedxevents');
+      var collection = self.appController.data.events;
+      var bindPoints = function () {
+        collection.each(function (model) {
+          var bound = new google.maps.LatLng(
+            model.get('latitude'),
+            model.get('longitude')
+          );
+          var crossMarker = new google.maps.Marker({
+            position: bound,
+            map: map,
+            title: model.get('name'),
+            icon: marker
+          });
 
-      datasources.find({}, function(error, data) {
-        _.each(data.entries, function(entry){
-          // if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate))) {
-            var bound = new google.maps.LatLng(entry.latitude, entry.longitude);
-            var crossMarker = new google.maps.Marker({
-              position: bound,
-              map: map,
-              title: entry.name,
-              icon: marker
-            });
-
-            //add event "click" on the marker
-            google.maps.event.addListener(crossMarker, 'click', function() {
-              window.open(entry.url,'_blank');
-            });
+          //add event "click" on the marker
+          google.maps.event.addListener(crossMarker, 'click', function() {
+            window.open(model.get('url'), '_blank');
+          });
         });
-      });
-    },
+      };
 
-    convertDate: function(date) {
-      var newDate = date.split('/');
-      newDate = newDate[1] + '/' + newDate[0] + '/' + newDate[2];
-
-      return newDate;
-    },
-
-    getCurrentDate: function() {
-      var today = new Date();
-
-      var year = today.getFullYear();
-      var month = today.getMonth() + 1;
-      var day = today.getDate();
-
-      if(month < 10)
-        month = "0"+month;
-
-      if(day < 10)
-        day = "0"+day;
-
-      var currentDate = day + "/" + month + "/" + year;
-
-      return currentDate;
+      if (collection.length > 0) {
+        bindPoints();
+      }
+      else {
+        this.listenTo(collection, 'load', bindPoints);
+      }
     }
-
   });
 
   return MapsView;
@@ -14952,20 +14900,21 @@ define('views/homepage/talks/ModalTalkView',[
   var ModalTalkView = Item.extend({
 
     events: {
-      "click .closeModal" : "stopModal"
+      'click .closeModal': 'stopModal'
     },
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = ModalTemplate;
-
-      Item.prototype.initialize.call(this,options);
+      Item.prototype.initialize.call(this, options);
     },
 
     showModal: function(itemId) {
-      $('div.talkModal').modal({keyboard:false,backdrop:'static'});
+      $('div.talkModal').modal({
+        keyboard: false,
+        backdrop: 'static'
+      });
     },
 
     setModel: function (modelTalk) {
@@ -14976,13 +14925,36 @@ define('views/homepage/talks/ModalTalkView',[
       var embed = this.$el.find('#videoEmbed');
       this.$el.find('#videoEmbed').remove();
       this.$el.find('.modal-body').prepend(embed);
-      app.router.navigate('home', {
+      window.app.router.navigate('home', {
         trigger: true
       });
     }
   });
 
   return ModalTalkView;
+});
+define('views/ErrorView',[
+  'require',
+  'joshlib!ui/item',
+
+  'text!templates/Error.html'
+], function(
+  woodman,
+  Item,
+  
+  ErrorTemplate
+) {
+  
+  var ErrorView = Item.extend({
+    initialize: function(options) {
+      
+      options = options || {};
+      options.template = ErrorTemplate;
+      Item.prototype.initialize.call(this, options);
+    }
+  });
+
+  return ErrorView;
 });
 define('views/discussions/grabbing/ItemStatusView',[
   'require',
@@ -15009,10 +14981,8 @@ define('views/discussions/grabbing/ItemStatusView',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = ItemStatusTemplate;
-
       Item.prototype.initialize.call(this,options);
     }
 
@@ -15080,13 +15050,10 @@ define('views/discussions/grabbing/viewsObject/VideoObject',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = VideoTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
-
+    }
   });
 
   return VideoObjectView;
@@ -15116,13 +15083,10 @@ define('views/discussions/grabbing/viewsObject/BlogPosting',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = BlogPostingTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
-
+    }
   });
 
   return BlogPostingView;
@@ -15224,13 +15188,10 @@ define('views/discussions/grabbing/viewsObject/Article',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = ArticleTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
-
+    }
   });
 
   return ArticleView;
@@ -15383,12 +15344,10 @@ define('views/contact/ContactView',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = ContactTemplate;
-
       Item.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ContactView;
@@ -15419,8 +15378,7 @@ define('views/contact/ContactPagePanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = ContactLayout;
 
       this.contact = new ContactView({
@@ -15433,7 +15391,7 @@ define('views/contact/ContactPagePanel',[
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ContactPagePanel;
@@ -15460,8 +15418,7 @@ define('views/ads/AdsView',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = AdsTemplate;
 
       Item.prototype.initialize.call(this,options);
@@ -15496,8 +15453,7 @@ define('views/ads/AdsPagePanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = AdsLayout;
 
       this.ads = new AdsView({
@@ -15538,14 +15494,13 @@ define('views/Footer',[
   var FooterView = Item.extend({
 
     events: {
-      "click #adgdf": "trackGA"
+      'click #adgdf': 'trackGA'
     },
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = FooterTemplate;
-
       Item.prototype.initialize.call(this,options);
     },
 
@@ -16474,12 +16429,9 @@ define('views/homepage/displayer/MenuDisplayView',[
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = MenuDisplayTemplate;
-
-      List.prototype.initialize.call(this,options);
+      List.prototype.initialize.call(this, options);
     }
   });
 
@@ -16512,20 +16464,21 @@ define('views/homepage/displayer/LiveView',[
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = LiveTemplate;
+      var self = this;
 
       List.prototype.initialize.call(this,options);
 
       this.collection.on('loaded', function(){
         self.update(true);
         /* At first load on homepage */
-        if(Backbone.history.fragment == "home" && self.collection.length > 0)
-          app.router.navigate('#home/live', {trigger:true});
+        if ((Backbone.history.fragment === 'home') &&
+            (self.collection.length > 0)) {
+          window.app.router.navigate('#home/live', { trigger:true });
+        }
       });
-    },
+    }
   });
 
   return LiveView;
@@ -16556,7 +16509,7 @@ define('views/homepage/displayer/DisplayPanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
 
       //--------- Different Panel Creation
       this.live = new LiveView({
@@ -16612,8 +16565,7 @@ define('views/homepage/DisplayerView',[
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
+      options = options || {};
       options.template = DisplayerTemplate;
 
       this.menuDisplay = new MenuDisplay({
@@ -16662,21 +16614,43 @@ define('views/homepage/talks/ListTalksView',[
   
   var ListTalksView = List.extend({
 
-    className: "talks",
+    className: 'talks',
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = ItemTalksTemplate;
-
       List.prototype.initialize.call(this,options);
+    },
 
-      this.collection.off();
-      this.collection.on('load', function() {
-        self.update(true);
-      });
+    /**
+     * Sets the collection associated with the view.
+     *
+     * Overrides default behavior to only listen to load events.
+     *
+     * @function
+     * @param {Collection} collection Backbone collection to bind to the view
+     * @param {Boolean} update Update the view when set. When not, the view
+     *  will just wait for new events on the model to update itself.
+     */
+    setCollection: function (collection, update) {
+      if (this.collection) {
+        this.stopListening(this.collection);
+      }
+
+      this.collection = collection;
+      this.collectionChanged = true;
+      this.newChildren = [];
+
+      if (this.collection) {
+        
+        this.listenTo(this.collection, 'load',
+          this.callIfNotRemoved(this.update));
+      }
+
+      if (update) {
+        this.update();
+      }
     },
 
     createChildrenViews: function(){
@@ -16687,6 +16661,7 @@ define('views/homepage/talks/ListTalksView',[
 
   return ListTalksView;
 });
+/*global define*/
 define('views/homepage/TalksView',[
   'require',
   'joshlib!utils/dollar',
@@ -16697,6 +16672,7 @@ define('views/homepage/TalksView',[
 
   'views/homepage/talks/ListTalksView',
   'views/homepage/talks/ModalTalkView',
+  'views/ErrorView',
 
   'text!templates/homepage/talks/TalksLayout.html'
 ], function(
@@ -16709,6 +16685,7 @@ define('views/homepage/TalksView',[
 
   ListTalks,
   ModalTalk,
+  ErrorView,
 
   TalksTemplate
 ) {
@@ -16717,7 +16694,7 @@ define('views/homepage/TalksView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = TalksTemplate;
 
       this.listTalks = new ListTalks({
@@ -16730,13 +16707,18 @@ define('views/homepage/TalksView',[
         model: new Backbone.Model()
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
         listTalks: this.listTalks,
-        modalTalk: this.modalTalk
+        modalTalk: this.modalTalk,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return TalksView;
@@ -16757,43 +16739,16 @@ define('views/homepage/tweets/ListTweetsView',[
   _,
   Backbone,
 
-  List,
-  Item,
-
-  ItemTweetsTemplate
+  List
 ) {
   
   var ListTweetsView = List.extend({
 
     initialize: function(options) {
       
-      // options.template = ItemTweetsTemplate;
-
-      // var tweets = Joshfire.factory.getDataSource('tweets');
-
-      // tweets.find({
-      //     limit: 5
-      //   },
-      //   function( err , data ) {
-      //     var html = "<ul>";
-      //     _.each(data.entries, function(entry) {
-      //       // console.log(entry);
-      //       html += '<a href="' + entry.url + '" target="_blank">';
-      //       html += '<li class="tweet">';
-      //       html += '<img src="' + entry.author[0].image.contentURL + '" alt="" width="40"/>';
-      //       html += '<span>' + entry.name + '</span>' + '<br/><span class="name-author">' + entry.author[0].name + '</span>';
-      //       html += '</li></a>';
-      //     });
-      //     html +="</ul>";
-      //     // $("#posts").html(html);
-      //   }
-      // );
-
-      var options = options || {};
-
-
+      options = options || {};
       List.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ListTweetsView;
@@ -16826,7 +16781,7 @@ define('views/homepage/TweetsView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = TweetsTemplate;
 
       this.listTweets = new ListTweets({
@@ -16838,7 +16793,7 @@ define('views/homepage/TweetsView',[
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return TweetsView;
@@ -16870,7 +16825,7 @@ define('views/homepage/HomePagePanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
 
       this.displayer = new DisplayerView({
         appController: options.appController,
@@ -16893,7 +16848,7 @@ define('views/homepage/HomePagePanel',[
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return HomePagePanel;
@@ -16924,17 +16879,39 @@ define('views/conferences/displayer/DisplayEventsLayout',[
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = ItemEventTemplate;
-
       List.prototype.initialize.call(this,options);
+    },
 
-      this.collection.off();
-      this.collection.on('loaded', function() {
-        self.update(true);
-      });
+    /**
+     * Sets the collection associated with the view.
+     *
+     * Overrides default behavior to only listen to load events.
+     *
+     * @function
+     * @param {Collection} collection Backbone collection to bind to the view
+     * @param {Boolean} update Update the view when set. When not, the view
+     *  will just wait for new events on the model to update itself.
+     */
+    setCollection: function (collection, update) {
+      if (this.collection) {
+        this.stopListening(this.collection);
+      }
+
+      this.collection = collection;
+      this.collectionChanged = true;
+      this.newChildren = [];
+
+      if (this.collection) {
+        
+        this.listenTo(this.collection, 'load',
+          this.callIfNotRemoved(this.update));
+      }
+
+      if (update) {
+        this.update();
+      }
     }
   });
 
@@ -16949,6 +16926,7 @@ define('views/conferences/NextEventsLayoutView',[
   'joshlib!ui/layout',
 
   'views/conferences/displayer/DisplayEventsLayout',
+  'views/ErrorView',
 
   'text!templates/conferences/displayer/DisplayEventsLayout.html'
 ], function(
@@ -16960,6 +16938,7 @@ define('views/conferences/NextEventsLayoutView',[
   Layout,
 
   DisplayEventsLayout,
+  ErrorView,
 
   DisplayEventsTemplate
 ) {
@@ -16968,7 +16947,7 @@ define('views/conferences/NextEventsLayoutView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = DisplayEventsTemplate;
 
       this.displayEvents = new DisplayEventsLayout({
@@ -16976,12 +16955,17 @@ define('views/conferences/NextEventsLayoutView',[
         collection: options.collection
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        displayEvents: this.displayEvents
+        displayEvents: this.displayEvents,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return DisplayerView;
@@ -17012,17 +16996,39 @@ define('views/conferences/talks/ListPastTalksView',[
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = ItemTalksTemplate;
-
       List.prototype.initialize.call(this,options);
+    },
 
-      this.collection.off();
-      this.collection.on('loaded', function() {
-        self.update(true);
-      });
+    /**
+     * Sets the collection associated with the view.
+     *
+     * Overrides default behavior to only listen to load events.
+     *
+     * @function
+     * @param {Collection} collection Backbone collection to bind to the view
+     * @param {Boolean} update Update the view when set. When not, the view
+     *  will just wait for new events on the model to update itself.
+     */
+    setCollection: function (collection, update) {
+      if (this.collection) {
+        this.stopListening(this.collection);
+      }
+
+      this.collection = collection;
+      this.collectionChanged = true;
+      this.newChildren = [];
+
+      if (this.collection) {
+        
+        this.listenTo(this.collection, 'load',
+          this.callIfNotRemoved(this.update));
+      }
+
+      if (update) {
+        this.update();
+      }
     },
 
     createChildrenViews: function(){
@@ -17043,6 +17049,7 @@ define('views/conferences/PastTalksView',[
   'joshlib!ui/layout',
 
   'views/conferences/talks/ListPastTalksView',
+  'views/ErrorView',
 
   'text!templates/conferences/talks/TalksLayout.html'
 ], function(
@@ -17054,6 +17061,7 @@ define('views/conferences/PastTalksView',[
   Layout,
 
   ListTalks,
+  ErrorView,
 
   TalksTemplate
 ) {
@@ -17062,7 +17070,7 @@ define('views/conferences/PastTalksView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = TalksTemplate;
 
       this.listTalks = new ListTalks({
@@ -17070,12 +17078,17 @@ define('views/conferences/PastTalksView',[
         collection: options.collection
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        listTalks: this.listTalks
+        listTalks: this.listTalks,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return TalksView;
@@ -17104,7 +17117,7 @@ define('views/conferences/ConferencesPagePanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
 
       this.displayer = new NextEventsView({
         appController: options.appController,
@@ -17122,11 +17135,12 @@ define('views/conferences/ConferencesPagePanel',[
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return ConferencesPagePanel;
 });
+/*global define, imagesLoaded, Packery*/
 define('views/discussions/grabbing/ListTweetsGrabbing',[
   'require',
   'joshlib!utils/dollar',
@@ -17163,9 +17177,7 @@ define('views/discussions/grabbing/ListTweetsGrabbing',[
 
     initialize: function(options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       // options.itemTemplate = ItemTweetsGrabbingTemplate;
 
       options.itemFactory = function (model, offset) {
@@ -17189,29 +17201,58 @@ define('views/discussions/grabbing/ListTweetsGrabbing',[
       };
 
       List.prototype.initialize.call(this,options);
+    },
 
-      this.collection.off();
-      this.collection.on('load', function(){
-        self.update(true);
-        var container = document.querySelector('#container');
-        var pckry;
-        // initialize Packery after all images have loaded
-        imagesLoaded( container, function() {
-          var p=$('div.item-description p');
-          var divh=$('div.item-description').height();
-          while ($(p).outerHeight()>divh) {
-              $(p).text(function (index, text) {
+    /**
+     * Sets the collection associated with the view.
+     *
+     * Overrides default behavior to only listen to load events.
+     *
+     * @function
+     * @param {Collection} collection Backbone collection to bind to the view
+     * @param {Boolean} update Update the view when set. When not, the view
+     *  will just wait for new events on the model to update itself.
+     */
+    setCollection: function (collection, update) {
+      var self = this;
+
+      if (this.collection) {
+        this.stopListening(this.collection);
+      }
+
+      this.collection = collection;
+      this.collectionChanged = true;
+      this.newChildren = [];
+
+      if (this.collection) {
+        
+        this.listenTo(this.collection, 'load',
+          this.callIfNotRemoved(function() {
+            self.update(true);
+            var container = document.querySelector('#container');
+            var pckry;
+            // initialize Packery after all images have loaded
+            imagesLoaded( container, function() {
+              var p = $('div.item-description p');
+              var divh = $('div.item-description').height();
+              while ($(p).outerHeight()>divh) {
+                $(p).text(function (index, text) {
                   return text.replace(/\W*\s(\S)*$/, '...');
+                });
+              }
+              pckry = new Packery( container, {
+                // options
+                itemSelector: '.item',
+                gutter: '.gutter-sizer',
+                rowHeight: 0
               });
-          }
-          pckry = new Packery( container, {
-            // options
-            itemSelector: '.item',
-            gutter: ".gutter-sizer",
-            rowHeight: 0
-          });
-        });
-      });
+            });
+          }));
+      }
+
+      if (update) {
+        this.update();
+      }
     }
   });
 
@@ -17227,8 +17268,9 @@ define('views/discussions/GrabbingView',[
   'joshlib!ui/layout',
 
   'views/discussions/grabbing/ListTweetsGrabbing',
+  'views/ErrorView',
 
-  'text!templates/discussions/grabbing/GrabbingLayout.html'
+  'text!templates/discussions/grabbing/GrabbingLayout.html',
 ], function(
   woodman,
   $,
@@ -17238,6 +17280,7 @@ define('views/discussions/GrabbingView',[
   Layout,
 
   ListTweetsGrabbing,
+  ErrorView,
 
   DisplayerTemplate
 ) {
@@ -17248,7 +17291,7 @@ define('views/discussions/GrabbingView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
       options.template = DisplayerTemplate;
 
       this.listTweetsGrabbing = new ListTweetsGrabbing({
@@ -17257,12 +17300,17 @@ define('views/discussions/GrabbingView',[
         autoLoadMore: true
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        listTweetsGrabbing: this.listTweetsGrabbing
+        listTweetsGrabbing: this.listTweetsGrabbing,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return DisplayerView;
@@ -17289,7 +17337,7 @@ define('views/discussions/DiscussionsPagePanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
 
       this.grabbing = new GrabbingView({
         appController: options.appController,
@@ -17301,7 +17349,7 @@ define('views/discussions/DiscussionsPagePanel',[
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return HomePagePanel;
@@ -17328,20 +17376,42 @@ define('views/about/AboutView',[
   
   var AboutView = List.extend({
 
-    initialize: function(options) {
+    initialize: function (options) {
       
-      var options = options || {},
-          self = this;
-
+      options = options || {};
       options.itemTemplate = ItemAboutTemplate;
-
       List.prototype.initialize.call(this,options);
-
-      this.collection.off();
-      this.collection.on('load', function() {
-        self.update(true);
-      });
     },
+
+    /**
+     * Sets the collection associated with the view.
+     *
+     * Overrides default behavior to only listen to load events.
+     *
+     * @function
+     * @param {Collection} collection Backbone collection to bind to the view
+     * @param {Boolean} update Update the view when set. When not, the view
+     *  will just wait for new events on the model to update itself.
+     */
+    setCollection: function (collection, update) {
+      if (this.collection) {
+        this.stopListening(this.collection);
+      }
+
+      this.collection = collection;
+      this.collectionChanged = true;
+      this.newChildren = [];
+
+      if (this.collection) {
+        
+        this.listenTo(this.collection, 'load',
+          this.callIfNotRemoved(this.update));
+      }
+
+      if (update) {
+        this.update();
+      }
+    }
   });
 
   return AboutView;
@@ -17355,6 +17425,7 @@ define('views/about/AboutPagePanel',[
   'joshlib!ui/layout',
 
   'views/about/AboutView',
+  'views/ErrorView',
 
   'text!templates/about/AboutLayout.html'
 ], function(
@@ -17365,6 +17436,7 @@ define('views/about/AboutPagePanel',[
   Layout,
 
   AboutView,
+  ErrorView,
 
   AboutLayout
 ) {
@@ -17373,8 +17445,7 @@ define('views/about/AboutPagePanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
-
+      options = options || {};
       options.template = AboutLayout;
 
       this.about = new AboutView({
@@ -17382,12 +17453,17 @@ define('views/about/AboutPagePanel',[
         collection: options.appController.data.aboutContent
       });
 
+      this.errorView = new ErrorView({
+        model: new Backbone.Model({ description: '' })
+      });
+
       options.children = {
-        about: this.about
+        about: this.about,
+        errorView: this.errorView
       };
 
       Layout.prototype.initialize.call(this,options);
-    },
+    }
   });
 
   return AboutPagePanel;
@@ -17426,7 +17502,7 @@ define('views/AppPanel',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
 
       //--------- Different Panel Creation
 
@@ -17462,7 +17538,7 @@ define('views/AppPanel',[
         about: this.about,
         contact: this.contact,
         ads: this.ads
-      }
+      };
       CardPanel.prototype.initialize.call(this,options);
     }
 
@@ -17498,17 +17574,17 @@ define('views/AppLayoutView',[
 
     initialize: function(options) {
       
-      var options = options || {};
+      options = options || {};
 
       this.menuList = new Menu({
         appController: options.appController,
         model: new Backbone.Model(),
-        el: "#nav"
+        el: '#nav'
       });
 
       this.panel = new AppPanel({
         appController: options.appController,
-        el: "#content"
+        el: '#content'
       });
 
       this.footer = new Footer({
@@ -17534,6 +17610,8 @@ define('views/AppLayoutView',[
 
   return AppLayoutView;
 });
+
+/*global define, Joshfire, imagesLoaded, Packery*/
 
 define('Controller',[
   'require',
@@ -17600,9 +17678,7 @@ define('Controller',[
 
       var currentDate = this.getCurrentDate();
 
-      this.getPastEvents(currentDate);
-      this.getPostEvents(currentDate);
-      this.getLiveTEDx();
+      this.getEvents(currentDate);
       this.getAboutPageContent();
       this.getPlaylistYoutube();
       this.getFeedGrabbing();
@@ -17670,21 +17746,48 @@ define('Controller',[
 
       /* Homepage talks */
       this.router.on('route:talks', function (id) {
-
         self.layout.getChild('panel').showChild('homepage');
-        var panelDisplay = self.layout.getChild('panel').getChild('homepage').getChild('displayer').getChild('panelDisplay');
+        if (self.data.youtube.length > 0) {
+          var result = self.data.youtube.where({
+            url: 'http://www.youtube.com/watch?v=' + id
+          });
+          _.each( result, function( model ){
+            var modal = self.layout
+              .getChild('panel')
+              .getChild('homepage')
+              .getChild('talks')
+              .getChild('modalTalk');
+            modal.setModel(model);
+            modal.render();
+            modal.showModal();
+          });
+        }
+        else {
+          self.listenTo(self.data.youtube, 'load', function () {
+            var result = self.data.youtube.where({
+              url: 'http://www.youtube.com/watch?v=' + id
+            });
+            _.each(result, function (model) {
+              var modal = self.layout
+                .getChild('panel')
+                .getChild('homepage')
+                .getChild('talks')
+                .getChild('modalTalk');
+              modal.setModel(model);
+              modal.render();
+              modal.showModal();
+            });
+          });
+        }
 
-        var result = self.data.youtube.where({ url: "http://www.youtube.com/watch?v=" + id});
-        _.map( result, function( model ){
-          var modal = self.layout.getChild('panel').getChild('homepage').getChild('talks').getChild('modalTalk');
-          modal.setModel(model);
-          modal.render();
-          modal.showModal();
-        });
-
-        if(!panelDisplay.getChild('live').collection.length)
+        var panelDisplay = self.layout
+          .getChild('panel')
+          .getChild('homepage')
+          .getChild('displayer')
+          .getChild('panelDisplay');
+        if (!panelDisplay.getChild('live').collection.length) {
           panelDisplay.showChild('maps');
-
+        }
         self.layout.getChild('menuList').$el.find('nav .active').removeClass('active');
       });
 
@@ -17711,13 +17814,13 @@ define('Controller',[
         self.layout.getChild('menuList').$el.find('nav #discussions-page').addClass('active');
 
         var container = document.querySelector('#container');
-        var pckry;
+        var pckry = null;
         // initialize Packery after all images have loaded
         imagesLoaded( container, function() {
           pckry = new Packery( container, {
             // options
             itemSelector: '.item',
-            gutter: ".gutter-sizer",
+            gutter: '.gutter-sizer',
             rowHeight: 0
           });
         });
@@ -17761,82 +17864,115 @@ define('Controller',[
     },
 
     createCollections: function() {
+      var self = this;
+
+      this.data.events       = new Collection();
       this.data.pastevents   = new Collection();
       this.data.postevents   = new Collection();
-      this.data.blacklist    = new Collection();
       this.data.liveevent    = new Collection();
       this.data.youtube      = new Collection();
       this.data.aboutContent = new Collection();
       this.data.grabbing     = new Collection();
-    },
 
-    getPastEvents: function(currentDate) {
+      this.listenTo(this.data.events, 'load:error', function () {
+        var talks = self.layout
+          .getChild('panel')
+          .getChild('conferences')
+          .getChild('displayer');
+        var errorView = talks.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
 
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({}, function (error, data) {
-        if(error) {
-          
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            if(new Date(self.convertDate(entry.startDate)) < new Date(self.convertDate(currentDate))){
-              entry.startDate = self.getDateName(entry.startDate);
-              self.data.pastevents.add(entry);
-            }
-          });
-          self.data.pastevents.trigger('loaded', self.data.pastevents);
-        }
+        talks = self.layout
+          .getChild('panel')
+          .getChild('conferences')
+          .getChild('talks');
+        errorView = talks.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
+        talks.getChild('listTalks').hide();
+      });
+      this.listenTo(this.data.youtube, 'load:error', function () {
+        var talks = self.layout
+          .getChild('panel')
+          .getChild('homepage')
+          .getChild('talks');
+        var errorView = talks.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement des vidéos'
+        }));
+        errorView.render();
+        errorView.show();
+        talks.getChild('listTalks').hide();
+        talks.getChild('modalTalk').hide();
+      });
+      this.listenTo(this.data.aboutContent, 'load:error', function () {
+        var about = self.layout
+          .getChild('panel')
+          .getChild('about');
+        var errorView = about.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
+        about.getChild('about').hide();
+      });
+      this.listenTo(this.data.grabbing, 'load:error', function () {
+        var discussions = self.layout
+          .getChild('panel')
+          .getChild('discussions')
+          .getChild('grabbing');
+        var errorView = discussions.getChild('errorView');
+        errorView.setModel(new Backbone.Model({
+          name: 'Erreur réseau',
+          description: 'Erreur de chargement'
+        }));
+        errorView.render();
+        errorView.show();
+        discussions.getChild('listTweetsGrabbing').hide();
       });
     },
 
-    getPostEvents: function(currentDate) {
-
+    getEvents: function (currentDate) {
       var self = this;
-
+      var convDate = new Date(this.convertDate(currentDate));
       var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({
-
-      }, function (error, data) {
-        if(error) {
-          
-          return;
-        } else {
-          var count = 0;
-          _.each(data.entries, function (entry) {
-            if(new Date(self.convertDate(entry.startDate)) > new Date(self.convertDate(currentDate)) && count < 3){
-              entry.startDate = self.getDateName(entry.startDate);
-              self.data.postevents.add(entry);
-              count++;
-            }
-          });
-          self.data.postevents.trigger('loaded', self.data.postevents);
-        }
-      });
-    },
-
-    getLiveTEDx: function() {
-      var self = this;
-
-      var datasource = Joshfire.factory.getDataSource('tedxevents');
-      datasource.find({}, function (error, data) {
-        if(error) {
-          
-          return;
-        } else {
-          _.each(data.entries, function (entry) {
-            if(entry.availability == "TRUE")
-              self.data.liveevent.reset(entry);
-          });
-          self.data.liveevent.trigger('loaded', self.data.liveevent);
-        }
+      self.data.events.setDataSource(datasource);
+      self.data.events.fetch();
+      self.listenTo(self.data.events, 'load', function () {
+        var count = 0;
+        self.data.events.each(function (model) {
+          if (new Date(self.convertDate(model.get('startDate'))) < convDate) {
+            self.data.pastevents.add(model);
+          }
+          else if (count < 3) {
+            self.data.postevents.add(model);
+            count++;
+          }
+          model.set('startDate', self.getDateName(model.get('startDate')));
+          if (model.get('availability') === 'TRUE') {
+            self.data.liveevent.reset(model);
+          }
+        });
+        self.data.pastevents.trigger('load', self.data.pastevents);
+        self.data.postevents.trigger('load', self.data.postevents);
+        self.data.liveevent.trigger('load', self.data.liveevent);
       });
     },
 
     getAboutPageContent: function() {
       var self = this;
-
       var datasource = Joshfire.factory.getDataSource('about');
       self.data.aboutContent.setDataSource(datasource);
       self.data.aboutContent.fetch();
@@ -17860,43 +17996,65 @@ define('Controller',[
       self.data.grabbing.fetch();
     },
 
-    getDateName: function(entryDate){
-      Date.prototype.getMonthName = function(lang) {
-        switch(lang){
-          case 'fr':
-            var m = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre'];
-            break;
-          default:
-          case 'en':
-            var m = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            break;
+    getDateName: function (entryDate) {
+      Date.prototype.getMonthName = function (lang) {
+        var m = [];
+        switch (lang) {
+        case 'fr':
+          m = [
+            'Janvier', 'Fevrier', 'Mars', 'Avril',
+            'Mai', 'Juin', 'Juillet', 'Aout',
+            'Septembre', 'Octobre', 'Novembre', 'Décembre'
+          ];
+          break;
+        default:
+        case 'en':
+          m = [
+            'January', 'February', 'March', 'April',
+            'May', 'June', 'July', 'August',
+            'September', 'October', 'November', 'December'
+          ];
+          break;
         }
         return m[this.getMonth()];
-      }
+      };
 
       Date.prototype.getDayName = function() {
-        switch(lang){
-          case 'fr':
-            var d = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-            break;
-          default:
-          case 'en':
-            var d = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            break;
+        var d = [];
+        switch (lang) {
+        case 'fr':
+          d = [
+            'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
+            'Jeudi', 'Vendredi', 'Samedi'
+          ];
+          break;
+        default:
+        case 'en':
+          d = [
+            'Sunday', 'Monday', 'Tuesday',  'Wednesday',
+            'Thursday','Friday','Saturday'
+          ];
+          break;
         }
         return d[this.getDay()];
-      }
+      };
 
       var date = new Date(this.convertDate(entryDate));
       var lang = Joshfire.factory.config.template.options.language;
-      switch(lang){
-        default:
-        case 'en':
-          date = date.getDayName(lang) + ' ' + date.getMonthName(lang) + ' ' + date.getDate() + ',' + date.getFullYear();
-          return date;
-        case 'fr':
-          date = date.getDayName(lang) + ' ' + date.getDate() + ' ' + date.getMonthName(lang) + ' ' + date.getFullYear();
-          return date;
+      switch (lang) {
+      default:
+      case 'en':
+        date = date.getDayName(lang) +
+          ' ' + date.getMonthName(lang) +
+          ' ' + date.getDate() +
+          ',' + date.getFullYear();
+        return date;
+      case 'fr':
+        date = date.getDayName(lang) +
+          ' ' + date.getDate() +
+          ' ' + date.getMonthName(lang) +
+          ' ' + date.getFullYear();
+        return date;
       }
     },
 
@@ -17915,12 +18073,12 @@ define('Controller',[
       var day = today.getDate();
 
       if(month < 10)
-        month = "0"+month;
+        month = '0' + month;
 
       if(day < 10)
-        day = "0"+day;
+        day = '0' + day;
 
-      var currentDate = day + "/" + month + "/" + year;
+      var currentDate = day + '/' + month + '/' + year;
 
       return currentDate;
     }
@@ -17930,6 +18088,12 @@ define('Controller',[
   return Controller;
 });
 
+/**
+ * @fileOverview Main entry point for the application
+ *
+ * Note RequireJS must be available.
+ */
+/*global requirejs, woodmanConfig*/
 requirejs.config({
   paths: {
     'text': 'lib/text'

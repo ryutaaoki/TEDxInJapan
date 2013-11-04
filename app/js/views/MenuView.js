@@ -22,9 +22,8 @@ define([
 
     initialize: function(options) {
       logger.info('initialize Menu');
-      var options = options || {};
+      options = options || {};
       options.template = MenuTemplate;
-
       Item.prototype.initialize.call(this,options);
     }
   });
