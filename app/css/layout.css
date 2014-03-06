@@ -90,7 +90,7 @@ header {
 }
 
 header {
-	margin-bottom: -87px;
+	margin-bottom: -70px;
 }
 
 header #sharp {
@@ -140,7 +140,15 @@ nav img {
 	margin-bottom: 25px;
 	width:100%;
 }
-
+.layout-header p#page-title .page-subtitle{
+	font-size:.8em;
+}
+.layout-header p#page-title .page-subtitle a{
+	color:#fff;
+}
+.layout-header p#page-title .page-subtitle a:hover{
+	color:#FF3500;
+}
 nav a[href="#conferences"] li {
 	padding-top:19px;
 	padding-bottom:1px;
