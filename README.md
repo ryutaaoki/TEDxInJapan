@@ -510,3 +510,11 @@ The Twitter Feed for Grabbing is done !
   Just retrieve the link of the form that you copy/paste in a corner later, and replace it in the "options" section of the bootstrap code describe previously in [section 5](https://github.com/joshfire/tedxenfrance#5-options)
 
 ----
+
+##Build
+
+Once you modified the source files, you need to update the optimized js file which is used by the `index.html`  
+Simply run
+```
+  $ cd ./app/js
+  $ node lib/joshfire/scripts/optimize.js none main

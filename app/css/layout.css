@@ -90,7 +90,7 @@ header {
 }
 
 header {
-	margin-bottom: -87px;
+	margin-bottom: -70px;
 }
 
 header #sharp {
@@ -140,7 +140,15 @@ nav img {
 	margin-bottom: 25px;
 	width:100%;
 }
-
+.layout-header p#page-title .page-subtitle{
+	font-size:.8em;
+}
+.layout-header p#page-title .page-subtitle a{
+	color:#fff;
+}
+.layout-header p#page-title .page-subtitle a:hover{
+	color:#FF3500;
+}
 nav a[href="#conferences"] li {
 	padding-top:19px;
 	padding-bottom:1px;
@@ -301,14 +309,18 @@ div#main {
 	margin-top:10px;
 }
 
-div#twitter-posts {
+div#main-ad, div#twitter-posts {
 	margin-top:20px;
 	margin-bottom: 30px;
 	float:right;
 	width:310px;
 	background-color:white;
 }
-
+div#main-ad{
+	background-color:transparent;
+	text-align: right;
+	margin-bottom: 0;
+}
 div.twitter h4 {
 	margin: 10px;
 }
