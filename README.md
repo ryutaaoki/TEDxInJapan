@@ -513,8 +513,30 @@ The Twitter Feed for Grabbing is done !
 
 ##Build
 
-Once you modified the source files, you need to update the optimized js file which is used by the `index.html`  
-Simply run
-```
-  $ cd ./app/js
-  $ node lib/joshfire/scripts/optimize.js none main
+###Build the app
+
+1. Concatenate, optimize & obfuscate the js files
+2. Move the files to ./build/
+`sh ./scripts/build.sh`
+
+###Upload website to Amazon S3
+
+####Install tools
+
+You need to avec the [AWS command line tools](http://aws.amazon.com/cli)  up & running
+
+
+####Setup your AWS credentials
+
+
+``
+aws config
+``
+
+##Run
+
+It will first run the optimize script.
+
+``
+sh ./scripts/uploadToS3.sh
+`
