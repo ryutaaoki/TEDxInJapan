@@ -3,7 +3,7 @@
   var Joshfire = window.Joshfire || {};
   Joshfire.factory = {
     globalConfig: {"DATAVERSION":"1","IMGPROXYURL":"http://imgschemaio.herokuapp.com/proxy","HOSTPORT":"factory.joshfire.com","DATAHOSTPORT":"api.datajs.com","STATSHOSTPORT":"stats.joshfirefactory.com"},
-    config: {"app":{"id":"5179009abb693502000000a6","icon":null,"logo":null,"name":"tedxfrance","version":"1.0"},"template":{"name":"tedxregionallens","version":"0.1.2","options":{"language":"fr","url":"http://www.gdfsuez.com/","idwidget":"349142125813841921","ganalytics":"UA-40903246-1","contactform":"https://docs.google.com/forms/d/1rOfY3X4UGzfo7u0gB8bm7G9iG_WBPQBJHRP25Z-CHzM/viewform"},"hooks":[]}},
+    config: {"app":{"id":"5179009abb693502000000a6","icon":null,"logo":null,"name":"tedxfrance","version":"1.0"},"template":{"name":"tedxregionallens","version":"0.1.2","options":{"language":"fr","url":"http://www.gdfsuez.com/","idwidget":"349142125813841921","ganalytics":"UA-40903246-1","contactform":"https://docs.google.com/forms/d/1Y976XpAN18BGVlE6CEfVi0JFJWjcfcePL4DF9FQep9U/viewform"},"hooks":[]}},
     device: {},
     addons: {}
   };
