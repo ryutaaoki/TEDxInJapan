@@ -1,4 +1,5 @@
-TEDx Regional Lens Project
+TEDx Local Portal Project
+(formerly Regional Lens)
 ==========================
 
 #####Project regrouping all the TEDx conferences of a country. 
