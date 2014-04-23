@@ -1,6 +1,5 @@
 TEDx Local Portal Project
-(formerly Regional Lens)
-==========================
+=========================
 
 #####Project regrouping all the TEDx conferences of a country. 
 This is a simple web application using Google services (Youtube, Google Analytics, Google Spreadsheets and Google Form) and Twitter. 
