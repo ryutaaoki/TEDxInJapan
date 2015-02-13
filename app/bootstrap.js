@@ -80,8 +80,8 @@
                             "col": "spreadsheets",
                             "query": {
                                 "filter": {
-                                    "docid": "https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
-                                    "sheetid": 5,
+                                    "docid": "https://docs.google.com/spreadsheets/d/1GbRQgBNgpiEUHR5Tgb2cG3BPxL5FzuO5SlPNKlEBMuc/pubhtml",
+                                    "sheetid": 3,
                                     "usestdmapping": true
                                 },
                                 "options": {}
@@ -112,7 +112,7 @@
                             "col": "spreadsheets",
                             "query": {
                                 "filter": {
-                                    "docid": "https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                                    "docid": "https://docs.google.com/spreadsheets/d/1GbRQgBNgpiEUHR5Tgb2cG3BPxL5FzuO5SlPNKlEBMuc/pubhtml",
                                     "sheetid": 2,
                                     "usestdmapping": true
                                 },
@@ -144,7 +144,7 @@
                             "col": "spreadsheets",
                             "query": {
                                 "filter": {
-                                    "docid": "https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                                    "docid": "https://docs.google.com/spreadsheets/d/1GbRQgBNgpiEUHR5Tgb2cG3BPxL5FzuO5SlPNKlEBMuc/pubhtml",
                                     "sheetid": 1,
                                     "usestdmapping": true
                                 },
