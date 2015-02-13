@@ -176,7 +176,7 @@
                             "col": "videos",
                             "query": {
                                 "filter": {
-                                    "playlist": "http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"
+                                    "playlist":  "http://www.youtube.com/playlist?list=PLwPuRfr9wNKjhsMN3QjW5nhC4ikezm9LU"
                                 },
                                 "options": {}
                             },
