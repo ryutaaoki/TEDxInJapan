@@ -1,2 +1,6 @@
 *.DS_Store
 build/
+app/node_modules
+Gruntfile.js
+*.swp
+
