@@ -1,16 +1,232 @@
 (function() {
-  /* This bootstrap script is documented at http://developer.joshfire.com/ */
-  var Joshfire = window.Joshfire || {};
-  Joshfire.factory = {
-    globalConfig: {"DATAVERSION":"1","IMGPROXYURL":"http://imgschemaio.herokuapp.com/proxy","HOSTPORT":"factory.joshfire.com","DATAHOSTPORT":"api.datajs.com","STATSHOSTPORT":"stats.joshfirefactory.com"},
-    config: {"app":{"id":"5179009abb693502000000a6","icon":null,"logo":null,"name":"tedxfrance","version":"1.0"},"template":{"name":"tedxregionallens","version":"0.1.2","options":{"language":"fr","url":"http://www.gdfsuez.com/","idwidget":"349142125813841921","ganalytics":"UA-40903246-1","contactform":"https://docs.google.com/forms/d/1Y976XpAN18BGVlE6CEfVi0JFJWjcfcePL4DF9FQep9U/viewform"},"hooks":[]}},
-    device: {},
-    addons: {}
-  };
-  Joshfire.factory.config.deploy = {"flags":{"web":true},"type":"gandisimplehosting","id":"51c8561a7d03760200000042","env":"live"};
-  Joshfire.factory.config.datasources = {"grabbing":{"name":"TEDx Grabbing","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"TEDx Grabbing","id":"51c85627414ced0200000001","db":"graph","col":"grabbing","outputType":"Thing","runatclient":false,"runtime":"hosted","apikey":"/e3HiVc6uIbdwZmV4lYeRh4OoPeVVb9S1lLySaH+4g2ThlPzqTohFILH3T1b2jO2j2N4kNx/kuuztmCfPoAdzQ=="}},"action":"addtarget"}},"outputType":"Thing","runatclient":true,"runtime":"browser"},"about":{"name":"TEDx About","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"TEDx About","db":"google","col":"spreadsheets","query":{"filter":{"docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc","sheetid":5,"usestdmapping":true},"options":{}},"runatclient":true,"missingKeys":[],"outputType":"Article","runtime":"browser"}},"action":"addtarget"}},"outputType":"Article","runatclient":true,"runtime":"browser"},"blacklist":{"name":"TEDx Blacklist","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"TEDx Blacklist","db":"google","col":"spreadsheets","query":{"filter":{"docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc","sheetid":2,"usestdmapping":true},"options":{}},"runatclient":true,"missingKeys":[],"outputType":"Article","runtime":"browser"}},"action":"addtarget"}},"outputType":"Article","runatclient":true,"runtime":"browser"},"tedxevents":{"name":"TEDx Events","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"TEDx Events","db":"google","col":"spreadsheets","query":{"filter":{"docid":"https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc","sheetid":1,"usestdmapping":true},"options":{}},"runatclient":true,"missingKeys":[],"outputType":"Article","runtime":"browser"}},"action":"addtarget"}},"outputType":"Article","runatclient":true,"runtime":"browser"},"youtube":{"name":"Playlist Youtube","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"Playlist Youtube","db":"youtube","col":"videos","query":{"filter":{"playlist":"http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"},"options":{}},"runatclient":true,"missingKeys":[],"outputType":"VideoObject","runtime":"browser"}},"action":"addtarget"}},"outputType":"VideoObject","runatclient":true,"runtime":"browser"},"tweets":{"name":"TEDx Tweets","db":"operator","col":"updatelinks","query":{"filter":{"datasources":{"main":{"name":"TEDx Tweets","id":"51c8562756b6ce0200000002","db":"twitter","col":"tweets","outputType":"Article/Status","runatclient":false,"runtime":"hosted","apikey":"/e3HiVc6uIbdwZmV4lYeRh4OoPeVVb9S1lLySaH+4g2ThlPzqTohFILH3T1b2jO2j2N4kNx/kuuztmCfPoAdzQ=="}},"action":"addtarget"}},"outputType":"Article/Status","runatclient":true,"runtime":"browser"}};
-  Joshfire.factory.config.addons = [{"name":"splashscreen","options":{"web-mode":"spinner"},"hooks":["loaded"]}];
-  window.Joshfire = Joshfire;
+    /* This bootstrap script is documented at http://developer.joshfire.com/ */
+    var Joshfire = window.Joshfire || {};
+    Joshfire.factory = {
+        globalConfig: {
+            "DATAVERSION": "1",
+            "IMGPROXYURL": "http://imgschemaio.herokuapp.com/proxy",
+            "HOSTPORT": "factory.joshfire.com",
+            "DATAHOSTPORT": "api.datajs.com",
+            "STATSHOSTPORT": "stats.joshfirefactory.com"
+        },
+        config: {
+            "app": {
+                "id": "5179009abb693502000000a6",
+                "icon": null,
+                "logo": null,
+                "name": "tedxfrance",
+                "version": "1.0"
+            },
+            "template": {
+                "name": "tedxregionallens",
+                "version": "0.1.2",
+                "options": {
+                    "language": "fr",
+                    "url": "http://www.gdfsuez.com/",
+                    "idwidget": "349142125813841921",
+                    "ganalytics": "UA-40903246-1",
+                    "contactform": "https://docs.google.com/forms/d/1Y976XpAN18BGVlE6CEfVi0JFJWjcfcePL4DF9FQep9U/viewform"
+                },
+                "hooks": []
+            }
+        },
+        device: {},
+        addons: {}
+    };
+    Joshfire.factory.config.deploy = {
+        "flags": {
+            "web": true
+        },
+        "type": "gandisimplehosting",
+        "id": "51c8561a7d03760200000042",
+        "env": "live"
+    };
+    Joshfire.factory.config.datasources = {
+        "grabbing": {
+            "name": "TEDx Grabbing",
+            "db": "operator",
+            "col": "updatelinks",
+            "query": {
+                "filter": {
+                    "datasources": {
+                        "main": {
+                            "name": "TEDx Grabbing",
+                            "id": "51c85627414ced0200000001",
+                            "db": "graph",
+                            "col": "grabbing",
+                            "outputType": "Thing",
+                            "runatclient": false,
+                            "runtime": "hosted",
+                            "apikey": "/e3HiVc6uIbdwZmV4lYeRh4OoPeVVb9S1lLySaH+4g2ThlPzqTohFILH3T1b2jO2j2N4kNx/kuuztmCfPoAdzQ=="
+                        }
+                    },
+                    "action": "addtarget"
+                }
+            },
+            "outputType": "Thing",
+            "runatclient": true,
+            "runtime": "browser"
+        },
+        "about": {
+            "name": "TEDx About",
+            "db": "operator",
+            "col": "updatelinks",
+            "query": {
+                "filter": {
+                    "datasources": {
+                        "main": {
+                            "name": "TEDx About",
+                            "db": "google",
+                            "col": "spreadsheets",
+                            "query": {
+                                "filter": {
+                                    "docid": "https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                                    "sheetid": 5,
+                                    "usestdmapping": true
+                                },
+                                "options": {}
+                            },
+                            "runatclient": true,
+                            "missingKeys": [],
+                            "outputType": "Article",
+                            "runtime": "browser"
+                        }
+                    },
+                    "action": "addtarget"
+                }
+            },
+            "outputType": "Article",
+            "runatclient": true,
+            "runtime": "browser"
+        },
+        "blacklist": {
+            "name": "TEDx Blacklist",
+            "db": "operator",
+            "col": "updatelinks",
+            "query": {
+                "filter": {
+                    "datasources": {
+                        "main": {
+                            "name": "TEDx Blacklist",
+                            "db": "google",
+                            "col": "spreadsheets",
+                            "query": {
+                                "filter": {
+                                    "docid": "https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                                    "sheetid": 2,
+                                    "usestdmapping": true
+                                },
+                                "options": {}
+                            },
+                            "runatclient": true,
+                            "missingKeys": [],
+                            "outputType": "Article",
+                            "runtime": "browser"
+                        }
+                    },
+                    "action": "addtarget"
+                }
+            },
+            "outputType": "Article",
+            "runatclient": true,
+            "runtime": "browser"
+        },
+        "tedxevents": {
+            "name": "TEDx Events",
+            "db": "operator",
+            "col": "updatelinks",
+            "query": {
+                "filter": {
+                    "datasources": {
+                        "main": {
+                            "name": "TEDx Events",
+                            "db": "google",
+                            "col": "spreadsheets",
+                            "query": {
+                                "filter": {
+                                    "docid": "https://docs.google.com/spreadsheet/pub?key=0AnfI0Uxy0S8YdHIxZGRHbzFDY04tZ24zRGtOUjgtbHc",
+                                    "sheetid": 1,
+                                    "usestdmapping": true
+                                },
+                                "options": {}
+                            },
+                            "runatclient": true,
+                            "missingKeys": [],
+                            "outputType": "Article",
+                            "runtime": "browser"
+                        }
+                    },
+                    "action": "addtarget"
+                }
+            },
+            "outputType": "Article",
+            "runatclient": true,
+            "runtime": "browser"
+        },
+        "youtube": {
+            "name": "Playlist Youtube",
+            "db": "operator",
+            "col": "updatelinks",
+            "query": {
+                "filter": {
+                    "datasources": {
+                        "main": {
+                            "name": "Playlist Youtube",
+                            "db": "youtube",
+                            "col": "videos",
+                            "query": {
+                                "filter": {
+                                    "playlist": "http://www.youtube.com/playlist?list=PLcUNmiDleGGPWyZf1tri28SvisiPgKXWR"
+                                },
+                                "options": {}
+                            },
+                            "runatclient": true,
+                            "missingKeys": [],
+                            "outputType": "VideoObject",
+                            "runtime": "browser"
+                        }
+                    },
+                    "action": "addtarget"
+                }
+            },
+            "outputType": "VideoObject",
+            "runatclient": true,
+            "runtime": "browser"
+        },
+        "tweets": {
+            "name": "TEDx Tweets",
+            "db": "operator",
+            "col": "updatelinks",
+            "query": {
+                "filter": {
+                    "datasources": {
+                        "main": {
+                            "name": "TEDx Tweets",
+                            "id": "51c8562756b6ce0200000002",
+                            "db": "twitter",
+                            "col": "tweets",
+                            "outputType": "Article/Status",
+                            "runatclient": false,
+                            "runtime": "hosted",
+                            "apikey": "/e3HiVc6uIbdwZmV4lYeRh4OoPeVVb9S1lLySaH+4g2ThlPzqTohFILH3T1b2jO2j2N4kNx/kuuztmCfPoAdzQ=="
+                        }
+                    },
+                    "action": "addtarget"
+                }
+            },
+            "outputType": "Article/Status",
+            "runatclient": true,
+            "runtime": "browser"
+        }
+    };
+    Joshfire.factory.config.addons = [{
+        "name": "splashscreen",
+        "options": {
+            "web-mode": "spinner"
+        },
+        "hooks": ["loaded"]
+    }];
+    window.Joshfire = Joshfire;
 
 })();
 (function () { var require=function(a,b){var c=require.resolve(a,b||"/"),d=require.modules[c];if(!d)throw new Error("Failed to resolve module "+a+", tried "+c);var e=d._cached?d._cached:d();return e};require.paths=[],require.modules={},require.extensions=[".js",".coffee"],require._core={assert:!0,events:!0,fs:!0,path:!0,vm:!0},require.resolve=function(){return function(a,b){function g(a){if(require.modules[a])return a;for(var b=0;b<require.extensions.length;b++){var c=require.extensions[b];if(require.modules[a+c])return a+c}}function h(a){a=a.replace(/\/+$/,"");var b=a+"/package.json";if(require.modules[b]){var d=require.modules[b](),e=d.browserify;if(typeof e=="object"&&e.main){var f=g(c.resolve(a,e.main));if(f)return f}else if(typeof e=="string"){var f=g(c.resolve(a,e));if(f)return f}else if(d.main){var f=g(c.resolve(a,d.main));if(f)return f}}return g(a+"/index")}function i(a,b){var c=j(b);for(var d=0;d<c.length;d++){var e=c[d],f=g(e+"/"+a);if(f)return f;var i=h(e+"/"+a);if(i)return i}var f=g(a);if(f)return f}function j(a){var b;a==="/"?b=[""]:b=c.normalize(a).split("/");var d=[];for(var e=b.length-1;e>=0;e--){if(b[e]==="node_modules")continue;var f=b.slice(0,e+1).join("/")+"/node_modules";d.push(f)}return d}b||(b="/");if(require._core[a])return a;var c=require.modules.path(),d=b||".";if(a.match(/^(?:\.\.?\/|\/)/)){var e=g(c.resolve(d,a))||h(c.resolve(d,a));if(e)return e}var f=i(a,d);if(f)return f;throw new Error("Cannot find module '"+a+"'")}}(),require.alias=function(a,b){var c=require.modules.path(),d=null;try{d=require.resolve(a+"/package.json","/")}catch(e){d=require.resolve(a,"/")}var f=c.dirname(d),g=(Object.keys||function(a){var b=[];for(var c in a)b.push(c);return b})(require.modules);for(var h=0;h<g.length;h++){var i=g[h];if(i.slice(0,f.length+1)===f+"/"){var j=i.slice(f.length);require.modules[b+j]=require.modules[f+j]}else i===f&&(require.modules[b]=require.modules[f])}},require.define=function(a,b){var c=require._core[a]?"":require.modules.path().dirname(a),d=function(a){return require(a,c)};d.resolve=function(a){return require.resolve(a,c)},d.modules=require.modules,d.define=require.define;var e={exports:{}};require.modules[a]=function(){return require.modules[a]._cached=e.exports,b.call(e.exports,d,e,e.exports,c,a),require.modules[a]._cached=e.exports,e.exports}},typeof process=="undefined"&&(process={}),process.nextTick||(process.nextTick=function(){var a=[],b=typeof window!="undefined"&&window.postMessage&&window.addEventListener;return b&&window.addEventListener("message",function(b){if(b.source===window&&b.data==="browserify-tick"){b.stopPropagation();if(a.length>0){var c=a.shift();c()}}},!0),function(c){b?(a.push(c),window.postMessage("browserify-tick","*")):setTimeout(c,0)}}()),process.title||(process.title="browser"),process.binding||(process.binding=function(a){if(a==="evals")return require("vm");throw new Error("No such module")}),process.cwd||(process.cwd=function(){return"."}),require.define("path",function(a,b,c,d,e){function f(a,b){var c=[];for(var d=0;d<a.length;d++)b(a[d],d,a)&&c.push(a[d]);return c}function g(a,b){var c=0;for(var d=a.length;d>=0;d--){var e=a[d];e=="."?a.splice(d,1):e===".."?(a.splice(d,1),c++):c&&(a.splice(d,1),c--)}if(b)for(;c--;c)a.unshift("..");return a}var h=/^(.+\/(?!$)|\/)?((?:.+?)?(\.[^.]*)?)$/;c.resolve=function(){var a="",b=!1;for(var c=arguments.length;c>=-1&&!b;c--){var d=c>=0?arguments[c]:process.cwd();if(typeof d!="string"||!d)continue;a=d+"/"+a,b=d.charAt(0)==="/"}return a=g(f(a.split("/"),function(a){return!!a}),!b).join("/"),(b?"/":"")+a||"."},c.normalize=function(a){var b=a.charAt(0)==="/",c=a.slice(-1)==="/";return a=g(f(a.split("/"),function(a){return!!a}),!b).join("/"),!a&&!b&&(a="."),a&&c&&(a+="/"),(b?"/":"")+a},c.join=function(){var a=Array.prototype.slice.call(arguments,0);return c.normalize(f(a,function(a,b){return a&&typeof a=="string"}).join("/"))},c.dirname=function(a){var b=h.exec(a)[1]||"",c=!1;return b?b.length===1||c&&b.length<=3&&b.charAt(1)===":"?b:b.substring(0,b.length-1):"."},c.basename=function(a,b){var c=h.exec(a)[2]||"";return b&&c.substr(-1*b.length)===b&&(c=c.substr(0,c.length-b.length)),c},c.extname=function(a){return h.exec(a)[3]||""}}),require.define("/devicedetect.js",function(a,b,c,d,e){var f=a("useragent");f.parse.browsers=[{r:new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+) Mobile"),family:"Chrome Mobile"}].concat(f.parse.browsers);var g={iPad:"tablet","webOS TouchPad":"tablet","Opera Tablet":"tablet",Kindle:"tablet",PlayBook:"tablet",WeTab:"tablet",iPod:"phone",iPhone:"phone",Nokia:"phone",Android:"phone",IEMobile:"phone","Opera Mini":"phone","Opera Mobile":"phone",Blackberry:"phone","Palm Pre":"phone","Palm Blazer":"phone",Fennec:"phone","Chrome Mobile":"phone",GoogleTV:"tv",PhilipsTV:"tv",SamsungTV:"tv"},h=function(a){return a["user-agent"]},i=function(a){return a?a.match(/GoogleTV/)?new f.Agent("GoogleTV"):a.match(/Philips/i)||a.match(/NETTV/i)?new f.Agent("PhilipsTV"):a.match(/SEC_HHP_TV/i)||a.match(/SMART-TV/)?new f.Agent("SamsungTV"):null:null},j=function(a){var b=i(a);b||(b=f.parse(a));var c=b?g[b.family]:"desktop";return c||(c="desktop"),c},k=function(a,b,c){var d;typeof b=="string"?d=b:d=h(b);var e=j(d),f=l(a,e,c);return f},l=function(a,b,c){var d=[];c?b==="desktop"?d=[b,"tablet","phone","tv","object"]:b==="tablet"?d=[b,"desktop","phone","tv","object"]:b==="phone"?d=[b,"desktop","tablet","tv","object"]:b==="tv"?d=[b,"desktop","tablet","phone","object"]:d=[b,"desktop","tablet","phone","tv"]:d=[b];for(var e=0;e<d.length;e++){var f=d[e];for(var g=0;g<a.length;g++){var h=a[g].devices||a[g].device;typeof h=="string"&&(h=[h]);for(var i=0;i<h.length;i++)if(h[i]=="*"||h[i].substring(0,f.length)==f)return{template:a[g],device:h[i],devicetype:f}}}return undefined};c.getDeviceType=j,c.pickTemplate=k,c.pickTemplateFromFormfactor=l,b&&(b.exports={getDeviceType:j,pickTemplate:k,pickTemplateFromFormfactor:l})}),require.define("/node_modules/useragent/package.json",function(a,b,c,d,e){b.exports={main:"./index.js"}}),require.define("/node_modules/useragent/index.js",function(a,b,c,d,e){b.exports=a("./lib/useragent")}),require.define("/node_modules/useragent/lib/useragent.js",function(a,b,c,d,e){function g(a,b,c,d,e){this.family=a||"Other",this.major=b||"0",this.minor=c||"0",this.patch=d||"0",this.os=e||"Other"}function h(a,b){if(!a)return new g;var c,d,e,f=h.browsers,i=h.os,j=h.ua_length,k=h.os_length;for(e=0;e<j;e++)if(c=a.match(f[e].r)){var l=f[e];l.family&&(c[1]=l.family.replace("$1",c[1])),l.major&&(c[2]=l.major);break}for(e=0;e<k;e++)if(d=a.match(i[e].r)){d[1]=i[e].os||d[1];break}return c=c||[],d=d||[],b&&b.indexOf("Chrome/")!==-1&&a.indexOf("chromeframe")!==-1&&(c[1]="Chrome Frame ("+c[1]+" "+c[2]+")",parser=h(b),c[2]=parser.major,c[3]=parser.minor,c[4]=parser.patch),new g(c[1],c[2],c[3],c[4],d[1])}function i(b){b&&a("./update")(function(a,b){if(a)return;f=b,browsers=f.browser,oss=f.os,ua_length=browsers.length,os_length=oss.length})}function j(a){var b=(a||"").toLowerCase(),c={webkit:!1,mozilla:!1,chrome:!1,safari:!1,mobile_safari:!1,opera:!1,ie:!1,firefox:!1,version:(b.match(j.versionRE)||[0,"0"])[1]};return~b.indexOf("webkit")?(c.webkit=!0,~b.indexOf("chrome")?c.chrome=!0:~b.indexOf("safari")&&(c.safari=!0,~b.indexOf("mobile")&&~b.indexOf("apple")&&(c.mobile_safari=!0))):~b.indexOf("opera")?c.opera=!0:~b.indexOf("mozilla")&&b.indexOf("compatible")<0?(c.mozilla=!0,~b.indexOf("firefox")&&(c.firefox=!0)):~b.indexOf("msie")&&(c.ie=!0),c}function k(a){var b=a.split(" / "),c=b[0].split(" "),d=c[1].split(".");return new g(c[0],d[0],d[1],c.length==3?partitition[2]:d[2],b.length==2?b[1]:null)}function l(a){return new g(a.family,a.major,a.minor,a.patch,a.os)}function m(a,b){var c=a+b,d=m.lookup[c];return d?d:m.lookup[c]=h(a,b)}var f=a("./agents");g.prototype.toAgent=function(){var b=this.family,c=this.toVersion();return c&&(b+=" "+c),b},g.prototype.toString=function n(){var a=this.toAgent(),b=this.os!=="Other"?this.os:!1;return a+(b?" / "+b:"")},g.prototype.toVersion=function(){var b="";return this.major&&(b+=this.major,this.minor&&(b+="."+this.minor,this.patch&&(b+=(isNaN(+this.patch)?" ":".")+this.patch))),b},g.prototype.toJSON=function(){return JSON.stringify({family:this.family,major:this.major,minor:this.minor,patch:this.patch,os:this.os})},h.browsers=f.browser,h.os=f.os,h.ua_length=h.browsers.length,h.os_length=h.os.length,j.versionRE=/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/,m.lookup={},i.version="1.0.5",i.Agent=g,i.parse=h,i.lookup=m,i.fromString=k,i.fromJSON=l,i.is=j,b.exports=i}),require.define("/node_modules/useragent/lib/agents.js",function(a,b,c,d,e){c.browser=[{r:new RegExp("^(Opera)/(\\d+)\\.(\\d+) \\(Nintendo Wii"),family:"Wii"},{r:new RegExp("(SeaMonkey|Fennec|Camino)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)")},{r:new RegExp("(Namoroka|Shiretoko|Minefield)/(\\d+)\\.(\\d+)\\.(\\d+(?:pre)?)"),family:"Firefox ($1)"},{r:new RegExp("(Firefox)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)"),family:"Firefox Beta"},{r:new RegExp("(Firefox)-(?:\\d+\\.\\d+)?/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)"),family:"Firefox Beta"},{r:new RegExp("(Namoroka|Shiretoko|Minefield)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)?"),family:"Firefox ($1)"},{r:new RegExp("(Firefox).*Tablet browser (\\d+)\\.(\\d+)\\.(\\d+)"),family:"MicroB"},{r:new RegExp("(MozillaDeveloperPreview)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)?")},{r:new RegExp("(Flock)/(\\d+)\\.(\\d+)(b\\d+?)")},{r:new RegExp("(RockMelt)/(\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(Fennec)/(\\d+)\\.(\\d+)(pre)")},{r:new RegExp("(Navigator)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Netscape"},{r:new RegExp("(Navigator)/(\\d+)\\.(\\d+)([ab]\\d+)"),family:"Netscape"},{r:new RegExp("(Netscape6)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Netscape"},{r:new RegExp("(MyIBrow)/(\\d+)\\.(\\d+)"),family:"My Internet Browser"},{r:new RegExp("(Opera Tablet).*Version\\/(\\d+)\\.(\\d+)(?:\\.(\\d+))?")},{r:new RegExp("(Opera)/.+Opera Mobi.+Version/(\\d+)\\.(\\d+)"),family:"Opera Mobile"},{r:new RegExp("(Opera Mini)/(\\d+)\\.(\\d+)")},{r:new RegExp("(Opera)/9.80.*Version\\/(\\d+)\\.(\\d+)(?:\\.(\\d+))?")},{r:new RegExp("(webOS)/(\\d+)\\.(\\d+)"),family:"Palm webOS"},{r:new RegExp("(luakit)"),family:"LuaKit"},{r:new RegExp("(Lightning)/(\\d+)\\.(\\d+)([ab]?\\d+[a-z]*)")},{r:new RegExp("(Firefox)/(\\d+)\\.(\\d+)\\.(\\d+(?:pre)?) \\(Swiftfox\\)"),family:"Swiftfox"},{r:new RegExp("(Firefox)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)? \\(Swiftfox\\)"),family:"Swiftfox"},{r:new RegExp("rekonq"),family:"Rekonq"},{r:new RegExp("(conkeror|Conkeror)/(\\d+)\\.(\\d+)\\.?(\\d+)?"),family:"Conkeror"},{r:new RegExp("(konqueror)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Konqueror"},{r:new RegExp("(PlayBook).+RIM Tablet OS (\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(WeTab)-Browser")},{r:new RegExp("(wOSBrowser).+TouchPad/(\\d+)\\.(\\d+)"),family:"webOS TouchPad"},{r:new RegExp("(Comodo_Dragon)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Comodo Dragon"},{r:new RegExp("(YottaaMonitor)")},{r:new RegExp("(Kindle)/(\\d+)\\.(\\d+)")},{r:new RegExp("(CrMo)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Chrome Mobile"},{r:new RegExp("(AdobeAIR|Chromium|FireWeb|Jasmine|ANTGalio|Midori|Fresco|Lobo|PaleMoon|Maxthon|Lynx|OmniWeb|Dillo|Camino|Demeter|Fluid|Fennec|Shiira|Sunrise|Chrome|Flock|Netscape|Lunascape|Epiphany|WebPilot|Vodafone|NetFront|Konqueror|SeaMonkey|Kazehakase|Vienna|Iceape|Iceweasel|IceWeasel|Iron|K-Meleon|Sleipnir|Galeon|GranParadiso|Opera Mini|iCab|NetNewsWire|ThunderBrowse|Iron|Iris)/(\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(Bolt|Jasmine|IceCat|Skyfire|Midori|Maxthon|Lynx|Arora|IBrowse|Dillo|Camino|Shiira|Fennec|Phoenix|Chrome|Flock|Netscape|Lunascape|Epiphany|WebPilot|Opera Mini|Opera|Vodafone|NetFront|Konqueror|Googlebot|SeaMonkey|Kazehakase|Vienna|Iceape|Iceweasel|IceWeasel|Iron|K-Meleon|Sleipnir|Galeon|GranParadiso|iCab|NetNewsWire|Iron|Space Bison|Stainless|Orca|Dolfin|BOLT)/(\\d+)\\.(\\d+)")},{r:new RegExp("(iRider|Crazy Browser|SkipStone|iCab|Lunascape|Sleipnir|Maemo Browser) (\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(iCab|Lunascape|Opera|Android) (\\d+)\\.(\\d+)\\.?(\\d+)?")},{r:new RegExp("(IEMobile)[ /](\\d+)\\.(\\d+)"),family:"IE Mobile"},{r:new RegExp("(MSIE) (\\d+)\\.(\\d+).*XBLWP7"),family:"IE Mobile"},{r:new RegExp("(Firefox)/(\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(Firefox)/(\\d+)\\.(\\d+)(pre|[ab]\\d+[a-z]*)?")},{r:new RegExp("(Obigo|OBIGO)[^\\d]*(\\d+)(?:.(\\d+))?"),family:"Obigo"},{r:new RegExp("(MAXTHON|Maxthon) (\\d+)\\.(\\d+)"),family:"Maxthon"},{r:new RegExp("(Maxthon|MyIE2|Uzbl|Shiira)")},{r:new RegExp("(PLAYSTATION) (\\d+)"),family:"PlayStation"},{r:new RegExp("(PlayStation Portable)[^\\d]+(\\d+).(\\d+)")},{r:new RegExp("(BrowseX) \\((\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(POLARIS)/(\\d+)\\.(\\d+)"),family:"Polaris"},{r:new RegExp("(BonEcho)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Bon Echo"},{r:new RegExp("(iPod).+Version/(\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(iPhone) OS (\\d+)_(\\d+)(?:_(\\d+))?")},{r:new RegExp("(iPad).+ OS (\\d+)_(\\d+)(?:_(\\d+))?")},{r:new RegExp("(Avant)")},{r:new RegExp("(Nokia)[EN]?(\\d+)")},{r:new RegExp("(Black[bB]erry).+Version\\/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"Blackberry"},{r:new RegExp("(Black[bB]erry)\\s?(\\d+)"),family:"Blackberry"},{r:new RegExp("(OmniWeb)/v(\\d+)\\.(\\d+)")},{r:new RegExp("(Blazer)/(\\d+)\\.(\\d+)"),family:"Palm Blazer"},{r:new RegExp("(Pre)/(\\d+)\\.(\\d+)"),family:"Palm Pre"},{r:new RegExp("(Links) \\((\\d+)\\.(\\d+)")},{r:new RegExp("(QtWeb) Internet Browser/(\\d+)\\.(\\d+)")},{r:new RegExp("(Silk)/(\\d+)\\.(\\d+)(?:\\.([0-9\\-]+))?")},{r:new RegExp("(Version)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?.*Safari/"),family:"Safari"},{r:new RegExp("(Safari)/\\d+")},{r:new RegExp("(OLPC)/Update(\\d+)\\.(\\d+)")},{r:new RegExp("(OLPC)/Update()\\.(\\d+)")},{r:new RegExp("(SamsungSGHi560)"),family:"Samsung SGHi560"},{r:new RegExp("^(SonyEricssonK800i)"),family:"Sony Ericsson K800i"},{r:new RegExp("(Teleca Q7)")},{r:new RegExp("(MSIE) (\\d+)\\.(\\d+)"),family:"IE"},{r:new RegExp("(Thunderbird)/(\\d+)\\.(\\d+)\\.?(\\d+)?")},{r:new RegExp("(Wget)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)")},{r:new RegExp("(curl)/(\\d+)\\.(\\d+)\\.(\\d+)"),family:"cURL"}],c.os=[{r:new RegExp("(Windows (?:NT 5\\.2|NT 5\\.1))"),os:"Windows XP"},{r:new RegExp("(XBLWP7)"),os:"Windows Phone OS"},{r:new RegExp("(Windows NT 6\\.1)"),os:"Windows 7"},{r:new RegExp("(Windows NT 6\\.0)"),os:"Windows Vista"},{r:new RegExp("(Windows 98|Windows XP|Windows ME|Windows 95|Windows CE|Windows 7|Windows NT 4\\.0|Windows Vista|Windows 2000)")},{r:new RegExp("(Windows NT 6\\.2)"),os:"Windows 8"},{r:new RegExp("(Windows NT 5\\.0)"),os:"Windows 2000"},{r:new RegExp("(Windows Phone OS) (\\d+)\\.(\\d+)")},{r:new RegExp("(Windows ?Mobile)"),os:"Windows Mobile"},{r:new RegExp("(WinNT4.0)"),os:"Windows NT 4.0"},{r:new RegExp("(Win98)"),os:"Windows 98"},{r:new RegExp("(Android) (\\d+)\\.(\\d+)(?:[.\\-]([a-z0-9]+))?")},{r:new RegExp("(Android) Donut")},{r:new RegExp("(Android) Eclair")},{r:new RegExp("(Android) Froyo")},{r:new RegExp("(Android) Gingerbread")},{r:new RegExp("(Android) Honeycomb")},{r:new RegExp("(Mac OS X) (\\d+)[_.](\\d+)(?:[_.](\\d+))?")},{r:new RegExp("(?:PPC|Intel) (Mac OS X)")},{r:new RegExp("(CPU OS|iPhone OS) (\\d+)_(\\d+)(?:_(\\d+))?"),os:"iOS"},{r:new RegExp("(iPhone|iPad|iPod); Opera"),os:"iOS"},{r:new RegExp("(iPhone|iPad|iPod).*Mac OS X"),os:"iOS"},{r:new RegExp("(CrOS) [a-z0-9_]+ (\\d+)\\.(\\d+)(?:\\.(\\d+))?"),os:"Chrome OS"},{r:new RegExp("(Debian)-(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?")},{r:new RegExp("(Linux Mint)(?:/(\\d+))?")},{r:new RegExp("(Mandriva)(?: Linux)?/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?")},{r:new RegExp("(Symbian[Oo][Ss])/(\\d+)\\.(\\d+)"),os:"Symbian OS"},{r:new RegExp("(Symbian/3)"),os:"Symbian^3"},{r:new RegExp("(Series 60|SymbOS|S60)"),os:"Symbian OS"},{r:new RegExp("(Black[Bb]erry)[0-9a-z]+/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),os:"BlackBerry OS"},{r:new RegExp("(Black[Bb]erry).+Version/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),os:"BlackBerry OS"},{r:new RegExp("(RIM Tablet OS) (\\d+)\\.(\\d+)\\.(\\d+)"),os:"BlackBerry Tablet OS"},{r:new RegExp("(Play[Bb]ook)"),os:"BlackBerry Tablet OS"},{r:new RegExp("(Black[Bb]erry)"),os:"Blackberry OS"},{r:new RegExp("(webOS|hpwOS)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),os:"webOS"},{r:new RegExp("(SUSE|Fedora|Red Hat|PCLinuxOS)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(SUSE|Fedora|Red Hat|Puppy|PCLinuxOS|CentOS)/(\\d+)\\.(\\d+)\\.(\\d+)")},{r:new RegExp("(Ubuntu|Kindle|Bada|Lubuntu|BackTrack|Red Hat|Slackware)/(\\d+)\\.(\\d+)")},{r:new RegExp("(Windows|OpenBSD|FreeBSD|NetBSD|Ubuntu|Kubuntu|Android|Arch Linux|CentOS|WeTab|Slackware)")},{r:new RegExp("(Linux|BSD)")},{r:new RegExp("(Red Hat)")}]});
@@ -73,14 +289,14 @@ Joshfire.factory.device.type = require("/devicedetect.js").getDeviceType(window.
       }
       return true;
     })();
-    
+
     try {
       if (triggerLoadedHook) J.factory.getAddOns('loaded').run();
     } catch (e) {}
 
     //Here we have common loaded hooks for all apps
     if (typeof cordova!="undefined") cordova.exec(null, null, "SplashScreen", "hide", []);
-    
+
 
   }, false);
 
@@ -99,7 +315,7 @@ Joshfire.factory.device.type = require("/devicedetect.js").getDeviceType(window.
     }
     var i = new Image(1, 1);
     i.src = endpoint+"/pixel.gif?"+p.join("&");
-    i.onload = function() { _void(); }; 
+    i.onload = function() { _void(); };
   };
 
   var getDefaultParams = function() {
@@ -433,7 +649,7 @@ define('datajslib',{
  * "best" possible item thumbnail for the given dimensions.
  */
 define('runtime-browser/utils/getthumbnail',['require'], function (woodman) {
-  
+
 
   /**
    * Returns true if the given object is an array
@@ -475,7 +691,7 @@ define('runtime-browser/utils/getthumbnail',['require'], function (woodman) {
    */
   var getThumbnail = function (item, width, height) {
     if (!item) return null;
-    
+
 
     /**
      * Returns the best thumbnail among the two given thumbnails.
@@ -564,10 +780,10 @@ define('runtime-browser/utils/getthumbnail',['require'], function (woodman) {
 
     // No thumbnails, no cry.
     if (thumbnails.length === 0) {
-      
+
       return null;
     }
-    
+
 
     // Loop through the thumbnail candidates to extract the smallest thumbnail
     // that is larger than the requested dimension(s)
@@ -577,25 +793,25 @@ define('runtime-browser/utils/getthumbnail',['require'], function (woodman) {
     for (i = 0; i < thumbnails.length; i++) {
       currThumbnail = thumbnails[i];
       if (isGood(currThumbnail)) {
-        
+
         if (isSmaller(currThumbnail, bestThumbnail)) {
-          
+
           bestThumbnail = currThumbnail;
         }
       }
     }
     if (bestThumbnail) {
-      
+
       return bestThumbnail;
     }
 
     // Loop again, this time to extract the largest thumbnail available
-    
+
     bestThumbnail = thumbnails[0];
     for (i = 0; i < thumbnails.length; i++) {
       currThumbnail = thumbnails[i];
       if (isLarger(currThumbnail, bestThumbnail)) {
-        
+
         bestThumbnail = currThumbnail;
       }
     }
@@ -742,7 +958,7 @@ define('runtime-browser/collection',[
   'datajslib!errors/internalerror',
   'datajslib!errors/notfounderror'
 ], function (woodman, require, runtime, InternalError, NotFoundError) {
-  
+
 
   // Taken from underscore.js (not included here to save a few bytes)
   var _extend = function(obj1,obj2) {
@@ -771,7 +987,7 @@ define('runtime-browser/collection',[
     getCollection: function (datasource, atomicCollection) {
       if (!datasource) {
         // Datasource not set, return an empty collection
-        
+
         return {
           desc: {},
           name: '',
@@ -789,7 +1005,7 @@ define('runtime-browser/collection',[
           }
         };
       }
-      
+
       return new collection(datasource, atomicCollection);
     }
   };
@@ -852,13 +1068,13 @@ define('runtime-browser/collection',[
      */
     self.find = function (options, callback) {
       self.onLoaded(function () {
-        
+
         if (collectionError) {
-          
+
           return callback(collectionError);
         }
         if (!collectionObject) {
-          
+
           return callback(new NotFoundError(
             'Collection does not exist.', datasource));
         }
@@ -885,16 +1101,16 @@ define('runtime-browser/collection',[
         }
         else if (options.nocache) {
           maxAge = 0;
-          
+
         }
         else if (options.maxAge && (options.maxAge > maxAge) && (maxAge > 0)) {
           maxAge = options.maxAge;
-          
+
         }
 
         var cacheKeyObject = null;
         if (collectionObject.cache && (maxAge > 0)) {
-          
+
           cacheKeyObject = {
             db: datasource.db,
             col: datasource.col,
@@ -912,35 +1128,35 @@ define('runtime-browser/collection',[
                 'No way to query the cache', err));
             }
             if (data) {
-              
+
               return callback(null, data);
             }
 
-            
+
             self._find(fullQuery, function (err, data) {
               if (err) {
-                
+
                 return callback(err);
               }
 
               // Note we don't really care if cache works or not
               // (cache should log an error though)
-              
+
               collectionObject.cache.set(cacheKeyObject, data, maxAge);
 
-              
+
               return callback(null, data);
             });
           });
         }
         else {
-          
+
           self._find(fullQuery, function (err, data) {
             if (err) {
-              
+
               return callback(err);
             }
-            
+
             return callback(null, data);
           });
         }
@@ -1260,7 +1476,7 @@ define('runtime-browser/collection.graph',[
   'datajslib!collection',
   'datajslib!runtime'
 ], function (woodman, collectionFactory, runtime) {
-  
+
 
   // The code makes use _.keys, _.isArray, _.each, _.isObject and async.map
   // To avoid having to include the whole Underscore and Async libraries,
@@ -1502,12 +1718,12 @@ define('runtime-browser/collection.graph',[
     var self = this;
 
     if (!this.finalNode) {
-      
+
       return callback('No data source to retrieve');
     }
 
     // Step 1: reset all nodes in the graph
-    
+
     _each(this.nodes, function (node) {
       node.reset();
     });
@@ -1524,24 +1740,24 @@ define('runtime-browser/collection.graph',[
 
     // Step 2: parse the graph and compute the number of times each node
     // ends up being connected to the final node.
-    
+
     this.finalNode.prepare();
 
     // Step 3: execute the final node
-    
+
     this.finalNode.find(queryOptions, function (err, values) {
       // Step 4: reset all nodes in the graph to release memory
-      
+
       _each(self.nodes, function (node) {
         node.reset();
       });
 
       // Final step: pass results back to the caller
       if (err) {
-        
+
       }
       else {
-        
+
       }
       return callback(err, values);
     });
@@ -1706,14 +1922,14 @@ define('runtime-browser/collection.graph',[
       if (this.occurrences <= 1) {
         throw new Error('Node is executed more than expected');
       }
-      
+
       return;
     }
 
     // Report the results if the node has already been run through
     // another path in the graph
     if (this.err || this.data) {
-      
+
       return finishExecution(this.err, this.data);
     }
 
@@ -1728,22 +1944,22 @@ define('runtime-browser/collection.graph',[
       // Then call "process" with the list of inputs.
       // console.log('collection.graph', this.datasource.db, this.datasource.col, 'find');
       if (!this.inputNodes) {
-        
+
         return finishExecution(null, { entries: [] });
       }
 
-      
+
       this.collection.fetch(options, function (err, inputs) {
         if (err) {
-          
+
           return finishExecution(err);
         }
         if (inputs !== null) {
           // All inputs are available, time to run the operator!
-          
+
           self.collection.process(inputs, options, function (err, values) {
             // Propagate the inputs' maxAge property (keeping the minimum)
-            
+
             if (values && !values.maxAge) {
               _each(inputs, function (input) {
                 if (input.maxAge &&
@@ -1757,11 +1973,11 @@ define('runtime-browser/collection.graph',[
         }
         else {
           // Operator does not implement a "fetch" method, let's do it on our own
-          
+
           asyncMap(_keys(self.inputNodes), findInput, function (err, values) {
             // Final callback called when all inputs have been processed
             if (err) {
-              
+
               return finishExecution(err);
             }
 
@@ -1772,10 +1988,10 @@ define('runtime-browser/collection.graph',[
             });
 
             // All inputs are available, time to run the operator!
-            
+
             self.collection.process(inputs, options, function (err, values) {
               // Propagate the inputs' maxAge property (keeping the minimum)
-              
+
               if (values && !values.maxAge) {
                 _each(inputs, function (input) {
                   if (input && input.maxAge &&
@@ -1793,7 +2009,7 @@ define('runtime-browser/collection.graph',[
     else {
       // The collection is a "pure" datasource,
       // or it needs to run server-side
-      
+
       this.collection.find(options, finishExecution);
     }
   };
@@ -1808,9 +2024,9 @@ define('runtime-browser/collection.graph',[
      * @function {function} callback Callback function
      */
     getCollection: function (datasource, callback) {
-      
+
       var collection = new Graph(datasource);
-      
+
       return callback(null, collection);
     }
   };
@@ -1868,7 +2084,7 @@ define('runtime-browser/collection.client',['require'], function (require) {
 /**
  * @fileoverview The "Update links" operator updates links it finds
  * in the "articleBody" and/or the "content" property of feed items.
- * 
+ *
  * Depending on the operation requested, the operator either removes
  * the links or adds a target="_blank" attribute to force the links
  * to open in a new browser window.
@@ -12150,7 +12366,7 @@ define('runtime-browser/underscore',[],function() {
   // the browser, add `_` as a global object via a string identifier,
   // for Closure Compiler "advanced" mode.
   /*
-  // Section commented out to avoid leaking '_' to the global scope (tidoust) 
+  // Section commented out to avoid leaking '_' to the global scope (tidoust)
   if (typeof exports !== 'undefined') {
     if (typeof module !== 'undefined' && module.exports) {
       exports = module.exports = _;
@@ -13210,8 +13426,8 @@ define('databases/google/spreadsheets',[
       "runtimes": ["browser", "nodejs", "win8"],
       "outputType": "Article"
     },
-  
-    
+
+
     /**
      * Fetches feed items from the source provider.
      * @function
@@ -13239,7 +13455,7 @@ define('databases/google/spreadsheets',[
       // names : gIndex starts from 1 (google api), index starts from 0
 
       // parse ignore row param
-      var ignoreRowsGIndexes = []; //contains the readable indexes (from 1) of the rows to ignore 
+      var ignoreRowsGIndexes = []; //contains the readable indexes (from 1) of the rows to ignore
       var ignoreRowsParam = query.filter.ignoreRows || '', i, k, len;
       ignoreRowsParam = ignoreRowsParam.split(';');
       _.each(ignoreRowsParam, function(ignoreStr){
@@ -13249,7 +13465,7 @@ define('databases/google/spreadsheets',[
           for (var idx = parseInt(range[0], 10); idx <= parseInt(range[1], 10); idx++) {
             ignoreRowsGIndexes.push(idx);
           }
-        } 
+        }
         else {
           ignoreRowsGIndexes.push(parseInt(ignoreStr, 10));
         }
@@ -13278,7 +13494,7 @@ define('databases/google/spreadsheets',[
       }
 
       // re-adjust the ignore indexes if there's a skip (for the process function)
-      query.ignoreIterations = _.map(ignoreRowsGIndexes, function(gIndex){ 
+      query.ignoreIterations = _.map(ignoreRowsGIndexes, function(gIndex){
         return gIndex - startGIndex;
       });
 
@@ -13342,7 +13558,7 @@ define('databases/google/spreadsheets',[
         return callback(null, {"entries": entries, "columnsNames" : columnsNames, "@context" : context});
       }
 
-      /* process each entry 
+      /* process each entry
       */
       _.each(data.feed.entry, function (row, i) {
         if ( _.include(query.ignoreIterations, i) ) {
@@ -13380,7 +13596,7 @@ define('databases/google/spreadsheets',[
                 _.each(props, function(prop, idx) {
                   //try and match it to a schema.org property
                   var schemaOrgProperty = self.findSchemaOrgProperty(prop);
-                  var propName = (schemaOrgProperty !== undefined ? schemaOrgProperty : "gsx:" + postfix); 
+                  var propName = (schemaOrgProperty !== undefined ? schemaOrgProperty : "gsx:" + postfix);
                   if (idx == props.length - 1) {
                     //it's the leaf
                     currentProp[propName] = row[key].$t;
@@ -13425,7 +13641,7 @@ define('databases/google/spreadsheets',[
        */
       if(query.context || query.getColumnInfos){
         // extract gsx names
-        var gsxKeys = _.filter(_.keys(entries[0]), function(colKey){ 
+        var gsxKeys = _.filter(_.keys(entries[0]), function(colKey){
           return colKey.substr(0,4) == "gsx:"; });
         _.each(data.coldata.feed.entry, function(cell, idx){
           if(idx > 0){ //the first column is areaid
@@ -13439,7 +13655,7 @@ define('databases/google/spreadsheets',[
       }
 
       /* callback is still called with the deprecated columnsNames for backwards compatibility
-       * with dataviz template previous versions 
+       * with dataviz template previous versions
        */
       callback(null, {'entries' : entries, "columnsNames" : columnsNames, "@context": context});
     },
@@ -13475,16 +13691,16 @@ define('databases/google/spreadsheets',[
       "text" : "articleBody"
     },
 
-    /* all the schema.org properties names. extracted from http://schema.rdfs.org/all.json / properties */ 
-    schemaOrgProperties : [ 
-      'about', 'acceptsReservations', 'accountablePerson', 'actor', 'actors', 'additionalName', 'address', 'addressCountry', 'addressLocality', 'addressRegion', 'affiliation', 'aggregateRating', 'album', 'albums', 'alternativeHeadline', 'alumni', 'alumniOf', 'applicationCategory', 'applicationSubCategory', 'applicationSuite', 'articleBody', 'articleSection', 'associatedArticle', 'associatedMedia', 'attendee', 'attendees', 'audio', 'author', 'availability', 'award', 'awards', 'baseSalary', 'benefits', 'bestRating', 'birthDate', 'bitrate', 'blogPost', 'blogPosts', 'bookEdition', 'bookFormat', 'box', 'branchOf', 'brand', 'breadcrumb', 'browserRequirements', 'byArtist', 'calories', 'caption', 'carbohydrateContent', 'carrierRequirements', 'children', 'cholesterolContent', 'circle', 'colleague', 'colleagues', 'comment', 'commentText', 'commentTime', 'contactPoint', 'contactPoints', 'contactType', 'containedIn', 'contentLocation', 'contentRating', 'contentSize', 'contentUrl', 'contributor', 'cookTime', 'cookingMethod', 'copyrightHolder', 'copyrightYear', 'countriesNotSupported', 'countriesSupported', 'creator', 'currenciesAccepted', 'dateCreated', 'dateModified', 'datePosted', 'datePublished', 'dateline', 'deathDate', 'description', 'device', 'director', 'discusses', 'discussionUrl', 'downloadUrl', 'duration', 'editor', 'educationRequirements', 'elevation', 'email', 'embedUrl', 'employee', 'employees', 'employmentType', 'encodesCreativeWork', 'encoding', 'encodingFormat', 'encodings', 'endDate', 'episode', 'episodeNumber', 'episodes', 'event', 'events', 'exifData', 'experienceRequirements', 'expires', 'familyName', 'fatContent', 'faxNumber', 'featureList', 'fiberContent', 'fileFormat', 'fileSize', 'follows', 'founder', 'founders', 'foundingDate', 'gender', 'genre', 'geo', 'givenName', 'headline', 'height', 'highPrice', 'hiringOrganization', 'homeLocation', 'honorificPrefix', 'honorificSuffix', 'illustrator', 'image', 'inAlbum', 'inLanguage', 'inPlaylist', 'incentives', 'industry', 'ingredients', 'installUrl', 'interactionCount', 'isFamilyFriendly', 'isPartOf', 'isbn', 'itemCondition', 'itemListElement', 'itemListOrder', 'itemOffered', 'itemReviewed', 'jobLocation', 'jobTitle', 'keywords', 'knows', 'latitude', 'line', 'location', 'longitude', 'lowPrice', 'mainContentOfPage', 'manufacturer', 'map', 'maps', 'member', 'memberOf', 'members', 'memoryRequirements', 'mentions', 'menu', 'model', 'musicBy', 'musicGroupMember', 'name', 'nationality', 'numTracks', 'numberOfEpisodes', 'numberOfPages', 'nutrition', 'occupationalCategory', 'offerCount', 'offers', 'openingHours', 'operatingSystem', 'parent', 'parents', 'partOfSeason', 'partOfTVSeries', 'paymentAccepted', 'performer', 'performerIn', 'performers', 'permissions', 'photo', 'photos', 'playerType', 'polygon', 'postOfficeBoxNumber', 'postalCode', 'prepTime', 'price', 'priceCurrency', 'priceRange', 'priceValidUntil', 'primaryImageOfPage', 'printColumn', 'printEdition', 'printPage', 'printSection', 'processorRequirements', 'producer', 'productID', 'productionCompany', 'proteinContent', 'provider', 'publisher', 'publishingPrinciples', 'qualifications', 'ratingCount', 'ratingValue', 'recipeCategory', 'recipeCuisine', 'recipeInstructions', 'recipeYield', 'regionsAllowed', 'relatedTo', 'releaseNotes', 'replyToUrl', 'representativeOfPage', 'requirements', 'requiresSubscription', 'responsibilities', 'review', 'reviewBody', 'reviewCount', 'reviewRating', 'reviews', 'salaryCurrency', 'saturatedFatContent', 'screenshot', 'season', 'seasonNumber', 'seasons', 'seller', 'servesCuisine', 'servingSize', 'sibling', 'siblings', 'significantLink', 'significantLinks', 'skills', 'sodiumContent', 'softwareVersion', 'sourceOrganization', 'specialCommitments', 'spouse', 'startDate', 'storageRequirements', 'streetAddress', 'subEvent', 'subEvents', 'sugarContent', 'superEvent', 'telephone', 'text', 'thumbnail', 'thumbnailUrl', 'tickerSymbol', 'title', 'totalTime', 'track', 'tracks', 'trailer', 'transFatContent', 'transcript', 'unsaturatedFatContent', 'uploadDate', 'url', 'version', 'video', 'videoFrameSize', 'videoQuality', 'width', 'wordCount', 'workHours', 'workLocation', 'worksFor', 'worstRating' 
+    /* all the schema.org properties names. extracted from http://schema.rdfs.org/all.json / properties */
+    schemaOrgProperties : [
+      'about', 'acceptsReservations', 'accountablePerson', 'actor', 'actors', 'additionalName', 'address', 'addressCountry', 'addressLocality', 'addressRegion', 'affiliation', 'aggregateRating', 'album', 'albums', 'alternativeHeadline', 'alumni', 'alumniOf', 'applicationCategory', 'applicationSubCategory', 'applicationSuite', 'articleBody', 'articleSection', 'associatedArticle', 'associatedMedia', 'attendee', 'attendees', 'audio', 'author', 'availability', 'award', 'awards', 'baseSalary', 'benefits', 'bestRating', 'birthDate', 'bitrate', 'blogPost', 'blogPosts', 'bookEdition', 'bookFormat', 'box', 'branchOf', 'brand', 'breadcrumb', 'browserRequirements', 'byArtist', 'calories', 'caption', 'carbohydrateContent', 'carrierRequirements', 'children', 'cholesterolContent', 'circle', 'colleague', 'colleagues', 'comment', 'commentText', 'commentTime', 'contactPoint', 'contactPoints', 'contactType', 'containedIn', 'contentLocation', 'contentRating', 'contentSize', 'contentUrl', 'contributor', 'cookTime', 'cookingMethod', 'copyrightHolder', 'copyrightYear', 'countriesNotSupported', 'countriesSupported', 'creator', 'currenciesAccepted', 'dateCreated', 'dateModified', 'datePosted', 'datePublished', 'dateline', 'deathDate', 'description', 'device', 'director', 'discusses', 'discussionUrl', 'downloadUrl', 'duration', 'editor', 'educationRequirements', 'elevation', 'email', 'embedUrl', 'employee', 'employees', 'employmentType', 'encodesCreativeWork', 'encoding', 'encodingFormat', 'encodings', 'endDate', 'episode', 'episodeNumber', 'episodes', 'event', 'events', 'exifData', 'experienceRequirements', 'expires', 'familyName', 'fatContent', 'faxNumber', 'featureList', 'fiberContent', 'fileFormat', 'fileSize', 'follows', 'founder', 'founders', 'foundingDate', 'gender', 'genre', 'geo', 'givenName', 'headline', 'height', 'highPrice', 'hiringOrganization', 'homeLocation', 'honorificPrefix', 'honorificSuffix', 'illustrator', 'image', 'inAlbum', 'inLanguage', 'inPlaylist', 'incentives', 'industry', 'ingredients', 'installUrl', 'interactionCount', 'isFamilyFriendly', 'isPartOf', 'isbn', 'itemCondition', 'itemListElement', 'itemListOrder', 'itemOffered', 'itemReviewed', 'jobLocation', 'jobTitle', 'keywords', 'knows', 'latitude', 'line', 'location', 'longitude', 'lowPrice', 'mainContentOfPage', 'manufacturer', 'map', 'maps', 'member', 'memberOf', 'members', 'memoryRequirements', 'mentions', 'menu', 'model', 'musicBy', 'musicGroupMember', 'name', 'nationality', 'numTracks', 'numberOfEpisodes', 'numberOfPages', 'nutrition', 'occupationalCategory', 'offerCount', 'offers', 'openingHours', 'operatingSystem', 'parent', 'parents', 'partOfSeason', 'partOfTVSeries', 'paymentAccepted', 'performer', 'performerIn', 'performers', 'permissions', 'photo', 'photos', 'playerType', 'polygon', 'postOfficeBoxNumber', 'postalCode', 'prepTime', 'price', 'priceCurrency', 'priceRange', 'priceValidUntil', 'primaryImageOfPage', 'printColumn', 'printEdition', 'printPage', 'printSection', 'processorRequirements', 'producer', 'productID', 'productionCompany', 'proteinContent', 'provider', 'publisher', 'publishingPrinciples', 'qualifications', 'ratingCount', 'ratingValue', 'recipeCategory', 'recipeCuisine', 'recipeInstructions', 'recipeYield', 'regionsAllowed', 'relatedTo', 'releaseNotes', 'replyToUrl', 'representativeOfPage', 'requirements', 'requiresSubscription', 'responsibilities', 'review', 'reviewBody', 'reviewCount', 'reviewRating', 'reviews', 'salaryCurrency', 'saturatedFatContent', 'screenshot', 'season', 'seasonNumber', 'seasons', 'seller', 'servesCuisine', 'servingSize', 'sibling', 'siblings', 'significantLink', 'significantLinks', 'skills', 'sodiumContent', 'softwareVersion', 'sourceOrganization', 'specialCommitments', 'spouse', 'startDate', 'storageRequirements', 'streetAddress', 'subEvent', 'subEvents', 'sugarContent', 'superEvent', 'telephone', 'text', 'thumbnail', 'thumbnailUrl', 'tickerSymbol', 'title', 'totalTime', 'track', 'tracks', 'trailer', 'transFatContent', 'transcript', 'unsaturatedFatContent', 'uploadDate', 'url', 'version', 'video', 'videoFrameSize', 'videoQuality', 'width', 'wordCount', 'workHours', 'workLocation', 'worksFor', 'worstRating'
     ],
 
     /* utility function to look case insentively for a matching property in schema.org */
     findSchemaOrgProperty : function(testStr){
       var self = this;
       return _.find(self.schemaOrgProperties, function(propName){
-        return propName.toLowerCase() == testStr.toLowerCase(); 
+        return propName.toLowerCase() == testStr.toLowerCase();
       });
     }
 
@@ -13492,11 +13708,11 @@ define('databases/google/spreadsheets',[
 });
 
 define('databases/youtube/lib/api',[
-  'datajslib!http', 
+  'datajslib!http',
   'require'
 ], function (http, woodman) {
 
-  
+
 
   var api = {};
 
@@ -13513,9 +13729,9 @@ define('databases/youtube/lib/api',[
 
   // Generate final URL
   api.generateUrl = function(url, params) {
-    
-    
-    
+
+
+
     for (var param in params) {
       var newUrl = url.replace(new RegExp(':'+ param),
         encodeURIComponent(params[param]));
@@ -13544,7 +13760,7 @@ define('databases/youtube/lib/api',[
       'dataType': 'jsonp'
     }, cb);
   };
-    
+
 
   // Export --------------------------------------------------------------------
 
@@ -13596,7 +13812,7 @@ define('runtime-browser/iso8601',[],function() {
         offset = 0,
         date = null,
         time = null;
-      
+
       if (!string) {
         return null;
       }
@@ -13788,7 +14004,7 @@ define('runtime-browser/iso8601',[],function() {
       if (!d) {
         return 0;
       }
-       
+
       var ms = 0;
       if (d[2]) { ms += Number(d[2]) * 3600 * 1000; }
       if (d[3]) { ms += Number(d[3]) * 60 * 1000; }
