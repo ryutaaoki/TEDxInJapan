@@ -1,5 +1,5 @@
 {
-  "appid": "TEDxFrance",
+  "appid": "TEDxInJapan",
   "db": "graph",
   "col": "grabbing",
   "filter": {
@@ -33,14 +33,14 @@
                   "col": "tweets",
                   "filter": {
                     "favorites": false,
-                    "oauth_token_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
-                    "oauth_token": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
-                    "oauth_consumer_secret": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
-                    "oauth_consumer_key": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+                    "oauth_token_secret": "g8dN37sjY4tgMBvKWDvURVBHWM7YRMnzhPTmWjuTWjoEN",
+                    "oauth_token": "3018368718-lqpQsRCjwbhBubKBwd2qG1VWutqs7WVktUiDeMW",
+                    "oauth_consumer_secret": "B2tcWhpiHkB31SlvHR7sK8bctBMBfEwglagVegydM53NnNS7R9",
+                    "oauth_consumer_key": "YcsW401YrSWJO2yyM39BWcXTi",
                     "excludereplies": true,
                     "excluderetweets": true,
-                    "language": "fr",
-                    "search": "#yourhastag_to_search OR #this_hashtag_to_search AND #cats"
+                    "language": "jp",
+                    "search": "#tedxinjapan"
                   }
                 }
               }
@@ -58,7 +58,7 @@
                   "filter": {
                     "usestdmapping": true,
                     "sheetid": 2,
-                    "docid": "https://docs.google.com/spreadsheet/pub?key=XXXXXXXXXXXXXXXXXXXXXXXXXX"
+                    "docid": "https://docs.google.com/spreadsheets/d/1GbRQgBNgpiEUHR5Tgb2cG3BPxL5FzuO5SlPNKlEBMuc/pubhtml"
                   }
                 }
               }
