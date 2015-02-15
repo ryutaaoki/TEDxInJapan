@@ -21,11 +21,11 @@
                 "name": "tedxregionallens",
                 "version": "0.1.2",
                 "options": {
-                    "language": "fr",
+                    "language": "jp",
                     "url": "http://www.gdfsuez.com/",
                     "idwidget": "349142125813841921",
-                    "ganalytics": "UA-40903246-1",
-                    "contactform": "https://docs.google.com/forms/d/1Y976XpAN18BGVlE6CEfVi0JFJWjcfcePL4DF9FQep9U/viewform"
+                    "ganalytics": "UA-59747406-1",
+                    "contactform": "https://docs.google.com/forms/d/1p_ZdQ0whmU4ba9usMFYxNgRkVTH6bc0mU52lEm9UT9A/viewform?usp=send_form"
                 },
                 "hooks": []
             }
